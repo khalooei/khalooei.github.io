@@ -175,6 +175,10 @@
       .map(function (item, i) {
         var ext = item.external !== false;
         var scholarAttr = item.scholar ? ' data-scholar="true"' : "";
+        var descBlock =
+          item.desc ?
+            "<p>" + escapeHtml(item.desc) + "</p>"
+          : "";
         var btn2 =
           item.cta2 && item.href2 ?
             '<a class="btn btn-secondary" href="' +
@@ -190,9 +194,9 @@
           i +
           '"><h3>' +
           escapeHtml(item.title) +
-          "</h3><p>" +
-          escapeHtml(item.desc) +
-          '</p><div class="bridge-actions"><a class="btn btn-ghost" href="' +
+          "</h3>" +
+          descBlock +
+          '<div class="bridge-actions"><a class="btn btn-ghost" href="' +
           escapeAttr(item.href) +
           '"' +
           scholarAttr +
@@ -268,6 +272,7 @@
       appsEl.innerHTML = t.apps.items
         .map(function (a, i) {
           var isRoute = a.href && a.href.indexOf("#") === 0;
+          var descBlock = a.desc ? "<p>" + escapeHtml(a.desc) + "</p>" : "";
           return (
             '<article class="card app-card reveal" style="--d:' +
             i +
@@ -278,9 +283,7 @@
             "<h3>" +
             escapeHtml(a.title) +
             "</h3>" +
-            "<p>" +
-            escapeHtml(a.desc) +
-            "</p>" +
+            descBlock +
             '<a class="btn btn-ghost" href="' +
             escapeAttr(a.href) +
             '"' +
@@ -372,6 +375,32 @@
       sel.addEventListener("change", function () {
         setLang(sel.value);
       });
+    }
+  }
+
+  /** Smooth scroll to document top; fixes #top when the anchor sat on the header brand. */
+  function initScrollToTop() {
+    document.addEventListener(
+      "click",
+      function (e) {
+        var a = e.target.closest('a[href="#top"]');
+        if (!a) return;
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (history.replaceState) {
+          history.replaceState(null, "", window.location.pathname + window.location.search + "#top");
+        }
+      },
+      false
+    );
+  }
+
+  function hidePageLoader() {
+    document.body.classList.add("is-loaded");
+    var el = document.getElementById("page-loader");
+    if (el) {
+      el.setAttribute("aria-busy", "false");
+      el.setAttribute("aria-hidden", "true");
     }
   }
 
@@ -549,8 +578,12 @@
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initLangSelect();
+    initScrollToTop();
     initSpaceCanvas();
     initFloatNavActive();
     setLang(getLang());
+    window.requestAnimationFrame(function () {
+      setTimeout(hidePageLoader, 420);
+    });
   });
 })();

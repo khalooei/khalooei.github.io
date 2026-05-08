@@ -605,14 +605,101 @@ body.rtl .hero-kicker::before {
 }
 
 .scholar-strip-inner h3 {
-  margin: 0 0 var(--space-xs);
+  margin: 0;
   font-size: var(--step-2);
+  flex: 1 1 auto;
+  min-width: 12ch;
 }
 
-.scholar-strip-inner p {
-  margin: 0;
+/* Full-page load veil */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse 120% 80% at 50% 20%, rgba(15, 23, 42, 0.94), rgba(7, 10, 18, 0.98));
+  transition:
+    opacity 0.55s ease,
+    visibility 0.55s ease;
+}
+
+body.is-loaded .page-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader-panel {
+  position: relative;
+  width: 84px;
+  height: 84px;
+}
+
+.page-loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(56, 189, 248, 0.22);
+  border-top-color: rgba(125, 211, 252, 0.95);
+  border-right-color: rgba(167, 139, 250, 0.35);
+  animation: page-loader-spin 1s linear infinite;
+}
+
+.page-loader-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.55rem;
+  line-height: 1;
+  color: rgba(226, 232, 240, 0.92);
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+  animation: page-loader-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes page-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes page-loader-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader-ring {
+    animation: none;
+    border-color: rgba(125, 211, 252, 0.45);
+  }
+
+  .page-loader-mark {
+    animation: none;
+  }
+
+  body.is-loaded .page-loader {
+    transition-duration: 0.15s;
+  }
+}
+
+.bridge-card h3 {
+  font-size: var(--step-2);
+  margin: 0 0 var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.bridge-card p {
+  margin: 0 0 var(--space-sm);
   color: var(--muted);
-  max-width: 52ch;
   font-size: var(--step--1);
 }
 
@@ -632,7 +719,7 @@ body.rtl .hero-kicker::before {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
-  margin-top: var(--space-md);
+  margin-top: var(--space-sm);
 }
 
 .bridge-card .btn-ghost,

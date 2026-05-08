@@ -94,8 +94,15 @@ window.I18N = {
       items: [
         {
           title: "Visualize Optimization",
-          desc: "3D landscapes and search trajectories (multilingual UI).",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          badge: "Live",
+          cta: "Open",
+        },
+        {
+          title: "Linear regression simulator",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           badge: "Live",
           cta: "Open",
         },
@@ -132,10 +139,8 @@ window.I18N = {
         },
       ],
       pubsTitle: "Selected publications",
-      pubsNote: "",
       scholarCardTitle: "Google Scholar",
-      scholarCardBody: "Citations and full publication list.",
-      scholarCardCta: "Profile",
+      scholarCardCta: "Open",
     },
     bridge: {
       title: "Links",
@@ -143,7 +148,7 @@ window.I18N = {
       items: [
         {
           title: "Google Scholar",
-          desc: "Publications and citations.",
+          desc: "",
           href: "#",
           cta: "Scholar",
           external: false,
@@ -151,15 +156,22 @@ window.I18N = {
         },
         {
           title: "PCS — Sharif",
-          desc: "Computer systems course site.",
+          desc: "",
           href: "https://pcssharif.github.io/",
           cta: "Open",
           external: true,
         },
         {
           title: "Visualize Optimization",
-          desc: "Interactive optimization demo.",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "Open",
+          external: true,
+        },
+        {
+          title: "Linear regression simulator",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           cta: "Open",
           external: true,
         },
@@ -262,8 +274,15 @@ window.I18N = {
       items: [
         {
           title: "Visualize Optimization",
-          desc: "منظر سه‌بعدی و مسیر جستجو (چندزبانه).",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          badge: "فعال",
+          cta: "باز کردن",
+        },
+        {
+          title: "شبیه‌ساز رگرسیون خطی",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           badge: "فعال",
           cta: "باز کردن",
         },
@@ -300,10 +319,8 @@ window.I18N = {
         },
       ],
       pubsTitle: "مقالات منتخب",
-      pubsNote: "",
       scholarCardTitle: "Google Scholar",
-      scholarCardBody: "استنادها و فهرست انتشارات.",
-      scholarCardCta: "پروفایل",
+      scholarCardCta: "باز کردن",
     },
     bridge: {
       title: "پیوندها",
@@ -311,7 +328,7 @@ window.I18N = {
       items: [
         {
           title: "Google Scholar",
-          desc: "مقالات و استنادها.",
+          desc: "",
           href: "#",
           cta: "Scholar",
           external: false,
@@ -319,15 +336,22 @@ window.I18N = {
         },
         {
           title: "PCS — شریف",
-          desc: "درس اصول سیستم‌ها.",
+          desc: "",
           href: "https://pcssharif.github.io/",
           cta: "باز کردن",
           external: true,
         },
         {
           title: "Visualize Optimization",
-          desc: "دموی بهینه‌سازی تعاملی.",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "باز کردن",
+          external: true,
+        },
+        {
+          title: "شبیه‌ساز رگرسیون خطی",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           cta: "باز کردن",
           external: true,
         },
@@ -430,8 +454,15 @@ window.I18N = {
       items: [
         {
           title: "Visualize Optimization",
-          desc: "أسطح ثلاثية الأبعاد ومسارات البحث (واجهة متعددة اللغات).",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          badge: "مباشر",
+          cta: "فتح",
+        },
+        {
+          title: "محاكي الانحدار الخطي",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           badge: "مباشر",
           cta: "فتح",
         },
@@ -468,10 +499,8 @@ window.I18N = {
         },
       ],
       pubsTitle: "منشورات مختارة",
-      pubsNote: "",
       scholarCardTitle: "Google Scholar",
-      scholarCardBody: "الاستشهادات والمنشورات الكاملة.",
-      scholarCardCta: "الملف",
+      scholarCardCta: "فتح",
     },
     bridge: {
       title: "روابط",
@@ -479,7 +508,7 @@ window.I18N = {
       items: [
         {
           title: "Google Scholar",
-          desc: "المنشورات والاستشهادات.",
+          desc: "",
           href: "#",
           cta: "Scholar",
           external: false,
@@ -487,15 +516,22 @@ window.I18N = {
         },
         {
           title: "PCS — شريف",
-          desc: "مقرر أنظمة الحاسوب.",
+          desc: "",
           href: "https://pcssharif.github.io/",
           cta: "فتح",
           external: true,
         },
         {
           title: "Visualize Optimization",
-          desc: "عرض تفاعلي للتحسين.",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "فتح",
+          external: true,
+        },
+        {
+          title: "محاكي الانحدار الخطي",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           cta: "فتح",
           external: true,
         },
@@ -598,8 +634,15 @@ window.I18N = {
       items: [
         {
           title: "Visualize Optimization",
-          desc: "三维代价与搜索路径（多语言界面）。",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          badge: "在线",
+          cta: "打开",
+        },
+        {
+          title: "线性回归演示",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           badge: "在线",
           cta: "打开",
         },
@@ -636,10 +679,8 @@ window.I18N = {
         },
       ],
       pubsTitle: "代表性论文",
-      pubsNote: "",
       scholarCardTitle: "Google Scholar",
-      scholarCardBody: "引用与完整论文列表。",
-      scholarCardCta: "主页",
+      scholarCardCta: "打开",
     },
     bridge: {
       title: "链接",
@@ -647,7 +688,7 @@ window.I18N = {
       items: [
         {
           title: "Google Scholar",
-          desc: "论文与引用。",
+          desc: "",
           href: "#",
           cta: "Scholar",
           external: false,
@@ -655,15 +696,22 @@ window.I18N = {
         },
         {
           title: "PCS — 谢里夫",
-          desc: "计算机系统课程站。",
+          desc: "",
           href: "https://pcssharif.github.io/",
           cta: "打开",
           external: true,
         },
         {
           title: "Visualize Optimization",
-          desc: "交互式优化演示。",
+          desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "打开",
+          external: true,
+        },
+        {
+          title: "线性回归演示",
+          desc: "",
+          href: "https://khalooei.github.io/tutorial-linear-regression-simulator-app/",
           cta: "打开",
           external: true,
         },

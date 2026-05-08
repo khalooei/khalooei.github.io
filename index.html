@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
+    <div id="page-loader" class="page-loader" aria-busy="true" aria-live="polite">
+      <div class="page-loader-panel">
+        <div class="page-loader-ring" aria-hidden="true"></div>
+        <span class="page-loader-mark" aria-hidden="true">◇</span>
+      </div>
+    </div>
     <canvas id="space-canvas" class="space-canvas" aria-hidden="true"></canvas>
     <div class="bg-mesh" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
@@ -31,7 +37,7 @@
 
     <header class="site-header" id="site-header">
       <div class="header-inner">
-        <a class="brand" href="#top" id="top" aria-label="Home">
+        <a class="brand" href="#top" aria-label="Home">
           <span class="brand-mark" aria-hidden="true">◇</span>
           <span>Mohammad Khalooei</span>
         </a>
@@ -77,7 +83,7 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="hero-inner">
           <p class="hero-kicker" data-i18n="hero.kicker">Amirkabir · Sharif</p>
           <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Mohammad Khalooei</h1>
@@ -146,16 +152,12 @@
 
         <div class="scholar-strip reveal">
           <div class="scholar-strip-inner">
-            <div>
-              <h3 data-i18n="research.scholarCardTitle">Scholar</h3>
-              <p data-i18n="research.scholarCardBody"></p>
-            </div>
-            <a class="btn btn-primary" href="#" data-i18n="research.scholarCardCta" data-scholar="true">Scholar</a>
+            <h3 data-i18n="research.scholarCardTitle">Google Scholar</h3>
+            <a class="btn btn-primary" href="#" data-i18n="research.scholarCardCta" data-scholar="true">Open</a>
           </div>
         </div>
 
         <h3 class="subsection-title reveal" data-i18n="research.pubsTitle">Publications</h3>
-        <p class="pubs-note section-lead reveal" data-i18n="research.pubsNote"></p>
         <ol class="publications-list" id="publications-list"></ol>
       </section>
 
