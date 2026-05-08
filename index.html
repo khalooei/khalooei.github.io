@@ -5,38 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Mohammad Khalooei — teaching optimization, speech, AI, systems, and Python; interactive learning tools and research links."
+      content="Mohammad Khalooei — speech and audio intelligence, trustworthy ML, vision, NLP, and data-centric computing; Amirkabir & Sharif."
     />
     <meta name="theme-color" content="#070a12" />
     <title>Mohammad Khalooei</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&family=Vazirmatn:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
     <div class="bg-mesh" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
 
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
 
     <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="brand" href="#top" id="top" aria-label="Home">
-          <span class="brand-mark">◇</span>
+          <span class="brand-mark" aria-hidden="true">◇</span>
           <span>Mohammad Khalooei</span>
         </a>
 
         <nav class="nav-desktop" aria-label="Primary">
-          <a href="#spotlight" data-i18n="nav.spotlight">Spotlight</a>
-          <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
-          <a href="#apps" data-i18n="nav.apps">Labs</a>
+          <a href="#spotlight" data-i18n="nav.spotlight">Highlights</a>
+          <a href="#teaching" data-i18n="nav.teaching">Instruction</a>
+          <a href="#apps" data-i18n="nav.apps">Resources</a>
           <a href="#research" data-i18n="nav.research">Research</a>
-          <a href="#awards" data-i18n="nav.awards">Awards</a>
-          <a href="#collab" data-i18n="nav.collab">Collaborate</a>
+          <a href="#bridge" data-i18n="nav.bridge">Hub</a>
         </nav>
 
         <div class="header-actions">
@@ -53,6 +47,7 @@
             id="nav-toggle"
             aria-expanded="false"
             aria-controls="nav-panel"
+            aria-label="Menu"
           >
             <span></span><span></span><span></span>
           </button>
@@ -61,12 +56,11 @@
 
       <div class="nav-panel" id="nav-panel">
         <nav aria-label="Mobile">
-          <a href="#spotlight" data-i18n="nav.spotlight">Spotlight</a>
-          <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
-          <a href="#apps" data-i18n="nav.apps">Labs</a>
+          <a href="#spotlight" data-i18n="nav.spotlight">Highlights</a>
+          <a href="#teaching" data-i18n="nav.teaching">Instruction</a>
+          <a href="#apps" data-i18n="nav.apps">Resources</a>
           <a href="#research" data-i18n="nav.research">Research</a>
-          <a href="#awards" data-i18n="nav.awards">Awards</a>
-          <a href="#collab" data-i18n="nav.collab">Collaborate</a>
+          <a href="#bridge" data-i18n="nav.bridge">Hub</a>
         </nav>
       </div>
     </header>
@@ -89,7 +83,7 @@
 
       <section class="section" id="spotlight">
         <header class="section-head reveal">
-          <h2 data-i18n="spotlight.title">Recent</h2>
+          <h2 data-i18n="spotlight.title">Highlights</h2>
           <p data-i18n="spotlight.subtitle"></p>
         </header>
         <div class="grid spotlight-grid" id="spotlight-grid"></div>
@@ -97,7 +91,7 @@
 
       <section class="section" id="teaching">
         <header class="section-head reveal">
-          <h2 data-i18n="teaching.title">Teaching</h2>
+          <h2 data-i18n="teaching.title">Instruction</h2>
           <p data-i18n="teaching.subtitle"></p>
         </header>
         <div class="grid teaching-grid" id="teaching-grid"></div>
@@ -105,70 +99,47 @@
 
       <section class="section" id="apps">
         <header class="section-head reveal">
-          <h2 data-i18n="apps.title">Interactive labs</h2>
+          <h2 data-i18n="apps.title">Interactive resources</h2>
           <p data-i18n="apps.subtitle"></p>
         </header>
         <div class="grid apps-grid" id="apps-grid"></div>
       </section>
 
-      <section class="section" id="research">
+      <section class="section section-research" id="research">
         <header class="section-head reveal">
           <h2 data-i18n="research.title">Research</h2>
           <p data-i18n="research.subtitle"></p>
         </header>
-        <div class="research-panel">
-          <article class="research-card reveal">
-            <h3 data-i18n="research.scholarLabel">Google Scholar</h3>
-            <p data-i18n="research.scholarHint"></p>
-            <a class="btn btn-primary" href="#" data-i18n="research.scholarCta" data-scholar="true">Scholar</a>
-          </article>
-          <article class="research-card reveal">
-            <h3 data-i18n="research.feedLabel">arXiv</h3>
-            <p data-i18n="research.feedHint"></p>
-            <a class="btn btn-secondary" href="#" data-i18n="research.arxivCta" data-arxiv="true">arXiv</a>
-          </article>
-          <article class="research-card reveal">
-            <h3 data-i18n="research.alsRead">Also read</h3>
-            <div class="link-row" id="als-links"></div>
-          </article>
-        </div>
-        <p class="legacy-note reveal">
-          <span data-i18n="research.legacyProject"></span>
-          <a href="ALOCC-CVPR2018.html" data-i18n="research.legacyLink">ALOCC</a>
-        </p>
-      </section>
 
-      <section class="section" id="awards">
-        <header class="section-head reveal">
-          <h2 data-i18n="awards.title">Awards</h2>
-          <p data-i18n="awards.subtitle"></p>
-        </header>
-        <div class="grid awards-grid" id="awards-grid"></div>
-      </section>
+        <h3 class="subsection-title reveal" data-i18n="research.themesTitle">Thematic areas</h3>
+        <div class="grid themes-grid" id="research-themes"></div>
 
-      <section class="section collab-section" id="collab">
-        <div class="collab-card reveal">
-          <h2 data-i18n="collab.title">Collaboration</h2>
-          <p data-i18n="collab.subtitle"></p>
-          <p data-i18n="collab.body"></p>
-          <div class="email-grid">
-            <div class="email-card">
-              <strong data-i18n="collab.labelAut">Amirkabir (AUT)</strong>
-              <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+        <div class="scholar-strip reveal">
+          <div class="scholar-strip-inner">
+            <div>
+              <h3 data-i18n="research.scholarCardTitle">Scholar</h3>
+              <p data-i18n="research.scholarCardBody"></p>
             </div>
-            <div class="email-card">
-              <strong data-i18n="collab.labelSharif">Sharif</strong>
-              <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
-            </div>
+            <a class="btn btn-primary" href="#" data-i18n="research.scholarCardCta" data-scholar="true">Scholar</a>
           </div>
-          <p class="collab-note" data-i18n="collab.note"></p>
         </div>
+
+        <h3 class="subsection-title reveal" data-i18n="research.pubsTitle">Publications</h3>
+        <p class="pubs-note reveal" data-i18n="research.pubsNote"></p>
+        <ol class="publications-list" id="publications-list"></ol>
+      </section>
+
+      <section class="section" id="bridge">
+        <header class="section-head reveal">
+          <h2 data-i18n="bridge.title">Connectivity hub</h2>
+          <p data-i18n="bridge.subtitle"></p>
+        </header>
+        <div class="grid bridge-grid" id="bridge-grid"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p data-i18n="footer.rights"></p>
-      <p data-i18n="footer.built"></p>
+      <p data-i18n="footer.line"></p>
     </footer>
 
     <script src="assets/js/translations.js"></script>

@@ -1,637 +1,724 @@
 /**
- * i18n bundles — edit lists (highlights, courses, apps, awards) per locale as needed.
- * Scholar profile: replace SCHOLAR_ID in app.js or use full scholarUrl below.
+ * Localized copy — scholarly register; bibliographic data for publications lives in app.js.
  */
 window.I18N = {
   en: {
-    metaTitle: "Mohammad Khalooei — Teaching, Research & Interactive Learning",
+    metaTitle: "Mohammad Khalooei — Faculty · Research · Instruction",
     metaDesc:
-      "Academic homepage: optimization, speech, AI, systems, Python — courses, interactive demos, publications, and collaboration.",
+      "Mohammad Khalooei: speech and audio intelligence, trustworthy machine learning, vision, language, and data-centric computing — Amirkabir & Sharif.",
+    a11y: { skip: "Skip to main content" },
     nav: {
-      spotlight: "Spotlight",
-      teaching: "Teaching",
-      apps: "Interactive labs",
-      research: "Research & reading",
-      awards: "Awards & recognition",
-      collab: "Collaborate",
+      spotlight: "Highlights",
+      teaching: "Instruction",
+      apps: "Interactive resources",
+      research: "Research programme",
+      bridge: "Connectivity hub",
     },
     hero: {
       kicker: "Amirkabir University of Technology · Sharif University of Technology",
       title: "Mohammad Khalooei",
       subtitle:
-        "Teaching and building interactive tools at the intersection of optimization, speech, intelligent systems, and programming.",
-      ctaPrimary: "Explore courses",
-      ctaSecondary: "Scholar profile",
+        "Faculty member in computer engineering, with a research programme spanning speech and audio intelligence, robust and secure machine learning, multimodal perception, natural language understanding, and large-scale data analytics. Instruction emphasizes mathematical rigor, systems thinking, and reproducible experimentation.",
+      ctaPrimary: "Instruction & courses",
+      ctaSecondary: "Google Scholar profile",
     },
     spotlight: {
-      title: "Recent courses & talks",
+      title: "Recent instructional and scholarly highlights",
       subtitle:
-        "A curated snapshot of the latest graduate/senior offerings and invited presentations — updated each term.",
+        "Selected graduate and undergraduate offerings, invited lectures, and course portals that are actively maintained for enrolled students.",
       items: [
         {
-          tag: "Course",
-          title: "Advanced Python & scientific computing",
-          desc: "Modern Python patterns, performance, and tooling for research-grade code.",
+          tag: "Graduate / undergraduate",
+          title: "Principles of computer systems (PCS)",
+          desc: "Architecture, instruction-set design, memory hierarchy, and I/O — aligned with the Sharif course portal and reference texts in logic design and computer organization.",
         },
         {
-          tag: "Talk",
-          title: "Interactive visualization of optimization landscapes",
-          desc: "Live demos linking theory to geometric intuition in non-convex search.",
+          tag: "Interactive pedagogy",
+          title: "Geometric visualization of optimization",
+          desc: "Three-dimensional loss landscapes and trajectory comparisons to connect convex and non-convex analysis with algorithmic behaviour.",
         },
         {
-          tag: "Course",
-          title: "Speech processing — representations to applications",
-          desc: "From classical DSP to neural acoustic modeling and evaluation.",
+          tag: "Course theme",
+          title: "Speech processing and spoken-language interfaces",
+          desc: "From digital signal processing foundations to neural acoustic and language modelling, evaluation metrics, and deployment constraints.",
         },
         {
-          tag: "Course",
-          title: "Principles of computer system design",
-          desc: "Trade-offs across memory hierarchy, concurrency, and reliability.",
+          tag: "Course theme",
+          title: "Trustworthy machine learning",
+          desc: "Adversarial robustness, explainability, and failure-mode analysis in deep learning systems.",
         },
       ],
     },
     teaching: {
-      title: "Teaching portfolio",
+      title: "Instruction and course themes",
       subtitle:
-        "Representative graduate and undergraduate themes I deliver — syllabi and materials are shared with enrolled students.",
+        "Representative subjects at the graduate and undergraduate levels. Detailed syllabi, assessments, and learning-management artefacts are distributed to registered students through each institution’s official channels.",
       courses: [
         {
-          icon: "opt",
-          name: "Optimization",
-          topics: "Convex & non-convex analysis · algorithms · numerical aspects",
-        },
-        {
           icon: "speech",
-          name: "Speech processing",
-          topics: "Signal foundations · recognition · synthesis · evaluation",
+          name: "Speech and spoken-language processing",
+          topics:
+            "Acoustic feature extraction · recognition and synthesis · speaker and language factors · evaluation protocols",
         },
         {
           icon: "sys",
-          name: "Computer systems design",
-          topics: "Architecture · parallelism · correctness · measurement",
+          name: "Principles of computer systems",
+          topics:
+            "Instruction-set architecture · datapath and control · pipelining · memory and I/O subsystems",
+          href: "https://pcssharif.github.io/",
+          linkLabel: "Course portal (Sharif PCS)",
+        },
+        {
+          icon: "opt",
+          name: "Optimization for learning and decision systems",
+          topics: "Convex analysis · gradient and higher-order methods · constrained and large-scale optimization",
         },
         {
           icon: "ai",
           name: "Artificial intelligence",
-          topics: "Search · learning · deployment considerations",
+          topics: "Search and planning · statistical learning · neural architectures · governance of deployed models",
         },
         {
           icon: "py",
-          name: "Advanced Python",
-          topics: "Idioms · typing · packaging · performance engineering",
+          name: "Advanced Python for computational research",
+          topics: "Idiomatic programming · typing and testing · packaging · numerical and data stacks",
         },
       ],
     },
     apps: {
-      title: "Interactive learning applications",
+      title: "Interactive instructional software",
       subtitle:
-        "Browser-based laboratories that make abstract methods tangible for learners worldwide.",
+        "Browser-based demonstrations that complement analytical treatment of algorithms and systems.",
       items: [
         {
           title: "Visualize Optimization",
-          desc: "3D cost landscapes, hill-climbing vs random search, bilingual UI — compare trajectories side by side.",
+          desc: "Interactive three-dimensional cost surfaces; trajectory comparison for local search and stochastic exploration (multilingual interface).",
           href: "https://khalooei.github.io/visualize-optimization/",
           badge: "Live",
-        },
-        {
-          title: "More labs (coming soon)",
-          desc: "Additional interactive modules for speech and systems will be linked here as they are published.",
-          href: "#apps",
-          badge: "Roadmap",
+          cta: "Open demonstration",
         },
       ],
     },
     research: {
-      title: "Research, citations & staying current",
+      title: "Research programme",
       subtitle:
-        "Follow peer-reviewed work and discover emerging ideas through curated channels — always verify claims against primary sources.",
-      scholarLabel: "Google Scholar profile",
-      scholarHint: "Aggregated citations and publication list.",
-      scholarCta: "Open Scholar",
-      arxivCta: "Latest on arXiv",
-      feedLabel: "Latest from arXiv (CS / ML)",
-      feedHint: "Preprints — treat as working papers until peer review.",
-      alsRead: "Also read",
-      alsItems: [
-        { t: "IEEE Xplore", h: "https://ieeexplore.ieee.org/" },
-        { t: "ACM Digital Library", h: "https://dl.acm.org/" },
-        { t: "Semantic Scholar", h: "https://www.semanticscholar.org/" },
+        "The following themes structure ongoing work and graduate supervision. Empirical contributions are documented in the peer-reviewed and preprint literature; consult the Google Scholar profile for the authoritative, versioned bibliography.",
+      themesTitle: "Thematic areas",
+      themes: [
+        {
+          title: "Specialized speech and audio intelligence",
+          body: "Representation learning, robust recognition, synthesis, and spoken-language understanding under noise, channel variability, and resource constraints.",
+        },
+        {
+          title: "Security and reliability of AI models",
+          body: "Adversarial and probabilistic attacks, trojans and backdoors, robust and regularized training, and survey-level systematization of threat models and mitigations.",
+        },
+        {
+          title: "Image, video, and computer vision",
+          body: "Detection and localization of salient and anomalous events, representation learning for visual data, and bias–variance trade-offs in deep visual models.",
+        },
+        {
+          title: "Text processing and language understanding",
+          body: "Neural and statistical models for retrieval, classification, and interpretability in textual corpora, including connections to broader NLP evaluation practice.",
+        },
+        {
+          title: "Data analytics and large-scale data",
+          body: "Statistical modelling, scalable pipelines, and decision support from high-volume heterogeneous measurements, including industrial diagnostic and monitoring settings.",
+        },
+        {
+          title: "Creative and exploratory projects",
+          body: "Interdisciplinary prototypes that connect the above themes with education, open software, and reproducible experimental workflows.",
+        },
       ],
-      legacyProject:
-        "Historical project page (CVPR 2018): adversarially learned one-class classification — preserved for reproducibility.",
-      legacyLink: "ALOCC project page",
+      pubsTitle: "Representative recent publications",
+      pubsNote:
+        "Titles and venues follow bibliographic English. Each entry links to the corresponding indexed record for citation consistency.",
+      scholarCardTitle: "Canonical bibliography",
+      scholarCardBody:
+        "The Google Scholar profile aggregates citation metadata, co-authorship networks, and chronological article lists.",
+      scholarCardCta: "Open Scholar profile",
     },
-    awards: {
-      title: "Awards & institutional recognition",
+    bridge: {
+      title: "Connectivity hub",
       subtitle:
-        "Selected honors from industry and national partners — thank you to students and collaborators who made this possible.",
+        "Central entry points for scholarly identity, course materials, instructional software, and verified academic correspondence.",
       items: [
         {
-          org: "Apple",
-          title: "Apple ecosystem & developer recognition",
-          desc: "Acknowledgement through Apple’s developer and education programmes for outstanding technical work.",
+          title: "Google Scholar",
+          desc: "Indexed publications, citation metrics, and co-authorship graph.",
+          href: "#",
+          cta: "Scholar profile",
+          external: false,
+          scholar: true,
         },
         {
-          org: "Hamrah-e Avval (MCI)",
-          title: "Telecom innovation context",
-          desc: "Recognition within Iran’s leading mobile operator for applied research and product-aligned prototypes.",
+          title: "Principles of Computer Systems — Sharif",
+          desc: "Official course portal: sessions, references, and teaching team.",
+          href: "https://pcssharif.github.io/",
+          cta: "Visit PCS portal",
+          external: true,
         },
         {
-          org: "University & national venues",
-          title: "Best paper, poster, and teaching citations",
-          desc: "Awards at conferences and university events — detailed CV available on request for committees.",
+          title: "Interactive optimization demonstration",
+          desc: "Public instructional application for geometric intuition in nonlinear optimization.",
+          href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "Launch application",
+          external: true,
+        },
+        {
+          title: "Academic correspondence",
+          desc: "khalooei@aut.ac.ir (Amirkabir, CEIT) · mohammad.khalooei@sharif.edu (Sharif). Please use an institutional address and include affiliation, topic, and timeline.",
+          href: "mailto:khalooei@aut.ac.ir",
+          cta: "AUT mailbox",
+          href2: "mailto:mohammad.khalooei@sharif.edu",
+          cta2: "Sharif mailbox",
+          external: false,
+          external2: false,
         },
       ],
     },
-    collab: {
-      title: "Scientific collaboration",
-      subtitle:
-        "If you are a student, researcher, or industry partner seeking joint supervision, datasets, or funded projects, reach out with a concise research abstract.",
-      body:
-        "Preferred contacts use verified academic mailboxes. Please include your affiliation, timeline, and expected contribution.",
-      emailAut: "khalooei@aut.ac.ir",
-      emailSharif: "mohammad.khalooei@sharif.edu",
-      labelAut: "Amirkabir (AUT · CEIT)",
-      labelSharif: "Sharif University of Technology",
-      note:
-        "For AUT CEIT matters use the AUT address; for Sharif-affiliated correspondence use the Sharif address — both are monitored.",
-    },
     footer: {
-      rights: "© Mohammad Khalooei. Academic use encouraged with attribution.",
-      built: "Built as a static site for speed and accessibility.",
+      line:
+        "© Mohammad Khalooei · Faculty of Computer Engineering, Amirkabir University of Technology · Sharif University of Technology",
     },
   },
 
   fa: {
-    metaTitle: "محمد خالوئی — آموزش، پژوهش و یادگیری تعاملی",
+    metaTitle: "محمد خالوئی — عضو هیئت علمی، پژوهش و تدریس",
     metaDesc:
-      "صفحهٔ علمی: بهینه‌سازی، پردازش گفتار، هوش مصنوعی، سیستم‌ها و پایتون — درس‌ها، ابزارهای تعاملی و همکاری پژوهشی.",
+      "محمد خالوئی: هوش صوتی و گفتاری، یادگیری ماشین قابل اعتماد، بینایی ماشین، پردازش زبان و تحلیل داده در امیرکبیر و شریف.",
+    a11y: { skip: "پرش به محتوای اصلی" },
     nav: {
-      spotlight: "ویژه",
-      teaching: "درس‌ها",
-      apps: "آزمایشگاه تعاملی",
-      research: "پژوهش و مطالعه",
-      awards: "جوایز و افتخارات",
-      collab: "همکاری",
+      spotlight: "برجسته‌ها",
+      teaching: "تدریس",
+      apps: "منابع تعاملی",
+      research: "برنامهٔ پژوهشی",
+      bridge: "دالان ارتباطی",
     },
     hero: {
       kicker: "دانشگاه صنعتی امیرکبیر · دانشگاه صنعتی شریف",
       title: "محمد خالوئی",
       subtitle:
-        "تدریس و ساخت ابزارهای تعاملی در مرز بهینه‌سازی، پردازش گفتار، سیستم‌های هوشمند و برنامه‌نویسی.",
-      ctaPrimary: "مشاهدهٔ درس‌ها",
-      ctaSecondary: "پروفایل اسکولار",
+        "عضو هیئت علمی مهندسی کامپیوتر با برنامهٔ پژوهشی در حوزه‌های هوش صوتی و گفتار تخصصی، یادگیری ماشین پایدار و امن، ادراک چندوجهی، فهم زبان طبیعی، و تحلیل داده در مقیاس بزرگ. در تدریس بر استدلال ریاضی، نگرش سیستمی، و آزمایش‌های قابل تکرار تأکید می‌شود.",
+      ctaPrimary: "تدریس و دروس",
+      ctaSecondary: "پروفایل گوگل اسکولار",
     },
     spotlight: {
-      title: "ارائه‌ها و درس‌های اخیر",
+      title: "تازه‌های آموزشی و علمی",
       subtitle:
-        "نمایی از تازه‌ترین دوره‌ها و سخنرانی‌ها — هر ترم به‌روز می‌شود.",
+        "گزیده‌ای از عرضه‌های تحصیلات تکمیلی و کارشناسی، سخنرانی‌های مدعو، و درگاه‌های درسی فعال برای دانشجویان.",
       items: [
         {
-          tag: "درس",
-          title: "پایتون پیشرفته و محاسبات علمی",
-          desc: "الگوهای مدرن پایتون، کارایی و ابزارها برای کد پژوهشی.",
+          tag: "کارشناسی / ارشد",
+          title: "اصول سیستم‌های کامپیوتری (PCS)",
+          desc: "معماری، طراحی مجموعهٔ دستور، سلسله‌مراتب حافظه و ورودی/خروجی — هم‌راستا با درگاه درس شریف و مراجع استاندارد طراحی منطقی و سازمان کامپیوتر.",
         },
         {
-          tag: "ارائه",
-          title: "مصورسازی تعاملی منظر بهینه‌سازی",
-          desc: "ارتباط نظریه با شهود هندسی در جستجوی غیرمحدب.",
+          tag: "آموزش تعاملی",
+          title: "مصورسازی هندسی بهینه‌سازی",
+          desc: "منظر سه‌بعدی تابع هزینه و مقایسهٔ مسیرها برای پیوند تحلیل محدب و غیرمحدب با رفتار الگوریتمی.",
         },
         {
-          tag: "درس",
-          title: "پردازش گفتار — از بازنمایی تا کاربرد",
-          desc: "از پردازش کلاسیک تا مدل‌های عصبی و ارزیابی.",
+          tag: "محور درسی",
+          title: "پردازش گفتار و رابط‌های زبانی گفتاری",
+          desc: "از مبانی پردازش سیگنال دیجیتال تا مدل‌های عصبی آکوستیکی و زبانی، معیارهای ارزیابی، و محدودیت‌های استقرار.",
         },
         {
-          tag: "درس",
-          title: "اصول طراحی سیستم‌های کامپیوتری",
-          desc: "مصالحه در سلسله‌مراتب حافظه، هم‌زمانی و قابلیت اطمینان.",
+          tag: "محور درسی",
+          title: "یادگیری ماشین قابل اعتماد",
+          desc: "تحمل خصمانه، تفسیرپذیری، و تحلیل حالت‌های شکست در سامانه‌های یادگیری عمیق.",
         },
       ],
     },
     teaching: {
-      title: "سبد دروس",
+      title: "تدریس و محورهای درسی",
       subtitle:
-        "موضوعات نمایندهٔ دوره‌های کارشناسی ارشد و کارشناسی — جزئیات برای دانشجویان ثبت‌نام‌شده ارائه می‌شود.",
+        "موضوعات نماینده در مقاطع کارشناسی و تحصیلات تکمیلی. سرفصل تفصیلی، ارزیابی و منابع آموزشی از طریق کانال‌های رسمی هر دانشگاه در اختیار دانشجویان ثبت‌نام‌شده قرار می‌گیرد.",
       courses: [
         {
-          icon: "opt",
-          name: "بهینه‌سازی",
-          topics: "تحلیل محدب و غیرمحدب · الگوریتم‌ها · جنبه‌های عددی",
-        },
-        {
           icon: "speech",
-          name: "پردازش گفتار",
-          topics: "پایه‌های سیگنال · تشخیص · ترکیب · ارزیابی",
+          name: "پردازش گفتار و زبان گفتاری",
+          topics:
+            "استخراج ویژگی آکوستیکی · بازشناسی و ترکیب · عوامل گوینده و زبان · قراردادهای ارزیابی",
         },
         {
           icon: "sys",
-          name: "طراحی سیستم‌های کامپیوتری",
-          topics: "معماری · موازی‌سازی · صحت · اندازه‌گیری",
+          name: "اصول سیستم‌های کامپیوتری",
+          topics:
+            "معماری مجموعهٔ دستور · مسیر داده و کنترل · خط لوله · زیرسیستم حافظه و ورودی/خروجی",
+          href: "https://pcssharif.github.io/",
+          linkLabel: "درگاه درس PCS (شریف)",
+        },
+        {
+          icon: "opt",
+          name: "بهینه‌سازی برای یادگیری و تصمیم",
+          topics: "تحلیل محدب · روش‌های گرادیانی و مرتبه بالاتر · بهینه‌سازی مقید و بزرگ‌مقیاس",
         },
         {
           icon: "ai",
           name: "هوش مصنوعی",
-          topics: "جستجو · یادگیری · ملاحظات استقرار",
+          topics:
+            "جستجو و برنامه‌ریزی · یادگیری آماری · معماری‌های عصبی · حکمرانی مدل‌های مستقر",
         },
         {
           icon: "py",
-          name: "پایتون پیشرفته",
-          topics: "سبک کد · نوع‌دهی · بسته‌بندی · کارایی",
+          name: "پایتون پیشرفته برای پژوهش محاسباتی",
+          topics: "برنامه‌نویسی ایدیوماتیک · نوع‌دهی و آزمون · بسته‌بندی · پشتهٔ عددی و داده",
         },
       ],
     },
     apps: {
-      title: "اپلیکیشن‌های آموزشی تعاملی",
+      title: "نرم‌افزارهای آموزشی تعاملی",
       subtitle:
-        "آزمایشگاه‌های مرورگر که مفاهیم انتزاعی را برای دانش‌پژوهان ملموس می‌کنند.",
+        "نمایش‌های مبتنی بر مرورگر که مکمل برخورد تحلیلی با الگوریتم‌ها و سامانه‌ها هستند.",
       items: [
         {
           title: "Visualize Optimization",
-          desc: "منظر سه‌بعدی هزینه، تپه‌نوردی در برابر جستجوی تصادفی — مقایسهٔ مسیرها.",
+          desc: "سطح هزینهٔ سه‌بعدی تعاملی؛ مقایسهٔ مسیر برای جستجوی محلی و کاوش تصادفی (رابط چندزبانه).",
           href: "https://khalooei.github.io/visualize-optimization/",
           badge: "فعال",
-        },
-        {
-          title: "آزمایشگاه‌های بیشتر (به‌زودی)",
-          desc: "ماژول‌های تعاملی گفتار و سیستم‌ها پس از انتشار اینجا پیوند می‌خورند.",
-          href: "#apps",
-          badge: "نقشه راه",
+          cta: "اجرای نمایش",
         },
       ],
     },
     research: {
-      title: "پژوهش، استناد و به‌روز ماندن",
+      title: "برنامهٔ پژوهشی",
       subtitle:
-        "مقالات همتاپیشین و منابع نوظهور را دنبال کنید — همیشه با منبع اصلی سنجش کنید.",
-      scholarLabel: "پروفایل گوگل اسکولار",
-      scholarHint: "فهرست تجمیعی انتشارات و استنادها.",
-      scholarCta: "ورود به اسکولار",
-      arxivCta: "آخرین arXiv",
-      feedLabel: "تازه‌ترین arXiv (CS / ML)",
-      feedHint: "پیش‌چاپ — تا داوری همتا نهایی نشده است.",
-      alsRead: "منابع دیگر",
-      alsItems: [
-        { t: "IEEE Xplore", h: "https://ieeexplore.ieee.org/" },
-        { t: "ACM Digital Library", h: "https://dl.acm.org/" },
-        { t: "Semantic Scholar", h: "https://www.semanticscholar.org/" },
+        "محورهای زیر چارچوب کار جاری و راهنمایی تحصیلات تکمیلی را مشخص می‌کنند. دستاوردهای تجربی در ادبیات هم‌تاپیش و پیش‌چاپ مستند شده‌اند؛ برای فهرست نسخه‌دار مرجع، پروفایل گوگل اسکولار ملاک است.",
+      themesTitle: "حوزه‌های موضوعی",
+      themes: [
+        {
+          title: "پردازش تخصصی صوت و گفتار",
+          body: "یادگیری بازنمایی، بازشناسی پایدار، ترکیب، و فهم زبان گفتاری در نوفه، تغییر کانال، و محدودیت منابع.",
+        },
+        {
+          title: "امنیت و قابلیت اطمینان مدل‌های هوش مصنوعی",
+          body: "حملات خصمانه و احتمالی، درِپشتی و تروجان، آموزش پایدار و منظم‌ شده، و نظام‌مندسازی الگوهای تهدید و کاهش خطر در قالب مرورهای علمی.",
+        },
+        {
+          title: "پردازش تصویر، ویدیو، و بینایی ماشین",
+          body: "آشکارسازی و جای‌یابی رویدادهای برجسته و ناهنجار، یادگیری بازنمایی برای دادهٔ دیداری، و مصالحهٔ بایاس–واریانس در مدل‌های عمیق دیداری.",
+        },
+        {
+          title: "پردازش متن و فهم زبان",
+          body: "مدل‌های عصبی و آماری برای بازیافت، طبقه‌بندی، و تفسیرپذیری در مجموعه‌های متنی، با پیوند به شیوه‌های ارزیابی رایج در پردازش زبان طبیعی.",
+        },
+        {
+          title: "تحلیل داده و دادهٔ حجیم",
+          body: "مدل‌سازی آماری، خط لوله‌های مقیاس‌پذیر، و پشتیبانی تصمیم از اندازه‌گیری‌های ناهمگن پرحجم، از جمله در پایش و تشخیص صنعتی.",
+        },
+        {
+          title: "پروژه‌های خلاقانه و اکتشافی",
+          body: "نمونه‌های بین‌رشته‌ای که موضوعات فوق را به آموزش، نرم‌افزار آزاد، و گردش کار آزمایشی قابل تکرار پیوند می‌دهند.",
+        },
       ],
-      legacyProject:
-        "صفحهٔ تاریخی پروژه (CVPR 2018): طبقه‌بندی یک‌کلاسه با یادگیری خصمانه — برای بازتولید حفظ شده است.",
-      legacyLink: "صفحهٔ پروژه ALOCC",
+      pubsTitle: "مقالات اخیرِ نماینده",
+      pubsNote:
+        "عناوان و محل انتشار به انگلیسی کتابشناختی حفظ شده است؛ هر ورودی به رکورد ایندکس‌شده در Scholar پیوند دارد.",
+      scholarCardTitle: "کتابشناسی مرجع",
+      scholarCardBody:
+        "پروفایل گوگل اسکولار فرادادهٔ استناد، شبکهٔ هم‌نویسی، و فهرست زمانی مقالات را تجمیع می‌کند.",
+      scholarCardCta: "ورود به پروفایل اسکولار",
     },
-    awards: {
-      title: "جوایز و همکاری‌های سازمانی",
+    bridge: {
+      title: "دالان ارتباطی",
       subtitle:
-        "گزیده‌ای از افتخارات صنعتی و ملی — سپاس از دانشجویان و همکاران.",
+        "نقاط ورود متمرکز برای هویت علمی، مطالب درسی، نرم‌افزار آموزشی، و مکاتبات آکادمیک تأییدشده.",
       items: [
         {
-          org: "اپل",
-          title: "برنامه‌های توسعه‌دهنده و آموزش اپل",
-          desc: "قدردانی در چارچوب برنامه‌های آموزشی و اکوسیستم توسعهٔ اپل.",
+          title: "گوگل اسکولار",
+          desc: "مقالات ایندکس‌شده، معیارهای استناد، و گراف هم‌نویسی.",
+          href: "#",
+          cta: "پروفایل اسکولار",
+          external: false,
+          scholar: true,
         },
         {
-          org: "همراه اول",
-          title: "نوآوری در بستر مخابرات",
-          desc: "شناسایی در اپراتور پیشرو برای پژوهش کاربردی و نمونه‌های نزدیک به محصول.",
+          title: "اصول سیستم‌های کامپیوتری — شریف",
+          desc: "درگاه رسمی درس: جلسات، مراجع، و تیم دستیاران آموزشی.",
+          href: "https://pcssharif.github.io/",
+          cta: "ورود به درگاه PCS",
+          external: true,
         },
         {
-          org: "دانشگاه و رویدادهای ملی",
-          title: "بهترین مقاله، پوستر و ارجاعات آموزشی",
-          desc: "جوایز همایش‌ها و دانشگاه — رزومهٔ تفصیلی برای کمیته‌ها در دسترس است.",
+          title: "نمایش تعاملی بهینه‌سازی",
+          desc: "کاربرد آموزشی عمومی برای شهود هندسی در بهینه‌سازی غیرخطی.",
+          href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "اجرای برنامه",
+          external: true,
+        },
+        {
+          title: "مکاتبات آکادمیک",
+          desc: "khalooei@aut.ac.ir (امیرکبیر، مهندسی کامپیوتر) · mohammad.khalooei@sharif.edu (شریف). لطفاً با نشانی سازمانی، موضوع، و بازهٔ زمانی بنویسید.",
+          href: "mailto:khalooei@aut.ac.ir",
+          cta: "ایمیل امیرکبیر",
+          href2: "mailto:mohammad.khalooei@sharif.edu",
+          cta2: "ایمیل شریف",
+          external: false,
+          external2: false,
         },
       ],
     },
-    collab: {
-      title: "همکاری علمی",
-      subtitle:
-        "برای راهنمایی مشترک، مجموعه‌داده یا پروژهٔ دارای بودجه، با چکیدهٔ کوتاه پژوهشی تماس بگیرید.",
-      body:
-        "ترجیحاً از ایمیل دانشگاهی معتبر استفاده کنید — وابستگی، زمان‌بندی و نقش پیشنهادی را ذکر کنید.",
-      emailAut: "khalooei@aut.ac.ir",
-      emailSharif: "mohammad.khalooei@sharif.edu",
-      labelAut: "امیرکبیر (AUT)",
-      labelSharif: "دانشگاه صنعتی شریف",
-      note:
-        "برای امور دانشکدهٔ مهندسی کامپیوتر امیرکبیر از آدرس AUT؛ برای مکاتبات وابسته به شریف از آدرس شریف — هر دو بررسی می‌شوند.",
-    },
     footer: {
-      rights: "© محمد خالوئی — استفادهٔ علمی با ذکر منبع.",
-      built: "وب‌سایت ایستا برای سرعت و دسترس‌پذیری.",
+      line:
+        "© محمد خالوئی · دانشکده مهندسی کامپیوتر، دانشگاه صنعتی امیرکبیر · دانشگاه صنعتی شریف",
     },
   },
 
   ar: {
-    metaTitle: "محمد خلوئي — تدريس، بحث وتطبيقات تفاعلية",
+    metaTitle: "محمد خلوئي — هيئة تدريس · بحث · تدريس",
     metaDesc:
-      "التحسين، معالجة الكلام، الذكاء الاصطناعي، الأنظمة وبايثون — مقررات، معامل تفاعلية، وقراءة علمية.",
+      "محمد خلوئي: ذكاء الصوت والكلام، تعلم آلي موثوق، رؤية حاسوبية، لغة طبيعية، وتحليل بيانات ضخمة في أميركبير وشريف.",
+    a11y: { skip: "تخطي إلى المحتوى الرئيسي" },
     nav: {
-      spotlight: "مميز",
+      spotlight: "مستجدات",
       teaching: "التدريس",
-      apps: "مختبرات تفاعلية",
-      research: "البحث والقراءة",
-      awards: "الجوائز",
-      collab: "تعاون",
+      apps: "موارد تفاعلية",
+      research: "البرنامج البحثي",
+      bridge: "دالان ارتباطي",
     },
     hero: {
       kicker: "جامعة أميركبير للتكنولوجيا · جامعة شريف للتكنولوجيا",
       title: "محمد خلوئي",
       subtitle:
-        "تدريس وبناء أدوات تفاعلية في تقاطع التحسين ومعالجة الكلام والأنظمة الذكية والبرمجة.",
-      ctaPrimary: "استكشف المقررات",
-      ctaSecondary: "ملف Scholar",
+        "عضو هيئة تدريس في هندسة الحاسوب، ببرنامج بحثي يشمل ذكاء الصوت والكلام المتخصص، التعلم الآلي الآمن والقويم، الإدراك متعدد الوسائط، فهم اللغة الطبيعية، وتحليل البيانات واسعة النطاق. يُركّز التدريس على الصرامة الرياضية والتفكير المنهجي والتجارب القابلة للإعادة.",
+      ctaPrimary: "التدريس والمقررات",
+      ctaSecondary: "ملف Google Scholar",
     },
     spotlight: {
-      title: "مقررات ومحاضرات حديثة",
+      title: "أبرز المستجدات التعليمية والعلمية",
       subtitle:
-        "لمحة عن أحدث العروض والدورات — يُحدَّث كل فصل.",
+        "عيّنة من عروض الدراسات العليا والجامعية والمحاضرات المدعوة والبوابات الصفية النشطة.",
       items: [
         {
-          tag: "مقرر",
-          title: "بايثون المتقدم والحوسبة العلمية",
-          desc: "أنماط بايثون الحديثة والأداء والأدوات للبحث.",
+          tag: "جامعي / دراسات عليا",
+          title: "مبادئ أنظمة الحاسوب (PCS)",
+          desc: "البنية · تصميم مجموعة التعليمات · تسلسل الذاكرة والدخل/الخرج — متوافق مع بوابة شريف والمراجع القياسية.",
         },
         {
-          tag: "محاضرة",
-          title: "تصور تفاعلي لمناظر التحسين",
-          desc: "ربط النظرية بالحدس الهندسي في البحث غير المحدب.",
+          tag: "تعليم تفاعلي",
+          title: "تصور هندسي للتحسين",
+          desc: "أسطح تكلفة ثلاثية الأبعاد ومقارنة المسارات لربط التحليل المحدب وغير المحدب بسلوك الخوارزميات.",
         },
         {
-          tag: "مقرر",
-          title: "معالجة الكلام — من التمثيل إلى التطبيق",
-          desc: "من المعالجة التقليدية إلى النماذج العصبية والتقييم.",
+          tag: "محور مقرر",
+          title: "معالجة الكلام والواجهات المنطوقة",
+          desc: "من أساسيات معالجة الإشارة إلى النمذجة العصبية السمعية واللغوية ومقاييس التقييم وقيود النشر.",
         },
         {
-          tag: "مقرر",
-          title: "مبادئ تصميم أنظمة الحاسوب",
-          desc: "مفاضلات التسلسل الهرمي للذاكرة والتزامن والموثوقية.",
+          tag: "محور مقرر",
+          title: "تعلم آلي جدير بالثقة",
+          desc: "التحمل الخصومي والقابلية للتفسير وتحليل أنماط الفشل في أنظمة التعلم العميق.",
         },
       ],
     },
     teaching: {
-      title: "محفظة التدريس",
+      title: "التدريس والمحاور المقررية",
       subtitle:
-        "موضوعات تمثيلية للمرحلتين الجامعيتين — التفاصيل للطلاب المسجلين.",
+        "موضوعات تمثيلية على مستوى الدراسات العليا والجامعية. تُوزَّع المناهج التفصيلية والتقييمات عبر القنوات الرسمية لكل جامعة.",
       courses: [
         {
-          icon: "opt",
-          name: "التحسين",
-          topics: "تحليل محدب وغير محدب · خوارزميات · جوانب عددية",
-        },
-        {
           icon: "speech",
-          name: "معالجة الكلام",
-          topics: "أساس الإشارة · التعرف · التوليف · التقييم",
+          name: "معالجة الكلام واللغة المنطوقة",
+          topics:
+            "استخراج السمات السمعية · التعرف والتركيب · عوامل المتحدث واللغة · بروتوكولات التقييم",
         },
         {
           icon: "sys",
-          name: "تصميم أنظمة الحاسوب",
-          topics: "معمارية · توازٍ · صحة · قياس",
+          name: "مبادئ أنظمة الحاسوب",
+          topics:
+            "بنية مجموعة التعليمات · مسار البيانات والتحكم · الخط الأنبوبي · الذاكرة والدخل/الخرج",
+          href: "https://pcssharif.github.io/",
+          linkLabel: "بوابة المقرر PCS (شريف)",
+        },
+        {
+          icon: "opt",
+          name: "التحسين لأنظمة التعلم والقرار",
+          topics: "تحليل محدب · طرق التدرج والرتب العليا · تحسين مقيد وضخم النطاق",
         },
         {
           icon: "ai",
           name: "الذكاء الاصطناعي",
-          topics: "بحث · تعلم · اعتبارات النشر",
+          topics:
+            "البحث والتخطيط · التعلم الإحصائي · البنى العصبية · حوكمة النماذج المنشورة",
         },
         {
           icon: "py",
-          name: "بايثون المتقدم",
-          topics: "أسلوب · أنواع · حزم · أداء",
+          name: "بايثون متقدم للبحث الحاسوبي",
+          topics: "برمجة أسلوبية · الأنواع والاختبارات · الحزم · المكدس العددي والبيانات",
         },
       ],
     },
     apps: {
-      title: "تطبيقات تعليمية تفاعلية",
+      title: "برمجيات تعليمية تفاعلية",
       subtitle:
-        "مختبرات متصفح تجعل المفاهيم المجردة ملموسة للمتعلمين.",
+        "عروض مستندة إلى المتصفح تكمّل المعالجة التحليلية للخوارزميات والأنظمة.",
       items: [
         {
           title: "Visualize Optimization",
-          desc: "مناظر ثلاثية الأبعاد للتكلفة، تسلق التلال مقابل البحث العشوائي.",
+          desc: "أسطح تكلفة ثلاثية الأبعاد تفاعلية؛ مقارنة مسارات البحث المحلي والاستكشاف العشوائي (واجهة متعددة اللغات).",
           href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "فتح العرض",
           badge: "مباشر",
-        },
-        {
-          title: "المزيد قريبًا",
-          desc: "وحدات تفاعلية إضافية للكلام والأنظمة ستُربط عند النشر.",
-          href: "#apps",
-          badge: "خارطة طريق",
         },
       ],
     },
     research: {
-      title: "البحث والاستشهادات والاطلاع",
+      title: "البرنامج البحثي",
       subtitle:
-        "تابع الأعمال المحكمة والأفكار الناشئة — تحقق دائمًا من المصادر الأولية.",
-      scholarLabel: "ملف Google Scholar",
-      scholarHint: "قائمة مجمعة للمنشورات والاستشهادات.",
-      scholarCta: "فتح Scholar",
-      arxivCta: "أحدث arXiv",
-      feedLabel: "أحدث arXiv (CS / ML)",
-      feedHint: "مسودات ما قبل الطباعة — إلى أن تكتمل المراجعة الأقران.",
-      alsRead: "اطلع أيضًا",
-      alsItems: [
-        { t: "IEEE Xplore", h: "https://ieeexplore.ieee.org/" },
-        { t: "ACM Digital Library", h: "https://dl.acm.org/" },
-        { t: "Semantic Scholar", h: "https://www.semanticscholar.org/" },
+        "تنظّم المحاور التالية العمل الجاري والإشراف. تُوثَّق المساهمات التجريبية في الأدبيات المحكّمة؛ راجع ملف Scholar للببليوغرافيا المرجعية.",
+      themesTitle: "المجالات الموضوعية",
+      themes: [
+        {
+          title: "معالجة متخصصة للصوت والكلام",
+          body: "تعلم التمثيل، التعرف القوي، التركيب، وفهم اللغة المنطوقة تحت الضوضاء وتغيّر القناة وقيود الموارد.",
+        },
+        {
+          title: "أمن وموثوقية نماذج الذكاء الاصطناعي",
+          body: "هجمات خصومية واحتمالية، أبواب خلفية وتروجان، تدريب منتظم وقويم، ونظم تهديدات والتخفيف في مراجعات علمية.",
+        },
+        {
+          title: "معالجة الصورة والفيديو والرؤية الحاسوبية",
+          body: "كشف وتوطين الأحداث البارزة والشاذة، تعلم التمثيل للبيانات البصرية، ومفاضلات الانحياز–التباين في النماذج العميقة.",
+        },
+        {
+          title: "معالجة النص وفهم اللغة",
+          body: "نماذج عصبية وإحصائية للاسترجاع والتصنيف والتفسير في المدونات النصية، مع ارتباط بممارسات تقييم NLP.",
+        },
+        {
+          title: "تحليل البيانات والبيانات الضخمة",
+          body: "نمذجة إحصائية، خطوط أنابيب قابلة للتوسع، ودعم القرار من قياسات غير متجانسة كبيرة الحجم.",
+        },
+        {
+          title: "مشاريع إبداعية واستكشافية",
+          body: "نماذج أولية بينية تربط المحاور أعلاه بالتعليم والبرمجيات الحرة وسير العمل التجريبي القابل للإعادة.",
+        },
       ],
-      legacyProject:
-        "صفحة مشروع تاريخية (CVPR 2018): تصنيف أحادي الصنف بتعلم تنافسي — محفوظة لإعادة الإنتاج.",
-      legacyLink: "صفحة مشروع ALOCC",
+      pubsTitle: "منشورات حديثة تمثيلية",
+      pubsNote:
+        "العناوين والأماكن بالإنجليزية الببليوغرافية؛ كل إدخال يربط بسجل Scholar.",
+      scholarCardTitle: "الببليوغرافيا المرجعية",
+      scholarCardBody:
+        "يجمع ملف Google Scholar بيانات الاستناد وشبكة التعاون والقوائم الزمنية.",
+      scholarCardCta: "فتح ملف Scholar",
     },
-    awards: {
-      title: "الجوائز والتقدير المؤسسي",
+    bridge: {
+      title: "دالان ارتباطي",
       subtitle:
-        "تكريمات مختارة من الصناعة والشركاء الوطنيين — شكرًا للطلاب والمتعاونين.",
+        "نقاط دخول مركزية للهوية العلمية والمواد الصفية والبرمجيات التعليمية والمراسلات الأكاديمية الموثقة.",
       items: [
         {
-          org: "Apple",
-          title: "برامج المطورين والتعليم",
-          desc: "تقدير ضمن برامج أبل التعليمية والتقنية.",
+          title: "Google Scholar",
+          desc: "المنشورات المفهرسة ومقاييس الاستشهاد وشبكة التعاون.",
+          href: "#",
+          cta: "ملف Scholar",
+          external: false,
+          scholar: true,
         },
         {
-          org: "همراه أول",
-          title: "سياق ابتكار الاتصالات",
-          desc: "تقدير ضمن مشغل الرائد للبحث التطبيقي والنماذج القريبة من المنتج.",
+          title: "مبادئ أنظمة الحاسوب — شريف",
+          desc: "البوابة الرسمية: الجلسات والمراجع وفريق المعاونين.",
+          href: "https://pcssharif.github.io/",
+          cta: "زيارة بوابة PCS",
+          external: true,
         },
         {
-          org: "الجامعة والفعاليات الوطنية",
-          title: "أفضل ورقة وملصق وإشارات تدريسية",
-          desc: "جوائز المؤتمرات والفعاليات — السيرة التفصيلية متاحة عند الطلب.",
+          title: "عرض تفاعلي للتحسين",
+          desc: "تطبيق تعليمي عام للحدس الهندسي في التحسين غير الخطي.",
+          href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "تشغيل التطبيق",
+          external: true,
+        },
+        {
+          title: "المراسلات الأكاديمية",
+          desc: "khalooei@aut.ac.ir (أميركبير) · mohammad.khalooei@sharif.edu (شريف). يُرجى ذكر الانتماء والموضوع والجدول الزمني.",
+          href: "mailto:khalooei@aut.ac.ir",
+          cta: "بريد أميركبير",
+          href2: "mailto:mohammad.khalooei@sharif.edu",
+          cta2: "بريد شريف",
+          external: false,
+          external2: false,
         },
       ],
     },
-    collab: {
-      title: "التعاون العلمي",
-      subtitle:
-        "للإشراف المشترك أو مجموعات البيانات أو المشاريع الممولة، تواصل مع ملخص بحثي موجز.",
-      body:
-        "يُفضَّل البريد الأكاديمي الموثوق — أذكر الانتماء والجدول الزمني والمساهمة المتوقعة.",
-      emailAut: "khalooei@aut.ac.ir",
-      emailSharif: "mohammad.khalooei@sharif.edu",
-      labelAut: "أميركبير (AUT)",
-      labelSharif: "جامعة شريف للتكنولوجيا",
-      note:
-        "لشؤون AUT استخدم بريد AUT؛ لمراسلات شريف استخدم بريد شريف — يُراقَبان معًا.",
-    },
     footer: {
-      rights: "© محمد خلوئي — استخدام أكاديمي مع الإسناد.",
-      built: "موقع ثابت للسرعة وإمكانية الوصول.",
+      line:
+        "© محمد خلوئي · كلية هندسة الحاسوب، جامعة أميركبير للتكنولوجيا · جامعة شريف للتكنولوجيا",
     },
   },
 
   zh: {
-    metaTitle: "Mohammad Khalooei — 教学、科研与交互式学习",
+    metaTitle: "Mohammad Khalooei — 教职 · 科研 · 教学",
     metaDesc:
-      "学术主页：优化、语音、人工智能、系统与 Python — 课程、交互实验、文献与合作。",
+      "Mohammad Khalooei：语音与音频智能、可信机器学习、视觉、语言与大规模数据分析（阿米尔卡比尔与谢里夫）。",
+    a11y: { skip: "跳到主要内容" },
     nav: {
-      spotlight: "焦点",
-      teaching: "课程",
-      apps: "交互实验",
-      research: "研究与阅读",
-      awards: "荣誉",
-      collab: "合作",
+      spotlight: "动态",
+      teaching: "教学",
+      apps: "交互资源",
+      research: "研究方向",
+      bridge: "联络枢纽",
     },
     hero: {
       kicker: "阿米尔卡比尔理工大学 · 谢里夫理工大学",
       title: "Mohammad Khalooei",
       subtitle:
-        "在优化、语音、智能系统与编程交叉领域从事教学与交互式工具开发。",
-      ctaPrimary: "浏览课程",
-      ctaSecondary: "Scholar 主页",
+        "计算机工程系教职人员；研究涵盖专用语音与音频智能、稳健可信的机器学习、多模态感知、自然语言理解以及大规模数据分析。教学强调数学严格性、系统思维与可复现实验。",
+      ctaPrimary: "课程与教学",
+      ctaSecondary: "Google Scholar 主页",
     },
     spotlight: {
-      title: "近期课程与报告",
-      subtitle: "最新研究生与本科高年级课程、邀请报告的精选快照 — 每学期更新。",
+      title: "近期教学与学术动态",
+      subtitle:
+        "研究生与本科课程、邀请报告及面向在读学生维护的课程门户精选。",
       items: [
         {
-          tag: "课程",
-          title: "高级 Python 与科学计算",
-          desc: "面向科研代码的现代 Python 模式、性能与工具链。",
+          tag: "本科 / 研究生",
+          title: "计算机系统原理（PCS）",
+          desc: "体系结构、指令集设计、存储层次与 I/O —— 与谢里夫课程门户及逻辑设计、计算机组成权威教材相一致。",
         },
         {
-          tag: "报告",
-          title: "优化景观的可视化演示",
-          desc: "将理论与非凸搜索中的几何直觉联系起来。",
+          tag: "交互式教学",
+          title: "优化的几何可视化",
+          desc: "三维损失曲面与轨迹比较，将凸与非凸分析与算法行为联系起来。",
         },
         {
-          tag: "课程",
-          title: "语音处理 — 从表示到应用",
-          desc: "从经典信号处理到神经声学建模与评测。",
+          tag: "课程方向",
+          title: "语音与口语界面",
+          desc: "从数字信号处理基础到神经声学/语言建模、评测指标与部署约束。",
         },
         {
-          tag: "课程",
-          title: "计算机系统设计原理",
-          desc: "存储层次、并发与可靠性之间的权衡。",
+          tag: "课程方向",
+          title: "可信机器学习",
+          desc: "对抗鲁棒性、可解释性及深度学习系统的失效模式分析。",
         },
       ],
     },
     teaching: {
-      title: "教学目录",
-      subtitle: "代表性本科与研究生主题 — 详细资料向选课学生提供。",
+      title: "教学与课程主题",
+      subtitle:
+        "代表性的本科与研究生主题。详细大纲、考核与学习管理资料通过各校官方渠道向注册学生发布。",
       courses: [
         {
-          icon: "opt",
-          name: "优化",
-          topics: "凸与非凸分析 · 算法 · 数值方面",
-        },
-        {
           icon: "speech",
-          name: "语音处理",
-          topics: "信号基础 · 识别 · 合成 · 评测",
+          name: "语音与口语语言处理",
+          topics: "声学特征提取 · 识别与合成 · 说话人与语言因素 · 评测协议",
         },
         {
           icon: "sys",
-          name: "计算机系统设计",
-          topics: "体系结构 · 并行 · 正确性 · 测量",
+          name: "计算机系统原理",
+          topics: "指令集体系结构 · 数据通路与控制 · 流水线 · 存储与 I/O 子系统",
+          href: "https://pcssharif.github.io/",
+          linkLabel: "PCS 课程门户（谢里夫）",
+        },
+        {
+          icon: "opt",
+          name: "面向学习与决策系统的优化",
+          topics: "凸分析 · 梯度与高阶方法 · 约束与大规模优化",
         },
         {
           icon: "ai",
           name: "人工智能",
-          topics: "搜索 · 学习 · 部署考量",
+          topics: "搜索与规划 · 统计学习 · 神经架构 · 部署模型的治理",
         },
         {
           icon: "py",
-          name: "高级 Python",
-          topics: "惯用法 · 类型 · 打包 · 性能工程",
+          name: "面向计算科研的高级 Python",
+          topics: "惯用法 · 类型与测试 · 打包 · 数值与数据技术栈",
         },
       ],
     },
     apps: {
-      title: "交互式学习应用",
-      subtitle: "基于浏览器的实验环境，让抽象方法对全球学习者可感知。",
+      title: "交互式教学软件",
+      subtitle: "基于浏览器的演示，补充对算法与系统的分析性讲授。",
       items: [
         {
           title: "Visualize Optimization",
-          desc: "三维代价曲面、爬山与随机搜索对比 — 并排比较轨迹。",
+          desc: "交互式三维代价曲面；局部搜索与随机探索的轨迹比较（多语言界面）。",
           href: "https://khalooei.github.io/visualize-optimization/",
           badge: "在线",
-        },
-        {
-          title: "更多实验（即将推出）",
-          desc: "语音与系统相关的交互模块发布后将在此链接。",
-          href: "#apps",
-          badge: "路线图",
+          cta: "打开演示",
         },
       ],
     },
     research: {
-      title: "研究、引用与前沿阅读",
+      title: "研究规划",
       subtitle:
-        "关注同行评议成果并通过精选渠道发现新想法 — 务必对照原始文献核实。",
-      scholarLabel: "Google Scholar 主页",
-      scholarHint: "汇总的发表论文与引用列表。",
-      scholarCta: "打开 Scholar",
-      arxivCta: "浏览 arXiv",
-      feedLabel: "arXiv 最新（CS / ML）",
-      feedHint: "预印本 — 在正式同行评议前应谨慎引用。",
-      alsRead: "另请参阅",
-      alsItems: [
-        { t: "IEEE Xplore", h: "https://ieeexplore.ieee.org/" },
-        { t: "ACM Digital Library", h: "https://dl.acm.org/" },
-        { t: "Semantic Scholar", h: "https://www.semanticscholar.org/" },
+        "下列主题组织在研工作与研究生指导。实证贡献见同行评议与预印本文献；权威书目以 Google Scholar 为准。",
+      themesTitle: "主题领域",
+      themes: [
+        {
+          title: "专用语音与音频智能",
+          body: "表示学习、稳健识别、合成与口语理解，面向噪声、信道变化与资源受限场景。",
+        },
+        {
+          title: "人工智能模型的安全与可靠性",
+          body: "对抗与概率攻击、木马与后门、稳健与正则化训练，以及威胁模型与缓解措施的综述性系统化工作。",
+        },
+        {
+          title: "图像、视频与计算机视觉",
+          body: "显著与异常事件的检测与定位、视觉数据的表示学习，以及深度视觉模型中的偏差–方差权衡。",
+        },
+        {
+          title: "文本处理与语言理解",
+          body: "面向语料检索、分类与可解释性的神经与统计模型，并与 NLP 评测实践相衔接。",
+        },
+        {
+          title: "数据分析与大数据",
+          body: "统计建模、可扩展流水线，以及来自大规模异构测量的决策支持（含工业监测与诊断）。",
+        },
+        {
+          title: "创意与探索性项目",
+          body: "将上述主题与教育、开放软件及可复现实验流程相结合的跨学科原型。",
+        },
       ],
-      legacyProject:
-        "历史项目页（CVPR 2018）：对抗学习的一类分类 — 为可复现性保留。",
-      legacyLink: "ALOCC 项目页",
+      pubsTitle: "代表性近期论文",
+      pubsNote: "题名与出处采用英文书目体例；各条目链接至 Scholar 对应记录以保证引用一致。",
+      scholarCardTitle: "权威书目",
+      scholarCardBody: "Google Scholar 主页汇总引用元数据、合作网络与时序论文列表。",
+      scholarCardCta: "打开 Scholar 主页",
     },
-    awards: {
-      title: "奖项与机构认可",
-      subtitle: "来自产业界与国家合作伙伴的精选荣誉 — 感谢学生与合作者。",
+    bridge: {
+      title: "联络枢纽",
+      subtitle: "学术身份、课程资料、教学软件与经核实的学术通信之统一入口。",
       items: [
         {
-          org: "Apple",
-          title: "Apple 开发者与教育计划",
-          desc: "通过 Apple 开发者与教育项目获得的技术工作认可。",
+          title: "Google Scholar",
+          desc: "索引论文、引用指标与合作网络。",
+          href: "#",
+          cta: "Scholar 主页",
+          external: false,
+          scholar: true,
         },
         {
-          org: "MCI（Hamrah-e Avval）",
-          title: "电信创新场景",
-          desc: "伊朗领先移动运营商对应用研究与接近产品的原型的认可。",
+          title: "计算机系统原理 — 谢里夫",
+          desc: "官方课程门户：课次、参考文献与助教团队。",
+          href: "https://pcssharif.github.io/",
+          cta: "访问 PCS 门户",
+          external: true,
         },
         {
-          org: "高校与全国会议",
-          title: "最佳论文、海报与教学相关荣誉",
-          desc: "会议与校级奖项 — 可向委员会提供详细简历。",
+          title: "交互式优化演示",
+          desc: "面向非线性优化几何直觉的公共教学应用。",
+          href: "https://khalooei.github.io/visualize-optimization/",
+          cta: "启动应用",
+          external: true,
+        },
+        {
+          title: "学术联系",
+          desc: "khalooei@aut.ac.ir（阿米尔卡比尔，计算机工程系）· mohammad.khalooei@sharif.edu（谢里夫）。请使用机构邮箱并注明单位、主题与时间线。",
+          href: "mailto:khalooei@aut.ac.ir",
+          cta: "阿米尔卡比尔邮箱",
+          href2: "mailto:mohammad.khalooei@sharif.edu",
+          cta2: "谢里夫邮箱",
+          external: false,
+          external2: false,
         },
       ],
     },
-    collab: {
-      title: "科研合作",
-      subtitle:
-        "若您是学生、研究者或产业伙伴，寻求联合指导、数据集或资助项目，请附简明研究摘要联系。",
-      body:
-        "建议使用经认证的学术邮箱，并写明单位、时间线与预期贡献。",
-      emailAut: "khalooei@aut.ac.ir",
-      emailSharif: "mohammad.khalooei@sharif.edu",
-      labelAut: "阿米尔卡比尔理工大学（AUT）",
-      labelSharif: "谢里夫理工大学",
-      note:
-        "AUT 计算机工程系事务请使用 AUT 邮箱；与谢里夫相关往来请使用谢里夫邮箱 — 两者都会查看。",
-    },
     footer: {
-      rights: "© Mohammad Khalooei — 欢迎注明出处的学术使用。",
-      built: "静态站点，追求速度与可访问性。",
+      line:
+        "© Mohammad Khalooei · 阿米尔卡比尔理工大学计算机工程系 · 谢里夫理工大学",
     },
   },
 };

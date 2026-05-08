@@ -1,17 +1,70 @@
 (function () {
   "use strict";
 
+  var SCHOLAR_PROFILE =
+    "https://scholar.google.com/citations?user=2HFVUn4AAAAJ&hl=en";
+
   /**
-   * Prefer your canonical profile URL:
-   * https://scholar.google.com/citations?user=YOUR_ID
-   * Fallback: author search on Scholar.
+   * Recent representative works (titles and venues in bibliographic English).
+   * Linked to Google Scholar citation records for traceability.
    */
-  var SCHOLAR_URL =
-    "https://scholar.google.com/scholar?q=Mohammad+Khalooei+Amirkabir+Sharif";
-  var ARXIV_RECENT = "https://arxiv.org/list/cs.LG/recent";
+  var RECENT_PUBLICATIONS = [
+    {
+      title: "ProJan: A probabilistic trojan attack on deep neural networks",
+      venue: "Knowledge-Based Systems · 2024",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:3fE2CSJIrl8C",
+    },
+    {
+      title:
+        "Enhancing anomaly detection generalization through knowledge exposure: The dual effects of augmentation",
+      venue: "arXiv:2406.10617 · 2024",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:kNdYIx-mwKoC",
+    },
+    {
+      title:
+        "Layer-wise regularized adversarial training using layers sustainability analysis framework",
+      venue: "Neurocomputing · 2023",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:Y0pCki6q_DkC",
+    },
+    {
+      title: "Low-epsilon adversarial attack against a neural network online image stream classifier",
+      venue: "Applied Soft Computing · 2023",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:YsMSGLbcyi4C",
+    },
+    {
+      title: "Mitigating bias: Enhancing image classification by improving model explanations",
+      venue: "Proceedings of Machine Learning Research (ACML) · 2023",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:MXK_kJrjxJIC",
+    },
+    {
+      title:
+        "A survey on vulnerability of deep neural networks to adversarial examples and defense approaches to deal with them",
+      venue: "Signal and Data Processing · 2023",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:eQOLeE2rZwMC",
+    },
+    {
+      title: "Self-supervised representation learning via neighborhood-relational encoding",
+      venue: "IEEE/CVF International Conference on Computer Vision (ICCV) · 2019",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:2osOgNQ5qMEC",
+    },
+  ];
 
   var STORAGE_KEY = "khalooei-site-lang";
   var supported = ["en", "fa", "ar", "zh"];
+
+  function pubCta(lang) {
+    if (lang === "fa") return "رکورد در Scholar";
+    if (lang === "ar") return "سجل Scholar";
+    if (lang === "zh") return "Scholar 条目";
+    return "Scholar record";
+  }
 
   function getLang() {
     var stored = localStorage.getItem(STORAGE_KEY);
@@ -28,6 +81,7 @@
     localStorage.setItem(STORAGE_KEY, lang);
     document.documentElement.lang =
       lang === "zh" ? "zh-CN" : lang === "fa" ? "fa" : lang === "ar" ? "ar" : "en";
+    document.documentElement.setAttribute("data-lang", lang);
     var rtl = lang === "fa" || lang === "ar";
     document.documentElement.dir = rtl ? "rtl" : "ltr";
     document.body.classList.toggle("rtl", rtl);
@@ -51,9 +105,91 @@
     if (sel) sel.value = lang;
 
     renderLists(t, lang);
+    renderResearchThemes(t);
+    renderPublications(lang);
+    renderBridge(t, lang);
     wireScholarLinks();
+    observeReveals();
 
     document.dispatchEvent(new CustomEvent("site:languagechange", { detail: { lang: lang } }));
+  }
+
+  function renderResearchThemes(t) {
+    var el = document.getElementById("research-themes");
+    if (!el || !t.research || !t.research.themes) return;
+    el.innerHTML = t.research.themes
+      .map(function (th, i) {
+        return (
+          '<article class="card theme-card reveal" style="--d:' +
+          i +
+          '"><h3>' +
+          escapeHtml(th.title) +
+          "</h3><p>" +
+          escapeHtml(th.body) +
+          "</p></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderPublications(lang) {
+    var el = document.getElementById("publications-list");
+    if (!el) return;
+    var cta = pubCta(lang);
+    el.innerHTML = RECENT_PUBLICATIONS.map(function (p, i) {
+      return (
+        '<li class="pub-item reveal" style="--d:' +
+        i +
+        '"><div class="pub-main"><span class="pub-title">' +
+        escapeHtml(p.title) +
+        '</span><span class="pub-venue">' +
+        escapeHtml(p.venue) +
+        '</span></div><a class="pub-link" href="' +
+        escapeAttr(p.href) +
+        '" target="_blank" rel="noopener noreferrer">' +
+        escapeHtml(cta) +
+        "</a></li>"
+      );
+    }).join("");
+  }
+
+  function renderBridge(t, lang) {
+    var el = document.getElementById("bridge-grid");
+    if (!el || !t.bridge || !t.bridge.items) return;
+    el.innerHTML = t.bridge.items
+      .map(function (item, i) {
+        var ext = item.external !== false;
+        var scholarAttr = item.scholar ? ' data-scholar="true"' : "";
+        var btn2 =
+          item.cta2 && item.href2 ?
+            '<a class="btn btn-secondary" href="' +
+            escapeAttr(item.href2) +
+            '"' +
+            (item.external2 !== false ? ' target="_blank" rel="noopener noreferrer"' : "") +
+            ">" +
+            escapeHtml(item.cta2) +
+            "</a>"
+          : "";
+        return (
+          '<article class="card bridge-card reveal" style="--d:' +
+          i +
+          '"><h3>' +
+          escapeHtml(item.title) +
+          "</h3><p>" +
+          escapeHtml(item.desc) +
+          '</p><div class="bridge-actions"><a class="btn btn-ghost" href="' +
+          escapeAttr(item.href) +
+          '"' +
+          scholarAttr +
+          (ext ? ' target="_blank" rel="noopener noreferrer"' : "") +
+          ">" +
+          escapeHtml(item.cta) +
+          "</a>" +
+          btn2 +
+          "</div></article>"
+        );
+      })
+      .join("");
   }
 
   function renderLists(t, lang) {
@@ -84,6 +220,14 @@
     if (teachEl && t.teaching && t.teaching.courses) {
       teachEl.innerHTML = t.teaching.courses
         .map(function (c, i) {
+          var link =
+            c.href ?
+              '<a class="course-link" href="' +
+              escapeAttr(c.href) +
+              '" target="_blank" rel="noopener noreferrer">' +
+              escapeHtml(c.linkLabel || "") +
+              "</a>"
+            : "";
           return (
             '<article class="card course-card reveal icon-' +
             escapeHtml(c.icon) +
@@ -97,6 +241,7 @@
             "<p>" +
             escapeHtml(c.topics) +
             "</p>" +
+            link +
             "</article>"
           );
         })
@@ -126,59 +271,13 @@
             '"' +
             (isRoute ? "" : ' target="_blank" rel="noopener noreferrer"') +
             ">" +
-            (lang === "en"
-              ? "Open"
-              : lang === "fa"
-                ? "باز کردن"
-                : lang === "ar"
-                  ? "فتح"
-                  : "打开") +
+            escapeHtml(a.cta) +
             "</a>" +
             "</article>"
           );
         })
         .join("");
     }
-
-    var awardsEl = document.getElementById("awards-grid");
-    if (awardsEl && t.awards && t.awards.items) {
-      awardsEl.innerHTML = t.awards.items
-        .map(function (w, i) {
-          return (
-            '<article class="card award-card reveal" style="--d:' +
-            i +
-            '">' +
-            '<div class="award-org">' +
-            escapeHtml(w.org) +
-            "</div>" +
-            "<h3>" +
-            escapeHtml(w.title) +
-            "</h3>" +
-            "<p>" +
-            escapeHtml(w.desc) +
-            "</p>" +
-            "</article>"
-          );
-        })
-        .join("");
-    }
-
-    var alsEl = document.getElementById("als-links");
-    if (alsEl && t.research && t.research.alsItems) {
-      alsEl.innerHTML = t.research.alsItems
-        .map(function (x) {
-          return (
-            '<a href="' +
-            escapeAttr(x.h) +
-            '" target="_blank" rel="noopener noreferrer">' +
-            escapeHtml(x.t) +
-            "</a>"
-          );
-        })
-        .join("");
-    }
-
-    observeReveals();
   }
 
   function escapeHtml(s) {
@@ -196,18 +295,16 @@
 
   function wireScholarLinks() {
     document.querySelectorAll('a[data-scholar="true"]').forEach(function (a) {
-      a.href = SCHOLAR_URL;
-    });
-    document.querySelectorAll('a[data-arxiv="true"]').forEach(function (a) {
-      a.href = ARXIV_RECENT;
+      a.href = SCHOLAR_PROFILE;
     });
   }
 
   function observeReveals() {
-    var els = document.querySelectorAll(".reveal");
+    var els = document.querySelectorAll(".reveal:not(.io-ready)");
+    if (!els.length) return;
     if (!("IntersectionObserver" in window)) {
       els.forEach(function (el) {
-        el.classList.add("visible");
+        el.classList.add("visible", "io-ready");
       });
       return;
     }
@@ -223,7 +320,8 @@
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
     );
     els.forEach(function (el) {
-      return io.observe(el);
+      el.classList.add("io-ready");
+      io.observe(el);
     });
   }
 
