@@ -2,7 +2,7 @@ window.I18N = {
   en: {
     metaTitle: "Mohammad Khalooei — AI · Research · Teaching",
     metaDesc:
-      "Mohammad Khalooei: Ph.D. in Artificial Intelligence; speech & audio, trustworthy ML, vision, NLP, data science.",
+      "Mohammad Khalooei: Ph.D. in Artificial Intelligence; consultant & researcher; speech & audio, trustworthy ML, vision, NLP.",
     a11y: { skip: "Skip to main content" },
     floatNav: {
       top: "Top",
@@ -23,11 +23,15 @@ window.I18N = {
     hero: {
       kicker: "Amirkabir University of Technology · Sharif University of Technology",
       title: "Mohammad Khalooei",
-      subtitle: "Ph.D., Artificial Intelligence · AI researcher & practitioner",
+      subtitle: "Ph.D., Artificial Intelligence · consultant, researcher & practitioner",
       ctaPrimary: "Teaching",
       ctaSecondary: "Scholar",
       linkedinAria: "LinkedIn profile",
       githubAria: "GitHub profile",
+      scholarAria: "Google Scholar profile",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+      linksGroupAria: "LinkedIn, GitHub, and Google Scholar",
     },
     spotlight: {
       title: "Highlights",
@@ -203,11 +207,15 @@ window.I18N = {
     hero: {
       kicker: "دانشگاه صنعتی امیرکبیر · دانشگاه صنعتی شریف",
       title: "محمد خالوئی",
-      subtitle: "دکتری هوش مصنوعی · پژوهشگر و متخصص هوش مصنوعی",
+      subtitle: "دکتری هوش مصنوعی · مشاور، پژوهشگر و متخصص هوش مصنوعی",
       ctaPrimary: "تدریس",
       ctaSecondary: "Scholar",
       linkedinAria: "پروفایل لینکدین",
       githubAria: "پروفایل گیت‌هاب",
+      scholarAria: "پروفایل Google Scholar",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+      linksGroupAria: "لینکدین، گیت‌هاب و Scholar",
     },
     spotlight: {
       title: "برجسته‌ها",
@@ -383,11 +391,15 @@ window.I18N = {
     hero: {
       kicker: "جامعة أميركبير للتكنولوجيا · جامعة شريف للتكنولوجيا",
       title: "محمد خلوئي",
-      subtitle: "دكتوراه في الذكاء الاصطناعي · باحث ومختص بالذكاء الاصطناعي",
+      subtitle: "دكتوراه في الذكاء الاصطناعي · مستشار وباحث ومختص بالذكاء الاصطناعي",
       ctaPrimary: "التدريس",
       ctaSecondary: "Scholar",
       linkedinAria: "ملف LinkedIn",
       githubAria: "ملف GitHub",
+      scholarAria: "ملف Google Scholar",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+      linksGroupAria: "LinkedIn وGitHub وScholar",
     },
     spotlight: {
       title: "مستجدات",
@@ -563,11 +575,15 @@ window.I18N = {
     hero: {
       kicker: "阿米尔卡比尔理工大学 · 谢里夫理工大学",
       title: "Mohammad Khalooei",
-      subtitle: "人工智能博士 · 研究者与 AI 实践者",
+      subtitle: "人工智能博士 · 顾问、研究者与 AI 实践者",
       ctaPrimary: "教学",
       ctaSecondary: "Scholar",
       linkedinAria: "LinkedIn 主页",
       githubAria: "GitHub 主页",
+      scholarAria: "Google Scholar 主页",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+      linksGroupAria: "LinkedIn、GitHub 与 Google Scholar",
     },
     spotlight: {
       title: "动态",

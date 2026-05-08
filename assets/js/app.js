@@ -443,7 +443,7 @@
     var stars = [];
     var meteors = [];
     var flares = [];
-    var starCount = 320;
+    var starCount = 420;
     var time = 0;
     var nextMeteor = 0;
     var nextFlare = 0;
@@ -492,10 +492,10 @@
           x: Math.random() * w,
           y: Math.random() * h,
           r: radius,
-          b: 0.15 + Math.random() * 0.55,
-          tw: Math.random() < 0.42,
+          b: 0.22 + Math.random() * 0.72,
+          tw: Math.random() < 0.48,
           ph: Math.random() * Math.PI * 2,
-          sp: 0.8 + Math.random() * 2.2,
+          sp: 0.75 + Math.random() * 2.45,
         });
       }
       nextMeteor = performance.now() + 2000 + Math.random() * 4000;
@@ -528,8 +528,8 @@
         var taily = m.y - (m.vy / spd) * m.len;
         var grd = ctx.createLinearGradient(tailx, taily, m.x, m.y);
         grd.addColorStop(0, "rgba(186, 230, 253, 0)");
-        grd.addColorStop(0.45, "rgba(125, 211, 252, 0.35)");
-        grd.addColorStop(1, "rgba(255, 255, 255, 0.85)");
+        grd.addColorStop(0.45, "rgba(125, 211, 252, 0.42)");
+        grd.addColorStop(1, "rgba(255, 255, 255, 0.92)");
         ctx.strokeStyle = grd;
         ctx.lineWidth = m.w;
         ctx.lineCap = "round";
@@ -546,8 +546,8 @@
         var f = flares[j];
         f.life -= f.decay;
         var rg = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
-        rg.addColorStop(0, "rgba(147, 197, 253, " + f.life * 0.12 + ")");
-        rg.addColorStop(0.5, "rgba(56, 189, 248, " + f.life * 0.04 + ")");
+        rg.addColorStop(0, "rgba(147, 197, 253, " + f.life * 0.16 + ")");
+        rg.addColorStop(0.5, "rgba(56, 189, 248, " + f.life * 0.055 + ")");
         rg.addColorStop(1, "rgba(56, 189, 248, 0)");
         ctx.fillStyle = rg;
         ctx.globalAlpha = 1;

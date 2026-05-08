@@ -36,6 +36,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg-deep);
 }
 
 body {
@@ -44,7 +45,7 @@ body {
   font-size: var(--step-0);
   line-height: 1.65;
   color: var(--text);
-  background: var(--bg-deep);
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -63,6 +64,12 @@ html[lang="zh-CN"] body {
 
 body.rtl {
   font-feature-settings: "kern" 1, "liga" 1;
+}
+
+#main,
+.site-footer {
+  position: relative;
+  z-index: 3;
 }
 
 a {
@@ -108,11 +115,11 @@ a:hover {
   border: 0;
 }
 
-/* Full-viewport starfield (canvas) — pointer-events none for hit-testing */
+/* Full-viewport starfield — above base bg; mesh/grid are translucent so stars stay visible */
 .space-canvas {
   position: fixed;
   inset: 0;
-  z-index: -3;
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -120,11 +127,12 @@ a:hover {
 .bg-mesh {
   position: fixed;
   inset: 0;
-  z-index: -2;
-  background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(56, 189, 248, 0.18), transparent 55%),
-    radial-gradient(ellipse 90% 60% at 100% 50%, rgba(167, 139, 250, 0.12), transparent 50%),
-    radial-gradient(ellipse 70% 50% at 0% 80%, rgba(52, 211, 153, 0.08), transparent 45%),
-    var(--bg-deep);
+  z-index: 1;
+  pointer-events: none;
+  /* No opaque layer here — body/html deep bg shows through; canvas stars remain visible */
+  background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(56, 189, 248, 0.22), transparent 58%),
+    radial-gradient(ellipse 90% 60% at 100% 50%, rgba(167, 139, 250, 0.14), transparent 52%),
+    radial-gradient(ellipse 70% 50% at 0% 80%, rgba(52, 211, 153, 0.1), transparent 48%);
   animation: mesh-shift 22s ease-in-out infinite alternate;
 }
 
@@ -140,7 +148,7 @@ a:hover {
 .bg-grid {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 2;
   background-image: linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
@@ -361,38 +369,38 @@ body.rtl .hero-kicker::before {
   animation: fade-up 1s ease 0.14s both;
 }
 
-.hero-social {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-  animation: fade-up 1s ease 0.16s both;
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  border: 1px solid var(--stroke);
-  background: rgba(15, 23, 42, 0.45);
-  color: var(--muted);
-  transition: color 0.2s, border-color 0.2s, transform 0.2s;
-}
-
-.social-link:hover {
-  color: var(--accent);
-  border-color: rgba(56, 189, 248, 0.35);
-  transform: translateY(-2px);
-}
-
-.hero-actions {
+.hero-toolbar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  animation: fade-up 1.05s ease 0.18s both;
+}
+
+.hero-toolbar-primary {
+  flex: 0 0 auto;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-sm);
-  animation: fade-up 1.05s ease 0.2s both;
+}
+
+.hero-links .btn-with-icon svg {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  opacity: 0.92;
+}
+
+.hero-links .btn-secondary:hover svg {
+  opacity: 1;
+}
+
+.hero-links .btn-with-icon span {
+  white-space: nowrap;
 }
 
 @keyframes fade-up {
