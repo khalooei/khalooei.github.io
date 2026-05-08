@@ -4,10 +4,6 @@
   var SCHOLAR_PROFILE =
     "https://scholar.google.com/citations?user=2HFVUn4AAAAJ&hl=en";
 
-  /**
-   * Recent representative works (titles and venues in bibliographic English).
-   * Linked to Google Scholar citation records for traceability.
-   */
   var RECENT_PUBLICATIONS = [
     {
       title: "ProJan: A probabilistic trojan attack on deep neural networks",
@@ -60,20 +56,37 @@
   var supported = ["en", "fa", "ar", "zh"];
 
   function pubCta(lang) {
-    if (lang === "fa") return "رکورد در Scholar";
-    if (lang === "ar") return "سجل Scholar";
-    if (lang === "zh") return "Scholar 条目";
-    return "Scholar record";
+    if (lang === "fa") return "Scholar";
+    if (lang === "ar") return "Scholar";
+    if (lang === "zh") return "Scholar";
+    return "Scholar";
   }
 
   function getLang() {
     var stored = localStorage.getItem(STORAGE_KEY);
     if (stored && supported.indexOf(stored) !== -1) return stored;
-    var nav = navigator.language || navigator.userLanguage || "en";
-    if (nav.startsWith("fa")) return "fa";
-    if (nav.startsWith("ar")) return "ar";
-    if (nav.startsWith("zh")) return "zh";
     return "en";
+  }
+
+  function applyI18nAttr(lang) {
+    var t = window.I18N[lang];
+    if (!t) return;
+
+    document.querySelectorAll("[data-i18n-title]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-title");
+      var val = key.split(".").reduce(function (o, k) {
+        return o && o[k];
+      }, t);
+      if (typeof val === "string") el.setAttribute("title", val);
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria");
+      var val = key.split(".").reduce(function (o, k) {
+        return o && o[k];
+      }, t);
+      if (typeof val === "string") el.setAttribute("aria-label", val);
+    });
   }
 
   function setLang(lang) {
@@ -100,6 +113,8 @@
       }, t);
       if (typeof val === "string") el.textContent = val;
     });
+
+    applyI18nAttr(lang);
 
     var sel = document.getElementById("lang-select");
     if (sel) sel.value = lang;
@@ -360,77 +375,182 @@
     }
   }
 
-  function initHeroCanvas() {
-    var canvas = document.getElementById("hero-canvas");
+  function initFloatNavActive() {
+    var nav = document.getElementById("float-nav");
+    if (!nav) return;
+    var ids = ["spotlight", "teaching", "apps", "research", "bridge", "footer-contact"];
+    function update() {
+      var rtl = document.documentElement.dir === "rtl";
+      var x = rtl ? window.innerWidth * 0.58 : window.innerWidth * 0.42;
+      x = Math.min(window.innerWidth - 24, Math.max(48, x));
+      var y = window.innerHeight * 0.36;
+      var hit = document.elementFromPoint(x, y);
+      var cur = "";
+      while (hit && hit !== document.documentElement) {
+        if (hit.id && ids.indexOf(hit.id) >= 0) {
+          cur = hit.id;
+          break;
+        }
+        hit = hit.parentElement;
+      }
+      nav.querySelectorAll(".float-nav-btn").forEach(function (b) {
+        var sid = b.getAttribute("data-section") || "";
+        b.classList.toggle("active", sid !== "" && sid === cur);
+      });
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  }
+
+  /**
+   * Deep-space layer: stars (twinkle), occasional polar meteors, soft flares.
+   */
+  function initSpaceCanvas() {
+    var canvas = document.getElementById("space-canvas");
     if (!canvas || !canvas.getContext) return;
     var ctx = canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var nodes = [];
-    var n = 42;
+    var stars = [];
+    var meteors = [];
+    var flares = [];
+    var starCount = 320;
+    var time = 0;
+    var nextMeteor = 0;
+    var nextFlare = 0;
 
-    function resize() {
-      var r = canvas.parentElement.getBoundingClientRect();
-      canvas.width = r.width * dpr;
-      canvas.height = r.height * dpr;
-      canvas.style.width = r.width + "px";
-      canvas.style.height = r.height + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      nodes = [];
-      for (var i = 0; i < n; i++) {
-        nodes.push({
-          x: Math.random() * r.width,
-          y: Math.random() * r.height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-        });
-      }
+    function spawnMeteor(w, h) {
+      var fromTop = Math.random() < 0.65;
+      var x = fromTop ? w * (0.25 + Math.random() * 0.5) : Math.random() * w;
+      var y = fromTop ? -30 - Math.random() * 80 : Math.random() * h * 0.4;
+      var angle = fromTop ? Math.PI * 0.55 + Math.random() * 0.35 : Math.random() * Math.PI * 2;
+      var speed = 10 + Math.random() * 14;
+      meteors.push({
+        x: x,
+        y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        decay: 0.012 + Math.random() * 0.01,
+        len: 70 + Math.random() * 100,
+        w: 1 + Math.random() * 1.2,
+      });
     }
 
-    function tick() {
+    function spawnFlare(w, h) {
+      flares.push({
+        x: Math.random() * w,
+        y: Math.random() * h * 0.85,
+        r: 40 + Math.random() * 120,
+        life: 1,
+        decay: 0.008 + Math.random() * 0.006,
+      });
+    }
+
+    function resize() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      stars = [];
+      for (var i = 0; i < starCount; i++) {
+        var szRoll = Math.random();
+        var radius = szRoll < 0.65 ? 0.35 + Math.random() * 0.55 : szRoll < 0.92 ? 0.9 + Math.random() * 0.7 : 1.6 + Math.random() * 1.1;
+        stars.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: radius,
+          b: 0.15 + Math.random() * 0.55,
+          tw: Math.random() < 0.42,
+          ph: Math.random() * Math.PI * 2,
+          sp: 0.8 + Math.random() * 2.2,
+        });
+      }
+      nextMeteor = performance.now() + 2000 + Math.random() * 4000;
+      nextFlare = performance.now() + 4000 + Math.random() * 6000;
+    }
+
+    function tick(now) {
+      if (now === undefined) now = performance.now();
+      time += 0.016;
       var w = canvas.width / dpr;
       var h = canvas.height / dpr;
       ctx.clearRect(0, 0, w, h);
-      ctx.strokeStyle = "rgba(125, 211, 252, 0.12)";
-      ctx.lineWidth = 1;
-      for (var i = 0; i < nodes.length; i++) {
-        var a = nodes[i];
-        a.x += a.vx;
-        a.y += a.vy;
-        if (a.x < 0 || a.x > w) a.vx *= -1;
-        if (a.y < 0 || a.y > h) a.vy *= -1;
-        for (var j = i + 1; j < nodes.length; j++) {
-          var b = nodes[j];
-          var dx = a.x - b.x;
-          var dy = a.y - b.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.globalAlpha = (1 - dist / 110) * 0.35;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
+
+      if (now > nextMeteor) {
+        spawnMeteor(w, h);
+        nextMeteor = now + 3500 + Math.random() * 7000;
       }
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = "rgba(56, 189, 248, 0.45)";
-      nodes.forEach(function (p) {
+      if (now > nextFlare) {
+        spawnFlare(w, h);
+        nextFlare = now + 8000 + Math.random() * 12000;
+      }
+
+      for (var i = meteors.length - 1; i >= 0; i--) {
+        var m = meteors[i];
+        m.x += m.vx * 0.45;
+        m.y += m.vy * 0.45;
+        m.life -= m.decay;
+        var spd = Math.sqrt(m.vx * m.vx + m.vy * m.vy) || 1;
+        var tailx = m.x - (m.vx / spd) * m.len;
+        var taily = m.y - (m.vy / spd) * m.len;
+        var grd = ctx.createLinearGradient(tailx, taily, m.x, m.y);
+        grd.addColorStop(0, "rgba(186, 230, 253, 0)");
+        grd.addColorStop(0.45, "rgba(125, 211, 252, 0.35)");
+        grd.addColorStop(1, "rgba(255, 255, 255, 0.85)");
+        ctx.strokeStyle = grd;
+        ctx.lineWidth = m.w;
+        ctx.lineCap = "round";
+        ctx.globalAlpha = Math.max(0, m.life);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+        ctx.moveTo(tailx, taily);
+        ctx.lineTo(m.x, m.y);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        if (m.life <= 0 || m.x < -200 || m.x > w + 200 || m.y > h + 200) meteors.splice(i, 1);
+      }
+
+      for (var j = flares.length - 1; j >= 0; j--) {
+        var f = flares[j];
+        f.life -= f.decay;
+        var rg = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
+        rg.addColorStop(0, "rgba(147, 197, 253, " + f.life * 0.12 + ")");
+        rg.addColorStop(0.5, "rgba(56, 189, 248, " + f.life * 0.04 + ")");
+        rg.addColorStop(1, "rgba(56, 189, 248, 0)");
+        ctx.fillStyle = rg;
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
         ctx.fill();
-      });
+        if (f.life <= 0) flares.splice(j, 1);
+      }
+
+      for (var k = 0; k < stars.length; k++) {
+        var s = stars[k];
+        var alpha = s.b;
+        if (s.tw) alpha *= 0.55 + 0.45 * (0.5 + 0.5 * Math.sin(time * s.sp + s.ph));
+        ctx.fillStyle = "rgba(226, 232, 240, " + alpha + ")";
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       requestAnimationFrame(tick);
     }
 
     resize();
     window.addEventListener("resize", resize, { passive: true });
-    tick();
+    requestAnimationFrame(tick);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initLangSelect();
-    initHeroCanvas();
+    initSpaceCanvas();
+    initFloatNavActive();
     setLang(getLang());
   });
 })();

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Mohammad Khalooei — speech and audio intelligence, trustworthy ML, vision, NLP, and data-centric computing; Amirkabir & Sharif."
+      content="Mohammad Khalooei — Ph.D. AI · researcher · speech, ML systems, vision & NLP."
     />
     <meta name="theme-color" content="#070a12" />
     <title>Mohammad Khalooei</title>
@@ -13,10 +13,21 @@
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
+    <canvas id="space-canvas" class="space-canvas" aria-hidden="true"></canvas>
     <div class="bg-mesh" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
 
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+
+    <nav class="float-nav" id="float-nav" aria-label="On-page navigation">
+      <a href="#top" class="float-nav-btn" data-section="" data-i18n-title="floatNav.top" title="">↑</a>
+      <a href="#spotlight" class="float-nav-btn" data-section="spotlight" data-i18n-title="floatNav.spotlight" title="">◇</a>
+      <a href="#teaching" class="float-nav-btn" data-section="teaching" data-i18n-title="floatNav.teaching" title="">▫</a>
+      <a href="#apps" class="float-nav-btn" data-section="apps" data-i18n-title="floatNav.apps" title="">◈</a>
+      <a href="#research" class="float-nav-btn" data-section="research" data-i18n-title="floatNav.research" title="">✦</a>
+      <a href="#bridge" class="float-nav-btn" data-section="bridge" data-i18n-title="floatNav.bridge" title="">◎</a>
+      <a href="#footer-contact" class="float-nav-btn" data-section="" data-i18n-title="floatNav.bottom" title="">↓</a>
+    </nav>
 
     <header class="site-header" id="site-header">
       <div class="header-inner">
@@ -30,7 +41,7 @@
           <a href="#teaching" data-i18n="nav.teaching">Instruction</a>
           <a href="#apps" data-i18n="nav.apps">Resources</a>
           <a href="#research" data-i18n="nav.research">Research</a>
-          <a href="#bridge" data-i18n="nav.bridge">Hub</a>
+          <a href="#bridge" data-i18n="nav.bridge">Links</a>
         </nav>
 
         <div class="header-actions">
@@ -60,22 +71,41 @@
           <a href="#teaching" data-i18n="nav.teaching">Instruction</a>
           <a href="#apps" data-i18n="nav.apps">Resources</a>
           <a href="#research" data-i18n="nav.research">Research</a>
-          <a href="#bridge" data-i18n="nav.bridge">Hub</a>
+          <a href="#bridge" data-i18n="nav.bridge">Links</a>
         </nav>
       </div>
     </header>
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-canvas-wrap" aria-hidden="true">
-          <canvas id="hero-canvas"></canvas>
-        </div>
         <div class="hero-inner">
           <p class="hero-kicker" data-i18n="hero.kicker">Amirkabir · Sharif</p>
           <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Mohammad Khalooei</h1>
           <p class="hero-sub" data-i18n="hero.subtitle"></p>
+          <div class="hero-social" aria-label="Profiles">
+            <a
+              class="social-link"
+              href="https://www.linkedin.com/in/khalooei"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="hero.linkedinAria"
+              aria-label="LinkedIn"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a
+              class="social-link"
+              href="https://github.com/khalooei"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="hero.githubAria"
+              aria-label="GitHub"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#teaching" data-i18n="hero.ctaPrimary">Courses</a>
+            <a class="btn btn-primary" href="#teaching" data-i18n="hero.ctaPrimary">Teaching</a>
             <a class="btn btn-secondary" href="#" data-i18n="hero.ctaSecondary" data-scholar="true">Scholar</a>
           </div>
         </div>
@@ -84,23 +114,23 @@
       <section class="section" id="spotlight">
         <header class="section-head reveal">
           <h2 data-i18n="spotlight.title">Highlights</h2>
-          <p data-i18n="spotlight.subtitle"></p>
+          <p class="section-lead" data-i18n="spotlight.subtitle"></p>
         </header>
         <div class="grid spotlight-grid" id="spotlight-grid"></div>
       </section>
 
       <section class="section" id="teaching">
         <header class="section-head reveal">
-          <h2 data-i18n="teaching.title">Instruction</h2>
-          <p data-i18n="teaching.subtitle"></p>
+          <h2 data-i18n="teaching.title">Teaching</h2>
+          <p class="section-lead" data-i18n="teaching.subtitle"></p>
         </header>
         <div class="grid teaching-grid" id="teaching-grid"></div>
       </section>
 
       <section class="section" id="apps">
         <header class="section-head reveal">
-          <h2 data-i18n="apps.title">Interactive resources</h2>
-          <p data-i18n="apps.subtitle"></p>
+          <h2 data-i18n="apps.title">Apps</h2>
+          <p class="section-lead" data-i18n="apps.subtitle"></p>
         </header>
         <div class="grid apps-grid" id="apps-grid"></div>
       </section>
@@ -108,10 +138,10 @@
       <section class="section section-research" id="research">
         <header class="section-head reveal">
           <h2 data-i18n="research.title">Research</h2>
-          <p data-i18n="research.subtitle"></p>
+          <p class="section-lead" data-i18n="research.subtitle"></p>
         </header>
 
-        <h3 class="subsection-title reveal" data-i18n="research.themesTitle">Thematic areas</h3>
+        <h3 class="subsection-title reveal" data-i18n="research.themesTitle">Areas</h3>
         <div class="grid themes-grid" id="research-themes"></div>
 
         <div class="scholar-strip reveal">
@@ -125,21 +155,31 @@
         </div>
 
         <h3 class="subsection-title reveal" data-i18n="research.pubsTitle">Publications</h3>
-        <p class="pubs-note reveal" data-i18n="research.pubsNote"></p>
+        <p class="pubs-note section-lead reveal" data-i18n="research.pubsNote"></p>
         <ol class="publications-list" id="publications-list"></ol>
       </section>
 
-      <section class="section" id="bridge">
+      <section class="section section-bridge" id="bridge">
         <header class="section-head reveal">
-          <h2 data-i18n="bridge.title">Connectivity hub</h2>
-          <p data-i18n="bridge.subtitle"></p>
+          <h2 data-i18n="bridge.title">Links</h2>
+          <p class="section-lead" data-i18n="bridge.subtitle"></p>
         </header>
         <div class="grid bridge-grid" id="bridge-grid"></div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p data-i18n="footer.line"></p>
+    <footer class="site-footer" id="footer-contact">
+      <div class="footer-panel reveal">
+        <p class="footer-email">
+          <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+          <span class="footer-tag">AUT</span>
+        </p>
+        <p class="footer-email">
+          <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+          <span class="footer-tag">Sharif</span>
+        </p>
+        <p class="footer-copy">© Mohammad Khalooei</p>
+      </div>
     </footer>
 
     <script src="assets/js/translations.js"></script>
