@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Trustworthy and robust machine learning track with interactive labs." />
+    <title>Trustworthy & Robust ML</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <nav class="sp-float-nav" aria-label="Quick navigation">
+      <a href="#trust-top">↑</a>
+      <a href="#trust-modules" data-i18n="floatModules">Modules</a>
+      <a href="#trust-labs" data-i18n="floatLabs">Labs</a>
+      <a href="#trust-adv">ADV</a>
+      <a href="#trust-calib">CAL</a>
+      <a href="#trust-fair">FAIR</a>
+      <a href="#trust-deploy">DEP</a>
+    </nav>
+
+    <div id="trust-top"></div>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="globalCurrentTrust">Academy / Trustworthy ML</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <header class="sp-header">
+      <a class="sp-back" href="academy.html" data-i18n="backAcademy">← Back to Academy</a>
+      <div class="sp-page-title-wrap">
+        <h1 data-i18n="trustTitle">Trustworthy & Robust ML</h1>
+        <p class="sp-page-subtitle" data-i18n="trustSubtitle">Reliability, safety, and deployment</p>
+      </div>
+    </header>
+
+    <section class="sp-hero card">
+      <img class="sp-hero-image" src="assets/img/domain-trustworthy.svg" alt="Trustworthy ML visual" />
+      <p class="sp-kicker" data-i18n="trustKicker">Responsible AI</p>
+      <h2 data-i18n="trustHero">Build models that remain reliable under stress</h2>
+      <p class="sp-note" data-i18n="trustHeroDesc"></p>
+      <div class="sp-cta-row">
+        <a class="btn btn-primary" href="#trust-labs" data-i18n="trustStartLabs">Start interactive labs</a>
+        <a class="btn btn-secondary" href="speech-processing.html" data-i18n="trustSpeechLink">Speech intro track</a>
+      </div>
+    </section>
+
+    <nav class="sp-lab-links card">
+      <a href="speech-processing.html#labs-anchor" data-i18n="linkSpeechLabs">Speech intro simulators</a>
+      <a href="speech-processing-advanced.html#adv-labs" data-i18n="linkAdvLabs">Advanced speech labs</a>
+      <a href="academy.html" data-i18n="globalAcademy">Academy hub</a>
+    </nav>
+
+    <nav class="sp-breadcrumb card" aria-label="Breadcrumb">
+      <span data-i18n="crumbHome">Home</span>
+      <span>/</span>
+      <span data-i18n="crumbAcademy">Academy</span>
+      <span>/</span>
+      <strong data-i18n="trustTitle">Trustworthy & Robust ML</strong>
+    </nav>
+
+    <section class="sp-overview card" id="trust-modules">
+      <h3 data-i18n="trustModulesTitle">Learning modules</h3>
+      <div class="sp-trust-modules">
+        <article class="sp-trust-module">
+          <h4 data-i18n="modAdvTitle">Adversarial Robustness</h4>
+          <p data-i18n="modAdvDesc"></p>
+        </article>
+        <article class="sp-trust-module">
+          <h4 data-i18n="modCalibTitle">Uncertainty & Calibration</h4>
+          <p data-i18n="modCalibDesc"></p>
+        </article>
+        <article class="sp-trust-module">
+          <h4 data-i18n="modFairTitle">Fairness & Safety Audits</h4>
+          <p data-i18n="modFairDesc"></p>
+        </article>
+        <article class="sp-trust-module">
+          <h4 data-i18n="modDeployTitle">Secure Deployment</h4>
+          <p data-i18n="modDeployDesc"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sp-lab card" id="trust-labs">
+      <h3 style="margin-top: 0;" data-i18n="trustLabTitle">Interactive concept labs</h3>
+      <p class="sp-note" data-i18n="trustLabDesc"></p>
+      <div class="sp-lab-grid">
+        <article class="sp-lab-card" id="trust-adv">
+          <h4 data-i18n="labAdvTitle">Adversarial perturbation explorer</h4>
+          <label class="sp-control-row">
+            <span data-i18n="labAdvCtrl">Perturbation strength</span>
+            <input id="trust-eps" type="range" min="0" max="80" value="30" />
+          </label>
+          <canvas id="trust-adv-canvas" width="960" height="220"></canvas>
+        </article>
+        <article class="sp-lab-card" id="trust-calib">
+          <h4 data-i18n="labCalibTitle">Calibration temperature lab</h4>
+          <label class="sp-control-row">
+            <span data-i18n="labCalibCtrl">Temperature</span>
+            <input id="trust-temp" type="range" min="60" max="180" value="100" />
+          </label>
+          <canvas id="trust-calib-canvas" width="960" height="220"></canvas>
+        </article>
+        <article class="sp-lab-card" id="trust-fair">
+          <h4 data-i18n="labFairTitle">Group metric gap simulator</h4>
+          <label class="sp-control-row">
+            <span data-i18n="labFairCtrl">Distribution shift</span>
+            <input id="trust-shift" type="range" min="-40" max="40" value="0" />
+          </label>
+          <canvas id="trust-fair-canvas" width="960" height="220"></canvas>
+        </article>
+        <article class="sp-lab-card" id="trust-deploy">
+          <h4 data-i18n="labDeployTitle">Deployment readiness pipeline</h4>
+          <label class="sp-control-row">
+            <span data-i18n="labDeployCtrl">Completed stage</span>
+            <input id="trust-stage" type="range" min="0" max="4" step="1" value="3" />
+          </label>
+          <canvas id="trust-deploy-canvas" width="960" height="220"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="sp-overview card">
+      <h3 data-i18n="trustRefsTitle">Selected references</h3>
+      <ul class="sp-sublist">
+        <li>Goodfellow et al., Explaining and Harnessing Adversarial Examples</li>
+        <li>Guo et al., On Calibration of Modern Neural Networks</li>
+        <li>Barocas, Hardt & Narayanan, Fairness and Machine Learning</li>
+        <li>Amodei et al., Concrete Problems in AI Safety</li>
+      </ul>
+    </section>
+
+    <footer class="sp-site-footer card">
+      <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      <p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {
+          globalHighlights: "Highlights",
+          globalResearch: "Research",
+          globalTeaching: "Teaching",
+          globalAcademy: "Academy",
+          globalCurrentTrust: "Academy / Trustworthy ML",
+          backAcademy: "← Back to Academy",
+          trustTitle: "Trustworthy & Robust ML",
+          trustSubtitle: "Reliability, safety, and deployment",
+          trustKicker: "Responsible AI",
+          trustHero: "Build models that remain reliable under stress",
+          trustHeroDesc:
+            "Study adversarial robustness, calibrated uncertainty, fairness auditing, and secure deployment workflows with hands-on visual labs.",
+          trustStartLabs: "Start interactive labs",
+          trustSpeechLink: "Speech intro track",
+          crumbHome: "Home",
+          crumbAcademy: "Academy",
+          floatModules: "Modules",
+          floatLabs: "Labs",
+          trustModulesTitle: "Learning modules",
+          modAdvTitle: "Adversarial Robustness",
+          modAdvDesc: "Understand attack surfaces, robust training, and evaluation under perturbations.",
+          modCalibTitle: "Uncertainty & Calibration",
+          modCalibDesc: "Reliability diagrams, temperature scaling, and confidence-aware decisions.",
+          modFairTitle: "Fairness & Safety Audits",
+          modFairDesc: "Group-wise metrics, bias checks, and governance-oriented reporting.",
+          modDeployTitle: "Secure Deployment",
+          modDeployDesc: "Monitoring, rollback, and operational safeguards for production ML.",
+          trustLabTitle: "Interactive concept labs",
+          trustLabDesc: "Tune controls and observe how robustness, calibration, fairness gaps, and deployment readiness change.",
+          labAdvTitle: "Adversarial perturbation explorer",
+          labAdvCtrl: "Perturbation strength",
+          labCalibTitle: "Calibration temperature lab",
+          labCalibCtrl: "Temperature",
+          labFairTitle: "Group metric gap simulator",
+          labFairCtrl: "Distribution shift",
+          labDeployTitle: "Deployment readiness pipeline",
+          labDeployCtrl: "Completed stage",
+          trustRefsTitle: "Selected references",
+          linkSpeechLabs: "Speech intro simulators",
+          linkAdvLabs: "Advanced speech labs",
+        },
+        fa: {
+          globalHighlights: "برجسته‌ها",
+          globalResearch: "پژوهش",
+          globalTeaching: "تدریس",
+          globalAcademy: "آکادمی",
+          globalCurrentTrust: "آکادمی / ML قابل‌اعتماد",
+          backAcademy: "← بازگشت به آکادمی",
+          trustTitle: "یادگیری ماشین قابل‌اعتماد و مقاوم",
+          trustSubtitle: "پایداری، ایمنی و استقرار",
+          trustKicker: "هوش مصنوعی مسئولانه",
+          trustHero: "مدل‌هایی بسازید که در شرایط سخت هم پایدار بمانند",
+          trustHeroDesc:
+            "مقاومت خصمانه، کالیبراسیون عدم‌قطعیت، ممیزی انصاف و گردش‌کار استقرار امن را با آزمایشگاه‌های تعاملی یاد بگیرید.",
+          trustStartLabs: "شروع آزمایشگاه‌های تعاملی",
+          trustSpeechLink: "مسیر مقدماتی صوت",
+          crumbHome: "خانه",
+          crumbAcademy: "آکادمی",
+          floatModules: "ماژول‌ها",
+          floatLabs: "آزمایشگاه",
+          trustModulesTitle: "ماژول‌های آموزشی",
+          modAdvTitle: "مقاومت در برابر حملات خصمانه",
+          modAdvDesc: "سطح حمله، آموزش مقاوم و ارزیابی تحت اختلال را درک کنید.",
+          modCalibTitle: "عدم‌قطعیت و کالیبراسیون",
+          modCalibDesc: "نمودار reliability، temperature scaling و تصمیم‌گیری مبتنی بر اطمینان.",
+          modFairTitle: "ممیزی انصاف و ایمنی",
+          modFairDesc: "معیارهای گروهی، بررسی سوگیری و گزارش‌دهی حاکمیتی.",
+          modDeployTitle: "استقرار امن",
+          modDeployDesc: "پایش، بازگشت نسخه و محافظت‌های عملیاتی برای ML در تولید.",
+          trustLabTitle: "آزمایشگاه مفاهیم تعاملی",
+          trustLabDesc: "با تغییر پارامترها ببینید مقاومت، کالیبراسیون، شکاف انصاف و آمادگی استقرار چگونه تغییر می‌کند.",
+          labAdvTitle: "کاوشگر اختلال خصمانه",
+          labAdvCtrl: "شدت اختلال",
+          labCalibTitle: "آزمایش دمای کالیبراسیون",
+          labCalibCtrl: "دما",
+          labFairTitle: "شبیه‌ساز شکاف معیار گروهی",
+          labFairCtrl: "جابه‌جایی توزیع",
+          labDeployTitle: "خط لوله آمادگی استقرار",
+          labDeployCtrl: "مرحله تکمیل‌شده",
+          trustRefsTitle: "مراجع منتخب",
+          linkSpeechLabs: "شبیه‌سازهای مقدماتی صوت",
+          linkAdvLabs: "آزمایشگاه صوت پیشرفته",
+        },
+        ar: {
+          globalHighlights: "الملخص",
+          globalResearch: "البحث",
+          globalTeaching: "التدريس",
+          globalAcademy: "الأكاديمية",
+          globalCurrentTrust: "الأكاديمية / ML الموثوق",
+          backAcademy: "← العودة إلى الأكاديمية",
+          trustTitle: "تعلم آلي موثوق ومتين",
+          trustSubtitle: "الاعتمادية والسلامة والنشر",
+          trustKicker: "ذكاء اصطناعي مسؤول",
+          trustHero: "ابنِ نماذج تبقى موثوقة تحت الضغط",
+          trustHeroDesc:
+            "ادرس الصلابة الخصومية، المعايرة، تدقيق العدالة، ونشر ML الآمن عبر مختبرات بصرية تفاعلية.",
+          trustStartLabs: "ابدأ المختبرات التفاعلية",
+          trustSpeechLink: "مسار الصوت التمهيدي",
+          crumbHome: "الرئيسية",
+          crumbAcademy: "الأكاديمية",
+          floatModules: "الوحدات",
+          floatLabs: "المختبر",
+          trustModulesTitle: "وحدات تعليمية",
+          modAdvTitle: "الصلابة الخصومية",
+          modAdvDesc: "فهم سطح الهجوم، التدريب المتين، والتقييم تحت الإزعاج.",
+          modCalibTitle: "عدم اليقين والمعايرة",
+          modCalibDesc: "مخططات reliability وtemperature scaling وقرارات واثقة.",
+          modFairTitle: "تدقيق العدالة والسلامة",
+          modFairDesc: "مقاييس جماعية وفحوصات تحيز وتقارير حوكمة.",
+          modDeployTitle: "النشر الآمن",
+          modDeployDesc: "المراقبة والتراجع والضمانات التشغيلية للإنتاج.",
+          trustLabTitle: "مختبرات مفاهيم تفاعلية",
+          trustLabDesc: "عدّل عناصر التحكم ولاحظ تغير الصلابة والمعايرة وفجوات العدالة والجاهزية.",
+          labAdvTitle: "مستكشف الإزعاج الخصومي",
+          labAdvCtrl: "قوة الإزعاج",
+          labCalibTitle: "مختبر حرارة المعايرة",
+          labCalibCtrl: "الحرارة",
+          labFairTitle: "محاكي فجوة المقاييس الجماعية",
+          labFairCtrl: "انزياح التوزيع",
+          labDeployTitle: "خط أنابيب جاهزية النشر",
+          labDeployCtrl: "المرحلة المكتملة",
+          trustRefsTitle: "مراجع مختارة",
+          linkSpeechLabs: "محاكيات الصوت",
+          linkAdvLabs: "مختبرات متقدمة",
+        },
+        zh: {
+          globalHighlights: "亮点",
+          globalResearch: "研究",
+          globalTeaching: "教学",
+          globalAcademy: "学院",
+          globalCurrentTrust: "学院 / 可信机器学习",
+          backAcademy: "← 返回学院",
+          trustTitle: "可信与鲁棒机器学习",
+          trustSubtitle: "可靠性、安全与部署",
+          trustKicker: "负责任 AI",
+          trustHero: "构建在压力下仍可靠的模型",
+          trustHeroDesc: "通过交互实验学习对抗鲁棒性、校准、公平审计与安全部署流程。",
+          trustStartLabs: "开始交互实验",
+          trustSpeechLink: "语音入门轨道",
+          crumbHome: "首页",
+          crumbAcademy: "学院",
+          floatModules: "模块",
+          floatLabs: "实验",
+          trustModulesTitle: "学习模块",
+          modAdvTitle: "对抗鲁棒性",
+          modAdvDesc: "理解攻击面、鲁棒训练与扰动下评估。",
+          modCalibTitle: "不确定性与校准",
+          modCalibDesc: "可靠性图、temperature scaling 与置信决策。",
+          modFairTitle: "公平与安全审计",
+          modFairDesc: "群体指标、偏差检查与治理报告。",
+          modDeployTitle: "安全部署",
+          modDeployDesc: "监控、回滚与生产级 ML 保障。",
+          trustLabTitle: "交互概念实验",
+          trustLabDesc: "调节参数并观察鲁棒性、校准、公平差距与部署就绪度如何变化。",
+          labAdvTitle: "对抗扰动探索器",
+          labAdvCtrl: "扰动强度",
+          labCalibTitle: "校准温度实验",
+          labCalibCtrl: "温度",
+          labFairTitle: "群体指标差距模拟",
+          labFairCtrl: "分布偏移",
+          labDeployTitle: "部署就绪流水线",
+          labDeployCtrl: "完成阶段",
+          trustRefsTitle: "精选参考文献",
+          linkSpeechLabs: "语音入门模拟器",
+          linkAdvLabs: "进阶语音实验",
+        },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/trustworthy-ml.js"></script>
+  </body>
+</html>

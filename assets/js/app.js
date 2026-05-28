@@ -120,7 +120,8 @@
     if (sel) sel.value = lang;
 
     renderLists(t, lang);
-    renderResearchThemes(t);
+    renderResearchInterests(t);
+    renderCollaborators(t);
     renderPublications(lang);
     renderBridge(t, lang);
     wireScholarLinks();
@@ -129,19 +130,55 @@
     document.dispatchEvent(new CustomEvent("site:languagechange", { detail: { lang: lang } }));
   }
 
-  function renderResearchThemes(t) {
-    var el = document.getElementById("research-themes");
-    if (!el || !t.research || !t.research.themes) return;
-    el.innerHTML = t.research.themes
-      .map(function (th, i) {
+  function renderResearchInterests(t) {
+    var el = document.getElementById("research-interests");
+    if (!el || !t.research || !t.research.interests) return;
+    el.innerHTML = t.research.interests
+      .map(function (label, i) {
         return (
-          '<article class="card theme-card reveal" style="--d:' +
+          '<span class="interest-chip reveal" style="--d:' +
           i +
-          '"><h3>' +
-          escapeHtml(th.title) +
-          "</h3><p>" +
-          escapeHtml(th.body) +
-          "</p></article>"
+          '" role="listitem">' +
+          escapeHtml(label) +
+          "</span>"
+        );
+      })
+      .join("");
+  }
+
+  function renderCollaborators(t) {
+    var el = document.getElementById("collaborators-grid");
+    if (!el || !t.collaborators) return;
+    var c = t.collaborators;
+    var groups = [
+      { title: c.undergradTitle, people: c.undergrad || [] },
+      { title: c.mastersTitle, people: c.masters || [] },
+      { title: c.facultyTitle, people: c.faculty || [] },
+    ];
+    var empty = c.empty || "—";
+    el.innerHTML = groups
+      .map(function (g, i) {
+        var list =
+          g.people.length ?
+            g.people
+              .map(function (p) {
+                var name = typeof p === "string" ? p : p.name || "";
+                var extra =
+                  typeof p === "object" && p.affiliation ?
+                    '<span class="collab-affil">' + escapeHtml(p.affiliation) + "</span>"
+                  : "";
+                return "<li>" + escapeHtml(name) + extra + "</li>";
+              })
+              .join("")
+          : '<li class="collab-empty">' + escapeHtml(empty) + "</li>";
+        return (
+          '<article class="card collab-card reveal" style="--d:' +
+          i +
+          '"><h3 class="collab-group-title">' +
+          escapeHtml(g.title) +
+          '</h3><ul class="collab-list">' +
+          list +
+          "</ul></article>"
         );
       })
       .join("");
@@ -407,7 +444,7 @@
   function initFloatNavActive() {
     var nav = document.getElementById("float-nav");
     if (!nav) return;
-    var ids = ["spotlight", "teaching", "apps", "research", "bridge", "footer-contact"];
+    var ids = ["spotlight", "research", "collaborators", "teaching", "apps", "bridge", "footer-contact"];
     function update() {
       var rtl = document.documentElement.dir === "rtl";
       var x = rtl ? window.innerWidth * 0.58 : window.innerWidth * 0.42;

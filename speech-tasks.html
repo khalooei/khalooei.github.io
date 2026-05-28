@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Core speech processing tasks with interactive demos." />
+    <title>Speech Tasks</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="globalCurrentTasks">Academy / Speech Tasks</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <header class="sp-header">
+      <a class="sp-back" href="academy.html" data-i18n="backAcademy">← Back to Academy</a>
+      <div class="sp-page-title-wrap">
+        <h1 data-i18n="tasksTitle">Speech Tasks</h1>
+        <p class="sp-page-subtitle" data-i18n="tasksSubtitle">Core application scenarios</p>
+      </div>
+      <nav class="sp-track-switch" aria-label="Track">
+        <a href="speech-processing.html" data-i18n="trackIntro">Intro</a>
+        <a href="speech-processing-advanced.html" data-i18n="trackAdvanced">Advanced</a>
+      </nav>
+    </header>
+
+    <section class="sp-hero card">
+      <img class="sp-hero-image" src="assets/img/domain-speech-tasks.svg" alt="Speech tasks overview" />
+      <p class="sp-kicker" data-i18n="tasksKicker">Applications</p>
+      <h2 data-i18n="tasksHero">From research concepts to real-world speech systems</h2>
+      <p class="sp-note" data-i18n="tasksHeroDesc"></p>
+      <div class="sp-cta-row">
+        <a class="btn btn-primary" href="#task-labs" data-i18n="tasksExplore">Explore interactive demos</a>
+        <a class="btn btn-secondary" href="speech-processing.html#labs-anchor" data-i18n="tasksIntroLab">Open intro simulators</a>
+      </div>
+    </section>
+
+    <nav class="sp-lab-links card">
+      <a href="speech-processing.html#labs-anchor" data-i18n="linkIntroLabs">Intro simulators</a>
+      <a href="speech-processing-advanced.html#adv-models" data-i18n="linkModels">Foundation models</a>
+      <a href="academy.html" data-i18n="globalAcademy">Academy hub</a>
+    </nav>
+
+    <nav class="sp-breadcrumb card" aria-label="Breadcrumb">
+      <span data-i18n="crumbHome">Home</span>
+      <span>/</span>
+      <span data-i18n="crumbAcademy">Academy</span>
+      <span>/</span>
+      <strong data-i18n="tasksTitle">Speech Tasks</strong>
+    </nav>
+
+    <section class="sp-overview card">
+      <h3 data-i18n="tasksOverview">Task map</h3>
+      <div class="sp-overview-grid">
+        <a class="sp-overview-btn" href="#task-asr">ASR</a>
+        <a class="sp-overview-btn" href="#task-tts">TTS</a>
+        <a class="sp-overview-btn" href="#task-sent">SER</a>
+        <a class="sp-overview-btn" href="#task-spk">SPK</a>
+        <a class="sp-overview-btn" href="#task-dia">DIA</a>
+        <a class="sp-overview-btn" href="#task-sep">SEP</a>
+      </div>
+    </section>
+
+    <main class="sp-lab card" id="task-labs">
+      <h3 style="margin-top: 0;" data-i18n="tasksHead">Key audio/speech tasks</h3>
+      <div class="sp-lab-grid">
+        <article class="sp-lab-card sp-task-card" id="task-asr">
+          <img class="sp-task-thumb" src="assets/img/domain-speech-intro.svg" alt="ASR visual" />
+          <div>
+            <h4 data-i18n="sttTitle">Speech-to-Text (ASR)</h4>
+            <p class="sp-note" data-i18n="sttDesc"></p>
+            <canvas id="task-stt" width="960" height="170"></canvas>
+          </div>
+        </article>
+        <article class="sp-lab-card sp-task-card" id="task-tts">
+          <img class="sp-task-thumb" src="assets/img/domain-speech-advanced.svg" alt="TTS visual" />
+          <div>
+            <h4 data-i18n="ttsTitle">Text-to-Speech (TTS)</h4>
+            <p class="sp-note" data-i18n="ttsDesc"></p>
+            <canvas id="task-tts" width="960" height="170"></canvas>
+          </div>
+        </article>
+        <article class="sp-lab-card sp-task-card" id="task-sent">
+          <img class="sp-task-thumb" src="assets/img/domain-trustworthy.svg" alt="Emotion visual" />
+          <div>
+            <h4 data-i18n="sentTitle">Speech Emotion Recognition</h4>
+            <p class="sp-note" data-i18n="sentDesc"></p>
+            <canvas id="task-sent" width="960" height="170"></canvas>
+          </div>
+        </article>
+        <article class="sp-lab-card sp-task-card" id="task-spk">
+          <img class="sp-task-thumb" src="assets/img/domain-speech-tasks.svg" alt="Speaker visual" />
+          <div>
+            <h4 data-i18n="spkTitle">Speaker Analysis</h4>
+            <p class="sp-note" data-i18n="spkDesc"></p>
+            <canvas id="task-spk" width="960" height="170"></canvas>
+          </div>
+        </article>
+        <article class="sp-lab-card sp-task-card" id="task-dia">
+          <img class="sp-task-thumb" src="assets/img/domain-timeseries.svg" alt="Diarization visual" />
+          <div>
+            <h4 data-i18n="diaTitle">Speaker Diarization</h4>
+            <p class="sp-note" data-i18n="diaDesc"></p>
+            <canvas id="task-dia" width="960" height="170"></canvas>
+          </div>
+        </article>
+        <article class="sp-lab-card sp-task-card" id="task-sep">
+          <img class="sp-task-thumb" src="assets/img/domain-vision.svg" alt="Separation visual" />
+          <div>
+            <h4 data-i18n="sepTitle">Speech Separation / Enhancement</h4>
+            <p class="sp-note" data-i18n="sepDesc"></p>
+            <canvas id="task-sep" width="960" height="170"></canvas>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="sp-site-footer card">
+      <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      <p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {
+          globalHighlights: "Highlights",
+          globalResearch: "Research",
+          globalTeaching: "Teaching",
+          globalAcademy: "Academy",
+          globalCurrentTasks: "Academy / Speech Tasks",
+          backAcademy: "← Back to Academy",
+          tasksTitle: "Speech Tasks",
+          tasksSubtitle: "Core application scenarios",
+          trackIntro: "Intro",
+          trackAdvanced: "Advanced",
+          tasksKicker: "Applications",
+          tasksHero: "From research concepts to real-world speech systems",
+          tasksHeroDesc:
+            "Explore the main speech pipelines used in products and research: recognition, synthesis, emotion, speaker identity, diarization, and separation.",
+          tasksExplore: "Explore interactive demos",
+          tasksIntroLab: "Open intro simulators",
+          crumbHome: "Home",
+          crumbAcademy: "Academy",
+          tasksOverview: "Task map",
+          tasksHead: "Key audio/speech tasks",
+          sttTitle: "Speech-to-Text (ASR)",
+          sttDesc: "Example: transcribing lecture audio into searchable text.",
+          ttsTitle: "Text-to-Speech (TTS)",
+          ttsDesc: "Example: generating natural voice from textual input.",
+          sentTitle: "Speech Emotion Recognition",
+          sentDesc: "Example: classify emotional state from prosody and spectral cues.",
+          spkTitle: "Speaker Analysis",
+          spkDesc: "Example: verify if two recordings belong to the same speaker.",
+          diaTitle: "Speaker Diarization",
+          diaDesc: "Example: multi-speaker meeting segmentation (who spoke when).",
+          sepTitle: "Speech Separation / Enhancement",
+          sepDesc: "Example: isolate target speech from noisy mixtures.",
+          linkIntroLabs: "Intro simulators",
+          linkModels: "Foundation models",
+        },
+        fa: {
+          globalHighlights: "برجسته‌ها",
+          globalResearch: "پژوهش",
+          globalTeaching: "تدریس",
+          globalAcademy: "آکادمی",
+          globalCurrentTasks: "آکادمی / تسک‌های صوت",
+          backAcademy: "← بازگشت به آکادمی",
+          tasksTitle: "تسک‌های حوزه صوت",
+          tasksSubtitle: "سناریوهای کاربردی اصلی",
+          trackIntro: "مقدماتی",
+          trackAdvanced: "پیشرفته",
+          tasksKicker: "کاربردها",
+          tasksHero: "از مفاهیم پژوهشی تا سامانه‌های واقعی گفتار",
+          tasksHeroDesc:
+            "مسیرهای اصلی صنعت و پژوهش را ببینید: تشخیص گفتار، سنتز، احساس، هویت گوینده، تفکیک گوینده و جداسازی صوت.",
+          tasksExplore: "مشاهده دموهای تعاملی",
+          tasksIntroLab: "ورود به شبیه‌سازهای مقدماتی",
+          crumbHome: "خانه",
+          crumbAcademy: "آکادمی",
+          tasksOverview: "نقشه تسک‌ها",
+          tasksHead: "تسک‌های کلیدی پردازش گفتار/صوت",
+          sttTitle: "گفتار به متن (ASR)",
+          sttDesc: "مثال: تبدیل صدای کلاس به متن قابل جستجو.",
+          ttsTitle: "متن به گفتار (TTS)",
+          ttsDesc: "مثال: تولید گفتار طبیعی از روی متن.",
+          sentTitle: "تحلیل احساسات گفتار",
+          sentDesc: "مثال: تشخیص حالت احساسی از سرنخ‌های آهنگ و طیف.",
+          spkTitle: "تحلیل گوینده",
+          spkDesc: "مثال: بررسی اینکه دو فایل صوتی از یک گوینده هستند یا نه.",
+          diaTitle: "تفکیک گوینده (Diarization)",
+          diaDesc: "مثال: جلسه چندنفره — چه کسی چه زمانی صحبت کرده است.",
+          sepTitle: "تفکیک/بهبود گفتار",
+          sepDesc: "مثال: استخراج گفتار هدف از ترکیب‌های نویزی.",
+          linkIntroLabs: "شبیه‌سازهای مقدماتی",
+          linkModels: "مدل‌های بنیادین",
+        },
+        ar: {
+          globalHighlights: "الملخص",
+          globalResearch: "البحث",
+          globalTeaching: "التدريس",
+          globalAcademy: "الأكاديمية",
+          globalCurrentTasks: "الأكاديمية / مهام الصوت",
+          backAcademy: "← العودة إلى الأكاديمية",
+          tasksTitle: "مهام الصوت",
+          tasksSubtitle: "سيناريوهات تطبيقية أساسية",
+          trackIntro: "تمهيدي",
+          trackAdvanced: "متقدم",
+          tasksKicker: "التطبيقات",
+          tasksHero: "من المفاهيم البحثية إلى أنظمة الكلام العملية",
+          tasksHeroDesc:
+            "استكشف مسارات الكلام الأساسية: التعرف، التوليد، المشاعر، هوية المتحدث، التقسيم، والفصل.",
+          tasksExplore: "استكشاف العروض التفاعلية",
+          tasksIntroLab: "فتح محاكيات المسار التمهيدي",
+          crumbHome: "الرئيسية",
+          crumbAcademy: "الأكاديمية",
+          tasksOverview: "خريطة المهام",
+          tasksHead: "المهام الأساسية في معالجة الصوت",
+          sttTitle: "تحويل الكلام إلى نص",
+          sttDesc: "مثال: تفريغ محاضرة صوتية إلى نص قابل للبحث.",
+          ttsTitle: "تحويل النص إلى كلام",
+          ttsDesc: "مثال: توليد صوت طبيعي من نص مكتوب.",
+          sentTitle: "تحليل المشاعر من الكلام",
+          sentDesc: "مثال: تصنيف الحالة العاطفية من الخصائص الصوتية.",
+          spkTitle: "تحليل المتحدث",
+          spkDesc: "مثال: التحقق من أن تسجيلين يعودان لنفس المتحدث.",
+          diaTitle: "تقسيم المتحدثين",
+          diaDesc: "مثال: تحديد من تحدث ومتى في اجتماع متعدد المتحدثين.",
+          sepTitle: "فصل/تحسين الكلام",
+          sepDesc: "مثال: عزل الكلام الهدف من خليط ضوضائي.",
+          linkIntroLabs: "محاكيات تمهيدية",
+          linkModels: "نماذج أساسية",
+        },
+        zh: {
+          globalHighlights: "亮点",
+          globalResearch: "研究",
+          globalTeaching: "教学",
+          globalAcademy: "学院",
+          globalCurrentTasks: "学院 / 语音任务",
+          backAcademy: "← 返回学院",
+          tasksTitle: "语音任务",
+          tasksSubtitle: "核心应用场景",
+          trackIntro: "入门",
+          trackAdvanced: "进阶",
+          tasksKicker: "应用",
+          tasksHero: "从研究概念到真实语音系统",
+          tasksHeroDesc: "了解语音识别、合成、情感、说话人、分段与分离等主流路径。",
+          tasksExplore: "查看交互演示",
+          tasksIntroLab: "打开入门模拟器",
+          crumbHome: "首页",
+          crumbAcademy: "学院",
+          tasksOverview: "任务地图",
+          tasksHead: "语音/音频关键任务",
+          sttTitle: "语音转文本 (ASR)",
+          sttDesc: "示例：将课堂音频转成可检索文本。",
+          ttsTitle: "文本转语音 (TTS)",
+          ttsDesc: "示例：由文本生成自然语音。",
+          sentTitle: "语音情感识别",
+          sentDesc: "示例：基于韵律与频谱线索判断情绪状态。",
+          spkTitle: "说话人分析",
+          spkDesc: "示例：判断两段录音是否来自同一人。",
+          diaTitle: "说话人分离/分段",
+          diaDesc: "示例：会议场景中“谁在何时说话”。",
+          sepTitle: "语音分离/增强",
+          sepDesc: "示例：从噪声混合中提取目标语音。",
+          linkIntroLabs: "入门模拟器",
+          linkModels: "基础模型",
+        },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/speech-tasks.js"></script>
+  </body>
+</html>

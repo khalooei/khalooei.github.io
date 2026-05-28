@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Git Commands — Academy</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="pageCurrent">Academy / Git</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language"><option value="en">English</option><option value="fa">فارسی</option><option value="ar">العربية</option><option value="zh">中文</option></select>
+      </div>
+    </header>
+
+    <header class="sp-header">
+      <a class="sp-back" href="academy.html" data-i18n="backHub">← Back to Academy</a>
+      <div class="sp-page-title-wrap">
+        <h1 data-i18n="pageTitle">Git — Practical Commands</h1>
+        <p class="sp-page-subtitle" data-i18n="pageSub">Research & team workflow cheat sheet</p>
+      </div>
+    </header>
+
+    <nav class="sp-lab-links card">
+      <a href="docker-commands.html" data-i18n="linkDocker">Docker commands</a>
+      <a href="speech-processing-advanced.html#adv-labs" data-i18n="linkAdvLabs">Advanced speech labs</a>
+      <a href="academy.html" data-i18n="globalAcademy">Academy hub</a>
+    </nav>
+
+    <main class="sp-lab card">
+      <section class="cmd-group">
+        <h4 data-i18n="secDaily">Daily workflow</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git status
+git add -p
+git commit -m "Describe change clearly"
+git push origin feature/my-topic</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git pull --rebase origin main
+git switch -c feature/new-experiment</code></div>
+      </section>
+      <section class="cmd-group">
+        <h4 data-i18n="secHistory">History & inspection</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git log --oneline --graph --decorate -n 20
+git show HEAD
+git diff main...HEAD</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git blame path/to/file.py
+git stash push -m "wip experiment"
+git stash pop</code></div>
+      </section>
+      <section class="cmd-group">
+        <h4 data-i18n="secFix">Fix & sync</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git restore --staged file.py
+git restore file.py
+git commit --amend</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git rebase -i HEAD~4
+git cherry-pick &lt;commit-sha&gt;
+git revert &lt;commit-sha&gt;</code></div>
+      </section>
+      <section class="cmd-group">
+        <h4 data-i18n="secRemote">Remote & tags</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>git remote -v
+git fetch --all --prune
+git tag v1.0.0
+git push origin v1.0.0</code></div>
+      </section>
+    </main>
+
+    <footer class="sp-site-footer card"><p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p><p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p></footer>
+    <script>
+      window.ACADEMY_I18N = {
+        en: { globalHighlights: "Highlights", globalResearch: "Research", globalTeaching: "Teaching", globalAcademy: "Academy", pageCurrent: "Academy / Git", backHub: "← Back to Academy", pageTitle: "Git — Practical Commands", pageSub: "Research & team workflow cheat sheet", linkDocker: "Docker commands", linkAdvLabs: "Advanced speech labs", secDaily: "Daily workflow", secHistory: "History & inspection", secFix: "Fix & sync", secRemote: "Remote & tags" },
+        fa: { globalHighlights: "برجسته‌ها", globalResearch: "پژوهش", globalTeaching: "تدریس", globalAcademy: "آکادمی", pageCurrent: "آکادمی / گیت", backHub: "← بازگشت به آکادمی", pageTitle: "گیت — دستورات کاربردی", pageSub: "برگه تقلب برای کار پژوهشی و تیمی", linkDocker: "دستورات داکر", linkAdvLabs: "آزمایشگاه صوت پیشرفته", secDaily: "گردش کار روزانه", secHistory: "تاریخچه و بررسی", secFix: "اصلاح و همگام‌سازی", secRemote: "ریموت و تگ" },
+        ar: { globalHighlights: "الملخص", globalResearch: "البحث", globalTeaching: "التدريس", globalAcademy: "الأكاديمية", pageCurrent: "الأكاديمية / Git", backHub: "← العودة", pageTitle: "Git — أوامر عملية", pageSub: "مرجع سريع", linkDocker: "أوامر Docker", linkAdvLabs: "مختبرات الصوت المتقدمة", secDaily: "العمل اليومي", secHistory: "السجل", secFix: "الإصلاح", secRemote: "الريموت" },
+        zh: { globalHighlights: "亮点", globalResearch: "研究", globalTeaching: "教学", globalAcademy: "学院", pageCurrent: "学院 / Git", backHub: "← 返回学院", pageTitle: "Git 实用命令", pageSub: "研究与协作速查", linkDocker: "Docker 命令", linkAdvLabs: "进阶语音实验", secDaily: "日常流程", secHistory: "历史查看", secFix: "修复同步", secRemote: "远程与标签" },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/dev-commands.js"></script>
+  </body>
+</html>

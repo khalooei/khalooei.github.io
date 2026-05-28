@@ -28,9 +28,9 @@
     <nav class="float-nav" id="float-nav" aria-label="On-page navigation">
       <a href="#top" class="float-nav-btn" data-section="" data-i18n-title="floatNav.top" title="">↑</a>
       <a href="#spotlight" class="float-nav-btn" data-section="spotlight" data-i18n-title="floatNav.spotlight" title="">◇</a>
+      <a href="#research" class="float-nav-btn" data-section="research" data-i18n-title="floatNav.research" title="">✦</a>
       <a href="#teaching" class="float-nav-btn" data-section="teaching" data-i18n-title="floatNav.teaching" title="">▫</a>
       <a href="#apps" class="float-nav-btn" data-section="apps" data-i18n-title="floatNav.apps" title="">◈</a>
-      <a href="#research" class="float-nav-btn" data-section="research" data-i18n-title="floatNav.research" title="">✦</a>
       <a href="#bridge" class="float-nav-btn" data-section="bridge" data-i18n-title="floatNav.bridge" title="">◎</a>
       <a href="#footer-contact" class="float-nav-btn" data-section="" data-i18n-title="floatNav.bottom" title="">↓</a>
     </nav>
@@ -44,9 +44,11 @@
 
         <nav class="nav-desktop" aria-label="Primary">
           <a href="#spotlight" data-i18n="nav.spotlight">Highlights</a>
-          <a href="#teaching" data-i18n="nav.teaching">Instruction</a>
-          <a href="#apps" data-i18n="nav.apps">Resources</a>
           <a href="#research" data-i18n="nav.research">Research</a>
+          <a href="#collaborators" data-i18n="nav.collaborators">Collaborators</a>
+          <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
+          <a href="#apps" data-i18n="nav.apps">Simulators</a>
+          <a href="academy.html" data-i18n="nav.speechAcademy">Speech Academy</a>
           <a href="#bridge" data-i18n="nav.bridge">Links</a>
         </nav>
 
@@ -74,9 +76,11 @@
       <div class="nav-panel" id="nav-panel">
         <nav aria-label="Mobile">
           <a href="#spotlight" data-i18n="nav.spotlight">Highlights</a>
-          <a href="#teaching" data-i18n="nav.teaching">Instruction</a>
-          <a href="#apps" data-i18n="nav.apps">Resources</a>
           <a href="#research" data-i18n="nav.research">Research</a>
+          <a href="#collaborators" data-i18n="nav.collaborators">Collaborators</a>
+          <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
+          <a href="#apps" data-i18n="nav.apps">Simulators</a>
+          <a href="academy.html" data-i18n="nav.speechAcademy">Speech Academy</a>
           <a href="#bridge" data-i18n="nav.bridge">Links</a>
         </nav>
       </div>
@@ -90,7 +94,7 @@
           <p class="hero-sub" data-i18n="hero.subtitle"></p>
           <div class="hero-toolbar">
             <div class="hero-toolbar-primary">
-              <a class="btn btn-primary" href="#teaching" data-i18n="hero.ctaPrimary">Teaching</a>
+              <a class="btn btn-primary" href="#research" data-i18n="hero.ctaPrimary">Research</a>
             </div>
             <div
               class="hero-links"
@@ -155,30 +159,16 @@
         <div class="grid spotlight-grid" id="spotlight-grid"></div>
       </section>
 
-      <section class="section" id="teaching">
-        <header class="section-head reveal">
-          <h2 data-i18n="teaching.title">Teaching</h2>
-          <p class="section-lead" data-i18n="teaching.subtitle"></p>
-        </header>
-        <div class="grid teaching-grid" id="teaching-grid"></div>
-      </section>
-
-      <section class="section" id="apps">
-        <header class="section-head reveal">
-          <h2 data-i18n="apps.title">Apps</h2>
-          <p class="section-lead" data-i18n="apps.subtitle"></p>
-        </header>
-        <div class="grid apps-grid" id="apps-grid"></div>
-      </section>
-
       <section class="section section-research" id="research">
         <header class="section-head reveal">
           <h2 data-i18n="research.title">Research</h2>
           <p class="section-lead" data-i18n="research.subtitle"></p>
         </header>
 
-        <h3 class="subsection-title reveal" data-i18n="research.themesTitle">Areas</h3>
-        <div class="grid themes-grid" id="research-themes"></div>
+        <h3 class="subsection-title reveal" data-i18n="research.interestsTitle">Topics of interest</h3>
+        <div class="interest-panel reveal">
+          <div class="interest-list" id="research-interests" role="list"></div>
+        </div>
 
         <div class="scholar-strip reveal">
           <div class="scholar-strip-inner">
@@ -189,6 +179,30 @@
 
         <h3 class="subsection-title reveal" data-i18n="research.pubsTitle">Publications</h3>
         <ol class="publications-list" id="publications-list"></ol>
+      </section>
+
+      <section class="section section-collaborators" id="collaborators">
+        <header class="section-head reveal">
+          <h2 data-i18n="collaborators.title">Research collaborators</h2>
+          <p class="section-lead" data-i18n="collaborators.subtitle"></p>
+        </header>
+        <div class="collab-grid" id="collaborators-grid"></div>
+      </section>
+
+      <section class="section" id="teaching">
+        <header class="section-head reveal">
+          <h2 data-i18n="teaching.title">Teaching</h2>
+          <p class="section-lead" data-i18n="teaching.subtitle"></p>
+        </header>
+        <div class="grid teaching-grid" id="teaching-grid"></div>
+      </section>
+
+      <section class="section" id="apps">
+        <header class="section-head reveal">
+          <h2 data-i18n="apps.title">Simulators</h2>
+          <p class="section-lead" data-i18n="apps.subtitle"></p>
+        </header>
+        <div class="grid apps-grid" id="apps-grid"></div>
       </section>
 
       <section class="section section-bridge" id="bridge">

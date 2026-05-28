@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Time series">
+  <rect width="320" height="180" fill="#0b1220"/>
+  <polyline points="20,120 60,95 95,110 130,70 170,85 210,50 250,75 300,40" fill="none" stroke="#f59e0b" stroke-width="3"/>
+  <text x="16" y="28" fill="#e2e8f0" font-size="14" font-family="sans-serif">Time Series</text>
+</svg>

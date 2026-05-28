@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="آکادمی پردازش صوت: آموزش علمی از مبانی تا مدل‌های نوین همراه با شبیه‌سازهای تعاملی و اجرای مستقیم روی Google Colab."
+    />
+    <meta name="theme-color" content="#070a12" />
+    <title>آکادمی پردازش صوت</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="globalCurrent">Academy / Speech Processing (Intro)</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <nav class="sp-float-nav" id="sp-float-nav" aria-label="Quick navigation">
+      <a href="#top-anchor">↑</a>
+      <a href="#overview-anchor" data-i18n="floatMap">Map</a>
+      <a href="#sections-anchor" data-i18n="floatSections">Sections</a>
+      <a href="#labs-anchor" data-i18n="floatLabs">Sim Labs</a>
+      <a href="#spec-studio-anchor">STFT</a>
+      <a href="#win-sim-anchor">WIN</a>
+      <a href="#sampling-sim-anchor">SAM</a>
+      <a href="#mfcc-sim-anchor">MFCC</a>
+      <a href="#vad-sim-anchor">VAD</a>
+      <a href="#spk-sim-anchor">SPK</a>
+      <a href="#fft-stft-anchor">FFT</a>
+      <a href="#dtw-sim-anchor">DTW</a>
+      <div class="sp-float-sections" id="sp-float-sections"></div>
+    </nav>
+
+    <div id="top-anchor"></div>
+    <header class="sp-header">
+      <a class="sp-back" href="index.html">← <span data-i18n="back">Back</span></a>
+      <div class="sp-page-title-wrap">
+        <h1 data-i18n="title">Speech Processing Academy</h1>
+        <p class="sp-page-subtitle" data-i18n="pageLevel">Introductory track</p>
+      </div>
+      <nav class="sp-track-switch" aria-label="Track">
+        <a class="active" href="speech-processing.html" data-i18n="trackIntro">Intro</a>
+        <a href="speech-processing-advanced.html" data-i18n="trackAdvanced">Advanced</a>
+      </nav>
+    </header>
+
+    <section class="sp-hero card">
+      <p class="sp-kicker" data-i18n="kicker">Structured • Scientific • Practical</p>
+      <h2 data-i18n="heroTitle">A complete path for modern speech processing</h2>
+      <p data-i18n="heroDesc"></p>
+      <div class="sp-cta-row">
+        <a class="btn btn-primary" href="#sec-foundations" data-i18n="startPath">Start learning path</a>
+        <a class="btn btn-secondary" href="#labs-anchor" data-i18n="openSimLab">Open simulator lab</a>
+      </div>
+    </section>
+
+    <nav class="sp-breadcrumb card" aria-label="Breadcrumb">
+      <span data-i18n="crumbHome">Home</span>
+      <span>/</span>
+      <span data-i18n="crumbAcademy">Speech Academy</span>
+      <span>/</span>
+      <strong id="crumb-current">...</strong>
+    </nav>
+
+    <section class="sp-overview card" id="overview-anchor">
+      <h3 data-i18n="overviewTitle">Course map</h3>
+      <div id="overview-root" class="sp-overview-grid"></div>
+    </section>
+
+    <nav class="sp-lab-links card" aria-label="Related labs">
+      <a href="speech-processing-advanced.html#adv-labs" data-i18n="linkAdvLabs">Advanced track & foundation models</a>
+      <a href="speech-tasks.html#task-labs" data-i18n="linkTasks">Speech tasks demos</a>
+      <a href="trustworthy-ml.html#trust-labs" data-i18n="linkTrustLabs">Trustworthy ML labs</a>
+      <a href="docker-commands.html" data-i18n="linkDocker">Docker commands</a>
+      <a href="git-commands.html" data-i18n="linkGit">Git commands</a>
+      <a href="academy.html" data-i18n="globalAcademy">Academy hub</a>
+    </nav>
+
+    <main class="sp-layout" id="sections-anchor">
+      <aside class="sp-tree card">
+        <h3 data-i18n="treeTitle">Learning tree</h3>
+        <ul id="tree-root"></ul>
+      </aside>
+
+      <section class="sp-content" id="content-root"></section>
+    </main>
+
+    <section class="sp-lab card" id="labs-anchor">
+      <h3 data-i18n="simLabTitle">Interactive concept simulators</h3>
+      <p class="sp-lab-lead" data-i18n="simLabDesc"></p>
+      <div class="sp-lab-grid">
+        <article class="sp-lab-card sp-lab-card-xl" id="spec-studio-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="flagshipTitle">Flagship simulator: Spectrogram Studio</h4>
+            <button class="sp-full-btn" type="button" data-full-target="spec-studio-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <p class="sp-note" data-i18n="flagshipDesc"></p>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlScenario">Signal scenario</span>
+              <select id="spec-scenario">
+                <option value="vowel">Speech-like vowel</option>
+                <option value="chirp">Linear chirp</option>
+                <option value="mixture">Two-speaker mixture</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="ctrlNfft">FFT size</span>
+              <select id="spec-nfft">
+                <option value="128">128</option>
+                <option value="256" selected>256</option>
+                <option value="512">512</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="ctrlSpecScale">Spectrogram scale</span>
+              <select id="spec-scale">
+                <option value="linear">Linear STFT</option>
+                <option value="mel">Mel Spectrogram</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="ctrlOverlap">Frame overlap</span>
+              <input id="spec-overlap" type="range" min="20" max="90" step="5" value="60" />
+            </label>
+            <label>
+              <span data-i18n="ctrlSpecNoise">Noise amount</span>
+              <input id="spec-noise" type="range" min="0" max="70" step="1" value="18" />
+            </label>
+            <label>
+              <span data-i18n="ctrlPlayhead">Playhead frame</span>
+              <input id="spec-playhead" type="range" min="0" max="100" step="1" value="0" />
+            </label>
+          </div>
+          <p class="sp-axis-label" data-i18n="timeDomainLabel">Time domain waveform</p>
+          <canvas id="spec-wave-canvas" width="960" height="190"></canvas>
+          <p class="sp-axis-label" data-i18n="timeFreqLabel">Time-Frequency representation (Spectrogram)</p>
+          <canvas id="spec-heatmap-canvas" width="960" height="320"></canvas>
+          <p class="sp-axis-label" data-i18n="freqDomainLabel">Frequency-domain slice for selected frame</p>
+          <canvas id="spec-slice-canvas" width="960" height="180"></canvas>
+          <p class="sp-note" id="spec-summary"></p>
+        </article>
+
+        <article class="sp-lab-card" id="win-sim-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="winSimTitle">Windowing simulator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="win-sim-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlWindowType">Window type</span>
+              <select id="win-type">
+                <option value="hann">Hann</option>
+                <option value="hamming">Hamming</option>
+                <option value="rect">Rectangular</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="ctrlWindowSize">Window size</span>
+              <input id="win-size" type="range" min="32" max="320" step="8" value="128" />
+            </label>
+            <label>
+              <span data-i18n="ctrlWindowShift">Window shift</span>
+              <input id="win-shift" type="range" min="0" max="384" step="4" value="120" />
+            </label>
+          </div>
+          <canvas id="win-canvas-time" width="960" height="220"></canvas>
+          <canvas id="win-canvas-spec" width="960" height="170"></canvas>
+        </article>
+
+        <article class="sp-lab-card" id="sampling-sim-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="samplingSimTitle">Sampling and aliasing simulator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="sampling-sim-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlSignalFreq">Signal frequency</span>
+              <input id="samp-freq" type="range" min="1" max="24" step="1" value="10" />
+            </label>
+            <label>
+              <span data-i18n="ctrlSampleRate">Sampling rate</span>
+              <input id="samp-rate" type="range" min="8" max="96" step="2" value="28" />
+            </label>
+          </div>
+          <canvas id="samp-canvas" width="960" height="260"></canvas>
+          <p class="sp-note" id="alias-note"></p>
+        </article>
+
+        <article class="sp-lab-card" id="mfcc-sim-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="mfccSimTitle">MFCC filterbank simulator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="mfcc-sim-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlMelBands">Mel bands</span>
+              <input id="mfcc-bands" type="range" min="8" max="40" step="1" value="20" />
+            </label>
+            <label>
+              <span data-i18n="ctrlPreEmphasis">Pre-emphasis</span>
+              <input id="mfcc-pre" type="range" min="0" max="98" step="1" value="93" />
+            </label>
+          </div>
+          <canvas id="mfcc-canvas" width="960" height="240"></canvas>
+          <p class="sp-note" data-i18n="mfccNote"></p>
+        </article>
+
+        <article class="sp-lab-card" id="vad-sim-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="vadSimTitle">VAD threshold simulator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="vad-sim-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlNoiseLevel">Noise level</span>
+              <input id="vad-noise" type="range" min="0" max="90" step="1" value="30" />
+            </label>
+            <label>
+              <span data-i18n="ctrlVadThreshold">VAD threshold</span>
+              <input id="vad-threshold" type="range" min="5" max="95" step="1" value="45" />
+            </label>
+          </div>
+          <canvas id="vad-canvas" width="960" height="240"></canvas>
+          <p class="sp-note" id="vad-note"></p>
+        </article>
+
+        <article class="sp-lab-card" id="spk-sim-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="spkSimTitle">Speaker distance simulator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="spk-sim-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlClusterGap">Cluster gap</span>
+              <input id="spk-gap" type="range" min="20" max="120" step="2" value="70" />
+            </label>
+            <label>
+              <span data-i18n="ctrlVerifyThreshold">Verification threshold</span>
+              <input id="spk-threshold" type="range" min="10" max="120" step="2" value="52" />
+            </label>
+          </div>
+          <canvas id="spk-canvas" width="960" height="240"></canvas>
+          <p class="sp-note" id="spk-note"></p>
+        </article>
+
+        <article class="sp-lab-card" id="fft-stft-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="fftStftTitle">FFT vs STFT comparator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="fft-stft-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlToneMix">Tone mix level</span>
+              <input id="fft-mix" type="range" min="0" max="100" step="1" value="55" />
+            </label>
+            <label>
+              <span data-i18n="ctrlStftFrame">STFT frame size</span>
+              <input id="fft-frame" type="range" min="64" max="512" step="32" value="256" />
+            </label>
+          </div>
+          <p class="sp-axis-label" data-i18n="fftLabel">Global FFT magnitude</p>
+          <canvas id="fft-canvas" width="960" height="180"></canvas>
+          <p class="sp-axis-label" data-i18n="stftLabel">Local STFT slice variability</p>
+          <canvas id="stft-canvas" width="960" height="180"></canvas>
+        </article>
+
+        <article class="sp-lab-card" id="dtw-sim-anchor">
+          <div class="sp-lab-head">
+            <h4 data-i18n="dtwTitle">DTW alignment simulator</h4>
+            <button class="sp-full-btn" type="button" data-full-target="dtw-sim-anchor" data-i18n="fullScreenBtn">
+              Fullscreen
+            </button>
+          </div>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="ctrlDtwStretch">Stretch mismatch</span>
+              <input id="dtw-stretch" type="range" min="60" max="160" step="2" value="118" />
+            </label>
+            <label>
+              <span data-i18n="ctrlDtwNoise">Sequence noise</span>
+              <input id="dtw-noise" type="range" min="0" max="70" step="1" value="18" />
+            </label>
+          </div>
+          <canvas id="dtw-canvas" width="960" height="280"></canvas>
+          <p class="sp-note" id="dtw-note"></p>
+        </article>
+
+      </div>
+    </section>
+
+    <footer class="sp-site-footer card">
+      <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      <p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p>
+    </footer>
+
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/speech-processing.js"></script>
+  </body>
+</html>

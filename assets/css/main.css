@@ -518,9 +518,91 @@ body.rtl .hero-kicker::before {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.themes-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-bottom: var(--space-xl);
+.interest-panel {
+  width: min(var(--max), 100% - 2rem);
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--stroke);
+  background: linear-gradient(155deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.42));
+  backdrop-filter: blur(10px);
+}
+
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.interest-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(167, 139, 250, 0.08));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.interest-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(125, 211, 252, 0.45);
+  box-shadow: 0 8px 28px rgba(14, 165, 233, 0.15);
+}
+
+.collab-grid {
+  width: min(var(--max), 100% - 2rem);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.collab-card {
+  min-height: 10rem;
+}
+
+.collab-group-title {
+  font-size: var(--step-1);
+  margin: 0 0 var(--space-md);
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.collab-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collab-list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--stroke);
+  font-size: var(--step--1);
+  font-weight: 500;
+}
+
+.collab-list li:last-child {
+  border-bottom: none;
+}
+
+.collab-list .collab-empty {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.collab-affil {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.85em;
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .subsection-title {
@@ -863,6 +945,20 @@ body.is-loaded .page-loader {
   border-radius: 4px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   opacity: 0.7;
+}
+
+.icon-trust .course-icon {
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.22);
+}
+
+.icon-trust .course-icon::after {
+  content: "";
+  position: absolute;
+  inset: 11px 13px;
+  border: 2px solid var(--success);
+  border-radius: 6px 6px 10px 10px;
+  border-top-width: 3px;
 }
 
 .app-top {

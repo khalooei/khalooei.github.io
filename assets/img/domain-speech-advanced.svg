@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Speech advanced">
+  <rect width="320" height="180" fill="#0b1220"/>
+  <circle cx="70" cy="90" r="18" fill="#38bdf8"/>
+  <circle cx="160" cy="60" r="22" fill="#a78bfa"/>
+  <circle cx="250" cy="95" r="20" fill="#34d399"/>
+  <line x1="88" y1="90" x2="138" y2="68" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="182" y1="68" x2="230" y2="90" stroke="#94a3b8" stroke-width="2"/>
+  <text x="16" y="28" fill="#e2e8f0" font-size="14" font-family="sans-serif">Foundation Models</text>
+</svg>

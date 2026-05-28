@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Trustworthy ML">
+  <rect width="320" height="180" fill="#111827"/>
+  <path d="M160 34 L220 58 V98 C220 132 160 152 160 152 C160 152 100 132 100 98 V58 Z" fill="none" stroke="#34d399" stroke-width="4"/>
+  <path d="M132 96 L152 116 L190 74" fill="none" stroke="#7dd3fc" stroke-width="4"/>
+  <text x="16" y="28" fill="#e2e8f0" font-size="14" font-family="sans-serif">Trustworthy ML</text>
+</svg>

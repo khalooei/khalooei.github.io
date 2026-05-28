@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Advanced speech: foundation models, olympiad practice, HuBERT, Whisper, Qwen-Audio, Voxtral." />
+    <title>Advanced Speech — Academy</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <nav class="sp-float-nav" aria-label="Quick navigation">
+      <a href="#adv-top">↑</a>
+      <a href="#adv-olympiad" data-i18n="floatOlympiad">Olympiad</a>
+      <a href="#adv-models" data-i18n="floatModels">Models</a>
+      <a href="#adv-modules" data-i18n="floatModules">Modules</a>
+      <a href="#adv-labs" data-i18n="floatLabs">Labs</a>
+    </nav>
+
+    <div id="adv-top"></div>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="globalCurrentAdvanced">Academy / Speech (Advanced)</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <header class="sp-header">
+      <a class="sp-back" href="academy.html" data-i18n="backAcademy">← Back to Academy</a>
+      <div class="sp-page-title-wrap">
+        <h1 data-i18n="advTitle">Advanced Speech Processing</h1>
+        <p class="sp-page-subtitle" data-i18n="advSubtitle">Foundation Models & Olympiad Practice</p>
+      </div>
+      <nav class="sp-track-switch" aria-label="Track">
+        <a href="speech-processing.html" data-i18n="trackIntro">Intro</a>
+        <a class="active" href="speech-processing-advanced.html" data-i18n="trackAdvanced">Advanced</a>
+      </nav>
+    </header>
+
+    <nav class="sp-lab-links card">
+      <a href="speech-processing.html#labs-anchor" data-i18n="linkIntroLabs">Intro simulators (STFT, MFCC, VAD…)</a>
+      <a href="speech-tasks.html" data-i18n="linkTasks">Speech tasks</a>
+      <a href="trustworthy-ml.html#trust-labs" data-i18n="linkTrust">Trustworthy ML labs</a>
+      <a href="nlp.html" data-i18n="linkNlp">NLP track (soon)</a>
+      <a href="academy.html" data-i18n="globalAcademy">Academy hub</a>
+    </nav>
+
+    <section class="sp-hero card">
+      <img class="sp-hero-image" src="assets/img/domain-speech-advanced.svg" alt="" />
+      <p class="sp-kicker" data-i18n="advKicker">Foundation audio intelligence</p>
+      <h2 data-i18n="advHero">Top encoders & audio LLMs in one map</h2>
+      <p class="sp-note" data-i18n="advHeroDesc"></p>
+    </section>
+
+    <section class="sp-overview card" id="adv-olympiad">
+      <h3 data-i18n="olympiadTitle">Olympiad-style audio curriculum</h3>
+      <p class="sp-note" data-i18n="olympiadDesc"></p>
+      <div style="overflow-x: auto;">
+        <table class="curriculum-table">
+          <thead>
+            <tr>
+              <th data-i18n="colTopic">Topic</th>
+              <th data-i18n="colSubtopic">Subtopic</th>
+              <th data-i18n="colCategory">Category</th>
+              <th data-i18n="colLink">Lab link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Audio Processing</td>
+              <td>Pre-trained Audio Encoders (HuBERT)</td>
+              <td><span class="curriculum-tag">Practice</span></td>
+              <td><a href="speech-processing.html#mfcc-sim-anchor">MFCC / features</a> · <a href="#adv-labs">Embedding lab</a></td>
+            </tr>
+            <tr>
+              <td>Audio Models</td>
+              <td>Qwen-Audio, Whisper, Voxtral</td>
+              <td><span class="curriculum-tag">Practice</span></td>
+              <td><a href="speech-tasks.html#task-asr">ASR tasks</a></td>
+            </tr>
+            <tr>
+              <td>NLP (cross-track)</td>
+              <td>Text Classification, BERT encoders</td>
+              <td><span class="curriculum-tag">Both</span></td>
+              <td><a href="nlp.html">NLP (soon)</a></td>
+            </tr>
+            <tr>
+              <td>NLP</td>
+              <td>Language Modeling & Encoder-Decoder</td>
+              <td><span class="curriculum-tag">Both</span></td>
+              <td><a href="nlp.html">NLP (soon)</a></td>
+            </tr>
+            <tr>
+              <td>Computer Vision</td>
+              <td>Detection, Segmentation, CLIP, Diffusion</td>
+              <td><span class="curriculum-tag">Practice</span></td>
+              <td><a href="computer-vision.html">CV (soon)</a></td>
+            </tr>
+            <tr>
+              <td>Neural Networks</td>
+              <td>Attention, Transformers, Finetuning</td>
+              <td><span class="curriculum-tag">Both</span></td>
+              <td><a href="neural-networks.html">NN & DL (soon)</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sp-overview card" id="adv-models">
+      <h3 data-i18n="modelsTitle">Foundation model landscape (by lab / company)</h3>
+      <p class="sp-note" data-i18n="modelsDesc"></p>
+
+      <div class="model-vendor-block">
+        <h4>Meta / FAIR</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://arxiv.org/abs/2106.07447" target="_blank" rel="noopener noreferrer">HuBERT</a>
+          <a class="model-chip" href="https://arxiv.org/abs/2006.11477" target="_blank" rel="noopener noreferrer">wav2vec 2.0</a>
+          <a class="model-chip" href="https://arxiv.org/abs/2202.03555" target="_blank" rel="noopener noreferrer">data2vec</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>Microsoft</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://arxiv.org/abs/2110.13900" target="_blank" rel="noopener noreferrer">WavLM</a>
+          <a class="model-chip" href="https://github.com/microsoft/unilm" target="_blank" rel="noopener noreferrer">UniLM / SpeechT5</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>OpenAI</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://arxiv.org/abs/2212.04356" target="_blank" rel="noopener noreferrer">Whisper</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>Mistral</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://mistral.ai/news/voxtral" target="_blank" rel="noopener noreferrer">Voxtral</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>Alibaba (Qwen)</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://github.com/QwenLM/Qwen-Audio" target="_blank" rel="noopener noreferrer">Qwen-Audio</a>
+          <a class="model-chip" href="https://github.com/QwenLM/Qwen2-Audio" target="_blank" rel="noopener noreferrer">Qwen2-Audio</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>Google</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://arxiv.org/abs/2301.02111" target="_blank" rel="noopener noreferrer">AudioLM</a>
+          <a class="model-chip" href="https://arxiv.org/abs/2212.09058" target="_blank" rel="noopener noreferrer">USM / AudioPaLM family</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>NVIDIA</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://arxiv.org/abs/2212.09058" target="_blank" rel="noopener noreferrer">BEATs</a>
+          <a class="model-chip" href="https://developer.nvidia.com/riva" target="_blank" rel="noopener noreferrer">Riva / Parakeet</a>
+        </div>
+      </div>
+      <div class="model-vendor-block">
+        <h4>Amazon · Apple · Others</h4>
+        <div class="model-chip-grid">
+          <a class="model-chip" href="https://arxiv.org/abs/2306.05284" target="_blank" rel="noopener noreferrer">VALL-E / VALL-E 2</a>
+          <a class="model-chip" href="https://huggingface.co/facebook/wav2vec2-base" target="_blank" rel="noopener noreferrer">HF model hub</a>
+        </div>
+      </div>
+    </section>
+
+    <main class="sp-lab card" id="adv-modules">
+      <h3 style="margin-top: 0;" data-i18n="advHead">Advanced track modules</h3>
+      <div class="sp-lab-grid">
+        <article class="sp-lab-card">
+          <h4 data-i18n="advMod1Title">Self-Supervised Speech Models</h4>
+          <p class="sp-note" data-i18n="advMod1Desc"></p>
+        </article>
+        <article class="sp-lab-card">
+          <h4 data-i18n="advMod2Title">Audio Foundation Models</h4>
+          <p class="sp-note" data-i18n="advMod2Desc"></p>
+        </article>
+        <article class="sp-lab-card">
+          <h4 data-i18n="advMod3Title">Generative Audio Models</h4>
+          <p class="sp-note" data-i18n="advMod3Desc"></p>
+        </article>
+        <article class="sp-lab-card">
+          <h4 data-i18n="advMod4Title">Alignment and Evaluation at Scale</h4>
+          <p class="sp-note" data-i18n="advMod4Desc"></p>
+        </article>
+      </div>
+    </main>
+
+    <section class="sp-lab card" id="adv-labs">
+      <h3 style="margin-top: 0;" data-i18n="advSimTitle">Advanced simulators</h3>
+      <p class="sp-note" data-i18n="advSimDesc"></p>
+      <div class="sp-lab-grid">
+        <article class="sp-lab-card">
+          <h4 data-i18n="advSim1Title">Embedding Space Explorer</h4>
+          <p class="sp-note" data-i18n="advSim1Hint"></p>
+          <canvas id="adv-embed-canvas" width="960" height="260"></canvas>
+        </article>
+        <article class="sp-lab-card">
+          <h4 data-i18n="advSim2Title">Diffusion Denoise Steps</h4>
+          <p class="sp-note" data-i18n="advSim2Hint"></p>
+          <div class="sp-control-row">
+            <label>
+              <span data-i18n="advCtrlStep">Denoise step</span>
+              <input id="adv-step" type="range" min="1" max="60" step="1" value="18" />
+            </label>
+          </div>
+          <canvas id="adv-diff-canvas" width="960" height="240"></canvas>
+        </article>
+        <article class="sp-lab-card">
+          <h4 data-i18n="advPaperTitle">Key papers</h4>
+          <ul class="sp-sublist">
+            <li><a href="https://arxiv.org/abs/2006.11477" target="_blank" rel="noopener noreferrer">wav2vec 2.0</a></li>
+            <li><a href="https://arxiv.org/abs/2106.07447" target="_blank" rel="noopener noreferrer">HuBERT</a></li>
+            <li><a href="https://arxiv.org/abs/2110.13900" target="_blank" rel="noopener noreferrer">WavLM</a></li>
+            <li><a href="https://arxiv.org/abs/2212.09058" target="_blank" rel="noopener noreferrer">BEATs</a></li>
+            <li><a href="https://arxiv.org/abs/2212.04356" target="_blank" rel="noopener noreferrer">Whisper</a></li>
+            <li><a href="https://arxiv.org/abs/2301.02111" target="_blank" rel="noopener noreferrer">AudioLM</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="sp-site-footer card">
+      <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      <p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {
+          globalHighlights: "Highlights",
+          globalResearch: "Research",
+          globalTeaching: "Teaching",
+          globalAcademy: "Academy",
+          globalCurrentAdvanced: "Academy / Speech (Advanced)",
+          backAcademy: "← Back to Academy",
+          advTitle: "Advanced Speech Processing",
+          advSubtitle: "Foundation Models & Olympiad Practice",
+          trackIntro: "Intro",
+          trackAdvanced: "Advanced",
+          advKicker: "Foundation audio intelligence",
+          advHero: "Top encoders & audio LLMs in one map",
+          advHeroDesc:
+            "Curated for olympiad-level practice: from HuBERT/WavLM encoders to Whisper, Qwen-Audio and Voxtral — linked to intro simulators and task demos.",
+          floatOlympiad: "Olympiad",
+          floatModels: "Models",
+          floatModules: "Modules",
+          floatLabs: "Labs",
+          linkIntroLabs: "Intro simulators (STFT, MFCC, VAD…)",
+          linkTasks: "Speech tasks",
+          linkTrust: "Trustworthy ML labs",
+          linkNlp: "NLP track (soon)",
+          olympiadTitle: "Olympiad-style audio curriculum",
+          olympiadDesc: "Aligned with competition-style topics: encoders, audio LLMs, and cross-links to NLP/CV/DL tracks.",
+          colTopic: "Topic",
+          colSubtopic: "Subtopic",
+          colCategory: "Category",
+          colLink: "Lab link",
+          modelsTitle: "Foundation model landscape (by lab / company)",
+          modelsDesc: "Always-updated map of top industrial and open models — click for papers or repos.",
+          advHead: "Advanced track modules",
+          advMod1Title: "Self-Supervised Speech Models",
+          advMod1Desc: "HuBERT, wav2vec 2.0, WavLM, data2vec, BEATs — representation learning practice.",
+          advMod2Title: "Audio Foundation Models",
+          advMod2Desc: "Whisper, Qwen-Audio, Voxtral, unified ASR/captioning/retrieval stacks.",
+          advMod3Title: "Generative Audio Models",
+          advMod3Desc: "AudioLM, diffusion TTS, voice conversion, controllable generation.",
+          advMod4Title: "Alignment and Evaluation at Scale",
+          advMod4Desc: "Robustness, fairness, deployment metrics — links to Trustworthy ML labs.",
+          advSimTitle: "Advanced simulators",
+          advSimDesc: "Connect theory to the intro labs: embeddings relate to speaker/VAD tasks; diffusion relates to generative audio.",
+          advSim1Title: "Embedding Space Explorer",
+          advSim1Hint: "Related: speaker distance lab in intro track.",
+          advSim2Title: "Diffusion Denoise Steps",
+          advSim2Hint: "Related: spectrogram studio (STFT) in intro track.",
+          advCtrlStep: "Denoise step",
+          advPaperTitle: "Key papers",
+        },
+        fa: {
+          globalHighlights: "برجسته‌ها",
+          globalResearch: "پژوهش",
+          globalTeaching: "تدریس",
+          globalAcademy: "آکادمی",
+          globalCurrentAdvanced: "آکادمی / صوت پیشرفته",
+          backAcademy: "← بازگشت به آکادمی",
+          advTitle: "پردازش صوت پیشرفته",
+          advSubtitle: "Foundation Models و تمرین المپیاد",
+          trackIntro: "مقدماتی",
+          trackAdvanced: "پیشرفته",
+          advKicker: "هوش صوتی مبتنی بر مدل‌های بنیادین",
+          advHero: "نقشه جامع رمزگذارها و مدل‌های صوتی بزرگ",
+          advHeroDesc:
+            "برای تمرین المپیاد: از HuBERT/WavLM تا Whisper و Qwen-Audio و Voxtral — با لینک به شبیه‌سازهای مقدماتی و تسک‌ها.",
+          floatOlympiad: "المپیاد",
+          floatModels: "مدل‌ها",
+          floatModules: "ماژول",
+          floatLabs: "آزمایشگاه",
+          linkIntroLabs: "شبیه‌سازهای مقدماتی (STFT، MFCC، VAD…)",
+          linkTasks: "تسک‌های صوت",
+          linkTrust: "آزمایشگاه ML قابل‌اعتماد",
+          linkNlp: "مسیر NLP (به‌زودی)",
+          olympiadTitle: "سرفصل المپیادی صوت",
+          olympiadDesc: "هم‌راستا با موضوعات رقابتی: رمزگذار، مدل صوتی بزرگ و پیوند با NLP/CV/DL.",
+          colTopic: "موضوع",
+          colSubtopic: "زیرموضوع",
+          colCategory: "دسته",
+          colLink: "لینک آزمایشگاه",
+          modelsTitle: "چشم‌انداز مدل‌های بنیادین (بر اساس شرکت/آزمایشگاه)",
+          modelsDesc: "نقشه به‌روز مدل‌های صنعتی و متن‌باز — کلیک برای مقاله یا مخزن.",
+          advHead: "ماژول‌های مسیر پیشرفته",
+          advMod1Title: "مدل‌های خودنظارتی گفتار",
+          advMod1Desc: "HuBERT، wav2vec 2.0، WavLM، data2vec، BEATs.",
+          advMod2Title: "مدل‌های بنیادین صوت",
+          advMod2Desc: "Whisper، Qwen-Audio، Voxtral و پشته‌های یکپارچه ASR.",
+          advMod3Title: "مدل‌های مولد صوت",
+          advMod3Desc: "AudioLM، diffusion TTS، تبدیل صدا.",
+          advMod4Title: "هم‌ترازی و ارزیابی در مقیاس",
+          advMod4Desc: "پیوند به آزمایشگاه‌های Trustworthy ML.",
+          advSimTitle: "شبیه‌سازهای پیشرفته",
+          advSimDesc: "ارتباط با آزمایشگاه مقدماتی: embedding با گوینده؛ diffusion با طیف‌نگار.",
+          advSim1Title: "کاوشگر فضای embedding",
+          advSim1Hint: "مرتبط: فاصله گوینده در مسیر مقدماتی.",
+          advSim2Title: "گام‌های Denoise در Diffusion",
+          advSim2Hint: "مرتبط: Spectrogram Studio در مسیر مقدماتی.",
+          advCtrlStep: "گام Denoise",
+          advPaperTitle: "پیپرهای کلیدی",
+        },
+        ar: {
+          globalHighlights: "الملخص",
+          globalResearch: "البحث",
+          globalTeaching: "التدريس",
+          globalAcademy: "الأكاديمية",
+          globalCurrentAdvanced: "الأكاديمية / صوت متقدم",
+          backAcademy: "← العودة",
+          advTitle: "معالجة الصوت المتقدمة",
+          advSubtitle: "نماذج أساسية وأولمبياد",
+          trackIntro: "تمهيدي",
+          trackAdvanced: "متقدم",
+          advKicker: "ذكاء صوتي",
+          advHero: "خريطة النماذج الصوتية الكبرى",
+          advHeroDesc: "من HuBERT إلى Whisper وQwen-Audio وVoxtral مع روابط للمحاكيات.",
+          floatOlympiad: "أولمبياد",
+          floatModels: "نماذج",
+          floatModules: "وحدات",
+          floatLabs: "مختبر",
+          linkIntroLabs: "محاكيات تمهيدية",
+          linkTasks: "مهام الصوت",
+          linkTrust: "مختبر ML الموثوق",
+          linkNlp: "NLP (قريبًا)",
+          olympiadTitle: "منهج أولمبي للصوت",
+          olympiadDesc: "مواضيع المسابقات والروابط عبر المسارات.",
+          colTopic: "الموضوع",
+          colSubtopic: "الفرعي",
+          colCategory: "الفئة",
+          colLink: "رابط",
+          modelsTitle: "خريطة النماذج الأساسية",
+          modelsDesc: "نماذج الشركات والمفتوحة.",
+          advHead: "وحدات متقدمة",
+          advMod1Title: "نماذج ذاتية الإشراف",
+          advMod1Desc: "HuBERT وWavLM وBEATs.",
+          advMod2Title: "نماذج صوت أساسية",
+          advMod2Desc: "Whisper وQwen-Audio وVoxtral.",
+          advMod3Title: "نماذج توليدية",
+          advMod3Desc: "AudioLM وdiffusion.",
+          advMod4Title: "التقييم",
+          advMod4Desc: "الصلابة والنشر.",
+          advSimTitle: "محاكيات متقدمة",
+          advSimDesc: "مرتبطة بالمسار التمهيدي.",
+          advSim1Title: "مستكشف embedding",
+          advSim1Hint: "مرتبط بالمتحدث.",
+          advSim2Title: "Diffusion",
+          advSim2Hint: "مرتبط بالطيف.",
+          advCtrlStep: "خطوة",
+          advPaperTitle: "أوراق",
+        },
+        zh: {
+          globalHighlights: "亮点",
+          globalResearch: "研究",
+          globalTeaching: "教学",
+          globalAcademy: "学院",
+          globalCurrentAdvanced: "学院 / 语音进阶",
+          backAcademy: "← 返回学院",
+          advTitle: "进阶语音处理",
+          advSubtitle: "基础模型与竞赛练习",
+          trackIntro: "入门",
+          trackAdvanced: "进阶",
+          advKicker: "基础音频智能",
+          advHero: "顶级编码器与音频大模型全景",
+          advHeroDesc: "涵盖 HuBERT/WavLM 至 Whisper、Qwen-Audio、Voxtral，并链接入门模拟器。",
+          floatOlympiad: "竞赛",
+          floatModels: "模型",
+          floatModules: "模块",
+          floatLabs: "实验",
+          linkIntroLabs: "入门模拟器",
+          linkTasks: "语音任务",
+          linkTrust: "可信 ML 实验",
+          linkNlp: "NLP（即将）",
+          olympiadTitle: "竞赛风格音频课程",
+          olympiadDesc: "对齐奥赛主题并交叉链接 NLP/CV/DL。",
+          colTopic: "主题",
+          colSubtopic: "子主题",
+          colCategory: "类别",
+          colLink: "实验链接",
+          modelsTitle: "基础模型图谱（按机构）",
+          modelsDesc: "工业与开源顶级模型索引。",
+          advHead: "进阶模块",
+          advMod1Title: "自监督语音模型",
+          advMod1Desc: "HuBERT、wav2vec 2.0、WavLM、BEATs。",
+          advMod2Title: "音频基础模型",
+          advMod2Desc: "Whisper、Qwen-Audio、Voxtral。",
+          advMod3Title: "生成式音频",
+          advMod3Desc: "AudioLM、扩散 TTS。",
+          advMod4Title: "对齐与评测",
+          advMod4Desc: "链接可信 ML 实验。",
+          advSimTitle: "进阶模拟器",
+          advSimDesc: "与入门实验互联。",
+          advSim1Title: "Embedding 探索",
+          advSim1Hint: "关联说话人实验。",
+          advSim2Title: "Diffusion 去噪",
+          advSim2Hint: "关联 STFT 实验。",
+          advCtrlStep: "去噪步",
+          advPaperTitle: "关键论文",
+        },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/speech-processing-advanced.js"></script>
+  </body>
+</html>

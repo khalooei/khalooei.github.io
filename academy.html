@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Academy: structured ML tracks, simulators, and practical tooling." />
+    <title>Academy</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <nav class="sp-float-nav" aria-label="Domains quick nav">
+      <a href="#academy-top">↑</a>
+      <a href="#sec-speech">Audio</a>
+      <a href="#sec-ml-core">ML</a>
+      <a href="#sec-dev">Dev</a>
+      <a href="#sec-soon">Soon</a>
+    </nav>
+
+    <div id="academy-top"></div>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="globalCurrentAcademy">Academy</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="sp-hero card" style="margin-top: 1rem;">
+      <img class="sp-hero-image" src="assets/img/academy-hero.svg" alt="Academy hero visual" />
+      <p class="sp-kicker" data-i18n="academyKicker">Academy</p>
+      <h1 style="margin-top: 0;" data-i18n="academyTitle">Academy — Learning Hub</h1>
+      <p class="sp-note" data-i18n="academyDesc"></p>
+
+      <h2 class="academy-section-title" id="sec-speech" data-i18n="sectionSpeech">Speech & Audio</h2>
+      <div class="academy-domain-grid">
+        <article class="academy-domain-card card" id="domain-speech-intro">
+          <img src="assets/img/domain-speech-intro.svg" alt="" />
+          <h3 data-i18n="trackIntroCard">Speech Processing Intro</h3>
+          <p class="sp-note" data-i18n="trackIntroDesc"></p>
+          <a class="btn btn-primary" href="speech-processing.html" data-i18n="openTrack">Open</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-speech-advanced">
+          <img src="assets/img/domain-speech-advanced.svg" alt="" />
+          <h3 data-i18n="trackAdvCard">Speech Advanced (Foundation Models)</h3>
+          <p class="sp-note" data-i18n="trackAdvDesc"></p>
+          <a class="btn btn-primary" href="speech-processing-advanced.html" data-i18n="openTrack">Open</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-speech-tasks">
+          <img src="assets/img/domain-speech-tasks.svg" alt="" />
+          <h3 data-i18n="trackTasksCard">Speech Tasks</h3>
+          <p class="sp-note" data-i18n="trackTasksDesc"></p>
+          <a class="btn btn-primary" href="speech-tasks.html" data-i18n="openTrack">Open</a>
+        </article>
+      </div>
+
+      <h2 class="academy-section-title" id="sec-ml-core" data-i18n="sectionML">Machine Learning Core</h2>
+      <div class="academy-domain-grid">
+        <article class="academy-domain-card card" id="domain-trustworthy">
+          <img src="assets/img/domain-trustworthy.svg" alt="" />
+          <h3 data-i18n="trackTrustCard">Trustworthy & Robust ML</h3>
+          <p class="sp-note" data-i18n="trackTrustDesc"></p>
+          <a class="btn btn-primary" href="trustworthy-ml.html" data-i18n="openTrack">Open</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-nn">
+          <img src="assets/img/domain-nn.svg" alt="" />
+          <h3 data-i18n="trackNnCard">Neural Networks & Deep Learning</h3>
+          <p class="sp-note" data-i18n="trackNnDesc"></p>
+          <span class="academy-soon-badge" data-i18n="comingSoon">Coming soon</span>
+          <a class="btn btn-secondary" href="neural-networks.html" data-i18n="previewTrack">Preview syllabus</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-gan">
+          <img src="assets/img/domain-gan.svg" alt="" />
+          <h3 data-i18n="trackGanCard">Generative Adversarial Networks</h3>
+          <p class="sp-note" data-i18n="trackGanDesc"></p>
+          <span class="academy-soon-badge" data-i18n="comingSoon">Coming soon</span>
+          <a class="btn btn-secondary" href="generative-adversarial-networks.html" data-i18n="previewTrack">Preview syllabus</a>
+        </article>
+      </div>
+
+      <h2 class="academy-section-title" id="sec-dev" data-i18n="sectionDev">Developer Tooling</h2>
+      <div class="academy-domain-grid">
+        <article class="academy-domain-card card" id="domain-docker">
+          <img src="assets/img/domain-docker.svg" alt="" />
+          <h3 data-i18n="trackDockerCard">Docker — Practical Commands</h3>
+          <p class="sp-note" data-i18n="trackDockerDesc"></p>
+          <a class="btn btn-primary" href="docker-commands.html" data-i18n="openTrack">Open</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-git">
+          <img src="assets/img/domain-git.svg" alt="" />
+          <h3 data-i18n="trackGitCard">Git — Practical Commands</h3>
+          <p class="sp-note" data-i18n="trackGitDesc"></p>
+          <a class="btn btn-primary" href="git-commands.html" data-i18n="openTrack">Open</a>
+        </article>
+      </div>
+
+      <h2 class="academy-section-title" id="sec-soon" data-i18n="sectionSoon">More domains (coming soon)</h2>
+      <div class="academy-domain-grid">
+        <article class="academy-domain-card card" id="domain-nlp">
+          <img src="assets/img/domain-nlp.svg" alt="" />
+          <h3 data-i18n="trackNlpCard">Natural Language Processing</h3>
+          <p class="sp-note" data-i18n="trackNlpDesc"></p>
+          <span class="academy-soon-badge" data-i18n="comingSoon">Coming soon</span>
+          <a class="btn btn-secondary" href="nlp.html" data-i18n="previewTrack">Preview syllabus</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-mlops">
+          <img src="assets/img/domain-mlops.svg" alt="" />
+          <h3 data-i18n="trackMlopsCard">MLOps</h3>
+          <p class="sp-note" data-i18n="trackMlopsDesc"></p>
+          <span class="academy-soon-badge" data-i18n="comingSoon">Coming soon</span>
+          <a class="btn btn-secondary" href="mlops.html" data-i18n="previewTrack">Preview syllabus</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-vision">
+          <img src="assets/img/domain-vision.svg" alt="" />
+          <h3 data-i18n="trackVisionCard">Computer Vision</h3>
+          <p class="sp-note" data-i18n="trackVisionDesc"></p>
+          <span class="academy-soon-badge" data-i18n="comingSoon">Coming soon</span>
+          <a class="btn btn-secondary" href="computer-vision.html" data-i18n="previewTrack">Preview syllabus</a>
+        </article>
+        <article class="academy-domain-card card" id="domain-ts">
+          <img src="assets/img/domain-timeseries.svg" alt="" />
+          <h3 data-i18n="trackTsCard">Time Series Processing</h3>
+          <p class="sp-note" data-i18n="trackTsDesc"></p>
+          <span class="academy-soon-badge" data-i18n="comingSoon">Coming soon</span>
+        </article>
+      </div>
+    </main>
+
+    <footer class="sp-site-footer card">
+      <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      <p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {
+          globalHighlights: "Highlights",
+          globalResearch: "Research",
+          globalTeaching: "Teaching",
+          globalAcademy: "Academy",
+          globalCurrentAcademy: "Academy",
+          academyKicker: "Academy",
+          academyTitle: "Academy — Learning Hub",
+          academyDesc:
+            "Multimodal learning tracks: speech, trustworthy ML, deep learning foundations, GANs, NLP, vision, MLOps — plus practical Docker/Git command labs and linked simulators.",
+          sectionSpeech: "Speech & Audio",
+          sectionML: "Machine Learning Core",
+          sectionDev: "Developer Tooling",
+          sectionSoon: "More domains (coming soon)",
+          trackIntroCard: "Speech Processing Intro",
+          trackIntroDesc: "Signals, FFT/STFT, MFCC, VAD, DTW — linked interactive simulators.",
+          trackAdvCard: "Speech Advanced (Foundation Models)",
+          trackAdvDesc: "HuBERT, WavLM, Whisper, Qwen-Audio, Voxtral and olympiad-style audio practice.",
+          trackTasksCard: "Speech Tasks",
+          trackTasksDesc: "ASR, TTS, emotion, speaker analysis, diarization, separation.",
+          trackTrustCard: "Trustworthy & Robust ML",
+          trackTrustDesc: "Robustness, calibration, fairness audits, secure deployment.",
+          trackNnCard: "Neural Networks & Deep Learning",
+          trackNnDesc: "Perceptron to transformers, optimization, regularization, finetuning.",
+          trackGanCard: "Generative Adversarial Networks",
+          trackGanDesc: "Dedicated GAN learning path: theory, training tricks, architectures.",
+          trackDockerCard: "Docker — Practical Commands",
+          trackDockerDesc: "Build, run, compose, GPU containers — copy-ready commands.",
+          trackGitCard: "Git — Practical Commands",
+          trackGitDesc: "Daily research workflow: branch, rebase, stash, cherry-pick.",
+          trackNlpCard: "Natural Language Processing",
+          trackNlpDesc: "BERT, language modeling, encoder-decoder, LLMs.",
+          trackMlopsCard: "MLOps",
+          trackMlopsDesc: "Tracking, registry, serving pipelines, monitoring.",
+          trackVisionCard: "Computer Vision",
+          trackVisionDesc: "Detection, segmentation, CLIP, diffusion.",
+          trackTsCard: "Time Series Processing",
+          trackTsDesc: "Forecasting and sequence modeling track.",
+          comingSoon: "Coming soon",
+          openTrack: "Open",
+          previewTrack: "Preview syllabus",
+        },
+        fa: {
+          globalHighlights: "برجسته‌ها",
+          globalResearch: "پژوهش",
+          globalTeaching: "تدریس",
+          globalAcademy: "آکادمی",
+          globalCurrentAcademy: "آکادمی",
+          academyKicker: "آکادمی",
+          academyTitle: "آکادمی — مرکز یادگیری",
+          academyDesc:
+            "مسیرهای چندحوزه‌ای: صوت، ML قابل‌اعتماد، یادگیری عمیق، GAN، NLP، بینایی، MLOps — به‌همراه دستورات کاربردی Docker/Git و شبیه‌سازهای متصل.",
+          sectionSpeech: "گفتار و صوت",
+          sectionML: "هسته یادگیری ماشین",
+          sectionDev: "ابزار توسعه",
+          sectionSoon: "حوزه‌های بیشتر (به‌زودی)",
+          trackIntroCard: "پردازش صوت مقدماتی",
+          trackIntroDesc: "سیگنال، FFT/STFT، MFCC، VAD، DTW با شبیه‌سازهای لینک‌شده.",
+          trackAdvCard: "صوت پیشرفته (Foundation Models)",
+          trackAdvDesc: "HuBERT، WavLM، Whisper، Qwen-Audio، Voxtral و تمرین المپیاد صوت.",
+          trackTasksCard: "تسک‌های صوت",
+          trackTasksDesc: "ASR، TTS، احساس، گوینده، تفکیک، جداسازی.",
+          trackTrustCard: "Trustworthy & Robust ML",
+          trackTrustDesc: "مقاومت، کالیبراسیون، ممیزی انصاف، استقرار امن.",
+          trackNnCard: "شبکه عصبی و یادگیری عمیق",
+          trackNnDesc: "از پرسپترون تا ترنسفورمر، بهینه‌سازی، regularization، finetuning.",
+          trackGanCard: "شبکه‌های GAN",
+          trackGanDesc: "مسیر اختصاصی GAN: تئوری، ترفندهای آموزش، معماری.",
+          trackDockerCard: "داکر — دستورات کاربردی",
+          trackDockerDesc: "build، run، compose، GPU — آماده کپی.",
+          trackGitCard: "گیت — دستورات کاربردی",
+          trackGitDesc: "گردش کار پژوهشی: branch، rebase، stash، cherry-pick.",
+          trackNlpCard: "پردازش زبان طبیعی",
+          trackNlpDesc: "BERT، مدل‌سازی زبان، encoder-decoder، LLM.",
+          trackMlopsCard: "MLOps",
+          trackMlopsDesc: "ردیابی، ثبت مدل، سرویس‌دهی، پایش.",
+          trackVisionCard: "پردازش تصویر",
+          trackVisionDesc: "تشخیص، قطعه‌بندی، CLIP، diffusion.",
+          trackTsCard: "پردازش سری زمانی",
+          trackTsDesc: "پیش‌بینی و مدل‌سازی توالی.",
+          comingSoon: "به‌زودی",
+          openTrack: "ورود",
+          previewTrack: "پیش‌نمایش سرفصل",
+        },
+        ar: {
+          globalHighlights: "الملخص",
+          globalResearch: "البحث",
+          globalTeaching: "التدريس",
+          globalAcademy: "الأكاديمية",
+          globalCurrentAcademy: "الأكاديمية",
+          academyKicker: "الأكاديمية",
+          academyTitle: "الأكاديمية — مركز التعلم",
+          academyDesc: "مسارات متعددة: الصوت، ML الموثوق، التعلم العميق، GAN، NLP، الرؤية، MLOps وأدوات Docker/Git.",
+          sectionSpeech: "الكلام والصوت",
+          sectionML: "نواة تعلم الآلة",
+          sectionDev: "أدوات المطور",
+          sectionSoon: "مجالات قادمة",
+          trackIntroCard: "معالجة الصوت التمهيدية",
+          trackIntroDesc: "إشارة، FFT/STFT، محاكيات مرتبطة.",
+          trackAdvCard: "صوت متقدم (Foundation Models)",
+          trackAdvDesc: "HuBERT وWhisper وQwen-Audio وVoxtral.",
+          trackTasksCard: "مهام الصوت",
+          trackTasksDesc: "ASR وTTS والمشاعر والمتحدث.",
+          trackTrustCard: "Trustworthy ML",
+          trackTrustDesc: "الصلابة والمعايرة والنشر الآمن.",
+          trackNnCard: "الشبكات العصبية",
+          trackNnDesc: "من الأساسيات إلى المحولات.",
+          trackGanCard: "GAN",
+          trackGanDesc: "مسار GAN مخصص.",
+          trackDockerCard: "Docker عملي",
+          trackDockerDesc: "أوامر يومية جاهزة.",
+          trackGitCard: "Git عملي",
+          trackGitDesc: "سير عمل البحث.",
+          trackNlpCard: "معالجة اللغة",
+          trackNlpDesc: "BERT وLLM.",
+          trackMlopsCard: "MLOps",
+          trackMlopsDesc: "تشغيل النماذج.",
+          trackVisionCard: "الرؤية الحاسوبية",
+          trackVisionDesc: "كشف وتقسيم وdiffusion.",
+          trackTsCard: "السلاسل الزمنية",
+          trackTsDesc: "قريبًا.",
+          comingSoon: "قريبًا",
+          openTrack: "دخول",
+          previewTrack: "معاينة المنهج",
+        },
+        zh: {
+          globalHighlights: "亮点",
+          globalResearch: "研究",
+          globalTeaching: "教学",
+          globalAcademy: "学院",
+          globalCurrentAcademy: "学院",
+          academyKicker: "学院",
+          academyTitle: "学院 — 学习中心",
+          academyDesc: "多模态学习路径：语音、可信 ML、深度学习、GAN、NLP、视觉、MLOps，以及 Docker/Git 命令与互联模拟器。",
+          sectionSpeech: "语音与音频",
+          sectionML: "机器学习核心",
+          sectionDev: "开发工具",
+          sectionSoon: "更多领域（即将推出）",
+          trackIntroCard: "语音处理（入门）",
+          trackIntroDesc: "信号、FFT/STFT、MFCC、VAD、DTW 与互联模拟器。",
+          trackAdvCard: "语音进阶（基础模型）",
+          trackAdvDesc: "HuBERT、WavLM、Whisper、Qwen-Audio、Voxtral。",
+          trackTasksCard: "语音任务",
+          trackTasksDesc: "ASR、TTS、情感、说话人、分离。",
+          trackTrustCard: "可信机器学习",
+          trackTrustDesc: "鲁棒性、校准、公平审计、安全部署。",
+          trackNnCard: "神经网络与深度学习",
+          trackNnDesc: "从感知机到 Transformer 与微调。",
+          trackGanCard: "生成对抗网络",
+          trackGanDesc: "GAN 专题学习路径。",
+          trackDockerCard: "Docker 实用命令",
+          trackDockerDesc: "构建、运行、Compose、GPU。",
+          trackGitCard: "Git 实用命令",
+          trackGitDesc: "研究日常工作流命令。",
+          trackNlpCard: "自然语言处理",
+          trackNlpDesc: "BERT、语言建模、LLM。",
+          trackMlopsCard: "MLOps",
+          trackMlopsDesc: "追踪、注册、服务、监控。",
+          trackVisionCard: "计算机视觉",
+          trackVisionDesc: "检测、分割、CLIP、扩散。",
+          trackTsCard: "时间序列",
+          trackTsDesc: "即将推出。",
+          comingSoon: "即将推出",
+          openTrack: "进入",
+          previewTrack: "预览大纲",
+        },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+  </body>
+</html>

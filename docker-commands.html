@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Docker Commands — Academy</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/speech-processing.css" />
+  </head>
+  <body>
+    <header class="sp-global-header">
+      <div class="sp-global-inner">
+        <a class="sp-global-brand" href="index.html">Mohammad Khalooei</a>
+        <nav class="sp-global-nav" aria-label="Global">
+          <a href="index.html#spotlight" data-i18n="globalHighlights">Highlights</a>
+          <a href="index.html#research" data-i18n="globalResearch">Research</a>
+          <a href="index.html#teaching" data-i18n="globalTeaching">Teaching</a>
+          <a href="academy.html" data-i18n="globalAcademy">Academy</a>
+        </nav>
+        <span class="sp-global-current" data-i18n="pageCurrent">Academy / Docker</span>
+        <select id="academy-lang" class="sp-mini-lang" aria-label="Language"><option value="en">English</option><option value="fa">فارسی</option><option value="ar">العربية</option><option value="zh">中文</option></select>
+      </div>
+    </header>
+
+    <header class="sp-header">
+      <a class="sp-back" href="academy.html" data-i18n="backHub">← Back to Academy</a>
+      <div class="sp-page-title-wrap">
+        <h1 data-i18n="pageTitle">Docker — Practical Commands</h1>
+        <p class="sp-page-subtitle" data-i18n="pageSub">Daily workflow cheat sheet</p>
+      </div>
+    </header>
+
+    <nav class="sp-lab-links card">
+      <a href="git-commands.html" data-i18n="linkGit">Git commands</a>
+      <a href="speech-processing.html#labs-anchor" data-i18n="linkSpeechLabs">Speech simulators</a>
+      <a href="academy.html" data-i18n="globalAcademy">Academy hub</a>
+    </nav>
+
+    <main class="sp-lab card">
+      <section class="cmd-group">
+        <h4 data-i18n="secImages">Images & build</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker build -t myapp:latest .</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker images
+docker rmi myapp:latest</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker pull python:3.11-slim
+docker tag python:3.11-slim myrepo/python:3.11</code></div>
+      </section>
+      <section class="cmd-group">
+        <h4 data-i18n="secRun">Run containers</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker run -d --name api -p 8080:8080 myapp:latest</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker run --rm -it -v ${PWD}:/workspace -w /workspace python:3.11 bash</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker ps -a
+docker logs -f api
+docker exec -it api bash</code></div>
+      </section>
+      <section class="cmd-group">
+        <h4 data-i18n="secCompose">Compose & cleanup</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker compose up -d --build
+docker compose logs -f
+docker compose down -v</code></div>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker system df
+docker system prune -af</code></div>
+      </section>
+      <section class="cmd-group">
+        <h4 data-i18n="secGpu">GPU (NVIDIA)</h4>
+        <div class="cmd-block"><button class="cmd-copy" type="button" data-copy-label="Copy">Copy</button><code>docker run --gpus all -it pytorch/pytorch:latest bash
+nvidia-smi</code></div>
+      </section>
+    </main>
+
+    <footer class="sp-site-footer card"><p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p><p><span data-i18n="footerContact">Email</span>: <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a> | <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p></footer>
+    <script>
+      window.ACADEMY_I18N = {
+        en: { globalHighlights: "Highlights", globalResearch: "Research", globalTeaching: "Teaching", globalAcademy: "Academy", pageCurrent: "Academy / Docker", backHub: "← Back to Academy", pageTitle: "Docker — Practical Commands", pageSub: "Daily workflow cheat sheet", linkGit: "Git commands", linkSpeechLabs: "Speech simulators", secImages: "Images & build", secRun: "Run containers", secCompose: "Compose & cleanup", secGpu: "GPU (NVIDIA)" },
+        fa: { globalHighlights: "برجسته‌ها", globalResearch: "پژوهش", globalTeaching: "تدریس", globalAcademy: "آکادمی", pageCurrent: "آکادمی / داکر", backHub: "← بازگشت به آکادمی", pageTitle: "داکر — دستورات کاربردی", pageSub: "برگه تقلب برای کار روزانه", linkGit: "دستورات گیت", linkSpeechLabs: "شبیه‌سازهای صوت", secImages: "ایمیج و build", secRun: "اجرای کانتینر", secCompose: "Compose و پاکسازی", secGpu: "GPU (NVIDIA)" },
+        ar: { globalHighlights: "الملخص", globalResearch: "البحث", globalTeaching: "التدريس", globalAcademy: "الأكاديمية", pageCurrent: "الأكاديمية / Docker", backHub: "← العودة", pageTitle: "Docker — أوامر عملية", pageSub: "مرجع سريع", linkGit: "أوامر Git", linkSpeechLabs: "محاكيات الصوت", secImages: "الصور والبناء", secRun: "تشغيل الحاويات", secCompose: "Compose والتنظيف", secGpu: "GPU" },
+        zh: { globalHighlights: "亮点", globalResearch: "研究", globalTeaching: "教学", globalAcademy: "学院", pageCurrent: "学院 / Docker", backHub: "← 返回学院", pageTitle: "Docker 实用命令", pageSub: "日常工作速查", linkGit: "Git 命令", linkSpeechLabs: "语音模拟器", secImages: "镜像与构建", secRun: "运行容器", secCompose: "Compose 与清理", secGpu: "GPU" },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/dev-commands.js"></script>
+  </body>
+</html>
