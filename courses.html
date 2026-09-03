@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Courses taught by Mohammad Khalooei — including sharif-da2026 Data Analysis." />
+    <meta name="theme-color" content="#0b2a4a" />
+    <title>Courses — Mohammad Khalooei</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/course-page.css" />
+    <style>
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 0.85rem;
+        margin-top: 1rem;
+      }
+      .course-tile {
+        display: grid;
+        gap: 0.45rem;
+        padding: 1rem;
+        border-radius: 12px;
+        border: 1px solid var(--c-line);
+        background: #fff;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+      }
+      .course-tile:hover {
+        border-color: #c9a227;
+        transform: translateY(-2px);
+      }
+      .course-tile.featured {
+        grid-column: 1 / -1;
+        grid-template-columns: minmax(180px, 300px) 1fr;
+        align-items: center;
+        gap: 1rem;
+      }
+      .course-tile img {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid var(--c-line);
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      .course-tile .badge {
+        display: inline-block;
+        width: fit-content;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #1a1505;
+        background: #c9a227;
+        border-radius: 999px;
+        padding: 0.15rem 0.5rem;
+      }
+      .course-tile h3 {
+        margin: 0;
+        color: var(--c-navy);
+        font-size: 1.05rem;
+      }
+      .course-tile p {
+        margin: 0;
+        color: var(--c-muted);
+        font-size: 0.9rem;
+      }
+      @media (max-width: 720px) {
+        .course-tile.featured {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="course-body">
+    <header class="course-top">
+      <div class="course-shell course-top-inner">
+        <a class="course-home" href="index.html">Mohammad Khalooei</a>
+        <nav class="course-nav" aria-label="Primary">
+          <a href="courses.html" class="active" data-i18n="navCourses">Courses</a>
+          <a href="academy.html" data-i18n="navAcademy">Academy</a>
+          <a href="index.html#teaching" data-i18n="navTeaching">Teaching</a>
+        </nav>
+        <select id="academy-lang" class="course-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="course-masthead">
+      <div class="course-shell">
+        <div class="course-code-row">
+          <span class="pill" data-i18n="hubKicker">Teaching</span>
+        </div>
+        <h1 data-i18n="hubTitle">Courses</h1>
+        <p class="course-tagline" data-i18n="hubDesc"></p>
+      </div>
+    </section>
+
+    <main class="course-shell course-main">
+      <div class="courses-grid">
+        <a class="course-tile featured" href="sharif-data-analysis.html">
+          <img src="assets/img/sharif-data-analysis-2026.jpg" alt="sharif-da2026 banner" />
+          <div>
+            <span class="badge" data-i18n="badgeNew">sharif-da2026 · Fall 2026</span>
+            <h3 data-i18n="c1t">sharif-da2026 — Data Analysis (Sharif)</h3>
+            <p data-i18n="c1d"></p>
+          </div>
+        </a>
+
+        <a class="course-tile" href="https://pcssharif.github.io/" target="_blank" rel="noopener noreferrer">
+          <span class="badge" data-i18n="badgeExternal">External site</span>
+          <h3 data-i18n="c2t">Principles of Computer Systems</h3>
+          <p data-i18n="c2d">Sharif · architecture · datapath · memory · I/O</p>
+        </a>
+        <article class="course-tile">
+          <h3 data-i18n="c3t">Speech & Spoken Language</h3>
+          <p data-i18n="c3d">Features · ASR · speaker ID · evaluation</p>
+        </article>
+        <article class="course-tile">
+          <h3 data-i18n="c4t">Trustworthy & Robust Machine Learning</h3>
+          <p data-i18n="c4d">Robustness · attacks · interpretability · deployment</p>
+        </article>
+        <article class="course-tile">
+          <h3 data-i18n="c5t">Optimization</h3>
+          <p data-i18n="c5d">Convexity · gradients · constrained & large-scale</p>
+        </article>
+        <article class="course-tile">
+          <h3 data-i18n="c6t">Artificial Intelligence</h3>
+          <p data-i18n="c6d">Search · learning · neural models · applications</p>
+        </article>
+        <article class="course-tile">
+          <h3 data-i18n="c7t">Advanced Python</h3>
+          <p data-i18n="c7d">Style · typing · packaging · numerics</p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="course-footer">
+      <div class="course-shell">
+        <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+        <p>
+          <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+          ·
+          <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {
+          navCourses: "Courses",
+          navAcademy: "Academy",
+          navTeaching: "Teaching",
+          hubKicker: "Teaching",
+          hubTitle: "Courses",
+          hubDesc: "Official course pages. Featured: sharif-da2026 — Data Analysis at Sharif, Fall 2026.",
+          badgeNew: "sharif-da2026 · Fall 2026",
+          badgeExternal: "External site",
+          c1t: "sharif-da2026 — Data Analysis (Sharif)",
+          c1d: "From real data to effective decisions. Sundays & Tuesdays 7:30–9:30 · Python-first · industry challenges.",
+          c2t: "Principles of Computer Systems",
+          c2d: "Sharif · architecture · datapath · memory · I/O",
+          c3t: "Speech & Spoken Language",
+          c3d: "Features · ASR · speaker ID · evaluation",
+          c4t: "Trustworthy & Robust Machine Learning",
+          c4d: "Robustness · attacks · interpretability · deployment",
+          c5t: "Optimization",
+          c5d: "Convexity · gradients · constrained & large-scale",
+          c6t: "Artificial Intelligence",
+          c6d: "Search · learning · neural models · applications",
+          c7t: "Advanced Python",
+          c7d: "Style · typing · packaging · numerics",
+          footerPrepared: "Prepared by Mohammad Khalooei",
+        },
+        fa: {
+          navCourses: "دروس",
+          navAcademy: "آکادمی",
+          navTeaching: "تدریس",
+          hubKicker: "تدریس",
+          hubTitle: "دروس",
+          hubDesc: "صفحات رسمی دروس. ویژه: sharif-da2026 — تحلیل داده شریف، پاییز ۲۰۲۶.",
+          badgeNew: "sharif-da2026 · پاییز ۲۰۲۶",
+          badgeExternal: "سایت خارجی",
+          c1t: "sharif-da2026 — تحلیل داده (شریف)",
+          c1d: "از داده‌های واقعی تا تصمیم‌های مؤثر. یکشنبه و سه‌شنبه ۷:۳۰–۹:۳۰ · محوریت پایتون · چالش‌های صنعتی.",
+          c2t: "اصول طراحی سیستم‌های کامپیوتری",
+          c2d: "شریف · معماری · مسیر داده · حافظه · I/O",
+          c3t: "گفتار و زبان گفتاری",
+          c3d: "ویژگی · بازشناسی · گوینده · ارزیابی",
+          c4t: "یادگیری ماشین قابل اعتماد و مقاوم",
+          c4d: "مقاومت · حملات · تفسیرپذیری · استقرار",
+          c5t: "بهینه‌سازی",
+          c5d: "محدب · گرادیان · مقید و بزرگ‌مقیاس",
+          c6t: "هوش مصنوعی",
+          c6d: "جستجو · یادگیری · شبکه‌های عصبی · کاربرد",
+          c7t: "پایتون پیشرفته",
+          c7d: "سبک · نوع‌دهی · بسته‌بندی · عددی",
+          footerPrepared: "تهیه‌شده توسط محمد خالوئی",
+        },
+        ar: {
+          navCourses: "المقررات",
+          navAcademy: "الأكاديمية",
+          navTeaching: "التدريس",
+          hubKicker: "التدريس",
+          hubTitle: "المقررات",
+          hubDesc: "الصفحات الرسمية. مميز: sharif-da2026.",
+          badgeNew: "sharif-da2026 · خريف 2026",
+          badgeExternal: "موقع خارجي",
+          c1t: "sharif-da2026 — تحليل البيانات",
+          c1d: "الأحد والثلاثاء 7:30–9:30 · Python.",
+          c2t: "مبادئ أنظمة الحاسوب",
+          c2d: "شريف · البنية · مسار البيانات · الذاكرة · I/O",
+          c3t: "الكلام واللغة المنطوقة",
+          c3d: "الميزات · التعرف · المتحدث · التقييم",
+          c4t: "تعلم آلي موثوق ومقاوم",
+          c4d: "المقاومة · الهجمات · التفسير · النشر",
+          c5t: "التحسين",
+          c5d: "المحدب · التدرج · المقيّد وضخم النطاق",
+          c6t: "الذكاء الاصطناعي",
+          c6d: "البحث · التعلم · النماذج العصبية · التطبيقات",
+          c7t: "بايثون متقدم",
+          c7d: "الأسلوب · الأنواع · الحزم · العددي",
+          footerPrepared: "إعداد: محمد خلويي",
+        },
+        zh: {
+          navCourses: "课程",
+          navAcademy: "学院",
+          navTeaching: "教学",
+          hubKicker: "教学",
+          hubTitle: "课程",
+          hubDesc: "正式课程页面。精选：sharif-da2026。",
+          badgeNew: "sharif-da2026 · 2026 秋季",
+          badgeExternal: "外部站点",
+          c1t: "sharif-da2026 — 数据分析（谢里夫）",
+          c1d: "周日与周二 7:30–9:30 · Python · 产业挑战。",
+          c2t: "计算机系统原理",
+          c2d: "谢里夫 · 体系结构 · 数据通路 · 存储 · I/O",
+          c3t: "语音与口语语言",
+          c3d: "特征 · 识别 · 说话人 · 评测",
+          c4t: "可信与鲁棒机器学习",
+          c4d: "鲁棒性 · 攻击 · 可解释性 · 部署",
+          c5t: "优化",
+          c5d: "凸性 · 梯度 · 约束与大规模",
+          c6t: "人工智能",
+          c6d: "搜索 · 学习 · 神经模型 · 应用",
+          c7t: "高级 Python",
+          c7d: "风格 · 类型 · 打包 · 数值",
+          footerPrepared: "制作：Mohammad Khalooei",
+        },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+  </body>
+</html>

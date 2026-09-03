@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="sharif-da2026 — Data Analysis at Sharif University of Technology, Fall 2026. From real data to effective decisions."
+    />
+    <meta name="theme-color" content="#0b2a4a" />
+    <title>sharif-da2026 · Data Analysis · Sharif · Fall 2026</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/course-page.css" />
+  </head>
+  <body class="course-body">
+    <header class="course-top">
+      <div class="course-shell course-top-inner">
+        <a class="course-home" href="courses.html">sharif-da2026</a>
+        <nav class="course-nav" aria-label="Course">
+          <a href="#home" class="active" data-i18n="navHome">Home</a>
+          <a href="#logistics" data-i18n="navLogistics">Logistics</a>
+          <a href="#syllabus" data-i18n="navSyllabus">Syllabus</a>
+          <a href="#coursework" data-i18n="navCoursework">Coursework</a>
+          <a href="#staff" data-i18n="navStaff">Staff</a>
+          <a href="#industry" data-i18n="navIndustry">Industry</a>
+          <a href="courses.html" data-i18n="navCourses">Courses</a>
+        </nav>
+        <select id="academy-lang" class="course-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="course-masthead" id="home">
+      <div class="course-shell">
+        <div class="course-code-row">
+          <span class="code-chip">sharif-da2026</span>
+          <span class="pill" data-i18n="pillUni">Sharif University of Technology</span>
+          <span class="pill" data-i18n="pillTerm">Fall 2026</span>
+        </div>
+        <h1 data-i18n="title">Data Analysis</h1>
+        <p class="course-subtitle" data-i18n="subtitle">From real data to effective decisions</p>
+        <p class="course-tagline" data-i18n="mastLead"></p>
+      </div>
+    </section>
+
+    <main class="course-shell course-main">
+      <section class="course-panel" aria-label="Live analysis demo">
+        <h2 data-i18n="liveTitle">A live look at analysis</h2>
+        <div class="live-lab">
+          <div class="live-canvas-wrap">
+            <canvas id="da-live-canvas" width="960" height="280" aria-label="Live data analysis visualization"></canvas>
+          </div>
+          <div class="live-caption">
+            <h3 data-i18n="liveCaptionTitle">What this course trains</h3>
+            <p class="muted" data-i18n="liveCaption"></p>
+            <div class="live-stats">
+              <div class="live-stat">
+                <strong data-i18n="stat1l">Problem first</strong>
+                <span data-i18n="stat1v">Strategy before tools</span>
+              </div>
+              <div class="live-stat">
+                <strong data-i18n="stat2l">Python-native</strong>
+                <span data-i18n="stat2v">Hands-on workflows</span>
+              </div>
+              <div class="live-stat">
+                <strong data-i18n="stat3l">Real data</strong>
+                <span data-i18n="stat3v">Industry-ready cases</span>
+              </div>
+              <div class="live-stat">
+                <strong data-i18n="stat4l">Responsible AI</strong>
+                <span data-i18n="stat4v">LLMs for learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="banner-strip">
+          <img src="assets/img/sharif-data-analysis-2026.jpg" alt="sharif-da2026 course visual" />
+        </div>
+      </section>
+
+      <section class="course-panel" id="description">
+        <h2 data-i18n="descTitle">Course description</h2>
+        <p data-i18n="desc1"></p>
+        <p data-i18n="desc2"></p>
+        <p data-i18n="desc3"></p>
+      </section>
+
+      <section class="course-panel" id="logistics">
+        <h2 data-i18n="logTitle">Course logistics</h2>
+        <ul class="course-meta">
+          <li>
+            <strong data-i18n="logCodeL">Course code</strong>
+            <span>sharif-da2026</span>
+          </li>
+          <li>
+            <strong data-i18n="logTermL">Term</strong>
+            <span data-i18n="logTermV">Fall 2026</span>
+          </li>
+          <li>
+            <strong data-i18n="logLectL">Lectures</strong>
+            <span data-i18n="logLectV">Sundays & Tuesdays, 7:30–9:30</span>
+          </li>
+          <li>
+            <strong data-i18n="logOhL">Office hours / meet window</strong>
+            <span data-i18n="logOhV">7:00–7:30 (before lecture)</span>
+          </li>
+          <li>
+            <strong data-i18n="logLangL">Implementation focus</strong>
+            <span data-i18n="logLangV">Python</span>
+          </li>
+          <li>
+            <strong data-i18n="logContactL">Contact</strong>
+            <span><a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="course-panel" id="prereq">
+        <h2 data-i18n="preTitle">Prerequisites</h2>
+        <ul class="prereq-list">
+          <li data-i18n="pre1"></li>
+          <li data-i18n="pre2"></li>
+          <li data-i18n="pre3"></li>
+          <li data-i18n="pre4"></li>
+        </ul>
+        <p class="muted" data-i18n="preNote"></p>
+      </section>
+
+      <section class="course-panel" id="syllabus">
+        <h2 data-i18n="sylTitle">Syllabus — six core blocks</h2>
+        <p class="muted" data-i18n="sylLead"></p>
+        <div class="blocks-grid">
+          <article class="block-card">
+            <div class="num">01</div>
+            <h3 data-i18n="b1t">Problem Framing and Data Strategy</h3>
+            <p data-i18n="b1d"></p>
+          </article>
+          <article class="block-card">
+            <div class="num">02</div>
+            <h3 data-i18n="b2t">Data Understanding and Exploratory Analysis</h3>
+            <p data-i18n="b2d"></p>
+          </article>
+          <article class="block-card">
+            <div class="num">03</div>
+            <h3 data-i18n="b3t">Data Mining and Machine Learning</h3>
+            <p data-i18n="b3d"></p>
+          </article>
+          <article class="block-card">
+            <div class="num">04</div>
+            <h3 data-i18n="b4t">Evaluation, Interpretation, and Decision Making</h3>
+            <p data-i18n="b4d"></p>
+          </article>
+          <article class="block-card">
+            <div class="num">05</div>
+            <h3 data-i18n="b5t">Modern Data Analysis and AI</h3>
+            <p data-i18n="b5d"></p>
+          </article>
+          <article class="block-card">
+            <div class="num">06</div>
+            <h3 data-i18n="b6t">Industry Problems, Privacy, and Hands-on Challenges</h3>
+            <p data-i18n="b6d"></p>
+          </article>
+        </div>
+
+        <h3 data-i18n="topicsTitle">Detailed topics</h3>
+        <ol class="topic-list">
+          <li data-i18n="t01">Problem Understanding and Strategic Thinking with Data</li>
+          <li data-i18n="t02">Data Understanding, Collection, and Quality Assessment</li>
+          <li data-i18n="t03">Exploratory Data Analysis (EDA)</li>
+          <li data-i18n="t04">Data Preparation and Feature Engineering</li>
+          <li data-i18n="t05">Pattern Discovery and Unsupervised Learning</li>
+          <li data-i18n="t06">Clustering and Dimensionality Reduction</li>
+          <li data-i18n="t07">Predictive Modeling for Regression Problems</li>
+          <li data-i18n="t08">Classification and Data-Driven Decision Making</li>
+          <li data-i18n="t09">Model Evaluation and Experimental Design</li>
+          <li data-i18n="t10">Model Interpretability and Insight Extraction</li>
+          <li data-i18n="t11">Time-Series, Event, and Anomaly Analysis</li>
+          <li data-i18n="t12">Unstructured Data Analysis: Text, Audio, and Multimodal Data</li>
+          <li data-i18n="t13">AI and Large Language Models for Data Analysis</li>
+          <li data-i18n="t14">Correlation, Causality, and Decision Making</li>
+          <li data-i18n="t15">Data Privacy, Anonymization, Ethics, and Governance</li>
+          <li data-i18n="t16">Real-World Industry Case Studies and Data Challenges</li>
+        </ol>
+      </section>
+
+      <section class="course-panel" id="coursework">
+        <h2 data-i18n="cwTitle">Coursework & grading</h2>
+        <h3 data-i18n="cwAssignTitle">Assignments, exams, and late policy</h3>
+        <p data-i18n="cwAssignDesc"></p>
+        <span class="soon-note" data-i18n="cwSoon">Details will be updated soon</span>
+
+        <h3 data-i18n="cwLlmTitle">Use of LLMs</h3>
+        <p data-i18n="cwLlmDesc"></p>
+
+        <h3 data-i18n="cwFocusTitle">Implementation stack</h3>
+        <p data-i18n="cwFocusDesc"></p>
+      </section>
+
+      <section class="course-panel" id="staff">
+        <h2 data-i18n="staffTitle">Course staff</h2>
+        <h3 data-i18n="instTitle">Instructor</h3>
+        <div class="staff-grid" style="margin-bottom: 1rem;">
+          <article class="staff-card">
+            <div class="staff-avatar" aria-hidden="true">MK</div>
+            <h3>Mohammad Khalooei</h3>
+            <p class="staff-role" data-i18n="roleInstructor">Instructor</p>
+            <p class="staff-role"><a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></p>
+          </article>
+        </div>
+
+        <h3 data-i18n="taTitle">Teaching assistants</h3>
+        <div class="staff-grid">
+          <article class="staff-card">
+            <div class="staff-avatar" aria-hidden="true">PS</div>
+            <h3 data-i18n="ta1">Pouria Safaei</h3>
+            <p class="staff-role" data-i18n="roleTa">Teaching Assistant</p>
+          </article>
+          <article class="staff-card">
+            <div class="staff-avatar" aria-hidden="true">AM</div>
+            <h3 data-i18n="ta2">Abolfazl Moslemi</h3>
+            <p class="staff-role" data-i18n="roleTa">Teaching Assistant</p>
+          </article>
+          <article class="staff-card">
+            <div class="staff-avatar pending" aria-hidden="true">+</div>
+            <h3 data-i18n="ta3">To be announced</h3>
+            <p class="staff-role" data-i18n="ta3role">Team roster is being finalized</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="course-panel" id="industry">
+        <h2 data-i18n="indTitle">Industry collaboration</h2>
+        <p data-i18n="ind1"></p>
+        <p data-i18n="ind2"></p>
+        <div class="industry-box">
+          <h3 data-i18n="indBoxTitle">Have a real dataset or challenge?</h3>
+          <p data-i18n="indBoxDesc"></p>
+          <a class="course-btn" href="mailto:mohammad.khalooei@sharif.edu">✉ mohammad.khalooei@sharif.edu</a>
+          <p style="margin-top: 0.85rem; font-size: 0.92rem;" data-i18n="indPrivacy"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="course-footer">
+      <div class="course-shell">
+        <p><strong>sharif-da2026</strong> · <span data-i18n="footerLine">Data Analysis · Sharif University of Technology · Fall 2026</span></p>
+        <p>
+          <a href="courses.html" data-i18n="navCourses">Courses</a>
+          ·
+          <a href="academy.html">Academy</a>
+          ·
+          <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+        </p>
+        <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      </div>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {
+          navHome: "Home",
+          navLogistics: "Logistics",
+          navSyllabus: "Syllabus",
+          navCoursework: "Coursework",
+          navStaff: "Staff",
+          navIndustry: "Industry",
+          navCourses: "Courses",
+          pillUni: "Sharif University of Technology",
+          pillTerm: "Fall 2026",
+          title: "Data Analysis",
+          subtitle: "From real data to effective decisions",
+          mastLead:
+            "A practice-driven course on framing problems, analyzing real datasets, and turning evidence into decisions — with Python at the center.",
+          liveTitle: "A live look at analysis",
+          liveCaptionTitle: "What this course trains",
+          liveCaption:
+            "This live sketch mirrors the course mindset: explore structure, discover clusters, fit trends, and reason about decision regions — before jumping to tools.",
+          stat1l: "Problem first",
+          stat1v: "Strategy before tools",
+          stat2l: "Python-native",
+          stat2v: "Hands-on workflows",
+          stat3l: "Real data",
+          stat3v: "Industry-ready cases",
+          stat4l: "Responsible AI",
+          stat4v: "LLMs for learning",
+          descTitle: "Course description",
+          desc1:
+            "This semester we will run Sharif’s Data Analysis course a little differently. We study classical methods and modern strategies on real datasets — in theory and in practice — so students learn not only tools and algorithms, but precise problem understanding and a strategic view of data.",
+          desc2:
+            "The course emphasizes end-to-end analytical thinking: from question design and data quality to EDA, modeling, evaluation, interpretability, and decision-making under real constraints. Python is the primary implementation language for labs and projects.",
+          desc3:
+            "Together with the teaching assistant team, we also plan data challenges during the term. When suitable industry datasets are available (with proper privacy controls), they may shape assignments, course projects, or challenge tracks.",
+          logTitle: "Course logistics",
+          logCodeL: "Course code",
+          logTermL: "Term",
+          logTermV: "Fall 2026",
+          logLectL: "Lectures",
+          logLectV: "Sundays & Tuesdays, 7:30–9:30",
+          logOhL: "Office hours / meet window",
+          logOhV: "7:00–7:30 (before lecture)",
+          logLangL: "Implementation focus",
+          logLangV: "Python",
+          logContactL: "Contact",
+          preTitle: "Prerequisites",
+          pre1: "Comfortable programming in Python (or strong willingness to catch up quickly).",
+          pre2: "College-level calculus and linear algebra intuition (vectors, matrices, derivatives).",
+          pre3: "Basic probability & statistics (distributions, mean/variance, simple inference).",
+          pre4: "Curiosity for messy real-world data and careful experimental thinking.",
+          preNote:
+            "Using LLMs (ChatGPT, Copilot, etc.) is allowed for learning and productivity, but students remain responsible for understanding and defending their own solutions.",
+          sylTitle: "Syllabus — six core blocks",
+          sylLead: "A clean structure for the official course introduction and learning path.",
+          b1t: "Problem Framing and Data Strategy",
+          b1d: "Define the decision question, map data assets, and design an analysis strategy.",
+          b2t: "Data Understanding and Exploratory Analysis",
+          b2d: "Quality assessment, profiling, visualization, and exploratory discovery.",
+          b3t: "Data Mining and Machine Learning",
+          b3d: "Feature engineering, unsupervised learning, regression, and classification.",
+          b4t: "Evaluation, Interpretation, and Decision Making",
+          b4d: "Experimental design, metrics, interpretability, correlation vs causality.",
+          b5t: "Modern Data Analysis and AI",
+          b5d: "Time series, anomalies, text/audio/multimodal data, and LLM-assisted workflows.",
+          b6t: "Industry Problems, Privacy, and Hands-on Challenges",
+          b6d: "Real cases, anonymization, governance, and project-based delivery.",
+          topicsTitle: "Detailed topics",
+          t01: "Problem Understanding and Strategic Thinking with Data",
+          t02: "Data Understanding, Collection, and Quality Assessment",
+          t03: "Exploratory Data Analysis (EDA)",
+          t04: "Data Preparation and Feature Engineering",
+          t05: "Pattern Discovery and Unsupervised Learning",
+          t06: "Clustering and Dimensionality Reduction",
+          t07: "Predictive Modeling for Regression Problems",
+          t08: "Classification and Data-Driven Decision Making",
+          t09: "Model Evaluation and Experimental Design",
+          t10: "Model Interpretability and Insight Extraction",
+          t11: "Time-Series, Event, and Anomaly Analysis",
+          t12: "Unstructured Data Analysis: Text, Audio, and Multimodal Data",
+          t13: "AI and Large Language Models for Data Analysis",
+          t14: "Correlation, Causality, and Decision Making",
+          t15: "Data Privacy, Anonymization, Ethics, and Governance",
+          t16: "Real-World Industry Case Studies and Data Challenges",
+          cwTitle: "Coursework & grading",
+          cwAssignTitle: "Assignments, exams, and late policy",
+          cwAssignDesc:
+            "Grading weights, assignment schedule, exam format, and late-day policy will be published here as the term plan is finalized.",
+          cwSoon: "Details will be updated soon",
+          cwLlmTitle: "Use of LLMs",
+          cwLlmDesc:
+            "LLMs may be used to accelerate learning (debugging help, explaining concepts, drafting code). Blind copy-paste without understanding is not acceptable. Be ready to explain every step of your work.",
+          cwFocusTitle: "Implementation stack",
+          cwFocusDesc:
+            "Course implementations center on Python (NumPy/Pandas/scikit-learn style workflows). Additional libraries will be introduced as needed for visualization, modeling, and multimodal analysis.",
+          staffTitle: "Course staff",
+          instTitle: "Instructor",
+          roleInstructor: "Instructor",
+          taTitle: "Teaching assistants",
+          roleTa: "Teaching Assistant",
+          ta1: "Pouria Safaei",
+          ta2: "Abolfazl Moslemi",
+          ta3: "To be announced",
+          ta3role: "Team roster is being finalized",
+          indTitle: "Industry collaboration",
+          ind1:
+            "To bring the course closer to real practice, we welcome collaboration with companies and teams that have meaningful data problems — including datasets that have not yet been analyzed, or challenges that need structured analytical advice.",
+          ind2:
+            "When appropriate, such data can inform class examples, assignments, course projects, or term-long data challenges. We are also open to designing a focused challenge or hackathon around an industry problem, covering scientific, analytical, and engineering aspects with the TA team.",
+          indBoxTitle: "Have a real dataset or challenge?",
+          indBoxDesc:
+            "If your organization has an interesting data problem and is open to educational use under clear permissions, please reach out. Suitable collaborations can power projects and challenges for students.",
+          indPrivacy:
+            "Confidentiality is taken seriously: anonymization, access control, and responsible use of organizational data are core requirements — and can themselves become part of the learning experience.",
+          footerLine: "Data Analysis · Sharif University of Technology · Fall 2026",
+          footerPrepared: "Prepared by Mohammad Khalooei",
+        },
+        fa: {
+          navHome: "خانه",
+          navLogistics: "لجستیک",
+          navSyllabus: "سرفصل",
+          navCoursework: "تمرین و نمره",
+          navStaff: "کادر درس",
+          navIndustry: "همکاری صنعت",
+          navCourses: "دروس",
+          pillUni: "دانشگاه صنعتی شریف",
+          pillTerm: "پاییز ۲۰۲۶",
+          title: "تحلیل داده",
+          subtitle: "از داده‌های واقعی تا تصمیم‌های مؤثر",
+          mastLead:
+            "درسی عمل‌محور برای صورت‌بندی مسئله، تحلیل داده‌های واقعی و تبدیل شواهد به تصمیم — با محوریت پایتون.",
+          liveTitle: "نگاهی زنده به تحلیل",
+          liveCaptionTitle: "آنچه این درس می‌سازد",
+          liveCaption:
+            "این اسکچ زنده ذهنیت درس را نشان می‌دهد: کشف ساختار، خوشه‌ها، روندها و نواحی تصمیم — پیش از پرش به ابزارها.",
+          stat1l: "اول مسئله",
+          stat1v: "استراتژی قبل از ابزار",
+          stat2l: "محوریت پایتون",
+          stat2v: "گردش‌کار عملی",
+          stat3l: "داده واقعی",
+          stat3v: "نزدیک به صنعت",
+          stat4l: "هوش مصنوعی مسئولانه",
+          stat4v: "LLM برای یادگیری",
+          descTitle: "معرفی درس",
+          desc1:
+            "این ترم قرار است درس «تحلیل داده» شریف را کمی متفاوت برگزار کنیم. مباحث و استراتژی‌های تحلیل داده را روی داده‌های کلاسیک و واقعی، به‌صورت تئوری و عملی بررسی می‌کنیم؛ با این هدف که دانشجویان نه‌فقط با ابزارها و روش‌ها، بلکه با درک دقیق مسئله و نگاه استراتژیک به داده آشنا شوند.",
+          desc2:
+            "تمرکز درس روی تفکر تحلیلی انتها‌به‌انتهاست: از طراحی سؤال و کیفیت داده تا EDA، مدل‌سازی، ارزیابی، تفسیرپذیری و تصمیم‌گیری در شرایط واقعی. زبان اصلی پیاده‌سازی، پایتون است.",
+          desc3:
+            "همراه با تیم دستیاران آموزشی، چند چالش داده‌محور در طول ترم برنامه‌ریزی می‌کنیم. در صورت وجود داده‌های صنعتی مناسب (با کنترل محرمانگی)، این داده‌ها می‌توانند مبنای تمرین، پروژه یا چالش‌های ترم باشند.",
+          logTitle: "لجستیک درس",
+          logCodeL: "کد درس",
+          logTermL: "ترم",
+          logTermV: "پاییز ۲۰۲۶",
+          logLectL: "جلسات",
+          logLectV: "یکشنبه و سه‌شنبه، ۷:۳۰ تا ۹:۳۰",
+          logOhL: "بازه ملاقات / office hours",
+          logOhV: "۷:۰۰ تا ۷:۳۰ (قبل از کلاس)",
+          logLangL: "تمرکز پیاده‌سازی",
+          logLangV: "پایتون",
+          logContactL: "تماس",
+          preTitle: "پیش‌نیازها",
+          pre1: "آشنایی عملی با برنامه‌نویسی پایتون (یا آمادگی جدی برای یادگیری سریع).",
+          pre2: "درک پایه حسابان و جبر خطی (بردار، ماتریس، مشتق).",
+          pre3: "آمار و احتمال مقدماتی (توزیع، میانگین/واریانس، شهود استنباط).",
+          pre4: "علاقه به داده‌های واقعی و تفکر آزمایشی دقیق.",
+          preNote:
+            "استفاده از LLMها برای یادگیری و تسریع کار مجاز است؛ اما مسئولیت فهم و دفاع از پاسخ با خود دانشجوست.",
+          sylTitle: "سرفصل — شش محور اصلی",
+          sylLead: "ساختار شکیل برای معرفی رسمی درس.",
+          b1t: "صورت‌بندی مسئله و استراتژی داده",
+          b1d: "تعریف سؤال تصمیم، نگاشت دارایی‌های داده و طراحی مسیر تحلیل.",
+          b2t: "شناخت داده و تحلیل اکتشافی",
+          b2d: "کیفیت داده، profiling، مصورسازی و اکتشاف.",
+          b3t: "داده‌کاوی و یادگیری ماشین",
+          b3d: "مهندسی ویژگی، بدون‌ناظر، رگرسیون و طبقه‌بندی.",
+          b4t: "ارزیابی، تفسیر و تصمیم‌گیری",
+          b4d: "طراحی آزمایش، معیارها، تفسیرپذیری، همبستگی در برابر علیت.",
+          b5t: "تحلیل داده مدرن و هوش مصنوعی",
+          b5d: "سری زمانی، ناهنجاری، متن/صوت/چندرسانه‌ای و LLM.",
+          b6t: "مسائل صنعت، محرمانگی و چالش‌های عملی",
+          b6d: "مطالعات موردی، گمنام‌سازی، حکمرانی و پروژه.",
+          topicsTitle: "سرفصل تفصیلی",
+          t01: "درک مسئله و نگاه استراتژیک به داده",
+          t02: "شناخت، جمع‌آوری و ارزیابی کیفیت داده",
+          t03: "تحلیل اکتشافی داده‌ها (EDA)",
+          t04: "آماده‌سازی داده و مهندسی ویژگی",
+          t05: "کشف الگو و تحلیل بدون ناظر",
+          t06: "خوشه‌بندی و کاهش بُعد",
+          t07: "مدل‌سازی پیش‌بینی برای مسائل رگرسیون",
+          t08: "مدل‌سازی طبقه‌بندی و تصمیم‌گیری",
+          t09: "ارزیابی مدل‌ها و طراحی صحیح آزمایش",
+          t10: "تفسیرپذیری مدل و استخراج بینش از داده",
+          t11: "تحلیل داده‌های زمانی، رخدادها و ناهنجاری‌ها",
+          t12: "تحلیل داده‌های غیرساخت‌یافته؛ متن، صوت و چندرسانه‌ای",
+          t13: "هوش مصنوعی و LLMها در فرایند تحلیل داده",
+          t14: "همبستگی، علیت و تصمیم‌گیری داده‌محور",
+          t15: "محرمانگی، اخلاق، گمنام‌سازی و حکمرانی داده",
+          t16: "مطالعات موردی و چالش‌های واقعی صنایع مختلف",
+          cwTitle: "تمرین، امتحان و نمرات",
+          cwAssignTitle: "تمرین‌ها، امتحان و سیاست دیرکرد",
+          cwAssignDesc:
+            "وزن‌دهی نمرات، زمان‌بندی تمرین‌ها، قالب امتحان و سیاست دیرکرد به‌زودی در همین صفحه به‌روزرسانی می‌شود.",
+          cwSoon: "به‌زودی به‌روزرسانی می‌شود",
+          cwLlmTitle: "استفاده از LLM",
+          cwLlmDesc:
+            "استفاده از LLM برای یادگیری (دیباگ، توضیح مفهوم، پیش‌نویس کد) مجاز است. کپی کورکورانه بدون فهم قابل قبول نیست؛ باید بتوانید کار خود را توضیح دهید.",
+          cwFocusTitle: "پشته پیاده‌سازی",
+          cwFocusDesc:
+            "محوریت با پایتون است (سبک NumPy/Pandas/scikit-learn). کتابخانه‌های بیشتر برای مصورسازی، مدل‌سازی و تحلیل چندرسانه‌ای معرفی می‌شوند.",
+          staffTitle: "کادر درس",
+          instTitle: "مدرس",
+          roleInstructor: "مدرس",
+          taTitle: "دستیاران آموزشی",
+          roleTa: "دستیار آموزشی",
+          ta1: "پوریا صفایی",
+          ta2: "ابوالفضل مسلمی",
+          ta3: "به‌زودی اعلام می‌شود",
+          ta3role: "فهرست تیم در حال تکمیل است",
+          indTitle: "همکاری با صنعت",
+          ind1:
+            "برای نزدیک‌تر شدن تجربه درس به دنیای واقعی، اگر در شرکت یا صنعت شما داده‌ای وجود دارد که نکته یا مسئله جذابی در آن نهفته است — یا داده‌ای که هنوز تحلیل نشده و به مشورت نیاز دارد — خوشحال می‌شویم در ارتباط باشید.",
+          ind2:
+            "در صورت مناسب بودن، می‌توان برای استفاده در کلاس، تمرین‌ها، پروژه‌ها یا چالش‌های داده‌محور برنامه‌ریزی کرد. همچنین از طراحی چالش یا هکاتون روی مسئله واقعی مجموعه شما، همراه تیم دستیاران، استقبال می‌کنیم.",
+          indBoxTitle: "داده یا چالش واقعی دارید؟",
+          indBoxDesc:
+            "اگر سازمان شما مسئله داده‌ای آموزشی‌پذیر با مجوز مشخص دارد، برای همکاری پیام دهید. این همکاری می‌تواند سوخت پروژه‌ها و چالش‌های دانشجویان باشد.",
+          indPrivacy:
+            "محرمانگی برای ما جدی است: گمنام‌سازی، سطح‌بندی دسترسی و استفاده مسئولانه از اطلاعات سازمانی الزامی است و می‌تواند بخشی از تجربه آموزشی دانشجویان باشد.",
+          footerLine: "تحلیل داده · دانشگاه صنعتی شریف · پاییز ۲۰۲۶",
+          footerPrepared: "تهیه‌شده توسط محمد خالوئی",
+        },
+        ar: {
+          navHome: "الرئيسية",
+          navLogistics: "التنظيم",
+          navSyllabus: "المنهج",
+          navCoursework: "الأعمال",
+          navStaff: "الطاقم",
+          navIndustry: "الصناعة",
+          navCourses: "المقررات",
+          pillUni: "جامعة شريف للتكنولوجيا",
+          pillTerm: "خريف 2026",
+          title: "تحليل البيانات",
+          subtitle: "من البيانات الحقيقية إلى قرارات فعّالة",
+          mastLead: "مقرر تطبيقي لصياغة المشكلات وتحليل البيانات واتخاذ القرار — مع محور Python.",
+          liveTitle: "نظرة مباشرة على التحليل",
+          liveCaptionTitle: "ماذا يبني المقرر",
+          liveCaption: "رسم حي يعكس عقلية المقرر: الاستكشاف والتجميع والاتجاهات ومناطق القرار.",
+          stat1l: "المشكلة أولاً",
+          stat1v: "الاستراتيجية قبل الأدوات",
+          stat2l: "Python",
+          stat2v: "تدفقات عملية",
+          stat3l: "بيانات حقيقية",
+          stat3v: "قريبة من الصناعة",
+          stat4l: "AI مسؤول",
+          stat4v: "LLM للتعلم",
+          descTitle: "وصف المقرر",
+          desc1: "نقدم تحليل البيانات في شريف بأسلوب يجمع النظرية والممارسة على بيانات حقيقية، مع التركيز على فهم المشكلة والنظرة الاستراتيجية.",
+          desc2: "المحور التنفيذي هو Python للتمارين والمشاريع.",
+          desc3: "مع فريق المساعدين سنطلق تحديات بيانات خلال الفصل، مع احترام الخصوصية.",
+          logTitle: "تنظيم المقرر",
+          logCodeL: "رمز المقرر",
+          logTermL: "الفصل",
+          logTermV: "خريف 2026",
+          logLectL: "المحاضرات",
+          logLectV: "الأحد والثلاثاء، 7:30–9:30",
+          logOhL: "ساعات المقابلة",
+          logOhV: "7:00–7:30 قبل المحاضرة",
+          logLangL: "لغة التنفيذ",
+          logLangV: "Python",
+          logContactL: "التواصل",
+          preTitle: "المتطلبات السابقة",
+          pre1: "إجادة أساسية لـ Python أو استعداد سريع للتعلم.",
+          pre2: "أساسيات التفاضل والجبر الخطي.",
+          pre3: "احتمال وإحصاء أولي.",
+          pre4: "اهتمام بالبيانات الحقيقية.",
+          preNote: "يُسمح باستخدام LLM للتعلم مع تحمل مسؤولية الفهم.",
+          sylTitle: "المنهج — ستة محاور",
+          sylLead: "بنية واضحة للتعريف الرسمي.",
+          b1t: "صياغة المشكلة واستراتيجية البيانات",
+          b1d: "تعريف السؤال وتصميم مسار التحليل.",
+          b2t: "فهم البيانات والاستكشاف",
+          b2d: "الجودة وEDA.",
+          b3t: "التنقيب والتعلم الآلي",
+          b3d: "الميزات والتجميع والانحدار والتصنيف.",
+          b4t: "التقييم والتفسير والقرار",
+          b4d: "التجارب والمقاييس والسببية.",
+          b5t: "تحليل حديث وذكاء اصطناعي",
+          b5d: "السلاسل الزمنية والبيانات غير المهيكلة وLLM.",
+          b6t: "الصناعة والخصوصية والتحديات",
+          b6d: "حالات واقعية وحوكمة.",
+          topicsTitle: "الموضوعات التفصيلية",
+          t01: "فهم المشكلة والتفكير الاستراتيجي",
+          t02: "فهم البيانات وجمعها وجودتها",
+          t03: "التحليل الاستكشافي (EDA)",
+          t04: "تجهيز البيانات وهندسة الميزات",
+          t05: "اكتشاف الأنماط والتعلم غير الخاضع",
+          t06: "التجميع وتقليل الأبعاد",
+          t07: "نمذجة الانحدار",
+          t08: "التصنيف واتخاذ القرار",
+          t09: "تقييم النماذج وتصميم التجارب",
+          t10: "قابلية التفسير واستخراج الرؤى",
+          t11: "السلاسل الزمنية والأحداث والشذوذ",
+          t12: "بيانات غير مهيكلة: نص وصوت ومتعدد الوسائط",
+          t13: "الذكاء الاصطناعي وLLM في التحليل",
+          t14: "الارتباط والسببية والقرار",
+          t15: "الخصوصية وإخفاء الهوية والأخلاقيات",
+          t16: "دراسات حالة صناعية",
+          cwTitle: "الأعمال والتقييم",
+          cwAssignTitle: "الواجبات والامتحان والتأخير",
+          cwAssignDesc: "تفاصيل الدرجات والسياسات ستُحدَّث قريبًا.",
+          cwSoon: "سيُحدَّث قريبًا",
+          cwLlmTitle: "استخدام LLM",
+          cwLlmDesc: "مسموح للتعلم مع وجوب فهم العمل والدفاع عنه.",
+          cwFocusTitle: "منصة التنفيذ",
+          cwFocusDesc: "المحور هو Python وسير عمل التحليل الشائعة.",
+          staffTitle: "طاقم المقرر",
+          instTitle: "المدرّس",
+          roleInstructor: "مدرّس",
+          taTitle: "المساعدون",
+          roleTa: "مساعد تدريس",
+          ta1: "بوريا صفائي",
+          ta2: "أبوالفضل مسلمي",
+          ta3: "سيُعلن لاحقًا",
+          ta3role: "القائمة قيد الإكمال",
+          indTitle: "التعاون الصناعي",
+          ind1: "نرحب بالبيانات والمشكلات الحقيقية للصف والمشاريع والتحديات.",
+          ind2: "يمكن تصميم تحدٍ أو هاكاثون مع فريق المساعدين.",
+          indBoxTitle: "لديكم بيانات أو تحدٍ؟",
+          indBoxDesc: "تواصلوا معنا للاستخدام التعليمي بإذن واضح.",
+          indPrivacy: "السرية وإخفاء الهوية وضوابط الوصول أساسية.",
+          footerLine: "تحليل البيانات · جامعة شريف · خريف 2026",
+          footerPrepared: "إعداد: محمد خلويي",
+        },
+        zh: {
+          navHome: "主页",
+          navLogistics: "安排",
+          navSyllabus: "大纲",
+          navCoursework: "作业评分",
+          navStaff: "教学团队",
+          navIndustry: "产业合作",
+          navCourses: "课程",
+          pillUni: "谢里夫理工大学",
+          pillTerm: "2026 秋季",
+          title: "数据分析",
+          subtitle: "从真实数据到有效决策",
+          mastLead: "面向实践的课程：问题定义、真实数据分析与决策——以 Python 为核心。",
+          liveTitle: "实时分析示意",
+          liveCaptionTitle: "本课训练什么",
+          liveCaption: "实时示意体现课程思路：结构探索、聚类、趋势与决策区域。",
+          stat1l: "问题优先",
+          stat1v: "先策略后工具",
+          stat2l: "Python 为主",
+          stat2v: "动手流程",
+          stat3l: "真实数据",
+          stat3v: "贴近产业",
+          stat4l: "负责任 AI",
+          stat4v: "LLM 辅助学习",
+          descTitle: "课程介绍",
+          desc1: "本学期谢里夫《数据分析》将更强调真实数据上的理论与实践，帮助学生理解问题与数据战略，而不仅是工具。",
+          desc2: "课程覆盖从问题设计到建模评估与决策的全流程，实现语言以 Python 为主。",
+          desc3: "助教团队将组织数据挑战；在隐私合规前提下，产业数据可用于作业/项目/挑战。",
+          logTitle: "课程安排",
+          logCodeL: "课程代码",
+          logTermL: "学期",
+          logTermV: "2026 秋季",
+          logLectL: "授课时间",
+          logLectV: "周日与周二 7:30–9:30",
+          logOhL: "答疑/会面时段",
+          logOhV: "7:00–7:30（课前）",
+          logLangL: "实现重点",
+          logLangV: "Python",
+          logContactL: "联系",
+          preTitle: "先修要求",
+          pre1: "具备 Python 基础，或能快速补齐。",
+          pre2: "微积分与线性代数直觉。",
+          pre3: "基础概率与统计。",
+          pre4: "对真实脏数据有兴趣。",
+          preNote: "可用 LLM 辅助学习，但必须能理解并解释自己的工作。",
+          sylTitle: "大纲 — 六大模块",
+          sylLead: "适合正式介绍的清晰结构。",
+          b1t: "问题定义与数据策略",
+          b1d: "明确决策问题并设计分析路径。",
+          b2t: "数据理解与探索分析",
+          b2d: "质量评估与 EDA。",
+          b3t: "数据挖掘与机器学习",
+          b3d: "特征、无监督、回归与分类。",
+          b4t: "评估、解释与决策",
+          b4d: "实验设计、指标、相关与因果。",
+          b5t: "现代数据分析与 AI",
+          b5d: "时序、非结构化与 LLM 流程。",
+          b6t: "产业问题、隐私与挑战",
+          b6d: "真实案例与数据治理。",
+          topicsTitle: "详细主题",
+          t01: "问题理解与数据战略思维",
+          t02: "数据理解、采集与质量评估",
+          t03: "探索性数据分析 (EDA)",
+          t04: "数据准备与特征工程",
+          t05: "模式发现与无监督学习",
+          t06: "聚类与降维",
+          t07: "回归预测建模",
+          t08: "分类与数据驱动决策",
+          t09: "模型评估与实验设计",
+          t10: "可解释性与洞见提取",
+          t11: "时序、事件与异常分析",
+          t12: "非结构化数据：文本、音频与多模态",
+          t13: "AI 与大语言模型用于数据分析",
+          t14: "相关、因果与决策",
+          t15: "隐私、匿名化、伦理与治理",
+          t16: "真实产业案例与挑战",
+          cwTitle: "作业与评分",
+          cwAssignTitle: "作业、考试与迟交政策",
+          cwAssignDesc: "评分权重、作业时间表、考试形式与迟交政策将尽快更新。",
+          cwSoon: "即将更新",
+          cwLlmTitle: "LLM 使用",
+          cwLlmDesc: "允许用于学习与提效；禁止无理解照抄，需能解释全部步骤。",
+          cwFocusTitle: "实现栈",
+          cwFocusDesc: "以 Python（NumPy/Pandas/scikit-learn 风格）为主，按需补充可视化与多模态工具。",
+          staffTitle: "教学团队",
+          instTitle: "授课教师",
+          roleInstructor: "授课教师",
+          taTitle: "助教",
+          roleTa: "助教",
+          ta1: "Pouria Safaei",
+          ta2: "Abolfazl Moslemi",
+          ta3: "待公布",
+          ta3role: "名单完善中",
+          indTitle: "产业合作",
+          ind1: "欢迎企业提供有教育价值的数据问题或未分析数据集。",
+          ind2: "可合作设计课堂案例、作业、项目或黑客松挑战。",
+          indBoxTitle: "有真实数据或挑战？",
+          indBoxDesc: "在明确授权下欢迎联系，推动学生项目与挑战。",
+          indPrivacy: "保密、匿名化与访问分级是硬要求，也可成为教学环节。",
+          footerLine: "数据分析 · 谢里夫理工大学 · 2026 秋季",
+          footerPrepared: "制作：Mohammad Khalooei",
+        },
+      };
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/sharif-data-analysis.js"></script>
+  </body>
+</html>

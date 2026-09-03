@@ -18,6 +18,7 @@ window.I18N = {
       research: "Research",
       collaborators: "Collaborators",
       teaching: "Teaching",
+      courses: "Courses",
       apps: "Simulators",
       speechAcademy: "Academy",
       bridge: "Links",
@@ -65,6 +66,13 @@ window.I18N = {
       title: "Courses taught",
       subtitle: "",
       courses: [
+        {
+          icon: "ai",
+          name: "sharif-da2026 — Data Analysis (Sharif)",
+          topics: "Fall 2026 · Sun/Tue 7:30–9:30 · Python · industry cases",
+          href: "sharif-data-analysis.html",
+          linkLabel: "Course page",
+        },
         {
           icon: "sys",
           name: "Principles of computer systems",
@@ -216,6 +224,7 @@ window.I18N = {
       research: "پژوهش",
       collaborators: "همکاران",
       teaching: "تدریس",
+      courses: "دروس",
       apps: "شبیه‌ساز",
       speechAcademy: "آکادمی",
       bridge: "پیوندها",
@@ -263,6 +272,13 @@ window.I18N = {
       title: "دروس تدریس‌شده",
       subtitle: "",
       courses: [
+        {
+          icon: "ai",
+          name: "sharif-da2026 — تحلیل داده (شریف)",
+          topics: "پاییز ۲۰۲۶ · یکشنبه/سه‌شنبه ۷:۳۰–۹:۳۰ · پایتون · صنعت",
+          href: "sharif-data-analysis.html",
+          linkLabel: "صفحه درس",
+        },
         {
           icon: "sys",
           name: "اصول طراحی سیستم‌های کامپیوتری",
@@ -414,6 +430,7 @@ window.I18N = {
       research: "البحث",
       collaborators: "المتعاونون",
       teaching: "التدريس",
+      courses: "المقررات",
       apps: "محاكيات",
       speechAcademy: "الأكاديمية",
       bridge: "روابط",
@@ -461,6 +478,13 @@ window.I18N = {
       title: "المقررات المُدرَّسة",
       subtitle: "",
       courses: [
+        {
+          icon: "ai",
+          name: "تحليل البيانات — شريف",
+          topics: "خريف 2026 · استراتيجية · استكشاف · تعلم آلي · صناعة",
+          href: "sharif-data-analysis.html",
+          linkLabel: "صفحة المقرر",
+        },
         {
           icon: "sys",
           name: "مبادئ أنظمة الحاسوب",
@@ -612,6 +636,7 @@ window.I18N = {
       research: "研究",
       collaborators: "合作者",
       teaching: "教学",
+      courses: "课程",
       apps: "模拟器",
       speechAcademy: "学院",
       bridge: "链接",
@@ -659,6 +684,13 @@ window.I18N = {
       title: "授课课程",
       subtitle: "",
       courses: [
+        {
+          icon: "ai",
+          name: "数据分析 — 谢里夫",
+          topics: "2026 秋季 · 策略 · 探索 · 机器学习 · 产业案例",
+          href: "sharif-data-analysis.html",
+          linkLabel: "课程主页",
+        },
         {
           icon: "sys",
           name: "计算机系统原理",
