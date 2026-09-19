@@ -276,11 +276,14 @@
     if (teachEl && t.teaching && t.teaching.courses) {
       teachEl.innerHTML = t.teaching.courses
         .map(function (c, i) {
+          var isExternal = c.href && /^https?:\/\//.test(c.href);
           var link =
             c.href ?
               '<a class="course-link" href="' +
               escapeAttr(c.href) +
-              '" target="_blank" rel="noopener noreferrer">' +
+              '"' +
+              (isExternal ? ' target="_blank" rel="noopener noreferrer"' : "") +
+              ">" +
               escapeHtml(c.linkLabel || "") +
               "</a>"
             : "";

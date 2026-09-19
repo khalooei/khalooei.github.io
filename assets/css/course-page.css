@@ -459,11 +459,163 @@ html[lang="ar"] .course-body {
   text-decoration: none;
 }
 
+.outcomes-list,
+.checklist {
+  margin: 0.4rem 0 0;
+  padding-inline-start: 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.outcomes-list li,
+.checklist li {
+  color: var(--c-ink);
+}
+
+.audience-note {
+  background: var(--c-soft);
+  border-radius: 10px;
+  border: 1px solid var(--c-line);
+  padding: 0.75rem 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.audience-note strong {
+  color: var(--c-navy);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 0.6rem;
+  border: 1px solid var(--c-line);
+  border-radius: 10px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  min-width: 480px;
+}
+
+.data-table th,
+.data-table td {
+  text-align: start;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--c-line);
+  vertical-align: top;
+}
+
+.data-table thead th {
+  background: var(--c-soft);
+  color: var(--c-navy);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: #fbfcfe;
+}
+
+.data-table .num-cell {
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--c-navy-2);
+}
+
+.data-table tfoot td {
+  font-weight: 700;
+  color: var(--c-navy);
+  background: var(--c-soft);
+  border-top: 2px solid var(--c-line);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.6rem;
+}
+
+.resource-card {
+  border: 1px solid var(--c-line);
+  border-radius: 10px;
+  padding: 0.85rem 0.9rem;
+  background: linear-gradient(180deg, #fff, #fafbfd);
+}
+
+.resource-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.98rem;
+}
+
+.resource-card ul {
+  margin: 0;
+  padding-inline-start: 1.05rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+
+.faq-list {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.faq-item {
+  border: 1px solid var(--c-line);
+  border-radius: 10px;
+  padding: 0.15rem 0.9rem;
+  background: #fff;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  padding: 0.65rem 0;
+  font-weight: 600;
+  color: var(--c-navy);
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1rem;
+  color: var(--c-gold);
+  font-weight: 800;
+}
+
+.faq-item[open] summary::before {
+  content: "\2212";
+}
+
+.faq-item p {
+  margin: 0 0 0.75rem 1.1rem;
+  color: var(--c-muted);
+  font-size: 0.93rem;
+}
+
+html[dir="rtl"] .faq-item p {
+  margin: 0 1.1rem 0.75rem 0;
+}
+
 @media (max-width: 860px) {
   .live-lab,
   .blocks-grid,
   .staff-grid,
-  .course-meta {
+  .course-meta,
+  .resource-grid {
     grid-template-columns: 1fr;
   }
 

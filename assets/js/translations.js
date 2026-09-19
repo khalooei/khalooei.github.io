@@ -69,7 +69,7 @@ window.I18N = {
         {
           icon: "ai",
           name: "sharif-da2026 — Data Analysis (Sharif)",
-          topics: "Fall 2026 · Sun/Tue 7:30–9:30 · Python · industry cases",
+          topics: "Fall 2026 · full syllabus, schedule & grading · Python · industry cases",
           href: "sharif-data-analysis.html",
           linkLabel: "Course page",
         },
@@ -275,7 +275,7 @@ window.I18N = {
         {
           icon: "ai",
           name: "sharif-da2026 — تحلیل داده (شریف)",
-          topics: "پاییز ۲۰۲۶ · یکشنبه/سه‌شنبه ۷:۳۰–۹:۳۰ · پایتون · صنعت",
+          topics: "پاییز ۲۰۲۶ · سرفصل، برنامه هفتگی و نمره‌دهی کامل · پایتون · صنعت",
           href: "sharif-data-analysis.html",
           linkLabel: "صفحه درس",
         },
@@ -481,7 +481,7 @@ window.I18N = {
         {
           icon: "ai",
           name: "تحليل البيانات — شريف",
-          topics: "خريف 2026 · استراتيجية · استكشاف · تعلم آلي · صناعة",
+          topics: "خريف 2026 · المنهج الكامل والجدول والتقييم · Python · صناعة",
           href: "sharif-data-analysis.html",
           linkLabel: "صفحة المقرر",
         },
@@ -687,7 +687,7 @@ window.I18N = {
         {
           icon: "ai",
           name: "数据分析 — 谢里夫",
-          topics: "2026 秋季 · 策略 · 探索 · 机器学习 · 产业案例",
+          topics: "2026 秋季 · 完整大纲、每周计划与评分 · Python · 产业案例",
           href: "sharif-data-analysis.html",
           linkLabel: "课程主页",
         },
