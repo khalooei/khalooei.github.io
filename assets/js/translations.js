@@ -112,6 +112,13 @@ window.I18N = {
       subtitle: "",
       items: [
         {
+          title: "Optimization Adventure (game)",
+          desc: "Learn optimization by playing: pack a knapsack and solve a traveling-salesperson map, in Persian, English or Arabic.",
+          href: "optimization-adventure/",
+          badge: "Game",
+          cta: "Play",
+        },
+        {
           title: "Visualize Optimization",
           desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
@@ -317,6 +324,13 @@ window.I18N = {
       title: "شبیه‌سازهای تعاملی",
       subtitle: "",
       items: [
+        {
+          title: "ماجراجویی بهینه‌سازی (بازی)",
+          desc: "بهینه‌سازی را با بازی یاد بگیر: کوله‌پشتی را بچین و مسیر فروشنده دوره‌گرد را حل کن؛ فارسی، انگلیسی یا عربی.",
+          href: "optimization-adventure/",
+          badge: "بازی",
+          cta: "بازی کن",
+        },
         {
           title: "Visualize Optimization",
           desc: "",
@@ -524,6 +538,13 @@ window.I18N = {
       subtitle: "",
       items: [
         {
+          title: "مغامرة التحسين (لعبة)",
+          desc: "تعلّم التحسين باللعب: احزم حقيبة الظهر وحلّ خريطة البائع المتجول، بالفارسية أو الإنجليزية أو العربية.",
+          href: "optimization-adventure/",
+          badge: "لعبة",
+          cta: "العب",
+        },
+        {
           title: "Visualize Optimization",
           desc: "",
           href: "https://khalooei.github.io/visualize-optimization/",
@@ -729,6 +750,13 @@ window.I18N = {
       title: "交互模拟器",
       subtitle: "",
       items: [
+        {
+          title: "优化大冒险（游戏）",
+          desc: "在游戏中学习优化：装背包、解决旅行商问题地图，支持波斯语、英语和阿拉伯语。",
+          href: "optimization-adventure/",
+          badge: "游戏",
+          cta: "开始游戏",
+        },
         {
           title: "Visualize Optimization",
           desc: "",
