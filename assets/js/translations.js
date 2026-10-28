@@ -78,17 +78,19 @@ window.I18N = {
       subtitle: "New and worth a look.",
       items: [
         {
-          tag: "New simulator",
-          title: "Signal Lab",
-          desc: "From raw signals to Mel spectrograms and MFCC — with live audio.",
-          href: "signal-lab/",
-          isNew: true,
-        },
-        {
           tag: "New course",
           title: "Data Analytics — Sharif",
           desc: "Fall 2026 · full syllabus, schedule and grading · Python · industry cases.",
           href: "sharif-data-analysis.html",
+          isNew: true,
+          featured: true,
+          image: "assets/img/sharif-data-analysis-2026.jpg",
+        },
+        {
+          tag: "New simulator",
+          title: "Signal Lab",
+          desc: "From raw signals to Mel spectrograms and MFCC — with live audio.",
+          href: "signal-lab/",
           isNew: true,
         },
         {
@@ -344,17 +346,19 @@ window.I18N = {
       subtitle: "تازه‌ها و موارد دیدنی.",
       items: [
         {
-          tag: "شبیه‌ساز جدید",
-          title: "آزمایشگاه سیگنال",
-          desc: "از سیگنال خام تا طیف‌نگار مل و MFCC — همراه با صدای زنده.",
-          href: "signal-lab/",
-          isNew: true,
-        },
-        {
           tag: "درس جدید",
           title: "تحلیل داده — شریف",
           desc: "پاییز ۲۰۲۶ · سرفصل کامل، برنامه و ارزشیابی · پایتون · مطالعات موردی صنعتی.",
           href: "sharif-data-analysis.html",
+          isNew: true,
+          featured: true,
+          image: "assets/img/sharif-data-analysis-2026.jpg",
+        },
+        {
+          tag: "شبیه‌ساز جدید",
+          title: "آزمایشگاه سیگنال",
+          desc: "از سیگنال خام تا طیف‌نگار مل و MFCC — همراه با صدای زنده.",
+          href: "signal-lab/",
           isNew: true,
         },
         {
@@ -610,17 +614,19 @@ window.I18N = {
       subtitle: "جديد يستحق المشاهدة.",
       items: [
         {
-          tag: "محاكي جديد",
-          title: "مختبر الإشارة",
-          desc: "من الإشارة الخام إلى مخطط ميل الطيفي وMFCC — مع صوت حي.",
-          href: "signal-lab/",
-          isNew: true,
-        },
-        {
           tag: "مقرر جديد",
           title: "تحليل البيانات — شريف",
           desc: "خريف 2026 · منهج كامل وجدول وتقييم · بايثون · دراسات حالة صناعية.",
           href: "sharif-data-analysis.html",
+          isNew: true,
+          featured: true,
+          image: "assets/img/sharif-data-analysis-2026.jpg",
+        },
+        {
+          tag: "محاكي جديد",
+          title: "مختبر الإشارة",
+          desc: "من الإشارة الخام إلى مخطط ميل الطيفي وMFCC — مع صوت حي.",
+          href: "signal-lab/",
           isNew: true,
         },
         {
@@ -876,17 +882,19 @@ window.I18N = {
       subtitle: "最新动态与推荐内容。",
       items: [
         {
-          tag: "新模拟器",
-          title: "信号实验室",
-          desc: "从原始信号到梅尔频谱图与 MFCC —— 支持实时音频。",
-          href: "signal-lab/",
-          isNew: true,
-        },
-        {
           tag: "新课程",
           title: "数据分析 — 谢里夫",
           desc: "2026 秋季 · 完整大纲、日程与评分 · Python · 行业案例。",
           href: "sharif-data-analysis.html",
+          isNew: true,
+          featured: true,
+          image: "assets/img/sharif-data-analysis-2026.jpg",
+        },
+        {
+          tag: "新模拟器",
+          title: "信号实验室",
+          desc: "从原始信号到梅尔频谱图与 MFCC —— 支持实时音频。",
+          href: "signal-lab/",
           isNew: true,
         },
         {

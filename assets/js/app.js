@@ -208,11 +208,18 @@
             tagName +
             ' class="card spotlight-card reveal' +
             (item.isNew ? " is-new" : "") +
+            (item.featured ? " featured" : "") +
+            (item.image ? " has-image" : "") +
             '"' +
             hrefAttr +
             ' style="--d:' +
             i +
             '">' +
+            (item.image ?
+              '<span class="spot-media"><img src="' +
+              escapeAttr(item.image) +
+              '" alt="" loading="lazy" decoding="async" /></span><span class="spot-body">'
+            : "") +
             '<span class="tag">' +
             escapeHtml(item.tag) +
             "</span>" +
@@ -222,6 +229,7 @@
             "<p>" +
             escapeHtml(item.desc) +
             "</p>" +
+            (item.image ? "</span>" : "") +
             (item.href ? '<span class="card-arrow" aria-hidden="true">→</span>' : "") +
             "</" +
             tagName +
