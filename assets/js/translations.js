@@ -5,6 +5,7 @@ window.I18N = {
       "Mohammad Khalooei: Ph.D. in Artificial Intelligence; consultant & researcher; speech & audio, trustworthy ML, vision, NLP.",
     a11y: { skip: "Skip to main content" },
     floatNav: {
+      contact: "Contact",
       top: "Top",
       spotlight: "Highlights",
       research: "Research",
@@ -14,6 +15,7 @@ window.I18N = {
       bottom: "Contact",
     },
     nav: {
+      contact: "Contact",
       spotlight: "Highlights",
       research: "Research",
       collaborators: "Collaborators",
@@ -36,35 +38,89 @@ window.I18N = {
       githubLabel: "GitHub",
       linksGroupAria: "LinkedIn, GitHub, and Google Scholar",
     },
+    profile: {
+      role: "AI researcher · educator · consultant",
+      bio: "My work focuses on trustworthy and robust machine learning, speech and speaker recognition, and multimodal large language models. I teach university courses and build open, interactive simulators that make AI and signal processing tangible.",
+      aut: "Amirkabir University of Technology",
+      sharif: "Sharif University of Technology",
+      statPubs: "Selected papers",
+      statCourses: "Courses",
+      statSims: "Simulators",
+      focus: "Focus areas",
+      ctaTeaching: "Teaching",
+      ctaContact: "Contact",
+    },
+    hubs: {
+      coursesT: "All courses",
+      coursesD: "Course pages with syllabus, schedule, grading and materials.",
+      academyT: "Academy",
+      academyD: "Structured learning tracks: speech, trustworthy ML, vision, NLP, MLOps and practical tooling.",
+      speechT: "Speech Processing Academy",
+      speechD: "From signals and the FFT to modern speech models, with interactive simulators.",
+      open: "Open",
+    },
+    contact: {
+      title: "Contact & profiles",
+      subtitle: "For research collaboration, teaching or consulting, email is the best way to reach me.",
+      emailAut: "Email · Amirkabir",
+      emailSharif: "Email · Sharif",
+      scholarD: "Publications and citations",
+      linkedinD: "Professional background",
+      githubD: "Open-source code and simulators",
+      pcsD: "Principles of Computer Systems — Sharif",
+    },
+    footer: {
+      tagline: "AI research & teaching · Amirkabir University of Technology · Sharif University of Technology",
+      explore: "Explore",
+      contact: "Contact",
+    },
     spotlight: {
       title: "Highlights",
-      subtitle: "",
+      subtitle: "New and worth a look.",
       items: [
+        {
+          tag: "New simulator",
+          title: "Signal Lab",
+          desc: "From raw signals to Mel spectrograms and MFCC — with live audio.",
+          href: "signal-lab/",
+          isNew: true,
+        },
+        {
+          tag: "New course",
+          title: "Data Analysis — Sharif",
+          desc: "Fall 2026 · full syllabus, schedule and grading · Python · industry cases.",
+          href: "sharif-data-analysis.html",
+          isNew: true,
+        },
         {
           tag: "Course",
           title: "Principles of computer systems",
           desc: "PCS at Sharif — architecture through memory and I/O.",
+          href: "https://pcssharif.github.io/",
         },
         {
           tag: "Demo",
           title: "Optimization visualization",
           desc: "3D loss surfaces and trajectory comparison.",
+          href: "https://khalooei.github.io/visualize-optimization/",
         },
         {
           tag: "Course",
           title: "Speech & audio",
           desc: "DSP foundations to neural acoustic modelling.",
+          href: "speech-processing.html",
         },
         {
           tag: "Course",
           title: "Trustworthy ML",
           desc: "Robustness, attacks, and explanations.",
+          href: "trustworthy-ml.html",
         },
       ],
     },
     teaching: {
       title: "Courses taught",
-      subtitle: "",
+      subtitle: "University courses, open course pages and structured learning tracks.",
       courses: [
         {
           icon: "ai",
@@ -109,12 +165,13 @@ window.I18N = {
     },
     apps: {
       title: "Interactive simulators",
-      subtitle: "",
+      subtitle: "Open, browser-based simulators that make machine learning and signal processing tangible.",
       items: [
         {
           title: "Signal Lab: from raw signals to Mel spectrograms",
           desc: "What is a signal and a hertz, sampling and aliasing, combining waves, Fourier transform, STFT spectrogram, Mel filterbank and MFCC — with live audio and your own microphone.",
           href: "signal-lab/",
+          featured: true,
           badge: "New",
           cta: "Open",
         },
@@ -150,7 +207,7 @@ window.I18N = {
     },
     research: {
       title: "Research",
-      subtitle: "",
+      subtitle: "Trustworthy and robust machine learning, speech technologies and multimodal models.",
       interestsTitle: "Topics of interest",
       interests: [
         "Trustworthy & robust machine learning",
@@ -225,6 +282,7 @@ window.I18N = {
       "محمد خالوئی؛ دکتری هوش مصنوعی؛ پردازش گفتار، یادگیری ماشین، بینایی، زبان، داده.",
     a11y: { skip: "پرش به محتوای اصلی" },
     floatNav: {
+      contact: "تماس",
       top: "بالا",
       spotlight: "برجسته‌ها",
       research: "پژوهش",
@@ -234,6 +292,7 @@ window.I18N = {
       bottom: "تماس",
     },
     nav: {
+      contact: "تماس",
       spotlight: "برجسته‌ها",
       research: "پژوهش",
       collaborators: "همکاران",
@@ -256,35 +315,89 @@ window.I18N = {
       githubLabel: "GitHub",
       linksGroupAria: "لینکدین، گیت‌هاب و Scholar",
     },
+    profile: {
+      role: "پژوهشگر هوش مصنوعی · مدرس · مشاور",
+      bio: "تمرکز کارهای من بر یادگیری ماشین قابل اعتماد و مقاوم، بازشناسی گفتار و گوینده و مدل‌های زبانی بزرگ چندوجهی است. دروس دانشگاهی تدریس می‌کنم و شبیه‌سازهای تعاملی و متن‌باز می‌سازم تا هوش مصنوعی و پردازش سیگنال ملموس شوند.",
+      aut: "دانشگاه صنعتی امیرکبیر",
+      sharif: "دانشگاه صنعتی شریف",
+      statPubs: "مقالهٔ منتخب",
+      statCourses: "درس",
+      statSims: "شبیه‌ساز",
+      focus: "حوزه‌های تمرکز",
+      ctaTeaching: "تدریس",
+      ctaContact: "تماس",
+    },
+    hubs: {
+      coursesT: "همهٔ دروس",
+      coursesD: "صفحه‌های درس همراه با سرفصل، برنامه، ارزشیابی و منابع.",
+      academyT: "آکادمی",
+      academyD: "مسیرهای یادگیری ساختاریافته: گفتار، یادگیری ماشین قابل اعتماد، بینایی، پردازش زبان، MLOps و ابزارهای عملی.",
+      speechT: "آکادمی پردازش گفتار",
+      speechD: "از سیگنال و FFT تا مدل‌های نوین گفتار، همراه با شبیه‌سازهای تعاملی.",
+      open: "مشاهده",
+    },
+    contact: {
+      title: "تماس و پروفایل‌ها",
+      subtitle: "برای همکاری پژوهشی، تدریس یا مشاوره، بهترین راه ارتباط ایمیل است.",
+      emailAut: "ایمیل · امیرکبیر",
+      emailSharif: "ایمیل · شریف",
+      scholarD: "مقالات و ارجاعات",
+      linkedinD: "سوابق حرفه‌ای",
+      githubD: "کدها و شبیه‌سازهای متن‌باز",
+      pcsD: "درس اصول سیستم‌های کامپیوتری — شریف",
+    },
+    footer: {
+      tagline: "پژوهش و آموزش هوش مصنوعی · دانشگاه صنعتی امیرکبیر · دانشگاه صنعتی شریف",
+      explore: "پیمایش",
+      contact: "تماس",
+    },
     spotlight: {
       title: "برجسته‌ها",
-      subtitle: "",
+      subtitle: "تازه‌ها و موارد دیدنی.",
       items: [
+        {
+          tag: "شبیه‌ساز جدید",
+          title: "آزمایشگاه سیگنال",
+          desc: "از سیگنال خام تا طیف‌نگار مل و MFCC — همراه با صدای زنده.",
+          href: "signal-lab/",
+          isNew: true,
+        },
+        {
+          tag: "درس جدید",
+          title: "تحلیل داده — شریف",
+          desc: "پاییز ۲۰۲۶ · سرفصل کامل، برنامه و ارزشیابی · پایتون · مطالعات موردی صنعتی.",
+          href: "sharif-data-analysis.html",
+          isNew: true,
+        },
         {
           tag: "درس",
           title: "اصول طراحی سیستم‌های کامپیوتری",
           desc: "از خلق یک کامپیوتر تا پردازنده های گرافیکی هوش مصنوعی",
+          href: "https://pcssharif.github.io/",
         },
         {
           tag: "دموی تعاملی",
           title: "مصورسازی بهینه‌سازی",
           desc: "عشق به ریاضیات و بهینه‌سازی",
+          href: "https://khalooei.github.io/visualize-optimization/",
         },
         {
           tag: "درس",
           title: "گفتار و صوت",
           desc: "از پردازش سیگنال و صوت تا تولید تخصصی گفتار صوتی مصنوعی",
+          href: "speech-processing.html",
         },
         {
           tag: "درس",
           title: "یادگیری ماشین قابل اعتماد",
           desc: "از تفسیرپذیری مدل های هوش مصنوعی تا مقاوم سازی آنها",
+          href: "trustworthy-ml.html",
         },
       ],
     },
     teaching: {
       title: "دروس تدریس‌شده",
-      subtitle: "",
+      subtitle: "دروس دانشگاهی، صفحه‌های درس آزاد و مسیرهای یادگیری ساختاریافته.",
       courses: [
         {
           icon: "ai",
@@ -329,12 +442,13 @@ window.I18N = {
     },
     apps: {
       title: "شبیه‌سازهای تعاملی",
-      subtitle: "",
+      subtitle: "شبیه‌سازهای آزاد و تحت وب که یادگیری ماشین و پردازش سیگنال را ملموس می‌کنند.",
       items: [
         {
           title: "آزمایشگاه سیگنال: از سیگنال خام تا طیف‌نگار مل",
           desc: "سیگنال و هرتز چیست، نمونه‌برداری و همپوشانی، ترکیب موج‌ها، تبدیل فوریه، طیف‌نگار STFT، بانک فیلتر مل و MFCC — همراه با صدای زنده و میکروفون خودتان.",
           href: "signal-lab/",
+          featured: true,
           badge: "جدید",
           cta: "باز کن",
         },
@@ -370,7 +484,7 @@ window.I18N = {
     },
     research: {
       title: "پژوهش",
-      subtitle: "",
+      subtitle: "یادگیری ماشین قابل اعتماد و مقاوم، فناوری‌های گفتار و مدل‌های چندوجهی.",
       interestsTitle: "موضوعات مورد علاقه",
       interests: [
         "یادگیری ماشین قابل اعتماد و مقاوم",
@@ -445,6 +559,7 @@ window.I18N = {
       "محمد خلوئي: دكتوراه في الذكاء الاصطناعي؛ الصوت، التعلم الآلي الآمن، الرؤية، اللغة، البيانات.",
     a11y: { skip: "تخطي إلى المحتوى الرئيسي" },
     floatNav: {
+      contact: "تواصل",
       top: "أعلى",
       spotlight: "مستجدات",
       research: "البحث",
@@ -454,6 +569,7 @@ window.I18N = {
       bottom: "اتصال",
     },
     nav: {
+      contact: "تواصل",
       spotlight: "مستجدات",
       research: "البحث",
       collaborators: "المتعاونون",
@@ -476,35 +592,89 @@ window.I18N = {
       githubLabel: "GitHub",
       linksGroupAria: "LinkedIn وGitHub وScholar",
     },
+    profile: {
+      role: "باحث في الذكاء الاصطناعي · مُدرّس · مستشار",
+      bio: "يتركّز عملي على التعلّم الآلي الموثوق والمتين، والتعرّف على الكلام والمتحدّث، والنماذج اللغوية الكبيرة متعددة الوسائط. أُدرّس مقررات جامعية وأبني محاكيات تفاعلية مفتوحة تجعل الذكاء الاصطناعي ومعالجة الإشارات ملموسة.",
+      aut: "جامعة أميركبير للتكنولوجيا",
+      sharif: "جامعة شريف للتكنولوجيا",
+      statPubs: "أوراق مختارة",
+      statCourses: "مقررات",
+      statSims: "محاكيات",
+      focus: "مجالات التركيز",
+      ctaTeaching: "التدريس",
+      ctaContact: "تواصل",
+    },
+    hubs: {
+      coursesT: "كل المقررات",
+      coursesD: "صفحات المقررات مع المنهج والجدول والتقييم والمواد.",
+      academyT: "الأكاديمية",
+      academyD: "مسارات تعلّم منظّمة: الكلام، التعلّم الموثوق، الرؤية، معالجة اللغة، MLOps وأدوات عملية.",
+      speechT: "أكاديمية معالجة الكلام",
+      speechD: "من الإشارة وFFT إلى نماذج الكلام الحديثة، مع محاكيات تفاعلية.",
+      open: "عرض",
+    },
+    contact: {
+      title: "التواصل والملفات الشخصية",
+      subtitle: "للتعاون البحثي أو التدريس أو الاستشارات، البريد الإلكتروني هو أفضل وسيلة للتواصل.",
+      emailAut: "البريد · أميركبير",
+      emailSharif: "البريد · شريف",
+      scholarD: "المنشورات والاستشهادات",
+      linkedinD: "المسيرة المهنية",
+      githubD: "شيفرات ومحاكيات مفتوحة المصدر",
+      pcsD: "مقرر مبادئ أنظمة الحاسوب — شريف",
+    },
+    footer: {
+      tagline: "بحث وتعليم في الذكاء الاصطناعي · جامعة أميركبير للتكنولوجيا · جامعة شريف للتكنولوجيا",
+      explore: "استكشاف",
+      contact: "تواصل",
+    },
     spotlight: {
       title: "مستجدات",
-      subtitle: "",
+      subtitle: "جديد يستحق المشاهدة.",
       items: [
+        {
+          tag: "محاكي جديد",
+          title: "مختبر الإشارة",
+          desc: "من الإشارة الخام إلى مخطط ميل الطيفي وMFCC — مع صوت حي.",
+          href: "signal-lab/",
+          isNew: true,
+        },
+        {
+          tag: "مقرر جديد",
+          title: "تحليل البيانات — شريف",
+          desc: "خريف 2026 · منهج كامل وجدول وتقييم · بايثون · دراسات حالة صناعية.",
+          href: "sharif-data-analysis.html",
+          isNew: true,
+        },
         {
           tag: "مقرر",
           title: "مبادئ أنظمة الحاسوب",
           desc: "PCS في شريف — البنية والذاكرة والدخل/الخرج.",
+          href: "https://pcssharif.github.io/",
         },
         {
           tag: "عرض",
           title: "تصور التحسين",
           desc: "أسطح ثلاثية الأبعاد ومسارات البحث.",
+          href: "https://khalooei.github.io/visualize-optimization/",
         },
         {
           tag: "مقرر",
           title: "الكلام والصوت",
           desc: "من معالجة الإشارة إلى النمذجة العصبية.",
+          href: "speech-processing.html",
         },
         {
           tag: "مقرر",
           title: "تعلم آلي موثوق",
           desc: "التحمل الخصومي والهجمات والتفسير.",
+          href: "trustworthy-ml.html",
         },
       ],
     },
     teaching: {
       title: "المقررات المُدرَّسة",
-      subtitle: "",
+      subtitle: "مقررات جامعية وصفحات مقررات مفتوحة ومسارات تعلّم منظّمة.",
       courses: [
         {
           icon: "ai",
@@ -549,12 +719,13 @@ window.I18N = {
     },
     apps: {
       title: "محاكيات تفاعلية",
-      subtitle: "",
+      subtitle: "محاكيات مفتوحة تعمل في المتصفح تجعل التعلّم الآلي ومعالجة الإشارات ملموسة.",
       items: [
         {
           title: "مختبر الإشارة: من الإشارة الخام إلى مخطط ميل الطيفي",
           desc: "ما الإشارة وما الهرتز، أخذ العينات والتداخل، جمع الموجات، تحويل فورييه، المخطط الطيفي STFT، مرشحات ميل وMFCC — مع صوت حي وميكروفونك.",
           href: "signal-lab/",
+          featured: true,
           badge: "جديد",
           cta: "افتح",
         },
@@ -590,7 +761,7 @@ window.I18N = {
     },
     research: {
       title: "البحث",
-      subtitle: "",
+      subtitle: "تعلّم آلي موثوق ومتين، وتقنيات الكلام، ونماذج متعددة الوسائط.",
       interestsTitle: "مواضيع الاهتمام",
       interests: [
         "تعلم آلي موثوق ومقاوم",
@@ -665,6 +836,7 @@ window.I18N = {
       "Mohammad Khalooei：人工智能博士；语音、可信机器学习、视觉、语言与数据分析。",
     a11y: { skip: "跳到主要内容" },
     floatNav: {
+      contact: "联系",
       top: "顶部",
       spotlight: "动态",
       research: "研究",
@@ -674,6 +846,7 @@ window.I18N = {
       bottom: "联系",
     },
     nav: {
+      contact: "联系",
       spotlight: "动态",
       research: "研究",
       collaborators: "合作者",
@@ -696,35 +869,89 @@ window.I18N = {
       githubLabel: "GitHub",
       linksGroupAria: "LinkedIn、GitHub 与 Google Scholar",
     },
+    profile: {
+      role: "人工智能研究者 · 教师 · 顾问",
+      bio: "研究方向包括可信与鲁棒机器学习、语音与说话人识别，以及多模态大语言模型。讲授大学课程，并开发开放的交互式模拟器，让人工智能与信号处理变得直观可感。",
+      aut: "阿米尔卡比尔理工大学",
+      sharif: "谢里夫理工大学",
+      statPubs: "代表性论文",
+      statCourses: "课程",
+      statSims: "模拟器",
+      focus: "研究方向",
+      ctaTeaching: "教学",
+      ctaContact: "联系",
+    },
+    hubs: {
+      coursesT: "全部课程",
+      coursesD: "课程主页：教学大纲、日程、评分与资料。",
+      academyT: "学院",
+      academyD: "结构化学习路线：语音、可信机器学习、视觉、NLP、MLOps 与实用工具。",
+      speechT: "语音处理学院",
+      speechD: "从信号与 FFT 到现代语音模型，配有交互式模拟器。",
+      open: "查看",
+    },
+    contact: {
+      title: "联系方式与主页",
+      subtitle: "如需科研合作、教学或咨询，欢迎通过电子邮件联系。",
+      emailAut: "邮箱 · 阿米尔卡比尔",
+      emailSharif: "邮箱 · 谢里夫",
+      scholarD: "论文与引用",
+      linkedinD: "职业经历",
+      githubD: "开源代码与模拟器",
+      pcsD: "计算机系统原理课程 — 谢里夫",
+    },
+    footer: {
+      tagline: "人工智能研究与教学 · 阿米尔卡比尔理工大学 · 谢里夫理工大学",
+      explore: "浏览",
+      contact: "联系",
+    },
     spotlight: {
       title: "动态",
-      subtitle: "",
+      subtitle: "最新动态与推荐内容。",
       items: [
+        {
+          tag: "新模拟器",
+          title: "信号实验室",
+          desc: "从原始信号到梅尔频谱图与 MFCC —— 支持实时音频。",
+          href: "signal-lab/",
+          isNew: true,
+        },
+        {
+          tag: "新课程",
+          title: "数据分析 — 谢里夫",
+          desc: "2026 秋季 · 完整大纲、日程与评分 · Python · 行业案例。",
+          href: "sharif-data-analysis.html",
+          isNew: true,
+        },
         {
           tag: "课程",
           title: "计算机系统原理",
           desc: "谢里夫 PCS — 体系结构至存储与 I/O。",
+          href: "https://pcssharif.github.io/",
         },
         {
           tag: "演示",
           title: "优化可视化",
           desc: "三维曲面与搜索轨迹。",
+          href: "https://khalooei.github.io/visualize-optimization/",
         },
         {
           tag: "课程",
           title: "语音与音频",
           desc: "从 DSP 到神经声学建模。",
+          href: "speech-processing.html",
         },
         {
           tag: "课程",
           title: "可信机器学习",
           desc: "对抗、攻击与可解释性。",
+          href: "trustworthy-ml.html",
         },
       ],
     },
     teaching: {
       title: "授课课程",
-      subtitle: "",
+      subtitle: "大学课程、开放课程主页与结构化学习路线。",
       courses: [
         {
           icon: "ai",
@@ -769,12 +996,13 @@ window.I18N = {
     },
     apps: {
       title: "交互模拟器",
-      subtitle: "",
+      subtitle: "开放的浏览器端模拟器，让机器学习与信号处理直观可感。",
       items: [
         {
           title: "信号实验室：从原始信号到梅尔频谱图",
           desc: "什么是信号与赫兹、采样与混叠、波的叠加、傅里叶变换、STFT 频谱图、梅尔滤波器组与 MFCC —— 支持实时音频与麦克风。",
           href: "signal-lab/",
+          featured: true,
           badge: "新",
           cta: "打开",
         },
@@ -810,7 +1038,7 @@ window.I18N = {
     },
     research: {
       title: "研究",
-      subtitle: "",
+      subtitle: "可信与鲁棒机器学习、语音技术与多模态模型。",
       interestsTitle: "关注方向",
       interests: [
         "可信与鲁棒机器学习",

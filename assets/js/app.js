@@ -123,7 +123,7 @@
     renderResearchInterests(t);
     renderCollaborators(t);
     renderPublications(lang);
-    renderBridge(t, lang);
+    renderProfile(t);
     wireScholarLinks();
     observeReveals();
 
@@ -155,6 +155,15 @@
       { title: c.mastersTitle, people: c.masters || [] },
       { title: c.facultyTitle, people: c.faculty || [] },
     ];
+    var hasPeople = groups.some(function (g) {
+      return g.people.length > 0;
+    });
+    var section = document.getElementById("collaborators");
+    if (section) section.hidden = !hasPeople;
+    document.querySelectorAll("[data-nav-collab]").forEach(function (a) {
+      a.hidden = !hasPeople;
+    });
+    if (!hasPeople) return;
     var empty = c.empty || "—";
     el.innerHTML = groups
       .map(function (g, i) {
@@ -189,10 +198,13 @@
     if (!el) return;
     var cta = pubCta(lang);
     el.innerHTML = RECENT_PUBLICATIONS.map(function (p, i) {
+      var year = (p.venue.match(/(19|20)\d{2}/) || [""])[0];
       return (
         '<li class="pub-item reveal" style="--d:' +
         i +
-        '"><div class="pub-main"><span class="pub-title">' +
+        '"><span class="pub-year">' +
+        escapeHtml(year) +
+        '</span><div class="pub-main"><span class="pub-title">' +
         escapeHtml(p.title) +
         '</span><span class="pub-venue">' +
         escapeHtml(p.venue) +
@@ -205,47 +217,25 @@
     }).join("");
   }
 
-  function renderBridge(t, lang) {
-    var el = document.getElementById("bridge-grid");
-    if (!el || !t.bridge || !t.bridge.items) return;
-    el.innerHTML = t.bridge.items
-      .map(function (item, i) {
-        var ext = item.external !== false;
-        var scholarAttr = item.scholar ? ' data-scholar="true"' : "";
-        var descBlock =
-          item.desc ?
-            "<p>" + escapeHtml(item.desc) + "</p>"
-          : "";
-        var btn2 =
-          item.cta2 && item.href2 ?
-            '<a class="btn btn-secondary" href="' +
-            escapeAttr(item.href2) +
-            '"' +
-            (item.external2 !== false ? ' target="_blank" rel="noopener noreferrer"' : "") +
-            ">" +
-            escapeHtml(item.cta2) +
-            "</a>"
-          : "";
-        return (
-          '<article class="card bridge-card reveal" style="--d:' +
-          i +
-          '"><h3>' +
-          escapeHtml(item.title) +
-          "</h3>" +
-          descBlock +
-          '<div class="bridge-actions"><a class="btn btn-ghost" href="' +
-          escapeAttr(item.href) +
-          '"' +
-          scholarAttr +
-          (ext ? ' target="_blank" rel="noopener noreferrer"' : "") +
-          ">" +
-          escapeHtml(item.cta) +
-          "</a>" +
-          btn2 +
-          "</div></article>"
-        );
-      })
-      .join("");
+  function renderProfile(t) {
+    var focus = document.getElementById("profile-focus");
+    if (focus && t.research && t.research.interests) {
+      focus.innerHTML = t.research.interests
+        .slice(0, 4)
+        .map(function (label) {
+          return '<span class="focus-chip">' + escapeHtml(label) + "</span>";
+        })
+        .join("");
+    }
+    var stats = {
+      "stat-pubs": RECENT_PUBLICATIONS.length,
+      "stat-courses": t.teaching && t.teaching.courses ? t.teaching.courses.length : 0,
+      "stat-sims": t.apps && t.apps.items ? t.apps.items.length : 0,
+    };
+    Object.keys(stats).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = String(stats[id]);
+    });
   }
 
   function renderLists(t, lang) {
@@ -253,8 +243,22 @@
     if (spotlightEl && t.spotlight && t.spotlight.items) {
       spotlightEl.innerHTML = t.spotlight.items
         .map(function (item, i) {
+          var tagName = item.href ? "a" : "article";
+          var hrefAttr =
+            item.href ?
+              ' href="' +
+              escapeAttr(item.href) +
+              '"' +
+              (/^https?:\/\//.test(item.href) ? ' target="_blank" rel="noopener noreferrer"' : "")
+            : "";
           return (
-            '<article class="card spotlight-card reveal" style="--d:' +
+            "<" +
+            tagName +
+            ' class="card spotlight-card reveal' +
+            (item.isNew ? " is-new" : "") +
+            '"' +
+            hrefAttr +
+            ' style="--d:' +
             i +
             '">' +
             '<span class="tag">' +
@@ -266,7 +270,10 @@
             "<p>" +
             escapeHtml(item.desc) +
             "</p>" +
-            "</article>"
+            (item.href ? '<span class="card-arrow" aria-hidden="true">→</span>' : "") +
+            "</" +
+            tagName +
+            ">"
           );
         })
         .join("");
@@ -311,12 +318,15 @@
     if (appsEl && t.apps && t.apps.items) {
       appsEl.innerHTML = t.apps.items
         .map(function (a, i) {
-          var isRoute = a.href && a.href.indexOf("#") === 0;
+          var isRoute = a.href && !/^https?:\/\//.test(a.href);
           var descBlock = a.desc ? "<p>" + escapeHtml(a.desc) + "</p>" : "";
           return (
-            '<article class="card app-card reveal" style="--d:' +
+            '<article class="card app-card reveal' +
+            (a.featured ? " featured" : "") +
+            '" style="--d:' +
             i +
             '">' +
+            (a.featured ? '<div class="app-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' : "") +
             '<div class="app-top"><span class="badge">' +
             escapeHtml(a.badge) +
             "</span></div>" +
@@ -447,7 +457,7 @@
   function initFloatNavActive() {
     var nav = document.getElementById("float-nav");
     if (!nav) return;
-    var ids = ["spotlight", "research", "collaborators", "teaching", "apps", "bridge", "footer-contact"];
+    var ids = ["spotlight", "research", "collaborators", "teaching", "apps", "contact", "footer-contact"];
     function update() {
       var rtl = document.documentElement.dir === "rtl";
       var x = rtl ? window.innerWidth * 0.58 : window.innerWidth * 0.42;

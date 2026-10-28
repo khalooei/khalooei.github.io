@@ -89,8 +89,9 @@ a:hover {
 
 .skip-link {
   position: absolute;
-  left: -999px;
+  inset-inline-start: 0;
   top: 0;
+  transform: translateY(-120%);
   background: var(--accent);
   color: #0f172a;
   padding: var(--space-sm) var(--space-md);
@@ -100,7 +101,7 @@ a:hover {
 }
 
 .skip-link:focus {
-  left: 0;
+  transform: none;
 }
 
 .visually-hidden {
