@@ -294,6 +294,13 @@ a.spotlight-card {
     linear-gradient(155deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.55));
 }
 
+@media (min-width: 641px) {
+  .spotlight-grid > .spotlight-card:first-child:nth-last-child(5),
+  .spotlight-grid > .spotlight-card:first-child:nth-last-child(3) {
+    grid-column: span 2;
+  }
+}
+
 .spotlight-card.is-new .tag {
   color: var(--success);
 }
@@ -444,7 +451,7 @@ body.rtl a.spotlight-card:hover .card-arrow {
 
 /* ---------- Courses ---------- */
 .teaching-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .course-card {
@@ -463,6 +470,28 @@ body.rtl a.spotlight-card:hover .card-arrow {
 
 .course-card .course-link {
   margin-top: var(--space-sm);
+}
+
+.icon-dl .course-icon::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  background:
+    radial-gradient(circle, var(--accent) 2.5px, transparent 3px) 0 0 / 50% 50%;
+}
+
+.icon-gen .course-icon {
+  background: rgba(244, 114, 182, 0.12);
+  border-color: rgba(244, 114, 182, 0.25);
+}
+
+.icon-gen .course-icon::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: conic-gradient(#f472b6, var(--accent-2), var(--accent), #f472b6);
+  opacity: 0.85;
 }
 
 /* ---------- Simulators ---------- */

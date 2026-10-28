@@ -121,7 +121,6 @@
 
     renderLists(t, lang);
     renderResearchInterests(t);
-    renderCollaborators(t);
     renderPublications(lang);
     renderProfile(t);
     wireScholarLinks();
@@ -141,53 +140,6 @@
           '" role="listitem">' +
           escapeHtml(label) +
           "</span>"
-        );
-      })
-      .join("");
-  }
-
-  function renderCollaborators(t) {
-    var el = document.getElementById("collaborators-grid");
-    if (!el || !t.collaborators) return;
-    var c = t.collaborators;
-    var groups = [
-      { title: c.undergradTitle, people: c.undergrad || [] },
-      { title: c.mastersTitle, people: c.masters || [] },
-      { title: c.facultyTitle, people: c.faculty || [] },
-    ];
-    var hasPeople = groups.some(function (g) {
-      return g.people.length > 0;
-    });
-    var section = document.getElementById("collaborators");
-    if (section) section.hidden = !hasPeople;
-    document.querySelectorAll("[data-nav-collab]").forEach(function (a) {
-      a.hidden = !hasPeople;
-    });
-    if (!hasPeople) return;
-    var empty = c.empty || "—";
-    el.innerHTML = groups
-      .map(function (g, i) {
-        var list =
-          g.people.length ?
-            g.people
-              .map(function (p) {
-                var name = typeof p === "string" ? p : p.name || "";
-                var extra =
-                  typeof p === "object" && p.affiliation ?
-                    '<span class="collab-affil">' + escapeHtml(p.affiliation) + "</span>"
-                  : "";
-                return "<li>" + escapeHtml(name) + extra + "</li>";
-              })
-              .join("")
-          : '<li class="collab-empty">' + escapeHtml(empty) + "</li>";
-        return (
-          '<article class="card collab-card reveal" style="--d:' +
-          i +
-          '"><h3 class="collab-group-title">' +
-          escapeHtml(g.title) +
-          '</h3><ul class="collab-list">' +
-          list +
-          "</ul></article>"
         );
       })
       .join("");
@@ -457,7 +409,7 @@
   function initFloatNavActive() {
     var nav = document.getElementById("float-nav");
     if (!nav) return;
-    var ids = ["spotlight", "research", "collaborators", "teaching", "apps", "contact", "footer-contact"];
+    var ids = ["spotlight", "research", "teaching", "apps", "contact", "footer-contact"];
     function update() {
       var rtl = document.documentElement.dir === "rtl";
       var x = rtl ? window.innerWidth * 0.58 : window.innerWidth * 0.42;
