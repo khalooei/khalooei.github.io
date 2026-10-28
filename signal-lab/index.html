@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Signal Lab: an interactive journey from raw signals and hertz to Fourier transforms, spectrograms, Mel spectrograms and MFCCs — with live audio. By Mohammad Khalooei." />
+  <meta name="author" content="Mohammad Khalooei" />
+  <meta name="theme-color" content="#070b17" />
+  <title>Signal Lab — From raw signals to Mel spectrograms | Mohammad Khalooei</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1629'/%3E%3Cpath d='M4 16 Q8 4 12 16 T20 16 T28 16' stroke='%2346e4b0' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html#apps" title="Mohammad Khalooei"><span class="pulse"></span><span>Signal Lab</span><small>· M. Khalooei</small></a>
+      <nav class="chap-nav" id="chapNav" aria-label="Chapters">
+        <a href="#signal"><b>1</b><span data-i18n="nav1">Signal</span></a>
+        <a href="#hertz"><b>2</b><span data-i18n="nav2">Hertz</span></a>
+        <a href="#sampling"><b>3</b><span data-i18n="nav3">Sampling</span></a>
+        <a href="#combine"><b>4</b><span data-i18n="nav4">Combine</span></a>
+        <a href="#fourier"><b>5</b><span data-i18n="nav5">Fourier</span></a>
+        <a href="#spectrogram"><b>6</b><span data-i18n="nav6">Spectrogram</span></a>
+        <a href="#mel"><b>7</b><span data-i18n="nav7">Mel &amp; MFCC</span></a>
+      </nav>
+      <button class="lang-btn" id="langBtn" type="button">فارسی</button>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="heroEyebrow">Interactive signal processing studio</span></div>
+        <h1 data-i18n="heroTitle">From raw signals to <em>Mel spectrograms</em>.</h1>
+        <p class="lead" data-i18n="heroLead">A hands-on journey: what a signal is, what one hertz really means, how computers sample sound, how waves add up — and how the Fourier transform, spectrograms, Mel filterbanks and MFCCs reveal what is hidden inside a sound. Every graph is live, and every sound can be heard.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#signal" data-i18n="heroStart">Start the journey →</a>
+          <a class="btn" href="#spectrogram" data-i18n="heroJump">Jump to spectrograms</a>
+        </div>
+        <div class="hero-meta">
+          <span><span data-i18n="byLabel">Designed &amp; developed by</span> <strong data-i18n="authorName">Mohammad Khalooei</strong></span>
+          <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+          <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+          <span>🎧 <span data-i18n="headphones">Headphones recommended — keep the volume low</span></span>
+        </div>
+        <ol class="roadmap">
+          <li><a href="#signal"><b>01</b><span data-i18n="rm1">What is a signal?</span></a></li>
+          <li><a href="#hertz"><b>02</b><span data-i18n="rm2">What is a hertz?</span></a></li>
+          <li><a href="#sampling"><b>03</b><span data-i18n="rm3">Sampling &amp; bits</span></a></li>
+          <li><a href="#combine"><b>04</b><span data-i18n="rm4">Combining waves</span></a></li>
+          <li><a href="#fourier"><b>05</b><span data-i18n="rm5">Fourier transform</span></a></li>
+          <li><a href="#spectrogram"><b>06</b><span data-i18n="rm6">Spectrogram (STFT)</span></a></li>
+          <li><a href="#mel"><b>07</b><span data-i18n="rm7">Mel &amp; MFCC</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <!-- ================= 1. SIGNAL ================= -->
+      <section class="chapter" id="signal">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">01</div>
+          <div>
+            <div class="kicker" data-i18n="c1Kicker">The raw material</div>
+            <h2 data-i18n="c1Title">What is a signal?</h2>
+            <p data-i18n="c1Lead">A <b>signal</b> is any quantity that changes over time (or space) and carries information. A microphone turns tiny air-pressure changes into a voltage; an ECG records the electrical activity of the heart; a thermometer logs temperature. Before any processing, that sequence of measurements is the <b>raw signal</b>.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>〰</i><span data-i18n="c1i1t">Continuous-time</span></h4><p data-i18n="c1i1p">In nature a signal has a value at every instant — a smooth function of time.</p><div class="math" data-tex="x(t),\quad t\in\mathbb{R}"></div></div>
+          <div class="idea"><h4><i>⋮</i><span data-i18n="c1i2t">Discrete-time</span></h4><p data-i18n="c1i2p">A computer stores a list of numbers, one every T<sub>s</sub> seconds: the samples.</p><div class="math" data-tex="x[n]=x(nT_s),\quad n=0,1,2,\dots"></div></div>
+          <div class="idea"><h4><i>⚡</i><span data-i18n="c1i3t">Amplitude &amp; energy</span></h4><p data-i18n="c1i3p">The vertical axis is amplitude. Its average power is measured by the RMS value.</p><div class="math" data-tex="x_{\text{rms}}=\sqrt{\tfrac{1}{N}\textstyle\sum_{n} x[n]^2}"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simRaw">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.1</div>
+              <h3 data-i18n="rawTitle">Raw signal explorer</h3>
+              <p class="sim-desc" data-i18n="rawDesc">Pick a real-world signal, draw your own with the mouse or finger, or open your microphone and watch your voice as a raw waveform.</p>
+            </div>
+            <span class="badge">x(t)</span>
+          </div>
+          <div class="seg" id="rawModes">
+            <button data-mode="draw" data-i18n="modeDraw">✏️ Draw</button>
+            <button data-mode="ecg" data-i18n="modeEcg">❤️ Heartbeat (ECG)</button>
+            <button data-mode="speech" data-i18n="modeSpeech">🗣 Speech-like</button>
+            <button data-mode="temp" data-i18n="modeTemp">🌡 Temperature</button>
+            <button data-mode="noise" data-i18n="modeNoise">📻 Noise</button>
+            <button data-mode="mic" data-i18n="modeMic">🎤 Live microphone</button>
+          </div>
+          <div class="screen h-xl" style="margin-top:12px"><span class="screen-label" id="rawLabel"></span><canvas id="rawCanvas"></canvas></div>
+          <div class="note" id="rawNote"></div>
+          <div class="row">
+            <button class="btn primary" id="rawPlay" data-i18n="rawPlay">▶ Hear this shape</button>
+            <button class="btn" id="rawClear" data-i18n="rawClear">Clear drawing</button>
+            <div class="ctrl" style="min-width:220px;flex:1;max-width:340px"><label><span data-i18n="pitch">Pitch</span><output id="rawPitchOut"></output></label><input type="range" id="rawPitch" min="55" max="880" step="1" value="220" /></div>
+          </div>
+          <div class="readouts" id="rawStats"></div>
+        </article>
+      </section>
+
+      <!-- ================= 2. HERTZ ================= -->
+      <section class="chapter" id="hertz">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">02</div>
+          <div>
+            <div class="kicker" data-i18n="c2Kicker">Counting cycles</div>
+            <h2 data-i18n="c2Title">What is a hertz (Hz)?</h2>
+            <p data-i18n="c2Lead"><b>Frequency</b> counts how many complete cycles a repeating signal makes in one second. <b>1 Hz = one cycle per second.</b> A sine wave is the shadow of a point rotating on a circle: one full turn is one cycle. Your ear hears roughly 20 Hz to 20,000 Hz.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>f</i><span data-i18n="c2i1t">Frequency</span></h4><p data-i18n="c2i1p">Cycles per second, measured in hertz (Hz).</p><div class="math" data-tex="x(t)=A\sin(2\pi f t+\varphi)"></div></div>
+          <div class="idea"><h4><i>T</i><span data-i18n="c2i2t">Period</span></h4><p data-i18n="c2i2p">The duration of one cycle. Higher frequency → shorter period.</p><div class="math" data-tex="T=\dfrac{1}{f}\qquad \omega = 2\pi f\ \ [\mathrm{rad/s}]"></div></div>
+          <div class="idea"><h4><i>λ</i><span data-i18n="c2i3t">Wavelength in air</span></h4><p data-i18n="c2i3p">Sound travels at about 343 m/s, so a 343 Hz tone has a 1 m wavelength.</p><div class="math" data-tex="\lambda=\dfrac{c}{f},\qquad c\approx 343\ \mathrm{m/s}"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simHz">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.1</div>
+              <h3 data-i18n="hzTitle">Hertz in slow motion</h3>
+              <p class="sim-desc" data-i18n="hzDesc">The rotating arrow (phasor) draws a sine wave. The bracket shows exactly one second: count the cycles inside it — that number is the frequency.</p>
+            </div>
+            <span class="badge">1 Hz = 1 cycle / s</span>
+          </div>
+          <div class="screen h-lg"><canvas id="hzCanvas"></canvas></div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="frequency">Frequency</span><output id="hzFOut"></output></label><input type="range" id="hzF" min="0.25" max="6" step="0.25" value="1" style="--tone:var(--teal)" /></div>
+            <div class="ctrl"><label><span data-i18n="amplitude">Amplitude</span><output id="hzAOut"></output></label><input type="range" id="hzA" min="0.1" max="1" step="0.05" value="0.9" /></div>
+            <div class="ctrl"><label><span data-i18n="phase">Phase φ</span><output id="hzPOut"></output></label><input type="range" id="hzP" min="0" max="6.28" step="0.01" value="0" /></div>
+          </div>
+          <div class="row">
+            <label class="toggle"><input type="checkbox" id="hzTick" /> <span data-i18n="hzTick">🔔 Tick on every completed cycle</span></label>
+            <button class="btn small" id="hzReset" data-i18n="resetCounter">↺ Reset counter</button>
+          </div>
+          <div class="readouts" id="hzStats"></div>
+        </article>
+
+        <div class="cols cols-2">
+          <article class="sim reveal" id="simClicks">
+            <div class="sim-head">
+              <div>
+                <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.2</div>
+                <h3 data-i18n="clkTitle">From clicks to pitch</h3>
+                <p class="sim-desc" data-i18n="clkDesc">Play a train of clicks and slowly raise the rate. Below about 15 Hz you hear separate clicks; above about 30 Hz your brain fuses them into a musical tone. Pitch is frequency.</p>
+              </div>
+            </div>
+            <div class="screen h-lg"><canvas id="clkCanvas"></canvas></div>
+            <div class="controls">
+              <div class="ctrl"><label><span data-i18n="clickRate">Click rate</span><output id="clkOut"></output></label><input type="range" id="clkRate" min="0" max="1000" step="1" value="0" style="--tone:var(--yellow)" /></div>
+            </div>
+            <div class="row"><button class="btn primary" id="clkPlay" data-i18n="play">▶ Play</button><span class="status" id="clkPerc"></span></div>
+            <div class="readouts" id="clkStats"></div>
+            <div class="note teal" data-i18n="clkNote">“Hertz” simply means “per second”. A heart beating 72 times per minute beats at 72 ÷ 60 = 1.2 Hz; the A key on a piano vibrates 440 times per second = 440 Hz.</div>
+          </article>
+
+          <article class="sim reveal" id="simTone">
+            <div class="sim-head">
+              <div>
+                <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.3</div>
+                <h3 data-i18n="toneTitle">Tone generator</h3>
+                <p class="sim-desc" data-i18n="toneDesc">Sweep from deep bass to the edge of hearing. The scope always shows the same 10 ms, so higher frequencies squeeze more cycles into it.</p>
+              </div>
+            </div>
+            <div class="screen h-md"><canvas id="toneCanvas"></canvas></div>
+            <div class="controls">
+              <div class="ctrl"><label><span data-i18n="frequency">Frequency</span><output id="toneFOut"></output></label><input type="range" id="toneF" min="0" max="1000" step="1" value="507" style="--tone:var(--cyan)" /></div>
+              <div class="ctrl"><label><span data-i18n="waveform">Waveform</span></label><select id="toneType"><option value="sine" data-i18n="wSine">Sine</option><option value="square" data-i18n="wSquare">Square</option><option value="sawtooth" data-i18n="wSaw">Sawtooth</option><option value="triangle" data-i18n="wTri">Triangle</option></select></div>
+              <div class="ctrl"><label><span data-i18n="volume">Volume</span><output id="toneVOut"></output></label><input type="range" id="toneV" min="0" max="1" step="0.01" value="0.25" /></div>
+            </div>
+            <div class="row seg" id="toneNotes"></div>
+            <div class="row"><button class="btn primary" id="tonePlay" data-i18n="play">▶ Play</button></div>
+            <div class="readouts" id="toneStats"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= 3. SAMPLING ================= -->
+      <section class="chapter" id="sampling">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">03</div>
+          <div>
+            <div class="kicker" data-i18n="c3Kicker">Analog → digital</div>
+            <h2 data-i18n="c3Title">Sampling, Nyquist &amp; bits</h2>
+            <p data-i18n="c3Lead">A computer cannot store a continuous curve. It <b>samples</b> it f<sub>s</sub> times per second and <b>quantizes</b> each sample to one of 2<sup>b</sup> levels. Sample too slowly and a fast wave masquerades as a slower one — this is <b>aliasing</b>. The Nyquist–Shannon theorem says f<sub>s</sub> must be more than twice the highest frequency. That is why CDs use 44,100 Hz and speech systems often use 16,000 Hz.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simSamp">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 3.1</div>
+              <h3 data-i18n="sampTitle">Sampling &amp; aliasing lab</h3>
+              <p class="sim-desc" data-i18n="sampDesc">Lower the sampling rate below twice the signal frequency and watch a red “ghost” wave appear: the samples now fit a slower sinusoid equally well.</p>
+            </div>
+            <span class="badge">f<sub>s</sub> &gt; 2·f<sub>max</sub></span>
+          </div>
+          <div class="screen h-xl"><canvas id="sampCanvas"></canvas></div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="sigFreq">Signal frequency f</span><output id="sampFOut"></output></label><input type="range" id="sampF" min="1" max="20" step="0.5" value="3" style="--tone:var(--cyan)" /></div>
+            <div class="ctrl"><label><span data-i18n="sampRate">Sampling rate f<sub>s</sub></span><output id="sampFsOut"></output></label><input type="range" id="sampFs" min="2" max="80" step="1" value="24" style="--tone:var(--teal)" /></div>
+            <div class="ctrl"><label><span data-i18n="bitDepth">Bit depth b</span><output id="sampBOut"></output></label><input type="range" id="sampB" min="1" max="10" step="1" value="4" style="--tone:var(--violet)" /></div>
+          </div>
+          <div class="row">
+            <label class="toggle"><input type="checkbox" id="sampHold" checked /> <span data-i18n="showHold">Show sample-and-hold steps</span></label>
+            <label class="toggle"><input type="checkbox" id="sampAlias" checked /> <span data-i18n="showAlias">Show alias reconstruction</span></label>
+            <button class="btn small" id="sampPlayO" data-i18n="hearOrig">▶ Hear original (×60)</button>
+            <button class="btn small" id="sampPlayA" data-i18n="hearAlias">▶ Hear what the samples say</button>
+          </div>
+          <div class="readouts" id="sampStats"></div>
+          <div class="formula">
+            <div class="f-item"><small data-i18n="fSampling">Sampling</small><div class="math" data-tex="x[n]=x(nT_s),\quad T_s=\tfrac{1}{f_s}"></div></div>
+            <div class="f-item"><small data-i18n="fNyquist">Nyquist condition</small><div class="math" data-tex="f_s>2f_{\max}\iff f_{\max}<\tfrac{f_s}{2}"></div></div>
+            <div class="f-item"><small data-i18n="fAlias">Apparent (alias) frequency</small><div class="math" data-tex="f_a=\left|\,f-k f_s\right|,\ \ k=\operatorname{round}(f/f_s)"></div></div>
+            <div class="f-item"><small data-i18n="fSqnr">Quantization SNR</small><div class="math" data-tex="\mathrm{SQNR}\approx 6.02\,b+1.76\ \mathrm{dB}"></div></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= 4. COMBINE ================= -->
+      <section class="chapter" id="combine">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">04</div>
+          <div>
+            <div class="kicker" data-i18n="c4Kicker">Superposition</div>
+            <h2 data-i18n="c4Title">Every sound is a sum of waves</h2>
+            <p data-i18n="c4Lead">Add sine waves point by point and you get a new, richer waveform. With the right frequencies and amplitudes you can build a square wave, a sawtooth, a chord — in fact (Fourier's big idea) <b>almost any periodic signal</b>. Stack the rotating arrows tip to tail and the last tip traces the sum.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simMix">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 4.1</div>
+              <h3 data-i18n="mixTitle">Wave mixer</h3>
+              <p class="sim-desc" data-i18n="mixDesc">Four oscillators. Change frequency, amplitude and phase, mute any of them, and listen to the result. The signal you build here is analysed in chapter 5.</p>
+            </div>
+            <span class="badge">Σ</span>
+          </div>
+          <div class="seg" id="mixPresets">
+            <button data-preset="default" data-i18n="pDefault">Default</button>
+            <button data-preset="square" data-i18n="pSquare">Square wave</button>
+            <button data-preset="saw" data-i18n="pSaw">Sawtooth</button>
+            <button data-preset="beats" data-i18n="pBeats">Beats</button>
+            <button data-preset="chord" data-i18n="pChord">Major chord</button>
+            <button data-preset="single" data-i18n="pSingle">Single tone</button>
+          </div>
+          <div class="cols cols-2" style="margin-top:12px">
+            <div class="screen h-lg"><span class="screen-label" data-i18n="lblComponents">Components</span><canvas id="mixWaves"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" data-i18n="lblPhasors">Phasors tip-to-tail</span><canvas id="mixEpi"></canvas></div>
+          </div>
+          <div class="cols cols-21" style="margin-top:10px">
+            <div class="screen h-md"><span class="screen-label" data-i18n="lblSum">Sum x(t)</span><canvas id="mixSum"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" data-i18n="lblSpectrumPreview">Spectrum (ingredients)</span><canvas id="mixSpec"></canvas></div>
+          </div>
+          <div class="comp-list" id="compList"></div>
+          <div class="row">
+            <button class="btn primary" id="mixPlay" data-i18n="playMix">▶ Play the mix</button>
+            <div class="ctrl" style="min-width:220px;flex:1;max-width:320px"><label><span data-i18n="basePitch">Audio base pitch (1 Hz →)</span><output id="mixBaseOut"></output></label><input type="range" id="mixBase" min="40" max="300" step="1" value="110" /></div>
+            <div class="ctrl" style="min-width:160px"><label><span data-i18n="animSpeed">Animation speed</span></label><select id="mixSpeed"><option value="0.1">0.1×</option><option value="0.25" selected>0.25×</option><option value="0.5">0.5×</option><option value="1">1×</option></select></div>
+          </div>
+          <div class="formula live"><div class="f-item"><small data-i18n="fLive">Your signal, live</small><div class="math" id="mixFormula"></div></div></div>
+        </article>
+      </section>
+
+      <!-- ================= 5. FOURIER ================= -->
+      <section class="chapter" id="fourier">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">05</div>
+          <div>
+            <div class="kicker" data-i18n="c5Kicker">Time domain ↔ frequency domain</div>
+            <h2 data-i18n="c5Title">The Fourier transform</h2>
+            <p data-i18n="c5Lead">The Fourier transform answers one question for every frequency f: <b>how much of f is inside my signal?</b> Multiply the signal by a rotating arrow e<sup>−j2πft</sup> — that is, wrap it around a circle at speed f. If f matches a hidden component the wrapped curve becomes lopsided and its centre of mass jumps away from the origin. Sweep f and you get the spectrum.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simWind">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 5.1</div>
+              <h3 data-i18n="windTitle">Winding machine</h3>
+              <p class="sim-desc" data-i18n="windDesc">Uses the signal from the wave mixer (chapter 4). Move the winding frequency, or press sweep, and watch the centre of mass (white dot).</p>
+            </div>
+            <span class="badge">X(f)</span>
+          </div>
+          <div class="cols cols-12">
+            <div class="screen h-xl"><span class="screen-label" data-i18n="lblWound">Wrapped signal</span><canvas id="windCircle"></canvas></div>
+            <div class="screen h-xl"><span class="screen-label" data-i18n="lblCom">|centre of mass| vs winding frequency</span><canvas id="windCurve"></canvas></div>
+          </div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="windFreq">Winding frequency</span><output id="windFOut"></output></label><input type="range" id="windF" min="0" max="16" step="0.01" value="2.2" style="--tone:var(--teal)" /></div>
+          </div>
+          <div class="row"><button class="btn primary" id="windSweep" data-i18n="sweep">⟳ Sweep 0 → 16 Hz</button><span class="status" id="windStat"></span></div>
+          <div class="formula">
+            <div class="f-item"><small data-i18n="fFT">Continuous Fourier transform</small><div class="math" data-tex="X(f)=\int_{-\infty}^{\infty}x(t)\,e^{-j2\pi f t}\,dt"></div></div>
+            <div class="f-item"><small data-i18n="fEuler">Euler's formula — the rotating arrow</small><div class="math" data-tex="e^{-j\theta}=\cos\theta-j\sin\theta"></div></div>
+            <div class="f-item"><small data-i18n="fCom">What the dot shows</small><div class="math" data-tex="c(f)=\tfrac{1}{T}\int_0^T x(t)e^{-j2\pi ft}dt,\ \ A\approx 2|c(f)|"></div></div>
+          </div>
+        </article>
+
+        <article class="sim reveal" id="simDft">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 5.2</div>
+              <h3 data-i18n="dftTitle">Discrete Fourier transform (DFT / FFT)</h3>
+              <p class="sim-desc" data-i18n="dftDesc">On a computer we have N samples, so we evaluate the transform at N equally spaced frequencies. Change the duration and window to see resolution and spectral leakage; add noise to see how the peaks survive.</p>
+            </div>
+            <span class="badge">FFT</span>
+          </div>
+          <div class="cols cols-2">
+            <div class="screen h-lg"><span class="screen-label" data-i18n="lblSamplesWin">Samples × window</span><canvas id="dftTime"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" data-i18n="lblMagSpec">Magnitude spectrum |X[k]|</span><canvas id="dftSpec"></canvas></div>
+          </div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="sampRate">Sampling rate f<sub>s</sub></span><output id="dftFsOut"></output></label><input type="range" id="dftFs" min="16" max="128" step="1" value="64" style="--tone:var(--teal)" /></div>
+            <div class="ctrl"><label><span data-i18n="duration">Duration</span><output id="dftDOut"></output></label><input type="range" id="dftD" min="0.5" max="4" step="0.05" value="2" /></div>
+            <div class="ctrl"><label><span data-i18n="noise">Noise</span><output id="dftNOut"></output></label><input type="range" id="dftN" min="0" max="1.5" step="0.01" value="0" style="--tone:var(--pink)" /></div>
+            <div class="ctrl"><label><span data-i18n="window">Window</span></label><select id="dftWin"><option value="rect" data-i18n="winRect">Rectangular</option><option value="hann" selected>Hann</option><option value="hamming">Hamming</option><option value="blackman">Blackman</option></select></div>
+            <div class="ctrl"><label><span data-i18n="scale">Scale</span></label><select id="dftScale"><option value="lin" data-i18n="linear">Linear</option><option value="db">dB</option></select></div>
+          </div>
+          <div class="readouts" id="dftStats"></div>
+          <div class="formula">
+            <div class="f-item"><small data-i18n="fDFT">Discrete Fourier transform</small><div class="math" data-tex="X[k]=\sum_{n=0}^{N-1} w[n]\,x[n]\,e^{-j2\pi kn/N}"></div></div>
+            <div class="f-item"><small data-i18n="fBins">Bin frequency &amp; resolution</small><div class="math" data-tex="f_k=k\,\frac{f_s}{N},\qquad \Delta f=\frac{f_s}{N}=\frac{1}{T}"></div></div>
+            <div class="f-item"><small data-i18n="fHann">Hann window</small><div class="math" data-tex="w[n]=\tfrac12\left(1-\cos\tfrac{2\pi n}{N-1}\right)"></div></div>
+          </div>
+          <div class="note teal" data-i18n="fftNote">The <b>FFT</b> (Fast Fourier Transform) is simply a clever algorithm that computes the DFT in O(N log N) instead of O(N²) operations — it is what makes real-time spectra possible.</div>
+        </article>
+      </section>
+
+      <!-- ================= 6. SPECTROGRAM ================= -->
+      <section class="chapter" id="spectrogram">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">06</div>
+          <div>
+            <div class="kicker" data-i18n="c6Kicker">Frequency over time</div>
+            <h2 data-i18n="c6Title">The spectrogram (STFT)</h2>
+            <p data-i18n="c6Lead">Real sounds change over time — one spectrum of the whole clip blurs everything together. The <b>Short-Time Fourier Transform</b> cuts the signal into short overlapping frames, multiplies each by a window, and takes an FFT per frame. Placing the spectra side by side gives a <b>spectrogram</b>: time runs left to right, frequency bottom to top, and colour shows energy.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simSpec">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.1</div>
+              <h3 data-i18n="specTitle">Spectrogram studio</h3>
+              <p class="sim-desc" data-i18n="specDesc">Choose a sound — or record your own voice, or upload a file — then press play and follow the playhead. Hover over the spectrogram to inspect any frame; click to pin it.</p>
+            </div>
+            <span class="badge">16 kHz</span>
+          </div>
+          <div class="source-bar">
+            <div class="seg" id="srcSeg">
+              <button data-src="vowels" data-i18n="srcVowels">🗣 Vowels a-e-i-o-u</button>
+              <button data-src="chirp" data-i18n="srcChirp">📈 Chirp sweep</button>
+              <button data-src="melody" data-i18n="srcMelody">🎹 Melody</button>
+              <button data-src="birds" data-i18n="srcBirds">🐦 Bird calls</button>
+              <button data-src="tones" data-i18n="srcTones">🔊 Tones &amp; noise</button>
+            </div>
+            <button class="btn rec small" id="srcRec" data-i18n="record">● Record 3 s</button>
+            <label class="btn small" for="srcFile" data-i18n="upload">⬆ Upload audio</label>
+            <input type="file" id="srcFile" accept="audio/*" hidden />
+          </div>
+          <div class="row">
+            <button class="btn primary" id="specPlay" data-i18n="play">▶ Play</button>
+            <span class="status" id="specStatus"></span>
+          </div>
+          <div class="cols cols-main-side" style="margin-top:12px">
+            <div>
+              <div class="screen h-sm"><span class="screen-label" data-i18n="lblWave">Waveform x[n]</span><canvas id="specWave"></canvas></div>
+              <div class="screen h-xl"><span class="screen-label" data-i18n="lblSpec">Spectrogram |X[m,k]|² (dB)</span><canvas id="specLin"></canvas></div>
+            </div>
+            <div>
+              <div class="screen" style="height:490px"><span class="screen-label" data-i18n="lblFrame">Frame inspector</span><canvas id="specFrame"></canvas></div>
+            </div>
+          </div>
+          <div class="inspector" id="specInspect"></div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="winLen">Window length N</span></label><select id="specN"><option value="256">256 (16 ms)</option><option value="512" selected>512 (32 ms)</option><option value="1024">1024 (64 ms)</option><option value="2048">2048 (128 ms)</option></select></div>
+            <div class="ctrl"><label><span data-i18n="hop">Hop H</span></label><select id="specHop"><option value="64">64 (4 ms)</option><option value="128" selected>128 (8 ms)</option><option value="256">256 (16 ms)</option><option value="512">512 (32 ms)</option></select></div>
+            <div class="ctrl"><label><span data-i18n="window">Window</span></label><select id="specWin"><option value="hann" selected>Hann</option><option value="hamming">Hamming</option><option value="blackman">Blackman</option><option value="rect" data-i18n="winRect">Rectangular</option></select></div>
+            <div class="ctrl"><label><span data-i18n="dynRange">Dynamic range</span><output id="specDROut"></output></label><input type="range" id="specDR" min="30" max="110" step="5" value="80" /></div>
+          </div>
+          <div class="readouts" id="specStats"></div>
+          <div class="formula">
+            <div class="f-item"><small data-i18n="fSTFT">Short-Time Fourier Transform</small><div class="math" data-tex="X[m,k]=\sum_{n=0}^{N-1}x[n+mH]\,w[n]\,e^{-j2\pi kn/N}"></div></div>
+            <div class="f-item"><small data-i18n="fPower">Power spectrogram in decibels</small><div class="math" data-tex="S_{\mathrm{dB}}[m,k]=10\log_{10}\!\left(|X[m,k]|^2+\epsilon\right)"></div></div>
+            <div class="f-item"><small data-i18n="fTradeoff">Time–frequency trade-off</small><div class="math" data-tex="\Delta t=\frac{H}{f_s},\qquad \Delta f=\frac{f_s}{N}"></div></div>
+          </div>
+          <div class="note warn" data-i18n="tradeNote">Try N = 256 versus N = 2048 on the melody: a <b>short window</b> gives sharp timing but blurry frequencies; a <b>long window</b> gives sharp harmonics but smeared note onsets. You cannot have both — this is the uncertainty principle of signal processing.</div>
+        </article>
+      </section>
+
+      <!-- ================= 7. MEL ================= -->
+      <section class="chapter" id="mel">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">07</div>
+          <div>
+            <div class="kicker" data-i18n="c7Kicker">Hearing like a human</div>
+            <h2 data-i18n="c7Title">Mel spectrogram, MFCC &amp; other features</h2>
+            <p data-i18n="c7Lead">Our ears do not perceive frequency linearly: the jump from 100 Hz to 200 Hz sounds huge, while 10,000 Hz to 10,100 Hz is barely noticeable. The <b>Mel scale</b> warps frequency to match perceived pitch. A bank of triangular filters, narrow at low frequencies and wide at high ones, pools the spectrogram into a few dozen <b>Mel bands</b>. Take the log and a DCT and you obtain <b>MFCCs</b> — the classic compact features behind speech recognition and speaker identification.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simMel">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 7.1</div>
+              <h3 data-i18n="bankTitle">Mel scale &amp; filterbank</h3>
+              <p class="sim-desc" data-i18n="bankDesc">Left: equal steps on the Mel axis map to unequal steps in hertz. Right: the triangular filters that implement this warping.</p>
+            </div>
+            <span class="badge">mel(f)</span>
+          </div>
+          <div class="cols cols-12">
+            <div class="screen h-lg"><span class="screen-label" data-i18n="lblMelCurve">Mel vs Hz</span><canvas id="melCurve"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" data-i18n="lblBank">Triangular Mel filterbank H_b[k]</span><canvas id="melBank"></canvas></div>
+          </div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="nMels">Number of Mel bands</span><output id="nMelsOut"></output></label><input type="range" id="nMels" min="8" max="128" step="1" value="64" style="--tone:var(--violet)" /></div>
+            <div class="ctrl"><label><span data-i18n="nMfcc">Number of MFCCs</span><output id="nMfccOut"></output></label><input type="range" id="nMfcc" min="5" max="40" step="1" value="13" style="--tone:var(--pink)" /></div>
+            <div class="ctrl"><label><span data-i18n="fmax">Max frequency</span><output id="fmaxOut"></output></label><input type="range" id="fmax" min="2000" max="8000" step="100" value="8000" /></div>
+          </div>
+          <div class="formula">
+            <div class="f-item"><small data-i18n="fMel">Hz → Mel (HTK)</small><div class="math" data-tex="m=2595\log_{10}\!\left(1+\frac{f}{700}\right)"></div></div>
+            <div class="f-item"><small data-i18n="fMelInv">Mel → Hz</small><div class="math" data-tex="f=700\left(10^{m/2595}-1\right)"></div></div>
+          </div>
+        </article>
+
+        <article class="sim reveal" id="simMelSpec">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 7.2</div>
+              <h3 data-i18n="melSpecTitle">Mel spectrogram, MFCC &amp; frame features</h3>
+              <p class="sim-desc" data-i18n="melSpecDesc">Computed from the same sound as the spectrogram studio. Compare how the chirp's straight line bends on the Mel axis, and how MFCCs compress each frame into a handful of numbers.</p>
+            </div>
+            <button class="btn primary" id="melPlay" data-i18n="play">▶ Play</button>
+          </div>
+          <div class="screen h-lg"><span class="screen-label" data-i18n="lblMelSpec">Log-Mel spectrogram (dB)</span><canvas id="melSpec"></canvas></div>
+          <div class="screen h-md"><span class="screen-label" data-i18n="lblMfcc">MFCC c₁ … c_K (normalised per coefficient)</span><canvas id="mfccCanvas"></canvas></div>
+          <div class="screen h-md"><span class="screen-label" data-i18n="lblFeat">Frame features</span><canvas id="featCanvas"></canvas></div>
+          <div class="row" id="featLegend"></div>
+          <div class="formula">
+            <div class="f-item"><small data-i18n="fMelSpec">Mel spectrogram</small><div class="math" data-tex="M[m,b]=\sum_{k} H_b[k]\,|X[m,k]|^2"></div></div>
+            <div class="f-item"><small data-i18n="fMfcc">MFCC = DCT of the log-Mel energies</small><div class="math" data-tex="c_i[m]=\sum_{b}\log M[m,b]\,\cos\!\big(\tfrac{\pi i}{B}(b+\tfrac12)\big)"></div></div>
+            <div class="f-item"><small data-i18n="fCentroid">Spectral centroid (“brightness”)</small><div class="math" data-tex="\mathrm{SC}[m]=\frac{\sum_k f_k\,|X[m,k]|^2}{\sum_k |X[m,k]|^2}"></div></div>
+            <div class="f-item"><small data-i18n="fZcr">Zero-crossing rate</small><div class="math" data-tex="\mathrm{ZCR}=\tfrac{1}{N}\sum_n \mathbb{1}[x_n x_{n-1}<0]"></div></div>
+            <div class="f-item"><small data-i18n="fRms">RMS energy</small><div class="math" data-tex="\mathrm{RMS}[m]=\sqrt{\tfrac1N\textstyle\sum_n x_m[n]^2}"></div></div>
+          </div>
+        </article>
+
+        <!-- Pipeline summary -->
+        <article class="sim reveal" id="pipelineCard">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="summary">Summary</span></div>
+              <h3 data-i18n="pipeTitle">The complete pipeline: from raw signal to MFCC</h3>
+            </div>
+          </div>
+          <div class="pipeline">
+            <div class="pipe"><b>01</b><h4 data-i18n="p1">Raw signal</h4><div class="math" data-tex="x[n]"></div></div>
+            <div class="pipe"><b>02</b><h4 data-i18n="p2">Pre-emphasis</h4><div class="math" data-tex="y_n=x_n-0.97x_{n-1}"></div></div>
+            <div class="pipe"><b>03</b><h4 data-i18n="p3">Framing</h4><div class="math" data-tex="x_m[n]=x[n+mH]"></div></div>
+            <div class="pipe"><b>04</b><h4 data-i18n="p4">Window</h4><div class="math" data-tex="x_m[n]\,w[n]"></div></div>
+            <div class="pipe"><b>05</b><h4 data-i18n="p5">FFT → power</h4><div class="math" data-tex="|X[m,k]|^2"></div></div>
+            <div class="pipe"><b>06</b><h4 data-i18n="p6">Mel filterbank</h4><div class="math" data-tex="\textstyle\sum_k H_b[k]|X|^2"></div></div>
+            <div class="pipe"><b>07</b><h4 data-i18n="p7">Logarithm</h4><div class="math" data-tex="\log M[m,b]"></div></div>
+            <div class="pipe"><b>08</b><h4 data-i18n="p8">DCT → MFCC</h4><div class="math" data-tex="c_i[m]"></div></div>
+          </div>
+          <div class="uses">
+            <div class="idea"><h4><i>🗣</i><span data-i18n="u1t">Speech recognition</span></h4><p data-i18n="u1p">Log-Mel spectrograms are the input of modern ASR models such as Whisper.</p></div>
+            <div class="idea"><h4><i>👤</i><span data-i18n="u2t">Speaker &amp; emotion</span></h4><p data-i18n="u2p">MFCCs and their statistics describe the timbre of a voice.</p></div>
+            <div class="idea"><h4><i>🎵</i><span data-i18n="u3t">Music &amp; sound events</span></h4><p data-i18n="u3p">Genre tagging, instrument and environmental-sound classification.</p></div>
+            <div class="idea"><h4><i>🩺</i><span data-i18n="u4t">Biomedical signals</span></h4><p data-i18n="u4p">The same tools analyse ECG, EEG, heart and lung sounds.</p></div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h4>Signal Lab</h4>
+          <p data-i18n="footerAbout">An interactive course companion for signal and speech processing — from raw signals to Mel spectrograms.</p>
+          <p style="margin-top:10px"><a href="../index.html#apps" data-i18n="backHome">← Back to all simulators</a> · <a href="../speech-processing.html" data-i18n="speechAcademy">Speech Processing Academy</a></p>
+        </div>
+        <div>
+          <p data-i18n="providedBy">Provided by</p>
+          <h4 data-i18n="authorName">Mohammad Khalooei</h4>
+          <div class="footer-links">
+            <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+            <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+          </div>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 Mohammad Khalooei · Signal Lab</p>
+    </div>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="i18n.js"></script>
+  <script defer src="app.js"></script>
+</body>
+</html>

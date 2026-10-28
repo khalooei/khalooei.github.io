@@ -112,6 +112,13 @@ window.I18N = {
       subtitle: "",
       items: [
         {
+          title: "Signal Lab: from raw signals to Mel spectrograms",
+          desc: "What is a signal and a hertz, sampling and aliasing, combining waves, Fourier transform, STFT spectrogram, Mel filterbank and MFCC — with live audio and your own microphone.",
+          href: "signal-lab/",
+          badge: "New",
+          cta: "Open",
+        },
+        {
           title: "Optimization Adventure (game)",
           desc: "Learn optimization by playing: pack a knapsack and solve a traveling-salesperson map, in Persian, English or Arabic.",
           href: "optimization-adventure/",
@@ -324,6 +331,13 @@ window.I18N = {
       title: "شبیه‌سازهای تعاملی",
       subtitle: "",
       items: [
+        {
+          title: "آزمایشگاه سیگنال: از سیگنال خام تا طیف‌نگار مل",
+          desc: "سیگنال و هرتز چیست، نمونه‌برداری و همپوشانی، ترکیب موج‌ها، تبدیل فوریه، طیف‌نگار STFT، بانک فیلتر مل و MFCC — همراه با صدای زنده و میکروفون خودتان.",
+          href: "signal-lab/",
+          badge: "جدید",
+          cta: "باز کن",
+        },
         {
           title: "ماجراجویی بهینه‌سازی (بازی)",
           desc: "بهینه‌سازی را با بازی یاد بگیر: کوله‌پشتی را بچین و مسیر فروشنده دوره‌گرد را حل کن؛ فارسی، انگلیسی یا عربی.",
@@ -538,6 +552,13 @@ window.I18N = {
       subtitle: "",
       items: [
         {
+          title: "مختبر الإشارة: من الإشارة الخام إلى مخطط ميل الطيفي",
+          desc: "ما الإشارة وما الهرتز، أخذ العينات والتداخل، جمع الموجات، تحويل فورييه، المخطط الطيفي STFT، مرشحات ميل وMFCC — مع صوت حي وميكروفونك.",
+          href: "signal-lab/",
+          badge: "جديد",
+          cta: "افتح",
+        },
+        {
           title: "مغامرة التحسين (لعبة)",
           desc: "تعلّم التحسين باللعب: احزم حقيبة الظهر وحلّ خريطة البائع المتجول، بالفارسية أو الإنجليزية أو العربية.",
           href: "optimization-adventure/",
@@ -750,6 +771,13 @@ window.I18N = {
       title: "交互模拟器",
       subtitle: "",
       items: [
+        {
+          title: "信号实验室：从原始信号到梅尔频谱图",
+          desc: "什么是信号与赫兹、采样与混叠、波的叠加、傅里叶变换、STFT 频谱图、梅尔滤波器组与 MFCC —— 支持实时音频与麦克风。",
+          href: "signal-lab/",
+          badge: "新",
+          cta: "打开",
+        },
         {
           title: "优化大冒险（游戏）",
           desc: "在游戏中学习优化：装背包、解决旅行商问题地图，支持波斯语、英语和阿拉伯语。",
