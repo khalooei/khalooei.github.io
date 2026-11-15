@@ -88,6 +88,13 @@ window.I18N = {
         },
         {
           tag: "New simulator",
+          title: "ML Lab",
+          desc: "SVM kernels, trees, forests and boosting — draw data, watch models learn.",
+          href: "ml-lab/",
+          isNew: true,
+        },
+        {
+          tag: "New simulator",
           title: "Signal Lab",
           desc: "From raw signals to Mel spectrograms and MFCC — with live audio.",
           href: "signal-lab/",
@@ -170,10 +177,17 @@ window.I18N = {
       subtitle: "Open, browser-based simulators that make machine learning and signal processing tangible.",
       items: [
         {
+          title: "ML Lab: interactive machine learning simulators",
+          desc: "SVM kernels from linear to RBF, the kernel trick in 3D, decision trees, random forests, AdaBoost and gradient boosting, k-NN, logistic regression, naive Bayes and neural networks — draw your own data and watch every model learn.",
+          href: "ml-lab/",
+          featured: true,
+          badge: "New",
+          cta: "Open",
+        },
+        {
           title: "Signal Lab: from raw signals to Mel spectrograms",
           desc: "What is a signal and a hertz, sampling and aliasing, combining waves, Fourier transform, STFT spectrogram, Mel filterbank and MFCC — with live audio and your own microphone.",
           href: "signal-lab/",
-          featured: true,
           badge: "New",
           cta: "Open",
         },
@@ -356,6 +370,13 @@ window.I18N = {
         },
         {
           tag: "شبیه‌ساز جدید",
+          title: "آزمایشگاه یادگیری ماشین",
+          desc: "هسته‌های SVM، درخت‌ها، جنگل‌ها و تقویت — داده رسم کنید و یادگیری مدل‌ها را ببینید.",
+          href: "ml-lab/",
+          isNew: true,
+        },
+        {
+          tag: "شبیه‌ساز جدید",
           title: "آزمایشگاه سیگنال",
           desc: "از سیگنال خام تا طیف‌نگار مل و MFCC — همراه با صدای زنده.",
           href: "signal-lab/",
@@ -438,10 +459,17 @@ window.I18N = {
       subtitle: "شبیه‌سازهای آزاد و تحت وب که یادگیری ماشین و پردازش سیگنال را ملموس می‌کنند.",
       items: [
         {
+          title: "آزمایشگاه یادگیری ماشین: شبیه‌سازهای تعاملی",
+          desc: "هسته‌های SVM از خطی تا RBF، ترفند هسته در سه‌بعد، درخت تصمیم، جنگل تصادفی، AdaBoost و تقویت گرادیان، k-NN، رگرسیون لجستیک، بیز ساده و شبکهٔ عصبی — داده‌های خودتان را رسم کنید و یادگیری هر مدل را ببینید.",
+          href: "ml-lab/",
+          featured: true,
+          badge: "جدید",
+          cta: "باز کن",
+        },
+        {
           title: "آزمایشگاه سیگنال: از سیگنال خام تا طیف‌نگار مل",
           desc: "سیگنال و هرتز چیست، نمونه‌برداری و همپوشانی، ترکیب موج‌ها، تبدیل فوریه، طیف‌نگار STFT، بانک فیلتر مل و MFCC — همراه با صدای زنده و میکروفون خودتان.",
           href: "signal-lab/",
-          featured: true,
           badge: "جدید",
           cta: "باز کن",
         },
@@ -624,6 +652,13 @@ window.I18N = {
         },
         {
           tag: "محاكي جديد",
+          title: "مختبر تعلّم الآلة",
+          desc: "نوى SVM والأشجار والغابات والتعزيز — ارسم البيانات وشاهد النماذج تتعلّم.",
+          href: "ml-lab/",
+          isNew: true,
+        },
+        {
+          tag: "محاكي جديد",
           title: "مختبر الإشارة",
           desc: "من الإشارة الخام إلى مخطط ميل الطيفي وMFCC — مع صوت حي.",
           href: "signal-lab/",
@@ -706,10 +741,17 @@ window.I18N = {
       subtitle: "محاكيات مفتوحة تعمل في المتصفح تجعل التعلّم الآلي ومعالجة الإشارات ملموسة.",
       items: [
         {
+          title: "مختبر تعلّم الآلة: محاكيات تفاعلية",
+          desc: "نوى SVM من الخطية إلى RBF، حيلة النواة ثلاثية الأبعاد، أشجار القرار، الغابات العشوائية، AdaBoost والتعزيز التدرجي، k-NN، الانحدار اللوجستي، بايز الساذج والشبكات العصبية — ارسم بياناتك وشاهد كل نموذج يتعلّم.",
+          href: "ml-lab/",
+          featured: true,
+          badge: "جديد",
+          cta: "افتح",
+        },
+        {
           title: "مختبر الإشارة: من الإشارة الخام إلى مخطط ميل الطيفي",
           desc: "ما الإشارة وما الهرتز، أخذ العينات والتداخل، جمع الموجات، تحويل فورييه، المخطط الطيفي STFT، مرشحات ميل وMFCC — مع صوت حي وميكروفونك.",
           href: "signal-lab/",
-          featured: true,
           badge: "جديد",
           cta: "افتح",
         },
@@ -892,6 +934,13 @@ window.I18N = {
         },
         {
           tag: "新模拟器",
+          title: "机器学习实验室",
+          desc: "SVM 核函数、决策树、随机森林与提升方法 —— 画数据，看模型学习。",
+          href: "ml-lab/",
+          isNew: true,
+        },
+        {
+          tag: "新模拟器",
           title: "信号实验室",
           desc: "从原始信号到梅尔频谱图与 MFCC —— 支持实时音频。",
           href: "signal-lab/",
@@ -974,10 +1023,17 @@ window.I18N = {
       subtitle: "开放的浏览器端模拟器，让机器学习与信号处理直观可感。",
       items: [
         {
+          title: "机器学习实验室：交互式模拟器",
+          desc: "从线性到 RBF 的 SVM 核函数、三维核技巧、决策树、随机森林、AdaBoost 与梯度提升、k-NN、逻辑回归、朴素贝叶斯和神经网络 —— 画出你自己的数据，观察每个模型如何学习。",
+          href: "ml-lab/",
+          featured: true,
+          badge: "新",
+          cta: "打开",
+        },
+        {
           title: "信号实验室：从原始信号到梅尔频谱图",
           desc: "什么是信号与赫兹、采样与混叠、波的叠加、傅里叶变换、STFT 频谱图、梅尔滤波器组与 MFCC —— 支持实时音频与麦克风。",
           href: "signal-lab/",
-          featured: true,
           badge: "新",
           cta: "打开",
         },

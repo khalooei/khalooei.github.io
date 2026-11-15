@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ML Lab: interactive simulators for classical machine learning — SVM kernels, decision trees, random forests, AdaBoost, gradient boosting, k-NN, logistic regression, naive Bayes and neural networks. By Mohammad Khalooei." />
+  <meta name="author" content="Mohammad Khalooei" />
+  <meta name="theme-color" content="#070b17" />
+  <title>ML Lab — Interactive machine learning simulators | Mohammad Khalooei</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1629'/%3E%3Cpath d='M5 25 C12 22 14 10 27 7' stroke='%23ffcb57' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23ff5d9e'/%3E%3Ccircle cx='22' cy='21' r='3' fill='%2345d9f5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <link rel="stylesheet" href="style.css?v=20261115a" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html#apps" title="Mohammad Khalooei"><span class="pulse"></span><span>ML Lab</span><small>· M. Khalooei</small></a>
+      <nav class="chap-nav" id="chapNav" aria-label="Chapters">
+        <a href="#basics"><b>1</b><span data-i18n="nav1">Boundaries</span></a>
+        <a href="#svm"><b>2</b><span data-i18n="nav2">SVM &amp; kernels</span></a>
+        <a href="#trees"><b>3</b><span data-i18n="nav3">Decision trees</span></a>
+        <a href="#forest"><b>4</b><span data-i18n="nav4">Random forest</span></a>
+        <a href="#boosting"><b>5</b><span data-i18n="nav5">Boosting</span></a>
+        <a href="#more"><b>6</b><span data-i18n="nav6">k-NN · LR · NB · NN</span></a>
+        <a href="#arena"><b>7</b><span data-i18n="nav7">Arena</span></a>
+      </nav>
+      <button class="lang-btn" id="langBtn" type="button">فارسی</button>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="heroEyebrow">Interactive machine learning studio</span></div>
+        <h1 data-i18n="heroTitle">Machine learning you can <em>touch</em>.</h1>
+        <p class="lead" data-i18n="heroLead">Draw your own data, then watch classic learning algorithms carve up the plane in real time. Swap SVM kernels from linear to RBF, grow a decision tree split by split, let a forest vote, step through boosting round by round — and see exactly when a model starts to overfit. Every algorithm here is implemented from scratch and runs in your browser.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#basics" data-i18n="heroStart">Start from the basics →</a>
+          <a class="btn" href="#svm" data-i18n="heroJump">Jump to SVM kernels</a>
+          <a class="btn" href="#arena" data-i18n="heroArena">Model arena</a>
+        </div>
+        <div class="hero-meta">
+          <span><span data-i18n="byLabel">Designed &amp; developed by</span> <strong data-i18n="authorName">Mohammad Khalooei</strong></span>
+          <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+          <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+          <span>🖱 <span data-i18n="heroTip">Tip: click on any board to add points, right-click for the other class</span></span>
+        </div>
+        <ol class="roadmap">
+          <li><a href="#basics"><b>01</b><span data-i18n="rm1">Decision boundaries</span></a></li>
+          <li><a href="#svm"><b>02</b><span data-i18n="rm2">SVM &amp; the kernel trick</span></a></li>
+          <li><a href="#trees"><b>03</b><span data-i18n="rm3">Decision trees</span></a></li>
+          <li><a href="#forest"><b>04</b><span data-i18n="rm4">Bagging &amp; random forests</span></a></li>
+          <li><a href="#boosting"><b>05</b><span data-i18n="rm5">AdaBoost &amp; gradient boosting</span></a></li>
+          <li><a href="#more"><b>06</b><span data-i18n="rm6">k-NN, logistic, Bayes, neural nets</span></a></li>
+          <li><a href="#arena"><b>07</b><span data-i18n="rm7">Model arena &amp; cheat sheet</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <!-- ================= 1. BASICS ================= -->
+      <section class="chapter" id="basics">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">01</div>
+          <div>
+            <div class="kicker" data-i18n="c1Kicker">The game we are playing</div>
+            <h2 data-i18n="c1Title">Classification = drawing a boundary</h2>
+            <p data-i18n="c1Lead">A <b>classifier</b> looks at a point <i>x</i> and answers “class +1 or class −1?”. Every classifier therefore splits the plane into two regions; the line between them is the <b>decision boundary</b>. Learning means choosing that boundary from <b>training data</b>, and the real test is how well it does on <b>new data</b> it has never seen. Throughout this lab, <span class="chip neg">pink</span> is class −1, <span class="chip pos">cyan</span> is class +1, solid dots are training points and hollow rings are held-out test points.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>f</i><span data-i18n="c1i1t">Score function</span></h4><p data-i18n="c1i1p">Each model computes a score; its sign is the predicted class and the boundary is where it equals zero.</p><div class="math" data-tex="\hat y=\operatorname{sign} f(x),\qquad \{x: f(x)=0\}"></div></div>
+          <div class="idea"><h4><i>✓</i><span data-i18n="c1i2t">Train vs test accuracy</span></h4><p data-i18n="c1i2p">Training accuracy can be made perfect by memorising. Test accuracy measures generalisation.</p><div class="math" data-tex="\text{acc}=\tfrac{1}{m}\textstyle\sum_{i}\mathbb 1[\hat y_i=y_i]"></div></div>
+          <div class="idea"><h4><i>⚖</i><span data-i18n="c1i3t">Under- vs overfitting</span></h4><p data-i18n="c1i3p">Too simple a model misses the pattern (high bias); too flexible a model chases the noise (high variance).</p><div class="math" data-tex="\text{error}=\text{bias}^2+\text{variance}+\text{noise}"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simMan">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.1</div>
+              <h3 data-i18n="manTitle">Be the classifier, then let the perceptron try</h3>
+              <p class="sim-desc" data-i18n="manDesc">Rotate and shift the line yourself to separate the two classes. Then press <b>Run perceptron</b> — Rosenblatt’s 1958 algorithm nudges the line towards every point it gets wrong.</p>
+            </div>
+            <span class="badge">f(x) = wᵀx − b</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="man"></div>
+              <div class="screen board"><canvas id="manBoard"></canvas></div>
+              <div class="inspector" id="manInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="angle">Angle θ of w</span><output id="manThOut"></output></label><input type="range" id="manTh" min="0" max="360" step="1" value="30" /></div>
+              <div class="ctrl"><label><span data-i18n="offset">Offset b</span><output id="manBOut"></output></label><input type="range" id="manB" min="-1.3" max="1.3" step="0.01" value="0.2" /></div>
+              <div class="row">
+                <button class="btn primary" id="manRun" data-i18n="manRun">▶ Run perceptron</button>
+                <button class="btn small" id="manStep" data-i18n="manStep">Step</button>
+                <button class="btn small" id="manRand" data-i18n="manRand">🎲 Random line</button>
+              </div>
+              <div class="readouts" id="manRo"></div>
+              <div class="note" id="manNote"></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="manTry">Switch the dataset to <b>Circles</b> or <b>XOR</b>. No straight line can separate them, and the perceptron never stops updating. That is exactly the problem chapters 2–6 solve.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 2. SVM ================= -->
+      <section class="chapter" id="svm">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">02</div>
+          <div>
+            <div class="kicker" data-i18n="c2Kicker">Maximum margin + kernels</div>
+            <h2 data-i18n="c2Title">Support vector machines and the kernel trick</h2>
+            <p data-i18n="c2Lead">Of all lines that separate the data, the SVM picks the one with the <b>widest margin</b> — the widest empty street between the classes. Only the points on the edge of the street, the <b>support vectors</b>, decide where it goes. The parameter <b>C</b> sets how expensive it is for a point to step into the street. And by swapping the dot product for a <b>kernel</b> K(x, z), the very same algorithm draws curved boundaries: it implicitly works in a higher-dimensional feature space without ever computing it.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>⟷</i><span data-i18n="c2i1t">Soft-margin primal</span></h4><p data-i18n="c2i1p">Maximise the margin 2/‖w‖ while paying C for each unit of violation ξ.</p><div class="math" data-tex="\min_{w,b,\xi}\ \tfrac12\|w\|^2+C\textstyle\sum_i\xi_i\ \ \text{s.t.}\ y_i(w^\top\phi(x_i)-b)\ge 1-\xi_i"></div></div>
+          <div class="idea"><h4><i>α</i><span data-i18n="c2i2t">Dual &amp; support vectors</span></h4><p data-i18n="c2i2p">The solution depends only on kernels between points. Points with α &gt; 0 are support vectors.</p><div class="math" data-tex="f(x)=\textstyle\sum_{i}\alpha_i y_i K(x_i,x)-b,\quad 0\le\alpha_i\le C"></div></div>
+          <div class="idea"><h4><i>K</i><span data-i18n="c2i3t">Kernels, simple → complex</span></h4><p data-i18n="c2i3p">Linear, polynomial, sigmoid and RBF (Gaussian). RBF corresponds to an infinite-dimensional feature space.</p><div class="math" data-tex="K_{\text{rbf}}(x,z)=e^{-\gamma\|x-z\|^2},\ \ K_{\text{poly}}=(\gamma x^\top z+r)^d"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simSvm">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.1</div>
+              <h3 data-i18n="svmTitle">SVM studio</h3>
+              <p class="sim-desc" data-i18n="svmDesc">A real SMO solver (the algorithm inside LIBSVM) retrains on every change. The solid line is f(x) = 0, the dashed lines are the margins f(x) = ±1, and white rings mark support vectors.</p>
+            </div>
+            <span class="badge">SMO · LIBSVM-style</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="svm"></div>
+              <div class="screen board"><canvas id="svmBoard"></canvas></div>
+              <div class="legend-row">
+                <span><i class="lg-line"></i><span data-i18n="lgBoundary">boundary f = 0</span></span>
+                <span><i class="lg-dash"></i><span data-i18n="lgMargin">margin f = ±1</span></span>
+                <span><i class="lg-ring"></i><span data-i18n="lgSv">support vector (0 &lt; α &lt; C)</span></span>
+                <span><i class="lg-ring bound"></i><span data-i18n="lgBound">bounded SV (α = C)</span></span>
+              </div>
+              <div class="inspector" id="svmInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="kernel">Kernel</div>
+              <div class="seg" id="svmKernel">
+                <button data-k="linear" data-i18n="kLinear">Linear</button>
+                <button data-k="poly" data-i18n="kPoly">Polynomial</button>
+                <button data-k="rbf" data-i18n="kRbf">RBF</button>
+                <button data-k="sigmoid" data-i18n="kSigmoid">Sigmoid</button>
+              </div>
+              <div class="math kformula" id="svmKF"></div>
+              <div class="ctrl"><label><span data-i18n="cParam">C (penalty)</span><output id="svmCOut"></output></label><input type="range" id="svmC" min="-2" max="3" step="0.05" value="0" style="--tone:var(--yellow)" /></div>
+              <div class="ctrl" data-for="poly rbf sigmoid"><label><span data-i18n="gParam">γ (gamma)</span><output id="svmGOut"></output></label><input type="range" id="svmG" min="-2" max="2" step="0.05" value="0.3" style="--tone:var(--teal)" /></div>
+              <div class="ctrl" data-for="poly"><label><span data-i18n="dParam">Degree d</span><output id="svmDOut"></output></label><input type="range" id="svmD" min="1" max="8" step="1" value="3" /></div>
+              <div class="ctrl" data-for="poly sigmoid"><label><span data-i18n="rParam">Coefficient r</span><output id="svmROut"></output></label><input type="range" id="svmR" min="-2" max="2" step="0.1" value="1" /></div>
+              <div class="toggles">
+                <label class="toggle"><input type="checkbox" id="svmShowM" checked /> <span data-i18n="showMargins">Margins</span></label>
+                <label class="toggle"><input type="checkbox" id="svmShowSV" checked /> <span data-i18n="showSV">Support vectors</span></label>
+                <label class="toggle"><input type="checkbox" id="svmShowE" /> <span data-i18n="showErr">Mark mistakes</span></label>
+              </div>
+              <div class="readouts" id="svmRo"></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="svmTry">① On <b>Linear + outliers</b>, slide C from 0.01 to 1000: a small C ignores outliers and keeps a wide street, a large C bends over backwards for every point. ② On <b>Circles</b>, compare Linear → Polynomial (d = 2) → RBF. ③ With RBF, push γ to the maximum and watch it draw a bubble around every single point — and test accuracy drop.</span></div>
+        </article>
+
+        <article class="sim reveal" id="simLad">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.2</div>
+              <h3 data-i18n="ladTitle">The kernel ladder: from simple to complex</h3>
+              <p class="sim-desc" data-i18n="ladDesc">Eight SVMs trained on the same data as the studio above, ordered by flexibility. Watch where training accuracy keeps rising while test accuracy stops following. Click any panel to load it into the studio.</p>
+            </div>
+            <span class="badge" data-i18n="ladBadge">same data · same C</span>
+          </div>
+          <div class="databar" data-bar="lad"></div>
+          <div class="ladder" id="ladder"></div>
+        </article>
+
+        <article class="sim reveal" id="simCg">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.3</div>
+              <h3 data-i18n="cgTitle">C × γ: a live grid search</h3>
+              <p class="sim-desc" data-i18n="cgDesc">An RBF-SVM is trained for each of 81 combinations of C and γ. The heatmap shows the score of each; hover or click a cell to see that model. This is what hyper-parameter tuning really is.</p>
+            </div>
+            <span class="badge">81 SVMs</span>
+          </div>
+          <div class="databar" data-bar="cg"></div>
+          <div class="cols cols-2" style="margin-top:12px">
+            <div>
+              <div class="seg" id="cgMetric">
+                <button data-m="test" data-i18n="mTest">Test accuracy</button>
+                <button data-m="train" data-i18n="mTrain">Train accuracy</button>
+                <button data-m="gap" data-i18n="mGap">Overfitting gap</button>
+                <button data-m="sv" data-i18n="mSv">% support vectors</button>
+              </div>
+              <div class="screen heat"><span class="screen-label" id="cgLabel"></span><canvas id="cgHeat"></canvas></div>
+            </div>
+            <div>
+              <div class="screen board-sm"><span class="screen-label" id="cgPrevLabel"></span><canvas id="cgBoard"></canvas></div>
+              <div class="readouts" id="cgRo"></div>
+            </div>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="cgTry">Switch to <b>Train accuracy</b>: the top-right corner (big C, big γ) is perfect. Switch back to <b>Test accuracy</b>: that same corner is poor. The best model lives on a diagonal ridge — moderately flexible, moderately regularised.</span></div>
+        </article>
+
+        <article class="sim reveal" id="simK3">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.4</div>
+              <h3 data-i18n="k3Title">The kernel trick in 3D</h3>
+              <p class="sim-desc" data-i18n="k3Desc">Lift each 2-D point to 3-D with a feature map φ(x). Data that no line can split in the plane becomes separable by a flat plane in the lifted space. Drag to rotate; move the plane; then look at what that flat cut becomes back in 2-D.</p>
+            </div>
+            <span class="badge">x ↦ φ(x)</span>
+          </div>
+          <div class="row" style="margin-top:0">
+            <div class="seg" id="k3Data">
+              <button data-d="circles" data-i18n="ds_circles">Circles</button>
+              <button data-d="xor" data-i18n="ds_xor">XOR</button>
+              <button data-d="blobs" data-i18n="ds_blobs">Overlapping blobs</button>
+            </div>
+            <div class="seg" id="k3Map">
+              <button data-m="r2">z = x₁² + x₂²</button>
+              <button data-m="xy">z = x₁·x₂</button>
+              <button data-m="rbf">z = e<sup>−2‖x‖²</sup></button>
+            </div>
+          </div>
+          <div class="cols cols-21" style="margin-top:12px">
+            <div class="screen h-xl"><span class="screen-label" data-i18n="k3Lifted">Lifted space φ(x) — drag to rotate</span><canvas id="k3Canvas" class="grab"></canvas></div>
+            <div class="screen h-xl"><span class="screen-label" data-i18n="k3Back">Back in the plane: φ(x) = h</span><canvas id="k3Board"></canvas></div>
+          </div>
+          <div class="controls">
+            <div class="ctrl"><label><span data-i18n="k3H">Plane height h</span><output id="k3HOut"></output></label><input type="range" id="k3H" min="0" max="1" step="0.005" value="0.5" style="--tone:var(--yellow)" /></div>
+            <div class="row" style="margin-top:0">
+              <button class="btn primary small" id="k3Best" data-i18n="k3Best">Find best plane</button>
+              <label class="toggle"><input type="checkbox" id="k3Spin" checked /> <span data-i18n="autoRotate">Auto-rotate</span></label>
+              <label class="toggle"><input type="checkbox" id="k3Mesh" checked /> <span data-i18n="k3Surface">Show surface z = φ(x)</span></label>
+            </div>
+          </div>
+          <div class="readouts" id="k3Ro"></div>
+          <div class="note" data-i18n="k3Note">A polynomial kernel of degree 2 contains exactly the features x₁², x₂² and x₁x₂ — so the SVM in Simulator 2.1 with d = 2 is doing this lifting for you, implicitly, through K(x, z) = (xᵀz + r)². The RBF kernel does the same with infinitely many features.</div>
+        </article>
+      </section>
+
+      <!-- ================= 3. TREES ================= -->
+      <section class="chapter" id="trees">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">03</div>
+          <div>
+            <div class="kicker" data-i18n="c3Kicker">Twenty questions</div>
+            <h2 data-i18n="c3Title">Decision trees</h2>
+            <p data-i18n="c3Lead">A decision tree asks a sequence of yes/no questions such as “is x₁ ≤ 0.3?”. Each question cuts a region with a straight, axis-parallel line, so the final boundary is a staircase of rectangles. The CART algorithm grows the tree greedily: at every node it tries every possible threshold on every feature and keeps the one that makes the children <b>purest</b>. Trees are easy to read and need no feature scaling — but grown deep they memorise the training set.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>G</i><span data-i18n="c3i1t">Impurity</span></h4><p data-i18n="c3i1p">How mixed a node is, with p the fraction of class +1. Zero for a pure node, highest at p = ½.</p><div class="math" data-tex="\text{Gini}=2p(1-p),\quad H=-p\log_2p-(1-p)\log_2(1-p)"></div></div>
+          <div class="idea"><h4><i>Δ</i><span data-i18n="c3i2t">Information gain</span></h4><p data-i18n="c3i2p">Pick the split that lowers the size-weighted impurity of the children the most.</p><div class="math" data-tex="\Delta=I(\text{node})-\tfrac{n_L}{n}I(L)-\tfrac{n_R}{n}I(R)"></div></div>
+          <div class="idea"><h4><i>✂</i><span data-i18n="c3i3t">Stopping &amp; pruning</span></h4><p data-i18n="c3i3p">Limit max depth or require a minimum number of samples per leaf, otherwise the tree splits until every leaf is pure.</p><div class="math" data-tex="\text{depth}\le D_{\max},\quad n_{\text{leaf}}\ge n_{\min}"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simDt">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 3.1</div>
+              <h3 data-i18n="dtTitle">Tree builder</h3>
+              <p class="sim-desc" data-i18n="dtDesc">Each split appears as a line on the board and as a node in the diagram. Hover the board to light up the path a point takes; hover a node to see its region; click a node to inspect its split below.</p>
+            </div>
+            <span class="badge">CART</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="dt"></div>
+              <div class="screen board"><canvas id="dtBoard"></canvas></div>
+              <div class="inspector" id="dtInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="criterion">Split criterion</div>
+              <div class="seg" id="dtCrit">
+                <button data-c="gini">Gini</button>
+                <button data-c="entropy" data-i18n="entropy">Entropy</button>
+                <button data-c="misclass" data-i18n="misclass">Misclassification</button>
+              </div>
+              <div class="ctrl"><label><span data-i18n="maxDepth">Max depth</span><output id="dtDOut"></output></label><input type="range" id="dtD" min="0" max="12" step="1" value="3" style="--tone:var(--teal)" /></div>
+              <div class="ctrl"><label><span data-i18n="minLeaf">Min samples per leaf</span><output id="dtLOut"></output></label><input type="range" id="dtL" min="1" max="30" step="1" value="1" /></div>
+              <div class="row">
+                <button class="btn primary" id="dtGrow" data-i18n="dtGrow">▶ Grow step by step</button>
+                <label class="toggle"><input type="checkbox" id="dtLines" checked /> <span data-i18n="dtLines">Split lines</span></label>
+              </div>
+              <div class="readouts" id="dtRo"></div>
+            </aside>
+          </div>
+          <div class="screen tree-screen"><span class="screen-label" data-i18n="dtDiagram">Tree diagram · left branch = yes (≤)</span><canvas id="dtTree"></canvas></div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="dtTry">Set max depth to 12 on noisy <b>Moons</b>: every leaf becomes pure, training accuracy hits 100 % and the board fills with tiny islands around single noisy points. Now raise <b>min samples per leaf</b> to 10 — the islands disappear and the gap between training and test accuracy shrinks. Show the test points to see which islands were real.</span></div>
+        </article>
+
+        <article class="sim reveal" id="simSp">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 3.2</div>
+              <h3 data-i18n="spTitle">Split scanner: how CART chooses a question</h3>
+              <p class="sim-desc" data-i18n="spDesc">For the node selected in the tree above, every possible threshold on x₁ and on x₂ is scored by the impurity left in its two children. The lowest point of the curves is the split CART picks. Hover a curve to preview that cut on the board.</p>
+            </div>
+            <span class="badge" id="spBadge">root</span>
+          </div>
+          <div class="cols cols-3">
+            <div class="screen h-md"><span class="screen-label" data-i18n="spX1">Split on x₁ (vertical cut)</span><canvas id="spX1"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" data-i18n="spX2">Split on x₂ (horizontal cut)</span><canvas id="spX2"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" data-i18n="spImp">Impurity functions I(p)</span><canvas id="spImp"></canvas></div>
+          </div>
+          <div class="readouts" id="spRo"></div>
+        </article>
+      </section>
+
+      <!-- ================= 4. FOREST ================= -->
+      <section class="chapter" id="forest">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">04</div>
+          <div>
+            <div class="kicker" data-i18n="c4Kicker">The wisdom of crowds</div>
+            <h2 data-i18n="c4Title">Bagging and random forests</h2>
+            <p data-i18n="c4Lead">A single deep tree has low bias but very high variance: change a few points and it changes completely. <b>Bagging</b> trains many trees, each on a bootstrap sample (n draws with replacement), and averages their votes — the noise of individual trees cancels out. A <b>random forest</b> adds one more twist: each split may only consider a random subset of features, which makes the trees more different from each other and the average even better. <b>Extra-Trees</b> go further and pick thresholds at random.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>Σ</i><span data-i18n="c4i1t">Averaging</span></h4><p data-i18n="c4i1p">The forest’s probability is the mean of the trees’ leaf probabilities (soft voting).</p><div class="math" data-tex="\hat p(x)=\tfrac1T\textstyle\sum_{t=1}^{T}p_t(x)"></div></div>
+          <div class="idea"><h4><i>ρ</i><span data-i18n="c4i2t">Why decorrelation matters</span></h4><p data-i18n="c4i2p">Averaging T trees with variance σ² and correlation ρ leaves a floor of ρσ². Random features lower ρ.</p><div class="math" data-tex="\operatorname{Var}=\rho\sigma^2+\tfrac{1-\rho}{T}\sigma^2"></div></div>
+          <div class="idea"><h4><i>◌</i><span data-i18n="c4i3t">Out-of-bag estimate</span></h4><p data-i18n="c4i3p">Each bootstrap leaves out ≈ 36.8 % of points. Scoring them with the trees that never saw them gives a free validation estimate.</p><div class="math" data-tex="\Pr[\text{left out}]=(1-\tfrac1n)^n\approx e^{-1}"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simRf">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 4.1</div>
+              <h3 data-i18n="rfTitle">Forest studio</h3>
+              <p class="sim-desc" data-i18n="rfDesc">The main board shows the averaged forest. Below, the first eight trees, each with only the bootstrap sample it was trained on — notice how different and jagged each one is compared with their smooth average.</p>
+            </div>
+            <span class="badge">bootstrap · vote</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="rf"></div>
+              <div class="screen board"><canvas id="rfBoard"></canvas></div>
+              <div class="inspector" id="rfInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="ensembleType">Ensemble type</div>
+              <div class="seg" id="rfMode">
+                <button data-m="bag" data-i18n="rfBag">Bagging</button>
+                <button data-m="rf" data-i18n="rfRf">Random forest</button>
+                <button data-m="extra" data-i18n="rfExtra">Extra-Trees</button>
+              </div>
+              <div class="ctrl"><label><span data-i18n="nTrees">Number of trees T</span><output id="rfTOut"></output></label><input type="range" id="rfT" min="1" max="300" step="1" value="60" style="--tone:var(--teal)" /></div>
+              <div class="ctrl"><label><span data-i18n="maxDepth">Max depth</span><output id="rfDOut"></output></label><input type="range" id="rfD" min="1" max="16" step="1" value="10" /></div>
+              <div class="ctrl"><label><span data-i18n="minLeaf">Min samples per leaf</span><output id="rfLOut"></output></label><input type="range" id="rfL" min="1" max="20" step="1" value="1" /></div>
+              <div class="ctrl"><label><span data-i18n="sampleFrac">Sample size (fraction of n)</span><output id="rfSOut"></output></label><input type="range" id="rfS" min="0.1" max="1" step="0.05" value="1" /></div>
+              <div class="row"><button class="btn small" id="rfSeed" data-i18n="reroll">🎲 Re-roll the forest</button></div>
+              <div class="readouts" id="rfRo"></div>
+            </aside>
+          </div>
+          <div class="thumbs" id="rfThumbs"></div>
+          <div class="screen h-md" style="margin-top:12px"><span class="screen-label" data-i18n="rfCurve">Test accuracy vs number of trees</span><canvas id="rfCurve"></canvas></div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="rfTry">Set T = 1: you get one jagged tree. Slide T up to 300 and watch test accuracy climb and then flatten — more trees never overfit, they just stop helping. Compare <b>Bagging</b> with <b>Random forest</b> and <b>Extra-Trees</b> on noisy moons: the smoother boundaries come from less correlated trees.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 5. BOOSTING ================= -->
+      <section class="chapter" id="boosting">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">05</div>
+          <div>
+            <div class="kicker" data-i18n="c5Kicker">Learning from mistakes</div>
+            <h2 data-i18n="c5Title">Boosting: AdaBoost and gradient boosting</h2>
+            <p data-i18n="c5Lead">Bagging trains strong models in parallel and averages them. Boosting does the opposite: it trains <b>weak</b> models (often one-split “stumps”) <b>one after another</b>, and each new model concentrates on what the previous ones got wrong. <b>AdaBoost</b> does this by re-weighting the points; <b>gradient boosting</b> fits each new tree to the gradient of the loss — the residual errors. XGBoost, LightGBM and CatBoost are refined versions of the second idea and still win many competitions on tabular data.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>α</i><span data-i18n="c5i1t">AdaBoost vote</span></h4><p data-i18n="c5i1p">A learner with weighted error ε gets a vote α: accurate learners speak louder.</p><div class="math" data-tex="\alpha_t=\tfrac12\ln\tfrac{1-\varepsilon_t}{\varepsilon_t},\quad F(x)=\textstyle\sum_t\alpha_t h_t(x)"></div></div>
+          <div class="idea"><h4><i>w</i><span data-i18n="c5i2t">Re-weighting</span></h4><p data-i18n="c5i2p">Misclassified points get heavier, correctly classified ones lighter, so the next learner focuses on the hard cases.</p><div class="math" data-tex="w_i\leftarrow \frac{w_i\,e^{-\alpha_t y_i h_t(x_i)}}{Z_t}"></div></div>
+          <div class="idea"><h4><i>∇</i><span data-i18n="c5i3t">Gradient boosting</span></h4><p data-i18n="c5i3p">Each tree fits the negative gradient of the log-loss; a learning rate η shrinks every step.</p><div class="math" data-tex="F_t=F_{t-1}+\eta\,h_t,\ \ h_t\approx -\tfrac{\partial L}{\partial F}=y-\sigma(F)"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simAb">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 5.1</div>
+              <h3 data-i18n="abTitle">AdaBoost, round by round</h3>
+              <p class="sim-desc" data-i18n="abDesc">Drag the round slider or press play. Point size shows the weight each sample carries in that round; the yellow line is the weak learner added in that round. Watch the hard points near the boundary grow.</p>
+            </div>
+            <span class="badge">SAMME · stumps</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="ab"></div>
+              <div class="screen board"><canvas id="abBoard"></canvas></div>
+              <div class="inspector" id="abInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="weakLearner">Weak learner</div>
+              <div class="seg" id="abDepth">
+                <button data-d="1" data-i18n="stump">Stump (depth 1)</button>
+                <button data-d="2" data-i18n="depth2">Depth 2</button>
+                <button data-d="3" data-i18n="depth3">Depth 3</button>
+              </div>
+              <div class="ctrl"><label><span data-i18n="rounds">Total rounds T</span><output id="abTOut"></output></label><input type="range" id="abT" min="1" max="300" step="1" value="100" /></div>
+              <div class="ctrl"><label><span data-i18n="showRound">Show round t</span><output id="abKOut"></output></label><input type="range" id="abK" min="1" max="100" step="1" value="1" style="--tone:var(--yellow)" /></div>
+              <div class="row">
+                <button class="btn primary" id="abPlay" data-i18n="play">▶ Play</button>
+                <button class="btn small" id="abPrev">◀</button>
+                <button class="btn small" id="abNext">▶</button>
+                <label class="toggle"><input type="checkbox" id="abW" checked /> <span data-i18n="abWeights">Weights as size</span></label>
+              </div>
+              <div class="readouts" id="abRo"></div>
+            </aside>
+          </div>
+          <div class="cols cols-2" style="margin-top:12px">
+            <div class="screen h-md"><span class="screen-label" data-i18n="abErr">Ensemble error vs rounds</span><canvas id="abCurve"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" data-i18n="abEps">Weak learner: weighted error ε and vote α</span><canvas id="abEps"></canvas></div>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="abTry">On <b>Circles</b>, stumps slowly build a polygon around the inner class — one straight cut per round. Now pick <b>XOR</b>: no single stump beats a coin flip (ε ≈ 0.5), so AdaBoost is stuck. Switch to depth-2 trees and it solves XOR at once. Weak learners must be <i>slightly</i> better than chance.</span></div>
+        </article>
+
+        <article class="sim reveal" id="simGb">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 5.2</div>
+              <h3 data-i18n="gbTitle">Gradient boosting with residuals</h3>
+              <p class="sim-desc" data-i18n="gbDesc">Yellow rings show each point’s residual y − p at the chosen round — what the next tree is asked to fix. The loss curves reveal the classic boosting trade-off: keep adding trees and the test loss eventually turns back up.</p>
+            </div>
+            <span class="badge">log-loss · Newton leaves</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="gb"></div>
+              <div class="screen board"><canvas id="gbBoard"></canvas></div>
+              <div class="inspector" id="gbInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="lr">Learning rate η</span><output id="gbEtaOut"></output></label><input type="range" id="gbEta" min="-2" max="0" step="0.05" value="-0.7" style="--tone:var(--yellow)" /></div>
+              <div class="ctrl"><label><span data-i18n="rounds">Total rounds T</span><output id="gbTOut"></output></label><input type="range" id="gbT" min="1" max="400" step="1" value="200" /></div>
+              <div class="ctrl"><label><span data-i18n="treeDepth">Tree depth</span><output id="gbDOut"></output></label><input type="range" id="gbD" min="1" max="6" step="1" value="2" /></div>
+              <div class="ctrl"><label><span data-i18n="lambda">L2 on leaves λ</span><output id="gbLOut"></output></label><input type="range" id="gbL" min="0" max="10" step="0.1" value="1" /></div>
+              <div class="ctrl"><label><span data-i18n="subsample">Row subsample</span><output id="gbSOut"></output></label><input type="range" id="gbS" min="0.2" max="1" step="0.05" value="1" /></div>
+              <div class="ctrl"><label><span data-i18n="showRound">Show round t</span><output id="gbKOut"></output></label><input type="range" id="gbK" min="0" max="200" step="1" value="200" style="--tone:var(--teal)" /></div>
+              <div class="row">
+                <button class="btn primary" id="gbPlay" data-i18n="play">▶ Play</button>
+                <button class="btn small" id="gbBest" data-i18n="gbBest">Jump to best round</button>
+                <label class="toggle"><input type="checkbox" id="gbR" checked /> <span data-i18n="gbResid">Residual rings</span></label>
+              </div>
+              <div class="readouts" id="gbRo"></div>
+            </aside>
+          </div>
+          <div class="screen h-md" style="margin-top:12px"><span class="screen-label" data-i18n="gbCurve">Log-loss vs rounds</span><canvas id="gbCurve"></canvas></div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="gbTry">Set η = 1 and depth 4: training loss collapses to zero within a few rounds while test loss shoots up. Now set η = 0.05: progress is slow but the test curve stays low much longer. Small learning rate + many trees + early stopping is the recipe used in practice.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 6. MORE ================= -->
+      <section class="chapter" id="more">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">06</div>
+          <div>
+            <div class="kicker" data-i18n="c6Kicker">Four more ways to think</div>
+            <h2 data-i18n="c6Title">k-NN, logistic regression, Gaussian Bayes and neural networks</h2>
+            <p data-i18n="c6Lead">Each of these classifiers embodies a different idea. <b>k-NN</b> remembers everything and asks the neighbours. <b>Logistic regression</b> fits a probability with a linear score — nonlinear only through the features you give it. <b>Gaussian Bayes</b> models how each class generates data and applies Bayes’ rule. A <b>neural network</b> learns its own features layer by layer.</p>
+          </div>
+        </div>
+
+        <div class="tabs reveal" id="moreTabs">
+          <button data-tab="simKnn" class="on"><b>6.1</b> k-NN</button>
+          <button data-tab="simLr"><b>6.2</b> <span data-i18n="tabLr">Logistic regression</span></button>
+          <button data-tab="simGs"><b>6.3</b> <span data-i18n="tabGs">Naive Bayes · LDA · QDA</span></button>
+          <button data-tab="simNn"><b>6.4</b> <span data-i18n="tabNn">Neural network</span></button>
+        </div>
+
+        <article class="sim tab-pane" id="simKnn">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.1</div>
+              <h3 data-i18n="knnTitle">k-nearest neighbours</h3>
+              <p class="sim-desc" data-i18n="knnDesc">Hover anywhere: the k nearest training points light up and vote. The outline is the “ball” that contains them — its shape depends on the distance metric.</p>
+            </div>
+            <span class="badge">lazy learner</span>
+          </div>
+          <div class="ideas">
+            <div class="idea"><h4><i>k</i><span data-i18n="knni1t">Majority vote</span></h4><p data-i18n="knni1p">Small k: flexible, noisy. Large k: smooth, eventually just the majority class.</p><div class="math" data-tex="\hat p(x)=\tfrac1k\textstyle\sum_{i\in N_k(x)}\mathbb 1[y_i=+1]"></div></div>
+            <div class="idea"><h4><i>d</i><span data-i18n="knni2t">Distance metric</span></h4><p data-i18n="knni2p">Euclidean (L₂), Manhattan (L₁) or Chebyshev (L∞) change what “near” means.</p><div class="math" data-tex="\|x-z\|_p=\big(\textstyle\sum_j|x_j-z_j|^p\big)^{1/p}"></div></div>
+            <div class="idea"><h4><i>⚠</i><span data-i18n="knni3t">Scale matters</span></h4><p data-i18n="knni3p">No training at all, but prediction costs O(n) per query, and features must be on comparable scales.</p><div class="math" data-tex="\text{cost}_{\text{predict}}=O(n\,d)"></div></div>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="knn"></div>
+              <div class="screen board"><canvas id="knnBoard"></canvas></div>
+              <div class="inspector" id="knnInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="kNeighbors">Neighbours k</span><output id="knnKOut"></output></label><input type="range" id="knnK" min="1" max="51" step="1" value="5" style="--tone:var(--teal)" /></div>
+              <div class="panel-title" data-i18n="metric">Distance metric</div>
+              <div class="seg" id="knnMetric">
+                <button data-m="euclid" data-i18n="euclid">Euclidean</button>
+                <button data-m="manhattan" data-i18n="manhattan">Manhattan</button>
+                <button data-m="chebyshev" data-i18n="chebyshev">Chebyshev</button>
+              </div>
+              <div class="toggles"><label class="toggle"><input type="checkbox" id="knnW" /> <span data-i18n="knnWeighted">Distance-weighted vote</span></label></div>
+              <div class="readouts" id="knnRo"></div>
+              <div class="screen h-sm2" style="margin-top:12px"><span class="screen-label" data-i18n="knnCurve">Accuracy vs k</span><canvas id="knnCurve"></canvas></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="knnTry">With k = 1 training accuracy is always 100 % (each point is its own neighbour) — a perfect example of why training accuracy lies. Look at the accuracy-vs-k chart: test accuracy peaks at a moderate k. Click the chart to choose k.</span></div>
+        </article>
+
+        <article class="sim tab-pane" id="simLr" hidden>
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.2</div>
+              <h3 data-i18n="lrTitle">Logistic regression with polynomial features</h3>
+              <p class="sim-desc" data-i18n="lrDesc">The model is linear in its features. With degree 1 the boundary is a straight line; add x₁², x₁x₂, x₂² … and the same linear model draws circles, ellipses and beyond. Training runs live with gradient descent (Adam).</p>
+            </div>
+            <span class="badge">σ(wᵀφ(x) + b)</span>
+          </div>
+          <div class="ideas">
+            <div class="idea"><h4><i>σ</i><span data-i18n="lri1t">Sigmoid output</span></h4><p data-i18n="lri1p">The score is squashed into a probability; the boundary is where p = ½.</p><div class="math" data-tex="p(y{=}1\mid x)=\sigma(z)=\frac{1}{1+e^{-z}}"></div></div>
+            <div class="idea"><h4><i>L</i><span data-i18n="lri2t">Cross-entropy loss</span></h4><p data-i18n="lri2p">Convex in w, minimised by gradient descent; λ adds L2 regularisation.</p><div class="math" data-tex="L=\tfrac1n\textstyle\sum_i\log(1+e^{-y_iz_i})+\tfrac\lambda2\|w\|^2"></div></div>
+            <div class="idea"><h4><i>φ</i><span data-i18n="lri3t">Feature map</span></h4><p data-i18n="lri3p">All monomials up to degree d: (d+1)(d+2)/2 − 1 features.</p><div class="math" data-tex="\phi(x)=(x_1,x_2,x_1^2,x_1x_2,x_2^2,\dots)"></div></div>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="lr"></div>
+              <div class="screen board"><canvas id="lrBoard"></canvas></div>
+              <div class="inspector" id="lrInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="degree">Polynomial degree</span><output id="lrDOut"></output></label><input type="range" id="lrD" min="1" max="8" step="1" value="1" style="--tone:var(--teal)" /></div>
+              <div class="ctrl"><label><span data-i18n="l2">L2 regularisation λ</span><output id="lrLOut"></output></label><input type="range" id="lrL" min="-5" max="0" step="0.1" value="-5" /></div>
+              <div class="ctrl"><label><span data-i18n="lr">Learning rate η</span><output id="lrEtaOut"></output></label><input type="range" id="lrEta" min="-2.5" max="0" step="0.05" value="-1" style="--tone:var(--yellow)" /></div>
+              <div class="row">
+                <button class="btn primary" id="lrPlay" data-i18n="pause">❚❚ Pause</button>
+                <button class="btn small" id="lrReset" data-i18n="reset">↺ Reset</button>
+              </div>
+              <div class="readouts" id="lrRo"></div>
+              <div class="math eq" id="lrEq"></div>
+              <div class="screen h-sm2" style="margin-top:12px"><span class="screen-label" data-i18n="lossCurve">Training loss</span><canvas id="lrCurve"></canvas></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="lrTry">On <b>Circles</b>, degree 1 is stuck near 50 %. Degree 2 nails it, because a circle is x₁² + x₂² = r². Push the degree to 8 on noisy data and watch wiggles appear; then raise λ to tame them.</span></div>
+        </article>
+
+        <article class="sim tab-pane" id="simGs" hidden>
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.3</div>
+              <h3 data-i18n="gsTitle">Gaussian generative classifiers</h3>
+              <p class="sim-desc" data-i18n="gsDesc">Fit one Gaussian per class (ellipses show 1σ and 2σ), then classify with Bayes’ rule. The assumption about the covariance decides the shape of the boundary.</p>
+            </div>
+            <span class="badge">p(x|y) p(y)</span>
+          </div>
+          <div class="ideas">
+            <div class="idea"><h4><i>B</i><span data-i18n="gsi1t">Bayes’ rule</span></h4><p data-i18n="gsi1p">Pick the class with the larger posterior; the boundary is where the log-ratio is zero.</p><div class="math" data-tex="\log\frac{p(x\mid +)\,p(+)}{p(x\mid -)\,p(-)}=0"></div></div>
+            <div class="idea"><h4><i>∥</i><span data-i18n="gsi2t">Naive Bayes</span></h4><p data-i18n="gsi2p">Assume features are independent given the class: axis-aligned ellipses.</p><div class="math" data-tex="p(x\mid y)=\textstyle\prod_j\mathcal N(x_j;\mu_{yj},\sigma_{yj}^2)"></div></div>
+            <div class="idea"><h4><i>Σ</i><span data-i18n="gsi3t">LDA vs QDA</span></h4><p data-i18n="gsi3p">One shared covariance gives a straight line (LDA); one per class gives a conic (QDA).</p><div class="math" data-tex="\Sigma_+=\Sigma_-\Rightarrow\text{linear},\quad\Sigma_+\ne\Sigma_-\Rightarrow\text{quadratic}"></div></div>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="gs"></div>
+              <div class="screen board"><canvas id="gsBoard"></canvas></div>
+              <div class="inspector" id="gsInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="covModel">Covariance model</div>
+              <div class="seg" id="gsMode">
+                <button data-m="nb" data-i18n="gsNb">Naive Bayes</button>
+                <button data-m="lda">LDA</button>
+                <button data-m="qda">QDA</button>
+              </div>
+              <div class="toggles"><label class="toggle"><input type="checkbox" id="gsEll" checked /> <span data-i18n="gsEllipses">Show Gaussians</span></label></div>
+              <div class="readouts" id="gsRo"></div>
+              <div class="note" id="gsNote"></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="gsTry">Paint a tight cluster of cyan points in the middle of a wide pink cloud. QDA draws a closed ellipse around it; LDA, forced to share one covariance, can only draw a line.</span></div>
+        </article>
+
+        <article class="sim tab-pane" id="simNn" hidden>
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.4</div>
+              <h3 data-i18n="nnTitle">A small neural network, trained live</h3>
+              <p class="sim-desc" data-i18n="nnDesc">A multilayer perceptron learns its own nonlinear features. Change the architecture and the activation, then watch backpropagation shape the boundary. In the diagram, cyan edges are positive weights, pink negative; hover the board to see the activations at that point.</p>
+            </div>
+            <span class="badge">backprop · Adam</span>
+          </div>
+          <div class="ideas">
+            <div class="idea"><h4><i>h</i><span data-i18n="nni1t">Layers</span></h4><p data-i18n="nni1p">Each layer is a linear map followed by a nonlinearity.</p><div class="math" data-tex="h^{(\ell)}=g\big(W^{(\ell)}h^{(\ell-1)}+b^{(\ell)}\big)"></div></div>
+            <div class="idea"><h4><i>∂</i><span data-i18n="nni2t">Backpropagation</span></h4><p data-i18n="nni2p">The chain rule carries the error backwards to every weight.</p><div class="math" data-tex="\delta^{(\ell)}=\big(W^{(\ell+1)\top}\delta^{(\ell+1)}\big)\odot g'(z^{(\ell)})"></div></div>
+            <div class="idea"><h4><i>g</i><span data-i18n="nni3t">Activations</span></h4><p data-i18n="nni3p">tanh is smooth; ReLU gives piecewise-linear boundaries; without them the network is just linear.</p><div class="math" data-tex="\operatorname{ReLU}(z)=\max(0,z),\ \ \tanh(z)"></div></div>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="nn"></div>
+              <div class="screen board"><canvas id="nnBoard"></canvas></div>
+              <div class="inspector" id="nnInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="hLayers">Hidden layers</span><output id="nnLOut"></output></label><input type="range" id="nnL" min="1" max="4" step="1" value="2" /></div>
+              <div class="ctrl"><label><span data-i18n="hUnits">Neurons per layer</span><output id="nnUOut"></output></label><input type="range" id="nnU" min="1" max="16" step="1" value="8" style="--tone:var(--teal)" /></div>
+              <div class="panel-title" data-i18n="activation">Activation</div>
+              <div class="seg" id="nnAct">
+                <button data-a="tanh">tanh</button>
+                <button data-a="relu">ReLU</button>
+                <button data-a="sigmoid">sigmoid</button>
+                <button data-a="linear" data-i18n="actLinear">none (linear)</button>
+              </div>
+              <div class="ctrl"><label><span data-i18n="lr">Learning rate η</span><output id="nnEtaOut"></output></label><input type="range" id="nnEta" min="-3" max="-0.5" step="0.05" value="-1.5" style="--tone:var(--yellow)" /></div>
+              <div class="ctrl"><label><span data-i18n="l2">L2 regularisation λ</span><output id="nnLamOut"></output></label><input type="range" id="nnLam" min="-6" max="-1" step="0.1" value="-6" /></div>
+              <div class="row">
+                <button class="btn primary" id="nnPlay" data-i18n="pause">❚❚ Pause</button>
+                <button class="btn small" id="nnReset" data-i18n="reset">↺ Reset</button>
+              </div>
+              <div class="readouts" id="nnRo"></div>
+            </aside>
+          </div>
+          <div class="cols cols-2" style="margin-top:12px">
+            <div class="screen h-md"><span class="screen-label" data-i18n="nnNet">Network</span><canvas id="nnNet"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" data-i18n="lossCurve">Training loss</span><canvas id="nnCurve"></canvas></div>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="nnTry">Pick <b>none (linear)</b>: however many layers you stack, the boundary stays a straight line — a composition of linear maps is linear. Switch to ReLU and the boundary becomes a polygon; tanh makes it smooth. On <b>Spiral</b>, try 1 layer × 3 neurons versus 3 layers × 8.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 7. ARENA ================= -->
+      <section class="chapter" id="arena">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">07</div>
+          <div>
+            <div class="kicker" data-i18n="c7Kicker">No free lunch</div>
+            <h2 data-i18n="c7Title">Model arena</h2>
+            <p data-i18n="c7Lead">Twelve classifiers, one dataset, same train/test split. There is no model that wins everywhere — the “no free lunch” theorem says so formally. Change the dataset, the noise and the number of points, and see how the ranking shuffles.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simAr">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 7.1</div>
+              <h3 data-i18n="arTitle">All models, side by side</h3>
+              <p class="sim-desc" data-i18n="arDesc">Each panel is trained with sensible default settings. You can draw on any panel — every model is retrained on the shared data.</p>
+            </div>
+            <span class="badge" id="arStatus"></span>
+          </div>
+          <div class="databar" data-bar="ar"></div>
+          <div class="arena" id="arenaGrid"></div>
+          <h4 class="sub" data-i18n="arBoard">Leaderboard (sorted by test accuracy)</h4>
+          <div class="lb" id="arLb"></div>
+        </article>
+
+        <article class="sim reveal" id="simCheat">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="cheatTag">Cheat sheet</span></div>
+              <h3 data-i18n="cheatTitle">Which model when?</h3>
+              <p class="sim-desc" data-i18n="cheatDesc">A compact summary of everything in this lab, for revision before an exam or a project.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="cheat">
+              <thead><tr>
+                <th data-i18n="thModel">Model</th><th data-i18n="thBoundary">Boundary shape</th><th data-i18n="thKnobs">Key knobs</th><th data-i18n="thOverfit">Overfits when…</th><th data-i18n="thScale">Needs scaling?</th><th data-i18n="thInterp">Interpretable?</th><th data-i18n="thUse">Good default for</th>
+              </tr></thead>
+              <tbody>
+                <tr><td><b data-i18n="mLogreg">Logistic regression</b></td><td data-i18n="cb1">Linear (curved with features)</td><td>λ, φ(x)</td><td data-i18n="co1">many features, small λ</td><td data-i18n="yes">Yes</td><td data-i18n="ci1">High — weights</td><td data-i18n="cu1">Baselines, calibrated probabilities</td></tr>
+                <tr><td><b data-i18n="mSvmLin">Linear SVM</b></td><td data-i18n="cb2">Linear, max margin</td><td>C</td><td data-i18n="co2">C very large with outliers</td><td data-i18n="yes">Yes</td><td data-i18n="ci2">Medium</td><td data-i18n="cu2">High-dimensional sparse data (text)</td></tr>
+                <tr><td><b data-i18n="mSvmRbf">Kernel SVM (RBF)</b></td><td data-i18n="cb3">Any smooth shape</td><td>C, γ</td><td data-i18n="co3">γ and C both large</td><td data-i18n="yes">Yes</td><td data-i18n="ci3">Low</td><td data-i18n="cu3">Small–medium data with complex boundaries</td></tr>
+                <tr><td><b data-i18n="mKnn">k-NN</b></td><td data-i18n="cb4">Any, Voronoi-like</td><td data-i18n="ck4">k, metric</td><td data-i18n="co4">k small</td><td data-i18n="yes">Yes</td><td data-i18n="ci4">Medium — by example</td><td data-i18n="cu4">Low dimensions, quick prototypes</td></tr>
+                <tr><td><b data-i18n="mGauss">Naive Bayes / LDA / QDA</b></td><td data-i18n="cb5">Linear or quadratic</td><td data-i18n="ck5">covariance model</td><td data-i18n="co5">QDA with few points</td><td data-i18n="no">No</td><td data-i18n="ci5">High — class models</td><td data-i18n="cu5">Tiny data, text (NB), fast baselines</td></tr>
+                <tr><td><b data-i18n="mTree">Decision tree</b></td><td data-i18n="cb6">Axis-aligned boxes</td><td data-i18n="ck6">depth, min leaf</td><td data-i18n="co6">deep, tiny leaves</td><td data-i18n="no">No</td><td data-i18n="ci6">Very high — rules</td><td data-i18n="cu6">Explanations, mixed feature types</td></tr>
+                <tr><td><b data-i18n="mRf">Random forest</b></td><td data-i18n="cb7">Boxy but smooth on average</td><td data-i18n="ck7">T, max features, depth</td><td data-i18n="co7">rarely — robust</td><td data-i18n="no">No</td><td data-i18n="ci7">Low (feature importances)</td><td data-i18n="cu7">Strong default for tabular data</td></tr>
+                <tr><td><b data-i18n="mAda">AdaBoost</b></td><td data-i18n="cb8">Sum of weak cuts</td><td data-i18n="ck8">T, weak-learner depth</td><td data-i18n="co8">label noise (weights explode)</td><td data-i18n="no">No</td><td data-i18n="ci8">Low</td><td data-i18n="cu8">Clean data, teaching boosting</td></tr>
+                <tr><td><b data-i18n="mGb">Gradient boosting</b></td><td data-i18n="cb9">Sum of small trees</td><td data-i18n="ck9">η, T, depth, λ</td><td data-i18n="co9">η large, T large, no early stopping</td><td data-i18n="no">No</td><td data-i18n="ci9">Low (SHAP helps)</td><td data-i18n="cu9">Best accuracy on tabular data</td></tr>
+                <tr><td><b data-i18n="mMlp">Neural network</b></td><td data-i18n="cb10">Anything (universal approximator)</td><td data-i18n="ck10">architecture, η, λ</td><td data-i18n="co10">too big, trained too long</td><td data-i18n="yes">Yes</td><td data-i18n="ci10">Low</td><td data-i18n="cu10">Images, audio, text, huge data</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h4>ML Lab</h4>
+          <p data-i18n="footerAbout">An interactive course companion for machine learning — SVMs, trees, ensembles, boosting and more, all implemented from scratch in the browser.</p>
+          <p style="margin-top:10px"><a href="../index.html#apps" data-i18n="backHome">← Back to all simulators</a> · <a href="../signal-lab/" data-i18n="signalLab">Signal Lab</a></p>
+        </div>
+        <div>
+          <p data-i18n="providedBy">Provided by</p>
+          <h4 data-i18n="authorName">Mohammad Khalooei</h4>
+          <div class="footer-links">
+            <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+            <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
+          </div>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 Mohammad Khalooei · ML Lab</p>
+    </div>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="models.js?v=20261115a"></script>
+  <script defer src="i18n.js?v=20261115a"></script>
+  <script defer src="app.js?v=20261115a"></script>
+</body>
+</html>
