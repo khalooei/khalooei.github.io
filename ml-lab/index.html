@@ -10,7 +10,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1629'/%3E%3Cpath d='M5 25 C12 22 14 10 27 7' stroke='%23ffcb57' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23ff5d9e'/%3E%3Ccircle cx='22' cy='21' r='3' fill='%2345d9f5'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-  <link rel="stylesheet" href="style.css?v=20261115a" />
+  <link rel="stylesheet" href="style.css?v=20261115b" />
 </head>
 <body>
   <header class="topbar">
@@ -30,6 +30,15 @@
     <div class="progress"><i id="progressBar"></i></div>
   </header>
 
+  <nav class="side-nav" id="sideNav" aria-label="Simulator guide">
+    <button type="button" class="sn-arrow" id="snPrev" aria-label="Previous simulator"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+    <div class="sn-items" id="snItems">
+      <a href="#basics" data-c="1">1</a><a href="#svm" data-c="2">2</a><a href="#trees" data-c="3">3</a><a href="#forest" data-c="4">4</a><a href="#boosting" data-c="5">5</a><a href="#more" data-c="6">6</a><a href="#arena" data-c="7">7</a>
+    </div>
+    <span class="sn-cur" id="snCur">—</span>
+    <button type="button" class="sn-arrow" id="snNext" aria-label="Next simulator"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+  </nav>
+
   <main>
     <!-- ================= HERO ================= -->
     <section class="hero">
@@ -46,7 +55,6 @@
         <div class="hero-meta">
           <span><span data-i18n="byLabel">Designed &amp; developed by</span> <strong data-i18n="authorName">Mohammad Khalooei</strong></span>
           <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
-          <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
           <span>🖱 <span data-i18n="heroTip">Tip: click on any board to add points, right-click for the other class</span></span>
         </div>
         <ol class="roadmap">
@@ -703,7 +711,6 @@
           <h4 data-i18n="authorName">Mohammad Khalooei</h4>
           <div class="footer-links">
             <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
-            <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a>
           </div>
         </div>
       </div>
@@ -712,8 +719,8 @@
   </footer>
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="models.js?v=20261115a"></script>
-  <script defer src="i18n.js?v=20261115a"></script>
-  <script defer src="app.js?v=20261115a"></script>
+  <script defer src="models.js?v=20261115b"></script>
+  <script defer src="i18n.js?v=20261115b"></script>
+  <script defer src="app.js?v=20261115b"></script>
 </body>
 </html>

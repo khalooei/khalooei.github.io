@@ -468,3 +468,42 @@ html[lang="fa"] .cheat th { letter-spacing: 0; font-size: 12.5px; }
 /* long formulas scroll inside their card instead of widening the page */
 .idea, .sim, .panel, .stage, .chapter-head > div { min-width: 0; }
 @media (max-width: 760px) { .ideas, .cols-2, .cols-21, .cols-12, .cols-3 { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Floating guide: half hidden at the left edge, slides in on hover ---------- */
+.side-nav {
+  position: fixed; left: 0; top: 50%; z-index: 45; direction: ltr;
+  width: 48px; padding: 10px 0; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: rgba(12, 20, 38, 0.9); border: 1px solid #2a3a58; border-left: none; border-radius: 0 16px 16px 0;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 14px 40px #0007;
+  transform: translate(-50%, -50%); opacity: 0.55;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s;
+}
+.side-nav::after {
+  content: ""; position: absolute; right: 5px; top: 50%; width: 3px; height: 34px; margin-top: -17px;
+  border-radius: 2px; background: linear-gradient(180deg, var(--blue), var(--teal)); opacity: 0.8; transition: opacity 0.25s;
+}
+.side-nav:hover, .side-nav:focus-within { transform: translate(0, -50%); opacity: 1; }
+.side-nav:hover::after, .side-nav:focus-within::after { opacity: 0; }
+.sn-items { display: flex; flex-direction: column; gap: 4px; }
+.sn-items a, .sn-arrow {
+  position: relative; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px;
+  color: #aebfe0; text-decoration: none; font-size: 11.5px; font-weight: 800; background: transparent; border: 1px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.sn-items a:hover, .sn-arrow:hover { background: #1b2a4c; color: #fff; }
+.sn-items a.active { background: var(--blue); color: #08112a; }
+.sn-arrow { border-color: #2c3b58; color: var(--teal); padding: 0; }
+.sn-arrow:disabled { opacity: 0.3; cursor: default; }
+.sn-cur { font-size: 10px; font-weight: 800; color: var(--teal); font-variant-numeric: tabular-nums; min-height: 14px; }
+/* hover labels: the guide line shown beside the panel */
+.side-nav [data-tip]:hover::after {
+  content: attr(data-tip); position: absolute; left: calc(100% + 16px); top: 50%; transform: translateY(-50%);
+  white-space: nowrap; pointer-events: none; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 650;
+  color: #e9f0ff; background: #142039; border: 1px solid #344765; box-shadow: 0 8px 24px #0008;
+  font-family: var(--font); direction: auto; unicode-bidi: plaintext;
+}
+/* keep the content clear of the guide where the side gutter is narrow */
+@media (min-width: 761px) and (max-width: 1379px) {
+  main .wrap, .site-footer .wrap { padding-left: 58px; padding-right: 58px; }
+}
+@media (max-width: 760px), (max-height: 420px) { .side-nav { display: none; } }

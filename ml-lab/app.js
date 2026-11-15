@@ -1,5 +1,5 @@
 /* ML Lab — interactive simulators for classical machine learning.
- * © Mohammad Khalooei (mohammad.khalooei@sharif.edu · khalooei@aut.ac.ir)
+ * © Mohammad Khalooei (mohammad.khalooei@sharif.edu)
  * Plain JavaScript + Canvas 2D. Algorithms live in models.js. No build step. */
 (() => {
   'use strict';
@@ -1827,6 +1827,52 @@
     navLinks.forEach((a, i) => a.classList.toggle('active', i === idx));
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* -------------------------------- floating guide (previous / next) */
+  const STOPS = ['simMan', 'simSvm', 'simLad', 'simCg', 'simK3', 'simDt', 'simSp', 'simRf', 'simAb', 'simGb', 'simKnn', 'simLr', 'simGs', 'simNn', 'simAr', 'simCheat'];
+  const snDots = [...document.querySelectorAll('#snItems a')];
+  const stopNum = (id) => { const m = /(\d+\.\d+)/.exec($(id).querySelector('.sim-tag').textContent); return m ? m[1] : '★'; };
+  const stopLabel = (id) => `${stopNum(id)} · ${$(id).querySelector('h3').textContent.trim()}`;
+  const visibleStop = (el) => !el.hidden && el.offsetParent !== null;
+  function currentStop() {
+    let cur = -1;
+    STOPS.forEach((id, i) => { const el = $(id); if (visibleStop(el) && el.getBoundingClientRect().top <= 150) cur = i; });
+    return cur;
+  }
+  function goStop(i) {
+    const id = STOPS[i];
+    if (!id) { if (i < 0) window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    const tab = document.querySelector(`#moreTabs button[data-tab="${id}"]`);
+    if (tab && $(id).hidden) tab.click();
+    requestAnimationFrame(() => $(id).scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
+  // in chapter 6 only one tab is visible; stepping walks through the tabs in order
+  const stepFrom = (cur, dir) => {
+    if (dir < 0 && cur >= 0) {
+      const top = $(STOPS[cur]).getBoundingClientRect().top;
+      if (top < 60) return cur; // first return to the start of the current simulator
+    }
+    return cur + dir;
+  };
+  function updateGuide() {
+    const cur = currentStop();
+    $('snCur').textContent = cur >= 0 ? stopNum(STOPS[cur]) : '';
+    const prev = stepFrom(cur, -1), next = cur + 1;
+    $('snPrev').disabled = cur < 0;
+    $('snNext').disabled = next >= STOPS.length;
+    $('snPrev').dataset.tip = prev >= 0 ? `▲ ${stopLabel(STOPS[prev])}` : `▲ ${t('guideTop')}`;
+    $('snNext').dataset.tip = next < STOPS.length ? `▼ ${stopLabel(STOPS[next])}` : t('guideEnd');
+    navLinks.forEach((a, i) => {
+      snDots[i].dataset.tip = a.textContent.trim();
+      snDots[i].classList.toggle('active', a.classList.contains('active'));
+    });
+  }
+  $('snPrev').addEventListener('click', () => goStop(stepFrom(currentStop(), -1)));
+  $('snNext').addEventListener('click', () => goStop(currentStop() + 1));
+  let guideRaf = 0;
+  window.addEventListener('scroll', () => { if (!guideRaf) guideRaf = requestAnimationFrame(() => { guideRaf = 0; updateGuide(); }); }, { passive: true });
+  document.querySelectorAll('#moreTabs button').forEach((b) => b.addEventListener('click', () => setTimeout(updateGuide, 0)));
+  refreshers.push(updateGuide);
   const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), { rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach((el) => rio.observe(el));
 
@@ -1861,6 +1907,7 @@
   arRun();
   applyLang();
   onScroll();
+  updateGuide();
   requestAnimationFrame(frame);
   window.__mlLabReady = true;
 })();

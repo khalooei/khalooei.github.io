@@ -1,5 +1,5 @@
 /* ML Lab — learning algorithms implemented from scratch for teaching.
- * © Mohammad Khalooei (mohammad.khalooei@sharif.edu · khalooei@aut.ac.ir)
+ * © Mohammad Khalooei (mohammad.khalooei@sharif.edu)
  *
  * Every model is binary: labels y ∈ {−1, +1}, inputs x = [x1, x2] ∈ [−1, 1]².
  * Every fitted model exposes   score(x1, x2) → real number (> 0 means class +1)

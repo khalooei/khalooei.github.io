@@ -208,6 +208,7 @@
         gsNote_qda: '<b>QDA</b>: each class has its own full covariance matrix (tilted ellipses). The boundary is a conic — ellipse, parabola or hyperbola.',
         nParamsNN: 'Parameters', arch: 'Architecture', inputL: 'input', outputL: 'output', hiddenL: 'hidden', hoverNet: 'hover the board to see activations',
         arDone: 'done · total {ms} ms',
+        guideTop: 'Back to the top', guideEnd: 'End of the lab',
       }),
       fa: Object.assign({}, AR_FA, {
         docTitle: 'آزمایشگاه یادگیری ماشین — شبیه‌سازهای تعاملی | محمد خالوئی',
@@ -246,6 +247,7 @@
         gsNote_qda: '<b>QDA</b>: هر کلاس ماتریس کوواریانس کامل خودش را دارد (بیضی‌های کج). مرز یک مقطع مخروطی است — بیضی، سهمی یا هذلولی.',
         nParamsNN: 'پارامترها', arch: 'معماری', inputL: 'ورودی', outputL: 'خروجی', hiddenL: 'پنهان', hoverNet: 'برای دیدن فعال‌سازی‌ها ماوس را روی صفحه ببرید',
         arDone: 'تمام شد · مجموعاً {ms} میلی‌ثانیه',
+        guideTop: 'بازگشت به بالا', guideEnd: 'پایان آزمایشگاه',
       }),
     },
   };
