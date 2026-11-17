@@ -837,3 +837,4 @@ body.rtl .footer-col h4 {
   align-items: flex-end;
   gap: 0.3rem;
 }
+.pub-new.pub-review { color: #2a1a02; background: linear-gradient(90deg, #fcd34d, #fb923c); }

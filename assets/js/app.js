@@ -8,10 +8,19 @@
     {
       title:
         "Self-adaptive revisiting awareness for enhancing robustness and generalization in classification tasks",
-      venue: "Machine Learning with Applications · 2026 · accepted",
-      href: "https://scholar.google.com/citations?user=2HFVUn4AAAAJ&hl=en",
+      venue: "Machine Learning with Applications · 2026",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:hqOjcs7Dif8C",
       page: "SARA/",
-      isNew: true,
+      status: "accepted",
+    },
+    {
+      title:
+        "Does location matter? A black-box causal audit reveals model-dependent audio grounding in LALM hallucination",
+      venue: "arXiv:2610.13112 · 2026",
+      href:
+        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2HFVUn4AAAAJ&citation_for_view=2HFVUn4AAAAJ:YOwf2qJgpHMC",
+      status: "review",
     },
     {
       title: "ProJan: A probabilistic trojan attack on deep neural networks",
@@ -70,8 +79,13 @@
     return "Scholar";
   }
 
-  function pubNew(lang) {
-    return { fa: "پذیرفته شد", ar: "مقبولة", zh: "已录用" }[lang] || "Accepted";
+  function pubStatus(lang, status) {
+    var labels = {
+      accepted: { en: "Accepted", fa: "پذیرفته شد", ar: "مقبولة", zh: "已录用" },
+      review: { en: "Under review", fa: "در حال داوری", ar: "قيد المراجعة", zh: "审稿中" },
+    };
+    var l = labels[status] || {};
+    return l[lang] || l.en || "";
   }
 
   function pubProject(lang) {
@@ -177,7 +191,7 @@
         '</span><span class="pub-venue">' +
         escapeHtml(p.venue) +
         "</span>" +
-        (p.isNew ? '<span class="pub-new">' + escapeHtml(pubNew(lang)) + "</span>" : "") +
+        (p.status ? '<span class="pub-new pub-' + p.status + '">' + escapeHtml(pubStatus(lang, p.status)) + "</span>" : "") +
         '</div><span class="pub-links">' +
         (p.page ? '<a class="pub-link" href="' + escapeAttr(p.page) + '">' + escapeHtml(pubProject(lang)) + "</a>" : "") +
         '<a class="pub-link" href="' +
