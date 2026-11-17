@@ -87,6 +87,13 @@ window.I18N = {
           image: "assets/img/sharif-data-analysis-2026.jpg",
         },
         {
+          tag: "Paper accepted",
+          title: "SARA accepted in Machine Learning with Applications",
+          desc: "Self-Adaptive Revisiting Awareness for robust, generalizable classification — with Maryam Amirmazlaghani and Mohammad Mehdi Homayounpour. Code and project page.",
+          href: "SARA/",
+          isNew: true,
+        },
+        {
           tag: "New simulator",
           title: "ML Lab",
           desc: "SVM kernels, trees, forests and boosting — draw data, watch models learn.",
@@ -381,6 +388,13 @@ window.I18N = {
           isNew: true,
           featured: true,
           image: "assets/img/sharif-data-analysis-2026.jpg",
+        },
+        {
+          tag: "مقالهٔ پذیرفته‌شده",
+          title: "پذیرش مقالهٔ SARA در مجلهٔ Machine Learning with Applications",
+          desc: "آگاهی بازبینی خودتطبیقی برای دسته‌بندی مقاوم و تعمیم‌پذیر — با مریم امیرمزلقانی و محمدمهدی همایون‌پور. کد و صفحهٔ پروژه.",
+          href: "SARA/",
+          isNew: true,
         },
         {
           tag: "شبیه‌ساز جدید",
@@ -679,6 +693,13 @@ window.I18N = {
           image: "assets/img/sharif-data-analysis-2026.jpg",
         },
         {
+          tag: "ورقة مقبولة",
+          title: "قبول ورقة SARA في مجلة Machine Learning with Applications",
+          desc: "الوعي التكيّفي بإعادة الزيارة لتصنيف متين وقابل للتعميم — مع مريم أمير مزلقاني ومحمد مهدي همايون‌بور. الشيفرة وصفحة المشروع.",
+          href: "SARA/",
+          isNew: true,
+        },
+        {
           tag: "محاكي جديد",
           title: "مختبر تعلّم الآلة",
           desc: "نوى SVM والأشجار والغابات والتعزيز — ارسم البيانات وشاهد النماذج تتعلّم.",
@@ -973,6 +994,13 @@ window.I18N = {
           isNew: true,
           featured: true,
           image: "assets/img/sharif-data-analysis-2026.jpg",
+        },
+        {
+          tag: "论文录用",
+          title: "SARA 论文被 Machine Learning with Applications 录用",
+          desc: "自适应重访感知（SARA），提升分类的鲁棒性与泛化能力 —— 与 Maryam Amirmazlaghani、Mohammad Mehdi Homayounpour 合作。附代码与项目主页。",
+          href: "SARA/",
+          isNew: true,
         },
         {
           tag: "新模拟器",

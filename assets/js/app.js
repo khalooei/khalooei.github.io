@@ -6,6 +6,14 @@
 
   var RECENT_PUBLICATIONS = [
     {
+      title:
+        "Self-adaptive revisiting awareness for enhancing robustness and generalization in classification tasks",
+      venue: "Machine Learning with Applications · 2026 · accepted",
+      href: "https://scholar.google.com/citations?user=2HFVUn4AAAAJ&hl=en",
+      page: "SARA/",
+      isNew: true,
+    },
+    {
       title: "ProJan: A probabilistic trojan attack on deep neural networks",
       venue: "Knowledge-Based Systems · 2024",
       href:
@@ -60,6 +68,14 @@
     if (lang === "ar") return "Scholar";
     if (lang === "zh") return "Scholar";
     return "Scholar";
+  }
+
+  function pubNew(lang) {
+    return { fa: "پذیرفته شد", ar: "مقبولة", zh: "已录用" }[lang] || "Accepted";
+  }
+
+  function pubProject(lang) {
+    return { fa: "صفحهٔ پروژه", ar: "صفحة المشروع", zh: "项目主页" }[lang] || "Project";
   }
 
   function getLang() {
@@ -160,11 +176,15 @@
         escapeHtml(p.title) +
         '</span><span class="pub-venue">' +
         escapeHtml(p.venue) +
-        '</span></div><a class="pub-link" href="' +
+        "</span>" +
+        (p.isNew ? '<span class="pub-new">' + escapeHtml(pubNew(lang)) + "</span>" : "") +
+        '</div><span class="pub-links">' +
+        (p.page ? '<a class="pub-link" href="' + escapeAttr(p.page) + '">' + escapeHtml(pubProject(lang)) + "</a>" : "") +
+        '<a class="pub-link" href="' +
         escapeAttr(p.href) +
         '" target="_blank" rel="noopener noreferrer">' +
         escapeHtml(cta) +
-        "</a></li>"
+        "</a></span></li>"
       );
     }).join("");
   }
