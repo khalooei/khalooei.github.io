@@ -10,7 +10,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1629'/%3E%3Cpath d='M5 25 C12 22 14 10 27 7' stroke='%23ffcb57' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23ff5d9e'/%3E%3Ccircle cx='22' cy='21' r='3' fill='%2345d9f5'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-  <link rel="stylesheet" href="style.css?v=20261115b" />
+  <link rel="stylesheet" href="style.css?v=20261117b" />
 </head>
 <body>
   <header class="topbar">
@@ -25,6 +25,9 @@
         <a href="#more"><b>6</b><span data-i18n="nav6">k-NN · LR · NB · NN</span></a>
         <a href="#arena"><b>7</b><span data-i18n="nav7">Arena</span></a>
       </nav>
+      <div class="lab-switch" role="group" aria-label="Labs">
+        <a class="on" aria-current="page" data-i18n="swSup">Supervised</a><a href="../unsupervised-lab/" data-i18n="swUnsup">Unsupervised</a>
+      </div>
       <button class="lang-btn" id="langBtn" type="button">فارسی</button>
     </div>
     <div class="progress"><i id="progressBar"></i></div>
@@ -51,6 +54,7 @@
           <a class="btn primary" href="#basics" data-i18n="heroStart">Start from the basics →</a>
           <a class="btn" href="#svm" data-i18n="heroJump">Jump to SVM kernels</a>
           <a class="btn" href="#arena" data-i18n="heroArena">Model arena</a>
+          <a class="btn" href="../unsupervised-lab/" data-i18n="heroUnsup">Unsupervised Lab →</a>
         </div>
         <div class="hero-meta">
           <span><span data-i18n="byLabel">Designed &amp; developed by</span> <strong data-i18n="authorName">Mohammad Khalooei</strong></span>
@@ -498,7 +502,7 @@
           </div>
           <div class="ideas">
             <div class="idea"><h4><i>k</i><span data-i18n="knni1t">Majority vote</span></h4><p data-i18n="knni1p">Small k: flexible, noisy. Large k: smooth, eventually just the majority class.</p><div class="math" data-tex="\hat p(x)=\tfrac1k\textstyle\sum_{i\in N_k(x)}\mathbb 1[y_i=+1]"></div></div>
-            <div class="idea"><h4><i>d</i><span data-i18n="knni2t">Distance metric</span></h4><p data-i18n="knni2p">Euclidean (L₂), Manhattan (L₁) or Chebyshev (L∞) change what “near” means.</p><div class="math" data-tex="\|x-z\|_p=\big(\textstyle\sum_j|x_j-z_j|^p\big)^{1/p}"></div></div>
+            <div class="idea"><h4><i>d</i><span data-i18n="knni2t">Distance metric</span></h4><p><span data-i18n="knni2p">Euclidean (L₂), Manhattan (L₁) or Chebyshev (L∞) change what “near” means.</span> <a href="../unsupervised-lab/#distance" data-i18n="knnMore">Compare all metrics →</a></p><div class="math" data-tex="\|x-z\|_p=\big(\textstyle\sum_j|x_j-z_j|^p\big)^{1/p}"></div></div>
             <div class="idea"><h4><i>⚠</i><span data-i18n="knni3t">Scale matters</span></h4><p data-i18n="knni3p">No training at all, but prediction costs O(n) per query, and features must be on comparable scales.</p><div class="math" data-tex="\text{cost}_{\text{predict}}=O(n\,d)"></div></div>
           </div>
           <div class="studio">
@@ -704,7 +708,7 @@
         <div>
           <h4>ML Lab</h4>
           <p data-i18n="footerAbout">An interactive course companion for machine learning — SVMs, trees, ensembles, boosting and more, all implemented from scratch in the browser.</p>
-          <p style="margin-top:10px"><a href="../index.html#apps" data-i18n="backHome">← Back to all simulators</a> · <a href="../signal-lab/" data-i18n="signalLab">Signal Lab</a></p>
+          <p style="margin-top:10px"><a href="../index.html#apps" data-i18n="backHome">← Back to all simulators</a> · <a href="../unsupervised-lab/" data-i18n="unsupLab">Unsupervised Lab</a> · <a href="../signal-lab/" data-i18n="signalLab">Signal Lab</a></p>
         </div>
         <div>
           <p data-i18n="providedBy">Provided by</p>
@@ -719,8 +723,8 @@
   </footer>
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="models.js?v=20261115b"></script>
-  <script defer src="i18n.js?v=20261115b"></script>
-  <script defer src="app.js?v=20261115b"></script>
+  <script defer src="models.js?v=20261117b"></script>
+  <script defer src="i18n.js?v=20261117b"></script>
+  <script defer src="app.js?v=20261117b"></script>
 </body>
 </html>

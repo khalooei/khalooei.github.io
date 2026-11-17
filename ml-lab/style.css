@@ -507,3 +507,17 @@ html[lang="fa"] .cheat th { letter-spacing: 0; font-size: 12.5px; }
   main .wrap, .site-footer .wrap { padding-left: 58px; padding-right: 58px; }
 }
 @media (max-width: 760px), (max-height: 420px) { .side-nav { display: none; } }
+
+/* ---------- Supervised / Unsupervised switch (shared by both labs) ---------- */
+.lab-switch { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: #0e182e; border: 1px solid var(--line2); flex: none; }
+.lab-switch a { padding: 5px 11px; border-radius: 999px; font-size: 12px; font-weight: 750; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.lab-switch a:hover { color: var(--text); }
+.lab-switch a.on { background: linear-gradient(90deg, var(--blue), var(--teal)); color: #06122a; }
+@media (max-width: 1250px) { .chap-nav { justify-content: flex-start; } }
+@media (max-width: 560px) { .lab-switch a { padding: 5px 8px; font-size: 11px; } .brand > span:not(.pulse) { font-size: 14px; } }
+.topbar-inner:has(.lab-switch) { gap: 12px; }
+.topbar-inner:has(.lab-switch) .brand small { display: none; }
+.topbar-inner:has(.lab-switch) .chap-nav { gap: 2px; }
+.topbar-inner:has(.lab-switch) .chap-nav a { padding: 6px 7px; gap: 5px; font-size: 12px; }
+@media (max-width: 1360px) { .topbar-inner:has(.lab-switch) .chap-nav a span { display: none; } .topbar-inner:has(.lab-switch) .chap-nav { justify-content: center; } }
+@media (max-width: 600px) { .lab-switch { display: none; } }

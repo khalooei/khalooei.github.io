@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Unsupervised Lab: interactive simulators for distance metrics, k-means, hierarchical clustering, DBSCAN, Gaussian mixtures, PCA and t-SNE. By Mohammad Khalooei." />
+  <meta name="author" content="Mohammad Khalooei" />
+  <meta name="theme-color" content="#070b17" />
+  <title>Unsupervised Lab — Distances, clustering and dimensionality reduction | Mohammad Khalooei</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1629'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%2345d9f5'/%3E%3Ccircle cx='13' cy='8' r='2' fill='%2345d9f5'/%3E%3Ccircle cx='22' cy='21' r='3' fill='%23ff5d9e'/%3E%3Ccircle cx='19' cy='24' r='2' fill='%23ff5d9e'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%23ffcb57'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <link rel="stylesheet" href="../ml-lab/style.css?v=20261117b" />
+  <link rel="stylesheet" href="style.css?v=20261117b" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html#apps" title="Mohammad Khalooei"><span class="pulse"></span><span>Unsupervised Lab</span><small>· M. Khalooei</small></a>
+      <nav class="chap-nav" id="chapNav" aria-label="Chapters">
+        <a href="#distance"><b>1</b><span data-i18n="nav1">Distances</span></a>
+        <a href="#kmeans"><b>2</b><span data-i18n="nav2">k-means</span></a>
+        <a href="#hier"><b>3</b><span data-i18n="nav3">Hierarchical</span></a>
+        <a href="#dbscan"><b>4</b><span data-i18n="nav4">DBSCAN</span></a>
+        <a href="#gmm"><b>5</b><span data-i18n="nav5">Mixtures</span></a>
+        <a href="#dimred"><b>6</b><span data-i18n="nav6">PCA · t-SNE</span></a>
+        <a href="#carena"><b>7</b><span data-i18n="nav7">Arena</span></a>
+      </nav>
+      <div class="lab-switch" role="group" aria-label="Labs">
+        <a href="../ml-lab/" data-i18n="swSup">Supervised</a><a class="on" aria-current="page" data-i18n="swUnsup">Unsupervised</a>
+      </div>
+      <button class="lang-btn" id="langBtn" type="button">فارسی</button>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </header>
+
+  <nav class="side-nav" id="sideNav" aria-label="Simulator guide">
+    <button type="button" class="sn-arrow" id="snPrev" aria-label="Previous simulator"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+    <div class="sn-items" id="snItems">
+      <a href="#distance">1</a><a href="#kmeans">2</a><a href="#hier">3</a><a href="#dbscan">4</a><a href="#gmm">5</a><a href="#dimred">6</a><a href="#carena">7</a>
+    </div>
+    <span class="sn-cur" id="snCur"></span>
+    <button type="button" class="sn-arrow" id="snNext" aria-label="Next simulator"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+  </nav>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="heroEyebrow">Learning without labels</span></div>
+        <h1 data-i18n="heroTitle">Find the <em>structure</em> hidden in data.</h1>
+        <p class="lead" data-i18n="heroLead">No labels, no teacher — just points. Start with the question everything else depends on: <b>how far apart are two points?</b> Then watch k-means move its centroids, build a dendrogram merge by merge, let DBSCAN grow clusters through dense regions, fit Gaussian mixtures with EM, and squeeze 3-D manifolds into 2-D with PCA and t-SNE. Every algorithm is implemented from scratch and runs live in your browser.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#distance" data-i18n="heroStart">Start with distances →</a>
+          <a class="btn" href="#kmeans" data-i18n="heroJump">Jump to clustering</a>
+          <a class="btn" href="../ml-lab/" data-i18n="heroSup">Supervised ML Lab</a>
+        </div>
+        <div class="hero-meta">
+          <span><span data-i18n="byLabel">Designed &amp; developed by</span> <strong data-i18n="authorName">Mohammad Khalooei</strong></span>
+          <a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a>
+          <span>🖱 <span data-i18n="heroTip">Tip: drag the big markers; click on a board to add points</span></span>
+        </div>
+        <ol class="roadmap">
+          <li><a href="#distance"><b>01</b><span data-i18n="rm1">Distance &amp; similarity metrics</span></a></li>
+          <li><a href="#kmeans"><b>02</b><span data-i18n="rm2">k-means &amp; choosing k</span></a></li>
+          <li><a href="#hier"><b>03</b><span data-i18n="rm3">Hierarchical clustering</span></a></li>
+          <li><a href="#dbscan"><b>04</b><span data-i18n="rm4">DBSCAN: density</span></a></li>
+          <li><a href="#gmm"><b>05</b><span data-i18n="rm5">Gaussian mixtures &amp; EM</span></a></li>
+          <li><a href="#dimred"><b>06</b><span data-i18n="rm6">PCA &amp; t-SNE</span></a></li>
+          <li><a href="#carena"><b>07</b><span data-i18n="rm7">Clustering arena &amp; cheat sheet</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <!-- ================= 1. DISTANCES ================= -->
+      <section class="chapter" id="distance">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">01</div>
+          <div>
+            <div class="kicker" data-i18n="c1Kicker">The foundation</div>
+            <h2 data-i18n="c1Title">Distance and similarity metrics</h2>
+            <p data-i18n="c1Lead">k-NN, k-means, hierarchical clustering, DBSCAN, kernels and t-SNE all start from the same question: <b>how close are two points?</b> The answer is a modelling choice. Change the metric and you change what “near”, “similar” and “cluster” mean. A true metric satisfies four rules: d(x, y) ≥ 0, d(x, y) = 0 only if x = y, symmetry, and the triangle inequality d(x, z) ≤ d(x, y) + d(y, z).</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>p</i><span data-i18n="c1i1t">Minkowski family</span></h4><p data-i18n="c1i1p">p = 1 is Manhattan, p = 2 Euclidean, p → ∞ Chebyshev. For p &lt; 1 the triangle inequality breaks.</p><div class="math" data-tex="d_p(x,y)=\Big(\textstyle\sum_j|x_j-y_j|^p\Big)^{1/p}"></div></div>
+          <div class="idea"><h4><i>∠</i><span data-i18n="c1i2t">Cosine distance</span></h4><p data-i18n="c1i2p">Ignores length and compares only direction — the standard choice for text and embeddings.</p><div class="math" data-tex="d_{\cos}(x,y)=1-\frac{x^\top y}{\|x\|\,\|y\|}"></div></div>
+          <div class="idea"><h4><i>Σ</i><span data-i18n="c1i3t">Mahalanobis</span></h4><p data-i18n="c1i3p">Measures distance in units of the data’s own spread and correlation; Euclidean is the special case Σ = I.</p><div class="math" data-tex="d_M(x,\mu)=\sqrt{(x-\mu)^\top\Sigma^{-1}(x-\mu)}"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simMetric">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.1</div>
+              <h3 data-i18n="mtTitle">Distance explorer</h3>
+              <p class="sim-desc" data-i18n="mtDesc">Drag points A and B. The yellow curve passes through every point that is exactly as far from A as B is — the “circle” of the chosen metric. The dashed path shows how that metric travels from A to B.</p>
+            </div>
+            <span class="badge">d(A, B)</span>
+          </div>
+          <div class="studio">
+            <div class="stage"><div class="screen board"><canvas id="mtBoard" class="grab"></canvas></div></div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="metric">Metric</div>
+              <div class="seg" id="mtMetric">
+                <button data-m="euclid" data-i18n="mEuclid">Euclidean</button>
+                <button data-m="manhattan" data-i18n="mManhattan">Manhattan</button>
+                <button data-m="chebyshev" data-i18n="mChebyshev">Chebyshev</button>
+                <button data-m="minkowski">Minkowski p</button>
+                <button data-m="cosine" data-i18n="mCosine">Cosine</button>
+              </div>
+              <div class="ctrl" id="mtPCtrl"><label><span>p</span><output id="mtPOut"></output></label><input type="range" id="mtP" min="-1" max="1.5" step="0.01" value="0.48" style="--tone:var(--yellow)" /></div>
+              <div class="dist-bars" id="mtBars"></div>
+              <div class="note" id="mtNote"></div>
+            </aside>
+          </div>
+          <div class="cols cols-2" style="margin-top:12px">
+            <div class="screen h-lg"><span class="screen-label" data-i18n="mtBalls">Unit “circles” ‖x‖ₚ = 1 for the Minkowski family</span><canvas id="mtBalls"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" data-i18n="mtTri">Triangle inequality: is d(A,B) ≤ d(A,C) + d(C,B)? Drag C</span><canvas id="mtTri"></canvas></div>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="mtTry">Pick Minkowski and lower p below 1. The unit “circle” becomes a star whose sides cave inwards, and the triangle check on the right turns red: the detour through C is shorter than the direct route, so d is no longer a metric.</span></div>
+        </article>
+
+        <article class="sim reveal" id="simVor">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.2</div>
+              <h3 data-i18n="vorTitle">Same points, four geometries: Voronoi regions</h3>
+              <p class="sim-desc" data-i18n="vorDesc">Each region contains the locations closest to one site. Drag a site in any panel and all four update. This is exactly what 1-nearest-neighbour classification and the k-means assignment step compute.</p>
+            </div>
+            <span class="badge" data-i18n="vorBadge">drag the sites</span>
+          </div>
+          <div class="row" style="margin-top:0">
+            <button class="btn small" id="vorRand" data-i18n="vorRand">🎲 Shuffle sites</button>
+            <button class="btn small" id="vorAdd" data-i18n="vorAdd">+ Add site</button>
+            <button class="btn small" id="vorDel" data-i18n="vorDel">− Remove site</button>
+          </div>
+          <div class="quad" id="vorQuad"></div>
+        </article>
+
+        <article class="sim reveal" id="simMaha">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.3</div>
+              <h3 data-i18n="mhTitle">Mahalanobis vs Euclidean: is this point an outlier?</h3>
+              <p class="sim-desc" data-i18n="mhDesc">Drag the yellow query point. Blue circles are Euclidean distances 1σ, 2σ, 3σ from the mean; pink ellipses are the same Mahalanobis distances, which follow the shape of the data. A point can be close in one sense and very far in the other.</p>
+            </div>
+            <span class="badge">χ²₂</span>
+          </div>
+          <div class="studio">
+            <div class="stage"><div class="screen board"><canvas id="mhBoard" class="grab"></canvas></div></div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="corrAngle">Orientation</span><output id="mhAOut"></output></label><input type="range" id="mhA" min="0" max="180" step="1" value="35" /></div>
+              <div class="ctrl"><label><span data-i18n="stretch">Stretch (σ₁ / σ₂)</span><output id="mhSOut"></output></label><input type="range" id="mhS" min="1" max="8" step="0.1" value="4" style="--tone:var(--teal)" /></div>
+              <div class="readouts" id="mhRo"></div>
+              <div class="note" id="mhNote"></div>
+            </aside>
+          </div>
+        </article>
+
+        <article class="sim reveal" id="simScale">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.4</div>
+              <h3 data-i18n="scTitle">Feature scaling changes who your neighbours are</h3>
+              <p class="sim-desc" data-i18n="scDesc">Two features measured in different units — say age in years and income in thousands. Stretch one axis and the three nearest neighbours of the query (yellow lines) change completely. Standardising (z-scores) puts both features on equal footing.</p>
+            </div>
+            <span class="badge">z = (x − μ) / σ</span>
+          </div>
+          <div class="studio">
+            <div class="stage"><div class="screen board"><canvas id="scBoard" class="grab"></canvas></div></div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="scFactor">Units of x₂ (scale factor)</span><output id="scFOut"></output></label><input type="range" id="scF" min="-1.3" max="1.3" step="0.01" value="0" style="--tone:var(--yellow)" /></div>
+              <label class="toggle"><input type="checkbox" id="scZ" /> <span data-i18n="scStd">Standardise both features</span></label>
+              <div class="readouts" id="scRo"></div>
+              <div class="note" data-i18n="scNote">Distance-based methods — k-NN, k-means, SVM with RBF kernel, DBSCAN, PCA — are all sensitive to units. Trees are not: a split “x₂ ≤ t” works in any unit.</div>
+            </aside>
+          </div>
+        </article>
+
+        <article class="sim reveal" id="simCurse">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 1.5</div>
+              <h3 data-i18n="cuTitle">The curse of dimensionality</h3>
+              <p class="sim-desc" data-i18n="cuDesc">200 random points in a d-dimensional unit cube. As d grows, all pairwise distances crowd around the same value: the nearest and the farthest neighbour become almost equally far, and “nearest” stops meaning much.</p>
+            </div>
+            <span class="badge">d → ∞</span>
+          </div>
+          <div class="ctrl" style="max-width:520px"><label><span data-i18n="dimension">Dimension d</span><output id="cuDOut"></output></label><input type="range" id="cuD" min="0" max="3" step="0.01" value="0.3" style="--tone:var(--teal)" /></div>
+          <div class="cols cols-2" style="margin-top:12px">
+            <div class="screen h-lg"><span class="screen-label" data-i18n="cuHist">Histogram of pairwise distances / max distance</span><canvas id="cuHist"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" data-i18n="cuRatio">Relative contrast (d_max − d_min) / d_min vs dimension</span><canvas id="cuRatio"></canvas></div>
+          </div>
+          <div class="readouts" id="cuRo"></div>
+        </article>
+      </section>
+
+      <!-- ================= 2. K-MEANS ================= -->
+      <section class="chapter" id="kmeans">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">02</div>
+          <div>
+            <div class="kicker" data-i18n="c2Kicker">Centroids</div>
+            <h2 data-i18n="c2Title">k-means clustering</h2>
+            <p data-i18n="c2Lead">k-means alternates two simple steps until nothing changes: <b>assign</b> every point to its nearest centroid, then <b>move</b> each centroid to the mean of its points. Each step can only lower the total squared distance (inertia), so it always converges — but only to a local minimum, which is why the starting positions matter and why <b>k-means++</b> seeding was invented.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>J</i><span data-i18n="c2i1t">Objective (inertia)</span></h4><p data-i18n="c2i1p">The sum of squared distances from each point to its centroid.</p><div class="math" data-tex="J=\textstyle\sum_{i}\|x_i-\mu_{c(i)}\|^2"></div></div>
+          <div class="idea"><h4><i>⇄</i><span data-i18n="c2i2t">Lloyd’s two steps</span></h4><p data-i18n="c2i2p">Assignment is a Voronoi partition; the update is a mean (median for L1, normalised mean for cosine).</p><div class="math" data-tex="c(i)=\arg\min_k\|x_i-\mu_k\|,\quad \mu_k=\tfrac{1}{|C_k|}\textstyle\sum_{i\in C_k}x_i"></div></div>
+          <div class="idea"><h4><i>++</i><span data-i18n="c2i3t">k-means++ seeding</span></h4><p data-i18n="c2i3p">Pick the next centre with probability proportional to its squared distance from the centres chosen so far.</p><div class="math" data-tex="\Pr[x]\propto D(x)^2"></div></div>
+        </div>
+
+        <article class="sim reveal" id="simKm">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.1</div>
+              <h3 data-i18n="kmTitle">k-means, step by step</h3>
+              <p class="sim-desc" data-i18n="kmDesc">Press <b>Step</b> to alternate assign and update, or <b>Run</b> to animate. Drag a centroid (✕) anywhere to restart from there. The shaded regions are the Voronoi cells of the centroids; the thin trails show where they came from.</p>
+            </div>
+            <span class="badge">Lloyd · k-means++</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="km"></div>
+              <div class="screen board"><canvas id="kmBoard"></canvas></div>
+              <div class="inspector" id="kmInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="kClusters">Clusters k</span><output id="kmKOut"></output></label><input type="range" id="kmK" min="1" max="8" step="1" value="3" style="--tone:var(--teal)" /></div>
+              <div class="panel-title" data-i18n="initLbl">Initialisation</div>
+              <div class="seg" id="kmInit">
+                <button data-v="kmeans++">k-means++</button>
+                <button data-v="random" data-i18n="initRandom">Random points</button>
+              </div>
+              <div class="panel-title" data-i18n="metric">Metric</div>
+              <div class="seg" id="kmMetric">
+                <button data-v="euclid" data-i18n="kmEuclid">Euclidean (means)</button>
+                <button data-v="manhattan" data-i18n="kmManhattan">Manhattan (medians)</button>
+                <button data-v="cosine" data-i18n="kmCosine">Cosine (spherical)</button>
+              </div>
+              <div class="row">
+                <button class="btn small" id="kmInitBtn" data-i18n="reinit">↺ Re-initialise</button>
+                <button class="btn small" id="kmStep" data-i18n="step">Step</button>
+                <button class="btn primary" id="kmRun" data-i18n="run">▶ Run</button>
+              </div>
+              <div class="readouts" id="kmRo"></div>
+              <div class="screen h-sm2"><span class="screen-label" data-i18n="inertiaCurve">Inertia per step</span><canvas id="kmCurve"></canvas></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="kmTry">Choose <b>Random points</b> on <b>5 blobs</b> and re-initialise a few times — sometimes two centroids get stuck sharing one blob. k-means++ rarely does. Then pick <b>Moons</b> or <b>Circles</b>: k-means can only draw straight Voronoi borders, so it slices them in half however you start.</span></div>
+        </article>
+
+        <article class="sim reveal" id="simK">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 2.2</div>
+              <h3 data-i18n="kTitle">How many clusters? Elbow and silhouette</h3>
+              <p class="sim-desc" data-i18n="kDesc">Uses the data of Simulator 2.1. Inertia always falls as k grows, so we look for the “elbow”. The silhouette s = (b − a) / max(a, b) compares each point’s distance to its own cluster (a) with the nearest other cluster (b); higher is better. Click either chart to choose k.</p>
+            </div>
+            <span class="badge">s ∈ [−1, 1]</span>
+          </div>
+          <div class="cols cols-3">
+            <div class="screen h-md"><span class="screen-label" data-i18n="elbow">Elbow: inertia vs k</span><canvas id="kElbow" style="cursor:pointer"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" data-i18n="silK">Mean silhouette vs k</span><canvas id="kSil" style="cursor:pointer"></canvas></div>
+            <div class="screen h-md"><span class="screen-label" id="kPlotLbl"></span><canvas id="kSilPlot"></canvas></div>
+          </div>
+          <div class="readouts" id="kRo"></div>
+        </article>
+      </section>
+
+      <!-- ================= 3. HIERARCHICAL ================= -->
+      <section class="chapter" id="hier">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">03</div>
+          <div>
+            <div class="kicker" data-i18n="c3Kicker">Merge by merge</div>
+            <h2 data-i18n="c3Title">Hierarchical (agglomerative) clustering</h2>
+            <p data-i18n="c3Lead">Start with every point as its own cluster and repeatedly merge the two closest clusters until one remains. The full history is a tree — the <b>dendrogram</b> — and cutting it at any height gives a clustering, so you never have to fix k in advance. What “closest clusters” means is the <b>linkage</b>, and it changes everything.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>⟷</i><span data-i18n="c3i1t">Single &amp; complete</span></h4><p data-i18n="c3i1p">Single: the closest pair (finds chains, suffers from “chaining”). Complete: the farthest pair (compact clusters).</p><div class="math" data-tex="d_{\min}=\min_{a\in A,b\in B}d(a,b),\ \ d_{\max}=\max d(a,b)"></div></div>
+          <div class="idea"><h4><i>μ</i><span data-i18n="c3i2t">Average linkage</span></h4><p data-i18n="c3i2p">The mean of all pairwise distances (UPGMA) — a compromise between the two.</p><div class="math" data-tex="d_{\text{avg}}=\tfrac{1}{|A||B|}\textstyle\sum_{a,b}d(a,b)"></div></div>
+          <div class="idea"><h4><i>W</i><span data-i18n="c3i3t">Ward</span></h4><p data-i18n="c3i3p">Merge the pair that increases the total within-cluster variance the least — the hierarchical cousin of k-means.</p><div class="math" data-tex="\Delta=\tfrac{|A||B|}{|A|+|B|}\|\mu_A-\mu_B\|^2"></div></div>
+        </div>
+        <article class="sim reveal" id="simHc">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 3.1</div>
+              <h3 data-i18n="hcTitle">Dendrogram studio</h3>
+              <p class="sim-desc" data-i18n="hcDesc">Drag the yellow cut line on the dendrogram (or use the slider) to choose where to cut. Press <b>Play merges</b> to watch the clusters fuse one merge at a time; hover a point to highlight its leaf.</p>
+            </div>
+            <span class="badge">O(n³)</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="hc"></div>
+              <div class="screen board"><canvas id="hcBoard"></canvas></div>
+            </div>
+            <aside class="panel">
+              <div class="panel-title" data-i18n="linkage">Linkage</div>
+              <div class="seg" id="hcLink">
+                <button data-v="single" data-i18n="lkSingle">Single</button>
+                <button data-v="complete" data-i18n="lkComplete">Complete</button>
+                <button data-v="average" data-i18n="lkAverage">Average</button>
+                <button data-v="ward">Ward</button>
+              </div>
+              <div class="panel-title" data-i18n="metric">Metric</div>
+              <div class="seg" id="hcMetric">
+                <button data-v="euclid" data-i18n="mEuclid">Euclidean</button>
+                <button data-v="manhattan" data-i18n="mManhattan">Manhattan</button>
+                <button data-v="chebyshev" data-i18n="mChebyshev">Chebyshev</button>
+                <button data-v="cosine" data-i18n="mCosine">Cosine</button>
+              </div>
+              <div class="ctrl"><label><span data-i18n="kClusters">Clusters k</span><output id="hcKOut"></output></label><input type="range" id="hcK" min="1" max="12" step="1" value="3" style="--tone:var(--yellow)" /></div>
+              <div class="row"><button class="btn primary" id="hcPlay" data-i18n="hcPlay">▶ Play merges</button></div>
+              <div class="readouts" id="hcRo"></div>
+            </aside>
+          </div>
+          <div class="screen dendro"><span class="screen-label" data-i18n="dendro">Dendrogram · drag the cut line</span><canvas id="hcDendro"></canvas></div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="hcTry">On <b>Circles</b>, single linkage usually finds both rings perfectly — it follows chains of close neighbours — while Ward cuts them like k-means. Press <b>New sample</b> a few times, or raise the noise: one gap in a ring or one bridging point is enough for single linkage to fail. Powerful, but fragile.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 4. DBSCAN ================= -->
+      <section class="chapter" id="dbscan">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">04</div>
+          <div>
+            <div class="kicker" data-i18n="c4Kicker">Clusters are dense regions</div>
+            <h2 data-i18n="c4Title">DBSCAN: density-based clustering</h2>
+            <p data-i18n="c4Lead">DBSCAN needs no k. A point is a <b>core</b> point if at least minPts points lie within distance ε of it. Clusters grow by hopping from core point to core point; points reached but not dense themselves are <b>border</b> points, and everything else is <b>noise</b>. It finds clusters of any shape and flags outliers — but one ε cannot fit clusters of very different density.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simDb">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 4.1</div>
+              <h3 data-i18n="dbTitle">DBSCAN studio</h3>
+              <p class="sim-desc" data-i18n="dbDesc">Big dots are core points, small dots with a ring are border points, grey crosses are noise. Hover to see the ε-neighbourhood (its shape follows the metric). Use the k-distance plot to pick ε: look for the knee.</p>
+            </div>
+            <span class="badge">ε · minPts</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="db"></div>
+              <div class="screen board"><canvas id="dbBoard"></canvas></div>
+              <div class="inspector" id="dbInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span>ε (eps)</span><output id="dbEOut"></output></label><input type="range" id="dbE" min="0.02" max="0.5" step="0.005" value="0.13" style="--tone:var(--yellow)" /></div>
+              <div class="ctrl"><label><span>minPts</span><output id="dbMOut"></output></label><input type="range" id="dbM" min="2" max="20" step="1" value="5" style="--tone:var(--teal)" /></div>
+              <div class="panel-title" data-i18n="metric">Metric</div>
+              <div class="seg" id="dbMetric">
+                <button data-v="euclid" data-i18n="mEuclid">Euclidean</button>
+                <button data-v="manhattan" data-i18n="mManhattan">Manhattan</button>
+                <button data-v="chebyshev" data-i18n="mChebyshev">Chebyshev</button>
+              </div>
+              <div class="row"><button class="btn primary" id="dbPlay" data-i18n="dbPlay">▶ Animate growth</button></div>
+              <div class="readouts" id="dbRo"></div>
+              <div class="screen h-sm2"><span class="screen-label" data-i18n="kdist">k-distance plot (click to set ε)</span><canvas id="dbK" style="cursor:pointer"></canvas></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="dbTry">On <b>Moons</b> and <b>Circles</b> DBSCAN succeeds where k-means fails. Now pick <b>Different densities</b>: an ε small enough for the dense blob turns the sparse one into noise, and an ε large enough for the sparse blob merges everything.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 5. GMM ================= -->
+      <section class="chapter" id="gmm">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">05</div>
+          <div>
+            <div class="kicker" data-i18n="c5Kicker">Soft clustering</div>
+            <h2 data-i18n="c5Title">Gaussian mixture models and EM</h2>
+            <p data-i18n="c5Lead">A Gaussian mixture assumes the data were generated by k Gaussian “bumps”, each with its own mean, covariance and weight. The <b>EM algorithm</b> fits them by alternating an <b>E-step</b> (how responsible is each component for each point?) and an <b>M-step</b> (refit each Gaussian to the points it is responsible for). Unlike k-means, every point belongs to every cluster with some probability, and clusters can be elongated ellipses.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>p</i><span data-i18n="c5i1t">Mixture density</span></h4><p data-i18n="c5i1p">A weighted sum of Gaussians; the weights πₖ sum to one.</p><div class="math" data-tex="p(x)=\textstyle\sum_k\pi_k\,\mathcal N(x\mid\mu_k,\Sigma_k)"></div></div>
+          <div class="idea"><h4><i>E</i><span data-i18n="c5i2t">E-step: responsibilities</span></h4><p data-i18n="c5i2p">The posterior probability that component k generated point i.</p><div class="math" data-tex="r_{ik}=\frac{\pi_k\mathcal N(x_i\mid\mu_k,\Sigma_k)}{\sum_j\pi_j\mathcal N(x_i\mid\mu_j,\Sigma_j)}"></div></div>
+          <div class="idea"><h4><i>M</i><span data-i18n="c5i3t">M-step: refit</span></h4><p data-i18n="c5i3p">Weighted means and covariances. The log-likelihood never decreases.</p><div class="math" data-tex="\mu_k=\frac{\sum_i r_{ik}x_i}{\sum_i r_{ik}},\quad \pi_k=\tfrac1n\textstyle\sum_i r_{ik}"></div></div>
+        </div>
+        <article class="sim reveal" id="simGm">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 5.1</div>
+              <h3 data-i18n="gmTitle">EM, one step at a time</h3>
+              <p class="sim-desc" data-i18n="gmDesc">Each point is coloured by a blend of its responsibilities, so uncertain points between clusters look mixed. Ellipses show 1σ and 2σ of each component.</p>
+            </div>
+            <span class="badge">EM</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="gm"></div>
+              <div class="screen board"><canvas id="gmBoard"></canvas></div>
+              <div class="inspector" id="gmInsp"></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="kComp">Components k</span><output id="gmKOut"></output></label><input type="range" id="gmK" min="1" max="8" step="1" value="3" style="--tone:var(--teal)" /></div>
+              <div class="panel-title" data-i18n="covType">Covariance type</div>
+              <div class="seg" id="gmCov">
+                <button data-v="full" data-i18n="covFull">Full</button>
+                <button data-v="diag" data-i18n="covDiag">Diagonal</button>
+                <button data-v="spherical" data-i18n="covSph">Spherical</button>
+                <button data-v="tied" data-i18n="covTied">Tied</button>
+              </div>
+              <div class="row">
+                <button class="btn small" id="gmInit" data-i18n="reinit">↺ Re-initialise</button>
+                <button class="btn small" id="gmE">E-step</button>
+                <button class="btn small" id="gmM">M-step</button>
+                <button class="btn primary" id="gmRun" data-i18n="run">▶ Run</button>
+              </div>
+              <div class="readouts" id="gmRo"></div>
+              <div class="screen h-sm2"><span class="screen-label" data-i18n="llCurve">Log-likelihood per point</span><canvas id="gmCurve"></canvas></div>
+            </aside>
+          </div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="gmTry">On <b>Stretched blobs</b> compare <b>Full</b> with <b>Spherical</b>: spherical Gaussians behave much like k-means and cut the elongated clusters wrongly; full covariances follow their shape. Use the BIC readout to compare models — lower is better.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 6. DIMENSIONALITY REDUCTION ================= -->
+      <section class="chapter" id="dimred">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">06</div>
+          <div>
+            <div class="kicker" data-i18n="c6Kicker">Fewer dimensions, same story</div>
+            <h2 data-i18n="c6Title">Dimensionality reduction: PCA and t-SNE</h2>
+            <p data-i18n="c6Lead"><b>PCA</b> finds the directions along which the data vary the most and projects onto them: a linear, global method with a closed-form answer. <b>t-SNE</b> instead tries to keep each point’s <i>neighbours</i> close in 2-D, which lets it unfold curved manifolds — at the price of distorting global distances and depending on its perplexity setting.</p>
+          </div>
+        </div>
+        <div class="ideas reveal">
+          <div class="idea"><h4><i>Σ</i><span data-i18n="c6i1t">PCA = eigenvectors of Σ</span></h4><p data-i18n="c6i1p">The first principal component maximises the projected variance.</p><div class="math" data-tex="w_1=\arg\max_{\|w\|=1}w^\top\Sigma w,\quad \Sigma w_1=\lambda_1w_1"></div></div>
+          <div class="idea"><h4><i>%</i><span data-i18n="c6i2t">Explained variance</span></h4><p data-i18n="c6i2p">Each component keeps a share λₖ / Σλ of the total variance.</p><div class="math" data-tex="\text{EV}_k=\lambda_k/\textstyle\sum_j\lambda_j"></div></div>
+          <div class="idea"><h4><i>KL</i><span data-i18n="c6i3t">t-SNE objective</span></h4><p data-i18n="c6i3p">Match neighbour probabilities in high-D (Gaussian) and 2-D (heavy-tailed Student-t).</p><div class="math" data-tex="\min_Y \mathrm{KL}(P\,\|\,Q)=\textstyle\sum_{ij}p_{ij}\log\frac{p_{ij}}{q_{ij}}"></div></div>
+        </div>
+        <article class="sim reveal" id="simPca">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.1</div>
+              <h3 data-i18n="pcaTitle">PCA in the plane</h3>
+              <p class="sim-desc" data-i18n="pcaDesc">Rotate the candidate direction (yellow) and watch the variance of the projected points change; its maximum is PC1. Slide <b>Project</b> to collapse the cloud onto the line — the dashed segments are the reconstruction errors PCA minimises.</p>
+            </div>
+            <span class="badge">2-D → 1-D</span>
+          </div>
+          <div class="studio">
+            <div class="stage">
+              <div class="databar" data-bar="pca"></div>
+              <div class="screen board"><canvas id="pcaBoard"></canvas></div>
+            </div>
+            <aside class="panel">
+              <div class="ctrl"><label><span data-i18n="dirAngle">Candidate direction θ</span><output id="pcaThOut"></output></label><input type="range" id="pcaTh" min="0" max="180" step="0.5" value="90" style="--tone:var(--yellow)" /></div>
+              <div class="row" style="margin-top:-6px"><button class="btn small" id="pcaSnap" data-i18n="snapPc1">Snap to PC1</button></div>
+              <div class="ctrl"><label><span data-i18n="project">Project onto the direction</span><output id="pcaPOut"></output></label><input type="range" id="pcaP" min="0" max="1" step="0.01" value="0" style="--tone:var(--teal)" /></div>
+              <div class="readouts" id="pcaRo"></div>
+              <div class="screen h-sm2"><span class="screen-label" data-i18n="varAngle">Projected variance vs θ</span><canvas id="pcaCurve" style="cursor:pointer"></canvas></div>
+            </aside>
+          </div>
+        </article>
+
+        <article class="sim reveal" id="simTsne">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 6.2</div>
+              <h3 data-i18n="tsTitle">Unrolling a manifold: PCA vs t-SNE</h3>
+              <p class="sim-desc" data-i18n="tsDesc">A 3-D dataset coloured by its position along the surface. PCA can only rotate and flatten it, so distant parts of the roll land on top of each other. t-SNE, optimised live, keeps neighbours together and unrolls the colour ribbon.</p>
+            </div>
+            <span class="badge">3-D → 2-D</span>
+          </div>
+          <div class="row" style="margin-top:0">
+            <div class="seg" id="tsData">
+              <button data-v="swiss" data-i18n="swiss">Swiss roll</button>
+              <button data-v="scurve" data-i18n="scurve">S-curve</button>
+              <button data-v="blobs" data-i18n="blobs3d">4 clusters in 3-D</button>
+            </div>
+            <div class="ctrl" style="min-width:220px;flex:1;max-width:300px"><label><span data-i18n="perplexity">Perplexity</span><output id="tsPOut"></output></label><input type="range" id="tsP" min="2" max="60" step="1" value="30" style="--tone:var(--yellow)" /></div>
+            <button class="btn small" id="tsRestart" data-i18n="restart">↺ Restart t-SNE</button>
+            <button class="btn primary small" id="tsRun" data-i18n="pause">❚❚ Pause</button>
+          </div>
+          <div class="cols cols-3" style="margin-top:12px">
+            <div class="screen h-lg"><span class="screen-label" data-i18n="ts3d">Original 3-D data — drag to rotate</span><canvas id="ts3d" class="grab"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" id="tsPcaLbl">PCA</span><canvas id="tsPca"></canvas></div>
+            <div class="screen h-lg"><span class="screen-label" id="tsLbl">t-SNE</span><canvas id="tsTsne"></canvas></div>
+          </div>
+          <div class="readouts" id="tsRo"></div>
+          <div class="note teal"><b data-i18n="tryIt">Try it:</b> <span data-i18n="tsTry">Set perplexity to 2: t-SNE shatters the roll into many small fragments — it only cares about the 2 nearest neighbours. Around 30 the ribbon unrolls. Remember that cluster sizes and gaps in a t-SNE picture are not meaningful distances.</span></div>
+        </article>
+      </section>
+
+      <!-- ================= 7. ARENA ================= -->
+      <section class="chapter" id="carena">
+        <div class="chapter-head reveal">
+          <div class="chapter-num">07</div>
+          <div>
+            <div class="kicker" data-i18n="c7Kicker">Side by side</div>
+            <h2 data-i18n="c7Title">Clustering arena</h2>
+            <p data-i18n="c7Lead">Eight algorithms, one dataset. Because the data were generated, we know the true groups and can score each result with the <b>adjusted Rand index</b> (ARI: 1 = perfect, 0 = no better than chance). The <b>silhouette</b> needs no ground truth — but notice how it rewards round, k-means-like blobs even when the true clusters are rings or moons.</p>
+          </div>
+        </div>
+        <article class="sim reveal" id="simCa">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="simLabel">Simulator</span> 7.1</div>
+              <h3 data-i18n="caTitle">All clustering algorithms on the same data</h3>
+              <p class="sim-desc" data-i18n="caDesc">k is set to the true number of groups for the algorithms that need it; DBSCAN and mean shift find the number themselves. You can draw on any panel.</p>
+            </div>
+            <span class="badge" id="caStatus"></span>
+          </div>
+          <div class="databar" data-bar="ca"></div>
+          <div class="controls" style="margin-top:0">
+            <div class="ctrl"><label><span data-i18n="kClusters">Clusters k</span><output id="caKOut"></output></label><input type="range" id="caK" min="1" max="8" step="1" value="3" /></div>
+            <div class="ctrl"><label><span>DBSCAN ε</span><output id="caEOut"></output></label><input type="range" id="caE" min="0.03" max="0.4" step="0.005" value="0.12" /></div>
+            <div class="ctrl"><label><span data-i18n="bandwidth">Mean-shift bandwidth</span><output id="caBOut"></output></label><input type="range" id="caB" min="0.05" max="0.5" step="0.01" value="0.15" /></div>
+          </div>
+          <div class="arena" id="caGrid"></div>
+          <h4 class="sub" data-i18n="caBoard">Leaderboard (sorted by adjusted Rand index)</h4>
+          <div class="lb" id="caLb"></div>
+        </article>
+
+        <article class="sim reveal" id="simCheat">
+          <div class="sim-head">
+            <div>
+              <div class="sim-tag"><span class="dot"></span><span data-i18n="cheatTag">Cheat sheet</span></div>
+              <h3 data-i18n="cheatTitle">Which method when?</h3>
+              <p class="sim-desc" data-i18n="cheatDesc">A compact summary for revision.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="cheat">
+              <thead><tr><th data-i18n="thMethod">Method</th><th data-i18n="thNeedK">Needs k?</th><th data-i18n="thShape">Cluster shapes</th><th data-i18n="thKnobs">Key knobs</th><th data-i18n="thWeak">Weak spot</th><th data-i18n="thCost">Cost</th><th data-i18n="thUse">Good for</th></tr></thead>
+              <tbody>
+                <tr><td><b>k-means</b></td><td data-i18n="yes">Yes</td><td data-i18n="sh1">Convex, similar size</td><td data-i18n="kn1">k, init</td><td data-i18n="wk1">Non-convex shapes, outliers, scale</td><td>O(nkt)</td><td data-i18n="us1">Large data, quick first look, vector quantisation</td></tr>
+                <tr><td><b data-i18n="tGmm">Gaussian mixture</b></td><td data-i18n="yes">Yes</td><td data-i18n="sh2">Ellipses, soft membership</td><td data-i18n="kn2">k, covariance type</td><td data-i18n="wk2">Non-Gaussian shapes, local optima</td><td>O(nkt)</td><td data-i18n="us2">Probabilistic clusters, density estimation</td></tr>
+                <tr><td><b data-i18n="tWard">Agglomerative (Ward)</b></td><td data-i18n="optional">Cut anywhere</td><td data-i18n="sh3">Compact</td><td data-i18n="kn3">linkage, cut height</td><td data-i18n="wk3">O(n²) memory, greedy merges</td><td>O(n²)–O(n³)</td><td data-i18n="us3">Small data, hierarchy is meaningful (taxonomy)</td></tr>
+                <tr><td><b data-i18n="tSingle">Single linkage</b></td><td data-i18n="optional">Cut anywhere</td><td data-i18n="sh4">Chains, any shape</td><td data-i18n="kn3">linkage, cut height</td><td data-i18n="wk4">Chaining through noise bridges</td><td>O(n²)</td><td data-i18n="us4">Well-separated, elongated structures</td></tr>
+                <tr><td><b>DBSCAN</b></td><td data-i18n="no">No</td><td data-i18n="sh5">Any shape + noise</td><td>ε, minPts</td><td data-i18n="wk5">Varying densities, high dimensions</td><td>O(n log n)–O(n²)</td><td data-i18n="us5">Spatial data, outlier detection</td></tr>
+                <tr><td><b data-i18n="tSpectral">Spectral</b></td><td data-i18n="yes">Yes</td><td data-i18n="sh6">Any connected shape</td><td data-i18n="kn6">k, affinity (γ, neighbours)</td><td data-i18n="wk6">O(n³) eigenproblem, affinity choice</td><td>O(n³)</td><td data-i18n="us6">Graphs, images, non-convex clusters</td></tr>
+                <tr><td><b data-i18n="tMeanShift">Mean shift</b></td><td data-i18n="no">No</td><td data-i18n="sh7">Blobs around density peaks</td><td data-i18n="kn7">bandwidth</td><td data-i18n="wk7">Slow, one bandwidth for all</td><td>O(n²t)</td><td data-i18n="us7">Mode finding, image segmentation, tracking</td></tr>
+                <tr><td><b>PCA</b></td><td>—</td><td data-i18n="sh8">Linear subspace</td><td data-i18n="kn8">components</td><td data-i18n="wk8">Curved manifolds</td><td>O(nd² + d³)</td><td data-i18n="us8">Compression, denoising, preprocessing</td></tr>
+                <tr><td><b>t-SNE</b></td><td>—</td><td data-i18n="sh9">Local neighbourhoods</td><td data-i18n="kn9">perplexity, iterations</td><td data-i18n="wk9">Global distances and sizes not meaningful</td><td>O(n²)</td><td data-i18n="us9">Visualising embeddings</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h4>Unsupervised Lab</h4>
+          <p data-i18n="footerAbout">An interactive course companion for unsupervised learning — distances, clustering and dimensionality reduction, all implemented from scratch in the browser.</p>
+          <p style="margin-top:10px"><a href="../index.html#apps" data-i18n="backHome">← Back to all simulators</a> · <a href="../ml-lab/" data-i18n="mlLab">ML Lab (supervised)</a></p>
+        </div>
+        <div>
+          <p data-i18n="providedBy">Provided by</p>
+          <h4 data-i18n="authorName">Mohammad Khalooei</h4>
+          <div class="footer-links"><a href="mailto:mohammad.khalooei@sharif.edu">mohammad.khalooei@sharif.edu</a></div>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 Mohammad Khalooei · Unsupervised Lab</p>
+    </div>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="algos.js?v=20261117b"></script>
+  <script defer src="i18n.js?v=20261117b"></script>
+  <script defer src="app.js?v=20261117b"></script>
+</body>
+</html>

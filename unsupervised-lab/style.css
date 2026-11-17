@@ -1,0 +1,19 @@
+/* Unsupervised Lab — additions on top of ../ml-lab/style.css */
+.dist-bars { display: grid; gap: 8px; }
+.db-row { display: grid; grid-template-columns: 96px 1fr 58px; gap: 8px; align-items: center; font-size: 12.5px; }
+.db-row .nm { color: #c9d5ee; font-weight: 700; }
+.db-row.on .nm { color: var(--yellow); }
+.db-row .tr { height: 8px; border-radius: 4px; background: #16223a; overflow: hidden; }
+.db-row .tr i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+.db-row.on .tr i { background: linear-gradient(90deg, #ffb347, var(--yellow)); }
+.db-row b { font-variant-numeric: tabular-nums; text-align: end; direction: ltr; font-size: 12.5px; }
+.quad { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.quad .qp { border: 1px solid #1e2b45; border-radius: 13px; overflow: hidden; background: #070c19; }
+.quad .qp .qcv { height: 270px; touch-action: none; }
+.quad .qp canvas { height: 100%; cursor: grab; }
+.quad .qp small { display: block; padding: 7px 10px; font-size: 12px; font-weight: 700; color: #c9d5ee; border-top: 1px solid #18243d; }
+.screen.dendro { height: 300px; margin-top: 12px; }
+.screen.dendro canvas { cursor: ns-resize; }
+.screen.board canvas.grab { cursor: grab; }
+@media (max-width: 1100px) { .quad { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .quad { grid-template-columns: 1fr; } .quad .qp .qcv { height: 230px; } }
