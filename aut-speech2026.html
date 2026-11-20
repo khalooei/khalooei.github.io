@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="aut-speech2026 — Speech Signal Processing at Amirkabir University of Technology, Fall 2026: weekly progress, online labs, paper reviews and conference-style research projects." />
+    <meta name="theme-color" content="#0b2a4a" />
+    <title>aut-speech2026 · Speech Signal Processing · Amirkabir · Fall 2026</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/css/course-page.css" />
+    <link rel="stylesheet" href="assets/css/course-progress.css?v=20261120b" />
+    <style>
+      .rp-pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin: 0.8rem 0 1.2rem; }
+      .rp-card { border: 1px solid var(--c-line); border-top: 4px solid var(--rp); border-radius: 12px; background: var(--c-paper); padding: 0.85rem 0.95rem; }
+      .rp-card .rp-n { font-size: 0.72rem; font-weight: 800; color: var(--rp); letter-spacing: 0.06em; text-transform: uppercase; }
+      .rp-card h3 { margin: 0.15rem 0 0.4rem; font-size: 1.02rem; color: var(--c-navy); }
+      .rp-card ul { margin: 0; padding-inline-start: 1.1rem; font-size: 0.86rem; color: #3d4a5c; }
+      .rp-card li + li { margin-top: 0.2rem; }
+      .rp-code { background: #0d1b2d; color: #dbe7f7; border-radius: 12px; padding: 1rem 1.1rem; font: 0.82rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-x: auto; direction: ltr; text-align: left; white-space: pre; margin: 0.6rem 0 1rem; }
+      .rp-code .c { color: #7f93b3; }
+      .rp-milestones { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; counter-reset: ms; }
+      .rp-milestones li { border: 1px solid var(--c-line); border-radius: 10px; padding: 0.7rem; background: var(--c-paper); font-size: 0.85rem; position: relative; }
+      .rp-milestones b { display: block; color: var(--c-gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+      html[dir="rtl"] .rp-milestones b, html[dir="rtl"] .rp-card .rp-n { letter-spacing: 0; }
+      .lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; }
+      .lab-tile { display: grid; gap: 0.25rem; padding: 0.85rem 0.95rem; border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-paper); text-decoration: none; color: inherit; }
+      .lab-tile:hover { border-color: var(--c-gold); }
+      .lab-tile b { color: var(--c-navy); }
+      .lab-tile span { font-size: 0.84rem; color: var(--c-muted); }
+      .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+      .chip-row a { font-size: 0.82rem; border: 1px solid var(--c-line); border-radius: 8px; padding: 0.25rem 0.6rem; text-decoration: none; color: var(--c-navy-2); background: #fff; }
+      .chip-row a:hover { border-color: var(--c-gold); }
+      @media (max-width: 860px) { .rp-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rp-milestones { grid-template-columns: 1fr; } }
+      @media (max-width: 520px) { .rp-pillars { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body class="course-body">
+    <header class="course-top">
+      <div class="course-shell course-top-inner">
+        <a class="course-home" href="courses.html">aut-speech2026</a>
+        <nav class="course-nav" aria-label="Course">
+          <a href="#home" class="active" data-i18n="navHome">Home</a>
+          <a href="#progress" data-i18n="navProgress">Progress</a>
+          <a href="#project" data-i18n="navProject">Research project</a>
+          <a href="#labs" data-i18n="navLabs">Labs &amp; resources</a>
+          <a href="courses.html" data-i18n="navCourses">Courses</a>
+        </nav>
+        <select id="academy-lang" class="course-lang" aria-label="Language">
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="course-masthead" id="home">
+      <div class="course-shell">
+        <div class="course-code-row">
+          <span class="code-chip">aut-speech2026</span>
+          <span class="pill" data-i18n="pillUni">Amirkabir University of Technology</span>
+          <span class="pill" data-i18n="pillTerm">Fall 2026</span>
+        </div>
+        <h1 data-i18n="title">Speech Signal Processing</h1>
+        <p class="course-subtitle" data-i18n="subtitle">From the Fourier transform to self-supervised speech models, Whisper and speech LLMs</p>
+        <p class="course-tagline" data-i18n="mastLead">Most course material is online in the Speech &amp; Audio Lab on this website; paper-review weeks link to the original papers.</p>
+      </div>
+    </section>
+
+    <main class="course-shell course-main">
+      <section class="course-panel cp-section" id="progress">
+        <h2 data-i18n="progTitle">Course progress</h2>
+        <p class="cp-lead" data-i18n="progLead">Where the class is right now, what has been delivered and what comes next. Every week links to its online lab and to the papers we review.</p>
+        <div id="cp-summary" class="cp-summary"></div>
+        <div id="cp-roadmap" class="cp-roadmap" aria-label="Course roadmap"></div>
+        <div id="cp-filters" class="cp-filters"></div>
+        <div id="cp-weeks" class="cp-weeks"></div>
+      </section>
+
+      <section class="course-panel" id="project">
+        <h2 data-i18n="rpTitle">Research project: from a speech task to a conference-style paper</h2>
+        <p class="muted" data-i18n="rpLead">Each team chooses one speech task and works on it like a real conference submission. Before running anything, describe your project with the four cards below — this is the structure every speech paper follows.</p>
+        <div class="rp-pillars">
+          <article class="rp-card" style="--rp:#0b2a4a">
+            <div class="rp-n" data-i18n="rp1n">1 · Task</div>
+            <h3 data-i18n="rp1t">Define the speech task precisely</h3>
+            <ul>
+              <li data-i18n="rp1a">Input and output (e.g., 16 kHz audio → text, speaker label, timestamps).</li>
+              <li data-i18n="rp1b">Category: content, speaker, paralinguistic, generation, enhancement or understanding.</li>
+              <li data-i18n="rp1c">Real-world use case and the hard part (noise, accents, overlap, low resource).</li>
+              <li data-i18n="rp1d">One-sentence research question and hypothesis.</li>
+            </ul>
+          </article>
+          <article class="rp-card" style="--rp:#2f7d4f">
+            <div class="rp-n" data-i18n="rp2n">2 · Ingredients</div>
+            <h3 data-i18n="rp2t">List what you need</h3>
+            <ul>
+              <li data-i18n="rp2a">Datasets with licence, size, language and official train/dev/test splits.</li>
+              <li data-i18n="rp2b">Front-end: log-Mel, MFCC, or an SSL upstream (wav2vec 2.0, HuBERT, WavLM, Whisper encoder).</li>
+              <li data-i18n="rp2c">Model / downstream head and at least one published baseline.</li>
+              <li data-i18n="rp2d">Compute budget, augmentation (noise, reverb, speed) and toolkits.</li>
+            </ul>
+          </article>
+          <article class="rp-card" style="--rp:#7a3fa0">
+            <div class="rp-n" data-i18n="rp3n">3 · Evaluation</div>
+            <h3 data-i18n="rp3t">Decide how success is measured</h3>
+            <ul>
+              <li data-i18n="rp3a">The standard metric of the task and its official scoring script.</li>
+              <li data-i18n="rp3b">Baselines to beat and the exact test condition (clean, noisy, cross-domain).</li>
+              <li data-i18n="rp3c">Ablations that show which ingredient matters.</li>
+              <li data-i18n="rp3d">Uncertainty: several seeds, confidence intervals or significance tests.</li>
+            </ul>
+          </article>
+          <article class="rp-card" style="--rp:#8b6914">
+            <div class="rp-n" data-i18n="rp4n">4 · Code</div>
+            <h3 data-i18n="rp4t">Structure the code for reproducibility</h3>
+            <ul>
+              <li data-i18n="rp4a">One config file per experiment; no hard-coded paths.</li>
+              <li data-i18n="rp4b">Data manifests instead of committing audio.</li>
+              <li data-i18n="rp4c">Separate train and evaluate scripts; fixed seeds; logged results.</li>
+              <li data-i18n="rp4d">A README that reproduces the main table with one command.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 data-i18n="rpMetricsTitle">Standard evaluation by task</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th data-i18n="thTask">Task</th><th data-i18n="thMetric">Main metrics</th><th data-i18n="thData">Typical datasets</th></tr></thead>
+            <tbody>
+              <tr><td data-i18n="tkAsr">Speech recognition (ASR)</td><td>WER, CER, RTF</td><td>LibriSpeech, Common Voice, TED-LIUM</td></tr>
+              <tr><td data-i18n="tkVad">Voice activity detection</td><td>F1, AUC, detection error rate</td><td>AVA-Speech, DIHARD</td></tr>
+              <tr><td data-i18n="tkSv">Speaker verification / identification</td><td>EER, minDCF, accuracy</td><td>VoxCeleb 1 &amp; 2</td></tr>
+              <tr><td data-i18n="tkDia">Speaker diarization</td><td>DER, JER</td><td>AMI, DIHARD, VoxConverse</td></tr>
+              <tr><td data-i18n="tkSer">Emotion / gender / age</td><td>UA, WA, macro-F1</td><td>IEMOCAP, CREMA-D, ShEMO (Persian)</td></tr>
+              <tr><td data-i18n="tkKws">Keyword spotting / language ID</td><td>Accuracy, FRR@FAR, C<sub>avg</sub></td><td>Speech Commands, VoxLingua107</td></tr>
+              <tr><td data-i18n="tkEnh">Enhancement / separation</td><td>PESQ, STOI, SI-SDR</td><td>VoiceBank-DEMAND, WSJ0-2mix, LibriMix</td></tr>
+              <tr><td data-i18n="tkTts">Text-to-speech / voice conversion</td><td>MOS, UTMOS, CER via ASR, speaker similarity</td><td>LJSpeech, VCTK, LibriTTS</td></tr>
+              <tr><td data-i18n="tkSpoof">Anti-spoofing / deepfake detection</td><td>EER, t-DCF</td><td>ASVspoof 2019 / 2021</td></tr>
+              <tr><td data-i18n="tkCodec">Neural audio codecs</td><td>Bitrate, ViSQOL, mel distance, MUSHRA</td><td>LibriSpeech, DAPS, MUSDB</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="rpCodeTitle">Recommended repository structure</h3>
+<pre class="rp-code">speech-project/
+├── README.md            <span class="c"># task, main results table, one-command reproduction</span>
+├── configs/             <span class="c"># one YAML per experiment (data, model, training)</span>
+│   └── wavlm_base_ser.yaml
+├── data/
+│   └── manifests/       <span class="c"># train/dev/test .jsonl: path, duration, label — never raw audio in git</span>
+├── src/
+│   ├── datasets.py      <span class="c"># loading, resampling to 16 kHz, augmentation</span>
+│   ├── frontend.py      <span class="c"># log-Mel / MFCC or SSL upstream (WavLM, HuBERT, Whisper encoder)</span>
+│   ├── models/          <span class="c"># downstream heads</span>
+│   ├── train.py
+│   └── evaluate.py      <span class="c"># official metric (WER, EER, DER …) + confidence intervals</span>
+├── scripts/             <span class="c"># prepare_data.sh, run_baseline.sh, run_all.sh</span>
+├── results/             <span class="c"># metrics.json per run, logs, plots</span>
+└── paper/               <span class="c"># 4-page conference template + figures</span></pre>
+
+        <h3 data-i18n="rpMsTitle">Project milestones</h3>
+        <ol class="rp-milestones">
+          <li><b data-i18n="ms1w">Week 8</b><span data-i18n="ms1">Topic and one-page task card (task, ingredients, evaluation).</span></li>
+          <li><b data-i18n="ms2w">Week 10</b><span data-i18n="ms2">Related work, data ready and a published baseline reproduced.</span></li>
+          <li><b data-i18n="ms3w">Week 12</b><span data-i18n="ms3">Main experiments and ablations; first results table.</span></li>
+          <li><b data-i18n="ms4w">Week 14</b><span data-i18n="ms4">Full 4-page paper draft and peer review.</span></li>
+          <li><b data-i18n="ms5w">Weeks 15–16</b><span data-i18n="ms5">Conference-style talk, final paper and code release.</span></li>
+        </ol>
+      </section>
+
+      <section class="course-panel" id="labs">
+        <h2 data-i18n="labsTitle">Speech &amp; Audio Lab — online material</h2>
+        <p class="muted" data-i18n="labsLead">Interactive pages on this website that accompany the lectures.</p>
+        <div class="lab-grid">
+          <a class="lab-tile" href="signal-lab/"><b data-i18n="lab1t">Signal Lab</b><span data-i18n="lab1d">Signals, hertz, sampling, Fourier, STFT, Mel and MFCC — with live audio.</span></a>
+          <a class="lab-tile" href="speech-processing.html"><b data-i18n="lab2t">Speech Processing Academy</b><span data-i18n="lab2d">Introductory track with STFT, windowing, VAD, speaker and DTW simulators.</span></a>
+          <a class="lab-tile" href="speech-tasks.html"><b data-i18n="lab3t">Speech Tasks</b><span data-i18n="lab3d">ASR, TTS, speaker recognition, diarization, separation and emotion.</span></a>
+          <a class="lab-tile" href="speech-processing-advanced.html"><b data-i18n="lab4t">Advanced Speech</b><span data-i18n="lab4d">Self-supervised and foundation models, embeddings and diffusion.</span></a>
+          <a class="lab-tile" href="ml-lab/"><b data-i18n="lab5t">ML Lab</b><span data-i18n="lab5d">Classifiers behind speech systems: SVM, trees, boosting, neural networks.</span></a>
+          <a class="lab-tile" href="unsupervised-lab/"><b data-i18n="lab6t">Unsupervised Lab</b><span data-i18n="lab6d">Distances, clustering (speech units!), PCA and t-SNE.</span></a>
+        </div>
+        <h3 data-i18n="toolsTitle">Toolkits</h3>
+        <div class="chip-row">
+          <a href="https://pytorch.org/audio/stable/" target="_blank" rel="noopener noreferrer">torchaudio</a>
+          <a href="https://librosa.org/doc/latest/" target="_blank" rel="noopener noreferrer">librosa</a>
+          <a href="https://huggingface.co/docs/transformers/tasks/asr" target="_blank" rel="noopener noreferrer">Hugging Face Transformers</a>
+          <a href="https://speechbrain.github.io/" target="_blank" rel="noopener noreferrer">SpeechBrain</a>
+          <a href="https://github.com/espnet/espnet" target="_blank" rel="noopener noreferrer">ESPnet</a>
+          <a href="https://github.com/NVIDIA/NeMo" target="_blank" rel="noopener noreferrer">NVIDIA NeMo</a>
+          <a href="https://github.com/pyannote/pyannote-audio" target="_blank" rel="noopener noreferrer">pyannote.audio</a>
+          <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer">Whisper</a>
+          <a href="https://huggingface.co/learn/audio-course" target="_blank" rel="noopener noreferrer">HF Audio Course</a>
+        </div>
+        <h3 data-i18n="benchTitle">Benchmarks &amp; datasets</h3>
+        <div class="chip-row">
+          <a href="https://superbbenchmark.github.io/" target="_blank" rel="noopener noreferrer">SUPERB</a>
+          <a href="https://arxiv.org/abs/2309.09510" target="_blank" rel="noopener noreferrer">Dynamic-SUPERB</a>
+          <a href="https://www.openslr.org/12" target="_blank" rel="noopener noreferrer">LibriSpeech</a>
+          <a href="https://commonvoice.mozilla.org/fa" target="_blank" rel="noopener noreferrer">Common Voice (fa)</a>
+          <a href="https://www.robots.ox.ac.uk/~vgg/data/voxceleb/" target="_blank" rel="noopener noreferrer">VoxCeleb</a>
+          <a href="https://www.asvspoof.org/" target="_blank" rel="noopener noreferrer">ASVspoof</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="course-footer">
+      <div class="course-shell">
+        <p><strong>aut-speech2026</strong> · <span data-i18n="footerLine">Speech Signal Processing · Amirkabir University of Technology · Fall 2026</span></p>
+        <p><a href="courses.html" data-i18n="navCourses">Courses</a> · <a href="academy.html">Academy</a> · <a href="mailto:khalooei@aut.ac.ir">khalooei@aut.ac.ir</a></p>
+        <p data-i18n="footerPrepared">Prepared by Mohammad Khalooei</p>
+      </div>
+    </footer>
+
+    <script>
+      window.ACADEMY_I18N = {
+        en: {},
+        fa: {
+          navHome: "خانه", navProgress: "پیشرفت درس", navProject: "پروژهٔ پژوهشی", navLabs: "آزمایشگاه و منابع", navCourses: "درس‌ها",
+          pillUni: "دانشگاه صنعتی امیرکبیر", pillTerm: "پاییز ۱۴۰۵",
+          title: "پردازش سیگنال گفتار",
+          subtitle: "از تبدیل فوریه تا مدل‌های خودنظارتی گفتار، Whisper و مدل‌های زبانی گفتاری",
+          mastLead: "بیشتر مطالب درس به‌صورت برخط در آزمایشگاه گفتار و صوت همین وب‌سایت است؛ هفته‌های مرور مقاله به مقاله‌های اصلی پیوند دارند.",
+          progTitle: "پیشرفت درس",
+          progLead: "کلاس اکنون کجاست، چه جلساتی برگزار شده و گام بعدی چیست. هر هفته به آزمایشگاه برخط و مقاله‌هایی که مرور می‌کنیم پیوند دارد.",
+          rpTitle: "پروژهٔ پژوهشی: از یک وظیفهٔ گفتاری تا مقاله‌ای به سبک کنفرانس",
+          rpLead: "هر تیم یک وظیفهٔ گفتاری انتخاب می‌کند و مانند یک مقالهٔ واقعی کنفرانس روی آن کار می‌کند. پیش از اجرای هر آزمایشی، پروژهٔ خود را با چهار کارت زیر توصیف کنید — این ساختاری است که همهٔ مقاله‌های گفتار دنبال می‌کنند.",
+          rp1n: "۱ · وظیفه", rp1t: "وظیفهٔ گفتاری را دقیق تعریف کنید",
+          rp1a: "ورودی و خروجی (مثلاً صوت ۱۶ کیلوهرتز ← متن، برچسب گوینده، برچسب زمانی).",
+          rp1b: "دسته: محتوا، گوینده، فرازبانی، تولید، بهسازی یا فهم.",
+          rp1c: "کاربرد واقعی و بخش دشوار مسئله (نویز، لهجه، هم‌پوشانی، کمبود داده).",
+          rp1d: "پرسش پژوهشی و فرضیه در یک جمله.",
+          rp2n: "۲ · اجزا", rp2t: "آنچه نیاز دارید را فهرست کنید",
+          rp2a: "مجموعه‌داده‌ها با مجوز، اندازه، زبان و تقسیم رسمی آموزش/توسعه/آزمون.",
+          rp2b: "پیش‌پردازش: log-Mel، MFCC یا مدل بالادستی SSL (wav2vec 2.0، HuBERT، WavLM، رمزگذار Whisper).",
+          rp2c: "مدل / سر پایین‌دستی و دست‌کم یک خط مبنای منتشرشده.",
+          rp2d: "بودجهٔ محاسباتی، داده‌افزایی (نویز، پژواک، سرعت) و ابزارها.",
+          rp3n: "۳ · ارزیابی", rp3t: "تعیین کنید موفقیت چگونه سنجیده می‌شود",
+          rp3a: "معیار استاندارد وظیفه و اسکریپت رسمی امتیازدهی آن.",
+          rp3b: "خط مبنایی که باید از آن بهتر شوید و شرایط دقیق آزمون (تمیز، نویزی، بین‌دامنه‌ای).",
+          rp3c: "آزمایش‌های حذفی که نشان دهد کدام جزء اهمیت دارد.",
+          rp3d: "عدم قطعیت: چند بذر تصادفی، بازهٔ اطمینان یا آزمون معناداری.",
+          rp4n: "۴ · کد", rp4t: "کد را برای تکرارپذیری ساختار دهید",
+          rp4a: "یک فایل پیکربندی برای هر آزمایش؛ بدون مسیرهای ثابت در کد.",
+          rp4b: "فهرست‌های داده (manifest) به‌جای قرار دادن فایل‌های صوتی در مخزن.",
+          rp4c: "اسکریپت جدا برای آموزش و ارزیابی؛ بذر ثابت؛ ثبت نتایج.",
+          rp4d: "README‌ای که جدول اصلی نتایج را با یک دستور بازتولید کند.",
+          rpMetricsTitle: "ارزیابی استاندارد برای هر وظیفه",
+          thTask: "وظیفه", thMetric: "معیارهای اصلی", thData: "مجموعه‌داده‌های رایج",
+          tkAsr: "بازشناسی گفتار (ASR)", tkVad: "تشخیص فعالیت گفتار", tkSv: "تأیید / شناسایی گوینده", tkDia: "دیاریزیشن گوینده",
+          tkSer: "احساس / جنسیت / سن", tkKws: "تشخیص کلیدواژه / زبان", tkEnh: "بهسازی / جداسازی", tkTts: "متن به گفتار / تبدیل صدا",
+          tkSpoof: "ضدجعل / تشخیص جعل عمیق", tkCodec: "کدک‌های صوتی عصبی",
+          rpCodeTitle: "ساختار پیشنهادی مخزن کد",
+          rpMsTitle: "نقاط عطف پروژه",
+          ms1w: "هفتهٔ ۸", ms1: "موضوع و کارت یک‌صفحه‌ای وظیفه (وظیفه، اجزا، ارزیابی).",
+          ms2w: "هفتهٔ ۱۰", ms2: "مرور کارهای پیشین، آماده‌سازی داده و بازتولید یک خط مبنای منتشرشده.",
+          ms3w: "هفتهٔ ۱۲", ms3: "آزمایش‌های اصلی و حذفی؛ نخستین جدول نتایج.",
+          ms4w: "هفتهٔ ۱۴", ms4: "پیش‌نویس کامل مقالهٔ چهارصفحه‌ای و داوری همتا.",
+          ms5w: "هفته‌های ۱۵ و ۱۶", ms5: "ارائه به سبک کنفرانس، مقالهٔ نهایی و انتشار کد.",
+          labsTitle: "آزمایشگاه گفتار و صوت — مطالب برخط",
+          labsLead: "صفحه‌های تعاملی همین وب‌سایت که همراه درس‌ها هستند.",
+          lab1t: "آزمایشگاه سیگنال", lab1d: "سیگنال، هرتز، نمونه‌برداری، فوریه، STFT، مل و MFCC — همراه با صدای زنده.",
+          lab2t: "آکادمی پردازش گفتار", lab2d: "مسیر مقدماتی با شبیه‌سازهای STFT، پنجره‌گذاری، VAD، گوینده و DTW.",
+          lab3t: "وظایف گفتار", lab3d: "بازشناسی گفتار، متن به گفتار، تشخیص گوینده، دیاریزیشن، جداسازی و احساس.",
+          lab4t: "گفتار پیشرفته", lab4d: "مدل‌های خودنظارتی و پایه، بردارهای تعبیه و مدل‌های انتشار.",
+          lab5t: "آزمایشگاه یادگیری ماشین", lab5d: "دسته‌بندهای پشت سامانه‌های گفتار: SVM، درخت، تقویت و شبکهٔ عصبی.",
+          lab6t: "آزمایشگاه بدون نظارت", lab6d: "فاصله‌ها، خوشه‌بندی (واحدهای گفتاری!)، PCA و t-SNE.",
+          toolsTitle: "ابزارها", benchTitle: "معیارها و مجموعه‌داده‌ها",
+          footerLine: "پردازش سیگنال گفتار · دانشگاه صنعتی امیرکبیر · پاییز ۱۴۰۵",
+        },
+      };
+      (function () {
+        // English defaults live in the HTML; capture them so switching back restores them.
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          var k = el.getAttribute("data-i18n");
+          if (!(k in window.ACADEMY_I18N.en)) window.ACADEMY_I18N.en[k] = el.textContent;
+        });
+      })();
+    </script>
+    <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/course-data-speech2026.js?v=20261120a"></script>
+    <script src="assets/js/course-progress.js?v=20261120a"></script>
+  </body>
+</html>

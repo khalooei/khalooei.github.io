@@ -149,7 +149,7 @@ window.I18N = {
           icon: "speech",
           name: "Speech Signal Processing",
           topics: "Amirkabir University of Technology · Fall 2026",
-          href: "speech-processing.html",
+          href: "aut-speech2026.html",
           linkLabel: "Course website",
         },
         {
@@ -452,7 +452,7 @@ window.I18N = {
           icon: "speech",
           name: "پردازش سیگنال گفتار",
           topics: "دانشگاه صنعتی امیرکبیر · پاییز ۲۰۲۶",
-          href: "speech-processing.html",
+          href: "aut-speech2026.html",
           linkLabel: "وب‌سایت درس",
         },
         {
@@ -755,7 +755,7 @@ window.I18N = {
           icon: "speech",
           name: "معالجة إشارة الكلام",
           topics: "جامعة أميركبير للتكنولوجيا · خريف 2026",
-          href: "speech-processing.html",
+          href: "aut-speech2026.html",
           linkLabel: "موقع المقرر",
         },
         {
@@ -1058,7 +1058,7 @@ window.I18N = {
           icon: "speech",
           name: "语音信号处理",
           topics: "阿米尔卡比尔理工大学 · 2026 秋季",
-          href: "speech-processing.html",
+          href: "aut-speech2026.html",
           linkLabel: "课程网站",
         },
         {

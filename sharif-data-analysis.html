@@ -11,6 +11,7 @@
     <title>sharif-da2026 · Data Analysis · Sharif · Fall 2026</title>
     <link rel="stylesheet" href="assets/fonts/fonts.css" />
     <link rel="stylesheet" href="assets/css/course-page.css" />
+    <link rel="stylesheet" href="assets/css/course-progress.css?v=20261120b" />
   </head>
   <body class="course-body">
     <header class="course-top">
@@ -18,6 +19,8 @@
         <a class="course-home" href="courses.html">sharif-da2026</a>
         <nav class="course-nav" aria-label="Course">
           <a href="#home" class="active" data-i18n="navHome">Home</a>
+          <a href="#progress" data-i18n="navProgress">Progress</a>
+          <a href="#applications" data-i18n="navApps">Applications</a>
           <a href="#logistics" data-i18n="navLogistics">Logistics</a>
           <a href="#syllabus" data-i18n="navSyllabus">Syllabus</a>
           <a href="#coursework" data-i18n="navCoursework">Coursework</a>
@@ -50,6 +53,21 @@
     </section>
 
     <main class="course-shell course-main">
+      <section class="course-panel cp-section" id="progress">
+        <h2 data-i18n="progTitle">Course progress</h2>
+        <p class="cp-lead" data-i18n="progLead">Where the class is right now, what has been delivered, and what comes next. Each delivered week links to its slides and to an interactive lab.</p>
+        <div id="cp-summary" class="cp-summary"></div>
+        <div id="cp-roadmap" class="cp-roadmap" aria-label="Course roadmap"></div>
+        <div id="cp-filters" class="cp-filters"></div>
+        <div id="cp-weeks" class="cp-weeks"></div>
+      </section>
+
+      <section class="course-panel cp-section" id="applications">
+        <h2 data-i18n="appsTitle">Applications atlas</h2>
+        <p class="cp-lead" data-i18n="appsLead">Data analytics is used everywhere. Each field below lists the techniques it relies on and the weeks of this course where you learn them.</p>
+        <div id="cp-apps" class="cp-apps"></div>
+      </section>
+
       <section class="course-panel" aria-label="Live analysis demo">
         <h2 data-i18n="liveTitle">A live look at analysis</h2>
         <div class="live-lab">
@@ -201,57 +219,7 @@
           </article>
         </div>
 
-        <h3 data-i18n="scheduleTitle">Week-by-week plan</h3>
-        <p class="muted" data-i18n="scheduleLead"></p>
-        <div class="table-wrap">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th data-i18n="schedWeekCol">Week</th>
-                <th data-i18n="schedThemeCol">Theme</th>
-                <th data-i18n="schedNoteCol">Milestone</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 1</td><td data-i18n="t01"></td><td data-i18n="wk01n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 2</td><td data-i18n="t02"></td><td data-i18n="wk02n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 3</td><td data-i18n="t03"></td><td data-i18n="wk03n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 4</td><td data-i18n="t04"></td><td data-i18n="wk04n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 5</td><td data-i18n="t05"></td><td data-i18n="wk05n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 6</td><td data-i18n="t06"></td><td data-i18n="wk06n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 7</td><td data-i18n="t07"></td><td data-i18n="wk07n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 8</td><td data-i18n="wk08t"></td><td data-i18n="wk08n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 9</td><td data-i18n="t08"></td><td data-i18n="wk09n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 10</td><td data-i18n="t09"></td><td data-i18n="wk10n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 11</td><td data-i18n="t10"></td><td data-i18n="wk11n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 12</td><td data-i18n="t11"></td><td data-i18n="wk12n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 13</td><td data-i18n="t12"></td><td data-i18n="wk13n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 14</td><td data-i18n="t13"></td><td data-i18n="wk14n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 15</td><td data-i18n="wk15t"></td><td data-i18n="wk15n"></td></tr>
-              <tr><td class="num-cell"><span data-i18n="weekWord">Week</span> 16</td><td data-i18n="wk16t"></td><td data-i18n="wk16n"></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 data-i18n="topicsTitle">Detailed topics</h3>
-        <ol class="topic-list">
-          <li data-i18n="t01">Problem Understanding and Strategic Thinking with Data</li>
-          <li data-i18n="t02">Data Understanding, Collection, and Quality Assessment</li>
-          <li data-i18n="t03">Exploratory Data Analysis (EDA)</li>
-          <li data-i18n="t04">Data Preparation and Feature Engineering</li>
-          <li data-i18n="t05">Pattern Discovery and Unsupervised Learning</li>
-          <li data-i18n="t06">Clustering and Dimensionality Reduction</li>
-          <li data-i18n="t07">Predictive Modeling for Regression Problems</li>
-          <li data-i18n="t08">Classification and Data-Driven Decision Making</li>
-          <li data-i18n="t09">Model Evaluation and Experimental Design</li>
-          <li data-i18n="t10">Model Interpretability and Insight Extraction</li>
-          <li data-i18n="t11">Time-Series, Event, and Anomaly Analysis</li>
-          <li data-i18n="t12">Unstructured Data Analysis: Text, Audio, and Multimodal Data</li>
-          <li data-i18n="t13">AI and Large Language Models for Data Analysis</li>
-          <li data-i18n="t14">Correlation, Causality, and Decision Making</li>
-          <li data-i18n="t15">Data Privacy, Anonymization, Ethics, and Governance</li>
-          <li data-i18n="t16">Real-World Industry Case Studies and Data Challenges</li>
-        </ol>
+        <p class="muted"><a href="#progress" data-i18n="sylPointer">See the live week-by-week progress, slides and labs above →</a></p>
       </section>
 
       <section class="course-panel" id="coursework">
@@ -426,6 +394,13 @@
       window.ACADEMY_I18N = {
         en: {
           navHome: "Home",
+          navProgress: "Progress",
+          navApps: "Applications",
+          progTitle: "Course progress",
+          progLead: "Where the class is right now, what has been delivered, and what comes next. Each delivered week links to its slides and to an interactive lab.",
+          appsTitle: "Applications atlas",
+          appsLead: "Data analytics is used everywhere. Each field below lists the techniques it relies on and the weeks of this course where you learn them.",
+          sylPointer: "See the live week-by-week progress, slides and labs above →",
           navLogistics: "Logistics",
           navSyllabus: "Syllabus",
           navCoursework: "Coursework",
@@ -638,6 +613,13 @@
         },
         fa: {
           navHome: "خانه",
+          navProgress: "پیشرفت درس",
+          navApps: "کاربردها",
+          progTitle: "پیشرفت درس",
+          progLead: "کلاس اکنون کجاست، چه جلساتی برگزار شده و گام بعدی چیست. هر هفتهٔ برگزارشده به اسلایدها و یک آزمایشگاه تعاملی پیوند دارد.",
+          appsTitle: "اطلس کاربردها",
+          appsLead: "تحلیل داده همه\u200cجا به کار می\u200cرود. برای هر حوزه، روش\u200cهای مورد نیاز و هفته\u200cهایی از این درس که آن\u200cها را می\u200cآموزید آمده است.",
+          sylPointer: "پیشرفت هفته\u200cبه\u200cهفته، اسلایدها و آزمایشگاه\u200cها را در بالا ببینید ←",
           navLogistics: "لجستیک",
           navSyllabus: "سرفصل",
           navCoursework: "تمرین و نمره",
@@ -850,6 +832,13 @@
         },
         ar: {
           navHome: "الرئيسية",
+          navProgress: "تقدّم المقرر",
+          navApps: "التطبيقات",
+          progTitle: "تقدّم المقرر",
+          progLead: "أين وصل الصف الآن، وما الذي قُدِّم، وما التالي. كل أسبوع منجز يرتبط بشرائحه وبمختبر تفاعلي.",
+          appsTitle: "أطلس التطبيقات",
+          appsLead: "تحليل البيانات يُستخدم في كل مكان. لكل مجال: التقنيات التي يعتمد عليها والأسابيع التي تتعلّمها فيها.",
+          sylPointer: "اطّلع على التقدّم الأسبوعي والشرائح والمختبرات أعلاه ←",
           navLogistics: "التنظيم",
           navSyllabus: "المنهج",
           navCoursework: "الأعمال",
@@ -1045,6 +1034,13 @@
         },
         zh: {
           navHome: "主页",
+          navProgress: "课程进度",
+          navApps: "应用",
+          progTitle: "课程进度",
+          progLead: "课程目前进行到哪里、已完成哪些内容、接下来学什么。每个已完成的周次都链接到课件和交互实验。",
+          appsTitle: "应用图谱",
+          appsLead: "数据分析无处不在。每个领域列出所依赖的技术，以及本课程中讲授这些技术的周次。",
+          sylPointer: "在上方查看每周进度、课件与实验 →",
           navLogistics: "安排",
           navSyllabus: "大纲",
           navCoursework: "作业评分",
@@ -1242,5 +1238,7 @@
     </script>
     <script src="assets/js/academy-common.js"></script>
     <script src="assets/js/sharif-data-analysis.js"></script>
+    <script src="assets/js/course-data-da2026.js?v=20261120a"></script>
+    <script src="assets/js/course-progress.js?v=20261120a"></script>
   </body>
 </html>

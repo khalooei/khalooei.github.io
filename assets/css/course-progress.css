@@ -1,0 +1,98 @@
+/* Course progress: semester bar, roadmap ("metro map"), week cards, applications atlas.
+ * Shared by the course pages; matches the academic palette of course-page.css. */
+.cp-section h2 { margin-bottom: 0.35rem; }
+.cp-lead { color: var(--c-muted); margin: 0 0 1rem; max-width: 760px; }
+
+/* ---------- summary ---------- */
+.cp-summary { display: grid; gap: 1rem; padding: 1.1rem 1.2rem; border: 1px solid var(--c-line); border-radius: 14px; background: linear-gradient(135deg, #0b2a4a, #123a63); color: #eef3fb; }
+.cp-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+.cp-stat { display: grid; gap: 0.15rem; }
+.cp-stat b { font-size: 1.55rem; line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.cp-stat span { font-size: 0.82rem; color: #b9c8de; }
+.cp-stat.next b { color: #f2cf5b; font-size: 1.05rem; line-height: 1.35; }
+.cp-bar { display: flex; gap: 3px; height: 14px; }
+.cp-bar i { flex: var(--w, 1); border-radius: 4px; background: rgba(255, 255, 255, 0.1); box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--m) 70%, #fff); position: relative; overflow: hidden; }
+.cp-bar i.done { background: color-mix(in srgb, var(--m) 80%, #fff); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35); }
+.cp-bar i.current { background: repeating-linear-gradient(45deg, var(--m) 0 6px, color-mix(in srgb, var(--m) 55%, #fff) 6px 12px); box-shadow: 0 0 0 2px #f2cf5b; }
+.cp-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: 0.8rem; color: #c9d6e8; }
+.cp-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.cp-legend i { width: 12px; height: 12px; border-radius: 3px; background: color-mix(in srgb, var(--m) 80%, #fff); box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45); display: inline-block; }
+.cp-legend .st { margin-inline-start: auto; display: flex; gap: 0.9rem; }
+
+/* ---------- roadmap ---------- */
+.cp-roadmap { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0.9rem 0.1rem 0.4rem; }
+.cp-module { flex: var(--n, 1) 1 calc(var(--n, 1) * 84px); min-width: min(100%, calc(var(--n, 1) * 74px)); border-top: 4px solid var(--m); background: var(--c-paper); border-radius: 0 0 12px 12px; border: 1px solid var(--c-line); border-top-width: 4px; border-top-color: var(--m); padding: 0.6rem 0.6rem 0.75rem; }
+.cp-module h4 { margin: 0 0 1.15rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--m); line-height: 1.3; }
+html[dir="rtl"] .cp-module h4 { letter-spacing: 0; text-transform: none; font-size: 0.85rem; }
+.cp-stations { display: flex; position: relative; }
+.cp-stations::before { content: ""; position: absolute; top: 15px; inset-inline: 14px; height: 3px; background: color-mix(in srgb, var(--m) 35%, #fff); border-radius: 2px; }
+.cp-station { flex: 1; position: relative; display: grid; justify-items: center; gap: 0.3rem; text-align: center; text-decoration: none; color: inherit; padding: 0 2px; cursor: pointer; background: none; border: 0; font: inherit; }
+.cp-dot { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-size: 0.72rem; font-weight: 800; position: relative; z-index: 1; border: 2.5px dashed color-mix(in srgb, var(--m) 60%, #fff); background: #fff; color: var(--m); }
+.cp-station.done .cp-dot { background: var(--m); border: 2.5px solid var(--m); color: #fff; }
+.cp-station.current .cp-dot { background: #fff8e1; border: 3px solid #c9a227; color: #6b4f00; animation: cp-pulse 2s infinite; }
+@keyframes cp-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.55); } 50% { box-shadow: 0 0 0 8px rgba(201, 162, 39, 0); } }
+.cp-station small { font-size: 0.72rem; line-height: 1.25; color: var(--c-muted); max-width: 100px; }
+.cp-station.done small { color: var(--c-ink); }
+.cp-station.current small { color: #6b4f00; font-weight: 700; }
+.cp-station:hover .cp-dot { transform: scale(1.08); }
+.cp-station .cp-now { position: absolute; top: -18px; font-size: 0.62rem; font-weight: 800; color: #6b4f00; background: #f2cf5b; border-radius: 999px; padding: 0 6px; white-space: nowrap; }
+
+/* ---------- filters ---------- */
+.cp-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.2rem 0 0.8rem; align-items: center; }
+.cp-filters button { border: 1px solid var(--c-line); background: var(--c-paper); color: var(--c-ink); border-radius: 999px; padding: 0.3rem 0.8rem; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.cp-filters button.on { background: var(--c-navy); border-color: var(--c-navy); color: #fff; }
+.cp-filters .sep { width: 1px; height: 22px; background: var(--c-line); margin: 0 0.3rem; }
+.cp-filters button[data-m] { border-color: color-mix(in srgb, var(--m) 50%, #fff); }
+.cp-filters button[data-m].on { background: var(--m); border-color: var(--m); }
+
+/* ---------- week cards ---------- */
+.cp-weeks { display: grid; gap: 0.8rem; }
+.cp-week { position: relative; border: 1px solid var(--c-line); border-inline-start: 5px solid var(--m); border-radius: 12px; background: var(--c-paper); padding: 0.95rem 1.1rem 1rem; scroll-margin-top: 90px; transition: box-shadow 0.3s; }
+.cp-week.flash { box-shadow: 0 0 0 3px #f2cf5b; }
+.cp-week.upcoming { background: linear-gradient(180deg, #fbfcfe, #f6f8fb); }
+.cp-week-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.6rem; margin-bottom: 0.35rem; }
+.cp-wk { font-weight: 800; font-size: 0.8rem; color: #fff; background: var(--m); border-radius: 7px; padding: 0.12rem 0.55rem; font-variant-numeric: tabular-nums; }
+.cp-mod { font-size: 0.78rem; font-weight: 700; color: var(--m); }
+.cp-status { margin-inline-start: auto; font-size: 0.72rem; font-weight: 800; border-radius: 999px; padding: 0.12rem 0.6rem; }
+.cp-status.done { background: #e3f4ea; color: #19603a; }
+.cp-status.current { background: #fff3c4; color: #6b4f00; }
+.cp-status.upcoming { background: #eef1f6; color: #5b677a; }
+.cp-week h3 { margin: 0.1rem 0 0.35rem; font-size: 1.08rem; color: var(--c-navy); line-height: 1.35; }
+.cp-week p.cp-sum { margin: 0 0 0.55rem; color: #3d4a5c; font-size: 0.93rem; }
+.cp-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.6rem; }
+.cp-chips span { font-size: 0.76rem; background: var(--c-soft); color: var(--c-navy-2); border-radius: 6px; padding: 0.12rem 0.5rem; }
+.cp-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.cp-links a { display: inline-flex; align-items: center; gap: 0.35rem; text-decoration: none; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--c-line); border-radius: 8px; padding: 0.28rem 0.6rem; color: var(--c-navy-2); background: #fff; }
+.cp-links a:hover { border-color: var(--c-gold); }
+.cp-links a svg { width: 15px; height: 15px; flex: none; }
+.cp-links a.slides { background: #0b2a4a; border-color: #0b2a4a; color: #fff; }
+.cp-links a.lab { border-color: #9cd3c0; color: #0f5e47; }
+.cp-links a.paper { border-color: #d9c48a; color: #6b4f00; }
+.cp-links a .meta { font-weight: 500; color: var(--c-muted); font-size: 0.74rem; }
+.cp-links a.slides .meta { color: #b9c8de; }
+.cp-week details { margin-top: 0.7rem; border-top: 1px dashed var(--c-line); padding-top: 0.55rem; }
+.cp-week summary { cursor: pointer; font-size: 0.85rem; font-weight: 700; color: var(--c-navy-2); }
+.cp-week details .cp-extra { font-size: 0.88rem; color: #3d4a5c; }
+.cp-extra table { border-collapse: collapse; width: 100%; font-size: 0.84rem; margin: 0.5rem 0; }
+.cp-extra th, .cp-extra td { border: 1px solid var(--c-line); padding: 0.35rem 0.5rem; text-align: start; vertical-align: top; }
+.cp-extra th { background: var(--c-soft); }
+.cp-extra ul { margin: 0.4rem 0; padding-inline-start: 1.2rem; }
+.cp-extra code { background: var(--c-soft); padding: 0 4px; border-radius: 4px; font-size: 0.85em; }
+.cp-empty { color: var(--c-muted); font-style: italic; }
+
+/* ---------- applications atlas ---------- */
+.cp-apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
+.cp-app { border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-paper); padding: 0.85rem 0.95rem; display: grid; gap: 0.4rem; align-content: start; }
+.cp-app h4 { margin: 0; font-size: 0.98rem; color: var(--c-navy); display: flex; gap: 0.5rem; align-items: center; }
+.cp-app h4 i { font-style: normal; font-size: 1.15rem; }
+.cp-app p { margin: 0; font-size: 0.85rem; color: #3d4a5c; }
+.cp-app .cp-tech { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.cp-app .cp-tech span { font-size: 0.72rem; background: var(--c-soft); color: var(--c-navy-2); border-radius: 5px; padding: 0.08rem 0.4rem; }
+.cp-app .cp-wkrefs { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.cp-app .cp-wkrefs button { font: inherit; font-size: 0.7rem; font-weight: 800; border: 0; cursor: pointer; color: #fff; background: var(--m, var(--c-navy)); border-radius: 5px; padding: 0.08rem 0.45rem; }
+
+@media (max-width: 760px) {
+  .cp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cp-legend .st { margin-inline-start: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .cp-station.current .cp-dot { animation: none; } }

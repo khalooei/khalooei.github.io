@@ -63,6 +63,16 @@
         color: var(--c-muted);
         font-size: 0.9rem;
       }
+      .course-tile.wide { grid-column: 1 / -1; }
+      .hub-h { margin: 1.6rem 0 0.2rem; font-size: 1.15rem; color: var(--c-navy); }
+      .hub-h:first-child { margin-top: 0.4rem; }
+      .tile-progress { margin-top: 0.6rem; display: grid; gap: 0.3rem; }
+      .tp-bar { display: flex; gap: 2px; height: 9px; }
+      .tp-bar i { flex: var(--w, 1); border-radius: 3px; background: color-mix(in srgb, var(--m) 25%, #fff); }
+      .tp-bar i.done { background: var(--m); }
+      .tp-bar i.current { background: #c9a227; }
+      .tp-text { font-size: 0.8rem; color: var(--c-muted); }
+      .tp-text b { color: var(--c-navy); }
       @media (max-width: 720px) {
         .course-tile.featured {
           grid-template-columns: 1fr;
@@ -99,32 +109,39 @@
     </section>
 
     <main class="course-shell course-main">
+      <h2 class="hub-h" data-i18n="secTerm">This term · Fall 2026</h2>
       <div class="courses-grid">
-        <a class="course-tile featured" href="sharif-data-analysis.html">
+        <a class="course-tile featured live" href="sharif-data-analysis.html#progress" data-course="sharif-da2026">
           <img src="assets/img/sharif-data-analysis-2026.jpg" alt="sharif-da2026 banner" />
           <div>
             <span class="badge" data-i18n="badgeNew">sharif-da2026 · Fall 2026</span>
             <h3 data-i18n="c1t">sharif-da2026 — Data Analysis (Sharif)</h3>
             <p data-i18n="c1d"></p>
+            <div class="tile-progress"><div class="tp-bar"></div><small class="tp-text"></small></div>
           </div>
         </a>
+        <a class="course-tile live wide" href="aut-speech2026.html#progress" data-course="aut-speech2026">
+          <span class="badge" data-i18n="badgeSpeech">aut-speech2026 · Fall 2026</span>
+          <h3 data-i18n="c8t">aut-speech2026 — Speech Signal Processing (Amirkabir)</h3>
+          <p data-i18n="c8d">Fourier &amp; DSP → speech tasks → ASR → self-supervised models (wav2vec 2.0, HuBERT, WavLM) → Whisper → speech LLMs, with conference-style student projects.</p>
+          <div class="tile-progress"><div class="tp-bar"></div><small class="tp-text"></small></div>
+        </a>
+      </div>
 
+      <h2 class="hub-h" data-i18n="secOther">Other courses &amp; topics</h2>
+      <div class="courses-grid">
         <a class="course-tile" href="https://pcssharif.github.io/" target="_blank" rel="noopener noreferrer">
           <span class="badge" data-i18n="badgeExternal">External site</span>
           <h3 data-i18n="c2t">Principles of Computer Systems</h3>
           <p data-i18n="c2d">Sharif · architecture · datapath · memory · I/O</p>
         </a>
-        <article class="course-tile">
-          <h3 data-i18n="c3t">Speech & Spoken Language</h3>
-          <p data-i18n="c3d">Features · ASR · speaker ID · evaluation</p>
-        </article>
-        <article class="course-tile">
-          <h3 data-i18n="c4t">Trustworthy & Robust Machine Learning</h3>
+        <a class="course-tile" href="trustworthy-ml.html">
+          <h3 data-i18n="c4t">Trustworthy &amp; Robust Machine Learning</h3>
           <p data-i18n="c4d">Robustness · attacks · interpretability · deployment</p>
-        </article>
+        </a>
         <article class="course-tile">
           <h3 data-i18n="c5t">Optimization</h3>
-          <p data-i18n="c5d">Convexity · gradients · constrained & large-scale</p>
+          <p data-i18n="c5d">Convexity · gradients · constrained &amp; large-scale</p>
         </article>
         <article class="course-tile">
           <h3 data-i18n="c6t">Artificial Intelligence</h3>
@@ -134,6 +151,14 @@
           <h3 data-i18n="c7t">Advanced Python</h3>
           <p data-i18n="c7d">Style · typing · packaging · numerics</p>
         </article>
+      </div>
+
+      <h2 class="hub-h" data-i18n="secRes">Learning resources</h2>
+      <div class="courses-grid">
+        <a class="course-tile" href="academy.html"><h3 data-i18n="r1t">Academy</h3><p data-i18n="r1d">Structured self-study tracks: speech, trustworthy ML, vision, NLP, MLOps.</p></a>
+        <a class="course-tile" href="ml-lab/"><h3 data-i18n="r2t">ML Lab</h3><p data-i18n="r2d">Interactive supervised learning: SVM, trees, forests, boosting, neural nets.</p></a>
+        <a class="course-tile" href="unsupervised-lab/"><h3 data-i18n="r3t">Unsupervised Lab</h3><p data-i18n="r3d">Distances, clustering, PCA and t-SNE.</p></a>
+        <a class="course-tile" href="signal-lab/"><h3 data-i18n="r4t">Signal Lab</h3><p data-i18n="r4d">From raw signals to Mel spectrograms, with live audio.</p></a>
       </div>
     </main>
 
@@ -151,12 +176,29 @@
     <script>
       window.ACADEMY_I18N = {
         en: {
+          secTerm: "This term · Fall 2026",
+          secOther: "Other courses & topics",
+          secRes: "Learning resources",
+          badgeSpeech: "aut-speech2026 · Fall 2026",
+          c8t: "aut-speech2026 — Speech Signal Processing (Amirkabir)",
+          c8d: "Fourier & DSP → speech tasks → ASR → self-supervised models (wav2vec 2.0, HuBERT, WavLM) → Whisper → speech LLMs, with conference-style student projects.",
+          r1t: "Academy",
+          r1d: "Structured self-study tracks: speech, trustworthy ML, vision, NLP, MLOps.",
+          r2t: "ML Lab",
+          r2d: "Interactive supervised learning: SVM, trees, forests, boosting, neural nets.",
+          r3t: "Unsupervised Lab",
+          r3d: "Distances, clustering, PCA and t-SNE.",
+          r4t: "Signal Lab",
+          r4d: "From raw signals to Mel spectrograms, with live audio.",
+          tpWeek: "Week {n} of {t}",
+          tpDone: "{d} sessions delivered",
+          tpNow: "this week: {x}",
           navCourses: "Courses",
           navAcademy: "Academy",
           navTeaching: "Teaching",
           hubKicker: "Teaching",
           hubTitle: "Courses",
-          hubDesc: "Official course pages. Featured: sharif-da2026 — Data Analysis at Sharif, Fall 2026.",
+          hubDesc: "Official course pages with live week-by-week progress, slides and labs.",
           badgeNew: "sharif-da2026 · Fall 2026",
           badgeExternal: "External site",
           c1t: "sharif-da2026 — Data Analysis (Sharif)",
@@ -176,12 +218,29 @@
           footerPrepared: "Prepared by Mohammad Khalooei",
         },
         fa: {
+          secTerm: "این نیم‌سال · پاییز ۱۴۰۵",
+          secOther: "سایر دروس و موضوعات",
+          secRes: "منابع یادگیری",
+          badgeSpeech: "aut-speech2026 · پاییز ۱۴۰۵",
+          c8t: "aut-speech2026 — پردازش سیگنال گفتار (امیرکبیر)",
+          c8d: "فوریه و DSP ← وظایف گفتار ← بازشناسی گفتار ← مدل‌های خودنظارتی (wav2vec 2.0، HuBERT، WavLM) ← Whisper ← مدل‌های زبانی گفتاری، همراه با پروژه‌های دانشجویی به سبک کنفرانس.",
+          r1t: "آکادمی",
+          r1d: "مسیرهای خودآموز: گفتار، یادگیری ماشین قابل اعتماد، بینایی، پردازش زبان، MLOps.",
+          r2t: "آزمایشگاه یادگیری ماشین",
+          r2d: "یادگیری بانظارت تعاملی: SVM، درخت، جنگل، تقویت و شبکهٔ عصبی.",
+          r3t: "آزمایشگاه بدون نظارت",
+          r3d: "فاصله‌ها، خوشه‌بندی، PCA و t-SNE.",
+          r4t: "آزمایشگاه سیگنال",
+          r4d: "از سیگنال خام تا طیف‌نگار مل، همراه با صدای زنده.",
+          tpWeek: "هفتهٔ {n} از {t}",
+          tpDone: "{d} جلسه برگزار شده",
+          tpNow: "این هفته: {x}",
           navCourses: "دروس",
           navAcademy: "آکادمی",
           navTeaching: "تدریس",
           hubKicker: "تدریس",
           hubTitle: "دروس",
-          hubDesc: "صفحات رسمی دروس. ویژه: sharif-da2026 — تحلیل داده شریف، پاییز ۲۰۲۶.",
+          hubDesc: "صفحه‌های رسمی دروس همراه با پیشرفت هفته‌به‌هفته، اسلایدها و آزمایشگاه‌ها.",
           badgeNew: "sharif-da2026 · پاییز ۲۰۲۶",
           badgeExternal: "سایت خارجی",
           c1t: "sharif-da2026 — تحلیل داده (شریف)",
@@ -201,6 +260,23 @@
           footerPrepared: "تهیه‌شده توسط محمد خالوئی",
         },
         ar: {
+          secTerm: "This term · Fall 2026",
+          secOther: "Other courses & topics",
+          secRes: "Learning resources",
+          badgeSpeech: "aut-speech2026 · Fall 2026",
+          c8t: "aut-speech2026 — Speech Signal Processing (Amirkabir)",
+          c8d: "Fourier & DSP → speech tasks → ASR → self-supervised models (wav2vec 2.0, HuBERT, WavLM) → Whisper → speech LLMs, with conference-style student projects.",
+          r1t: "Academy",
+          r1d: "Structured self-study tracks: speech, trustworthy ML, vision, NLP, MLOps.",
+          r2t: "ML Lab",
+          r2d: "Interactive supervised learning: SVM, trees, forests, boosting, neural nets.",
+          r3t: "Unsupervised Lab",
+          r3d: "Distances, clustering, PCA and t-SNE.",
+          r4t: "Signal Lab",
+          r4d: "From raw signals to Mel spectrograms, with live audio.",
+          tpWeek: "Week {n} of {t}",
+          tpDone: "{d} sessions delivered",
+          tpNow: "this week: {x}",
           navCourses: "المقررات",
           navAcademy: "الأكاديمية",
           navTeaching: "التدريس",
@@ -226,6 +302,23 @@
           footerPrepared: "إعداد: محمد خلويي",
         },
         zh: {
+          secTerm: "This term · Fall 2026",
+          secOther: "Other courses & topics",
+          secRes: "Learning resources",
+          badgeSpeech: "aut-speech2026 · Fall 2026",
+          c8t: "aut-speech2026 — Speech Signal Processing (Amirkabir)",
+          c8d: "Fourier & DSP → speech tasks → ASR → self-supervised models (wav2vec 2.0, HuBERT, WavLM) → Whisper → speech LLMs, with conference-style student projects.",
+          r1t: "Academy",
+          r1d: "Structured self-study tracks: speech, trustworthy ML, vision, NLP, MLOps.",
+          r2t: "ML Lab",
+          r2d: "Interactive supervised learning: SVM, trees, forests, boosting, neural nets.",
+          r3t: "Unsupervised Lab",
+          r3d: "Distances, clustering, PCA and t-SNE.",
+          r4t: "Signal Lab",
+          r4d: "From raw signals to Mel spectrograms, with live audio.",
+          tpWeek: "Week {n} of {t}",
+          tpDone: "{d} sessions delivered",
+          tpNow: "this week: {x}",
           navCourses: "课程",
           navAcademy: "学院",
           navTeaching: "教学",
@@ -253,5 +346,36 @@
       };
     </script>
     <script src="assets/js/academy-common.js"></script>
+    <script src="assets/js/course-data-da2026.js?v=20261120a"></script>
+    <script src="assets/js/course-data-speech2026.js?v=20261120a"></script>
+    <script>
+      (function () {
+        function txt(k, vars) {
+          var l = (document.documentElement.lang || "en").slice(0, 2);
+          var d = (window.ACADEMY_I18N[l] && window.ACADEMY_I18N[l][k]) || window.ACADEMY_I18N.en[k] || "";
+          return d.replace(/\{(\w+)\}/g, function (_, v) { return vars[v]; });
+        }
+        function pick(v) { var l = (document.documentElement.lang || "en").slice(0, 2); return v && (v[l] || v.en); }
+        function render() {
+          document.querySelectorAll("[data-course]").forEach(function (el) {
+            var D = window.COURSE_DATA && window.COURSE_DATA[el.getAttribute("data-course")];
+            if (!D) return;
+            var mod = {}; D.modules.forEach(function (m) { mod[m.id] = m.color; });
+            el.querySelector(".tp-bar").innerHTML = D.weeks.map(function (w) {
+              return '<i class="' + w.status + '" style="--m:' + mod[w.module] + ";--w:" + (w.span || 1) + '"></i>';
+            }).join("");
+            var done = D.weeks.filter(function (w) { return w.status === "done"; }).length;
+            var cur = D.weeks.filter(function (w) { return w.status === "current"; })[0];
+            el.querySelector(".tp-text").innerHTML = "<b>" + txt("tpWeek", { n: D.currentWeek, t: D.totalWeeks }) + "</b> · " + txt("tpDone", { d: done }) +
+              (cur ? " · " + txt("tpNow", { x: pick(cur.short || cur.title) }) : "");
+          });
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+          render();
+          var sel = document.getElementById("academy-lang");
+          if (sel) sel.addEventListener("change", function () { setTimeout(render, 0); });
+        });
+      })();
+    </script>
   </body>
 </html>
